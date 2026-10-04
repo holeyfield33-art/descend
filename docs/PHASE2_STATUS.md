@@ -12,6 +12,12 @@ Input-content lengths matched using pinned tokenizer data. In the successful Sup
 
 Reproduce the archive checks without cloud calls: `python -m scripts.audit_viability`.
 
+## Continued real-weight work
+
+The user requested the best choice and continued progress. A separate local CPU real-LoRA feasibility pilot completed successfully with Qwen2.5-0.5B-Instruct, including saved-adapter reload, at zero additional cloud spend. Accuracy remained 0/4. Five subsequent base-calibration recipes remained below the 25–60% range; the next tested candidate is Qwen3-0.6B. This is an explicitly disclosed local backend, not a completed Token Factory training/deployment route. [Local pilot notes](LOCAL_REAL_WEIGHT_PILOT.md) contain hashes, results and the task-definition correction.
+
+Two bounded provider-length calibration calls preserve the JSON-neutral revision at `artifacts/pilots/length-calibration/20261004T171504Z`. Input-content lengths matched, but provider prompt counts were 1468/1469. The difference remains measured, not claimed resolved. Cumulative conservative inference accounting is now **$0.539585 across 115 calls**, no unresolved holds. Hidden and formal datasets remain untouched in local feasibility/calibration work.
+
 ## Scope and authorization
 
 The user authorized autonomous DM0 work with a total cloud-spend ceiling of **$20**. Phase 2A uses real Nemotron inference with fake training and synthetic scoring. Its output is **PILOT — NOT CLAIM-BEARING**. No formal preregistration is frozen and no formal seed has run.

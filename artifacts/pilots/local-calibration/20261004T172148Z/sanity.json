@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "What is 2 + 2? Return only the number.",
+    "answer": "4"
+  },
+  {
+    "prompt": "Reverse abc. Return only the reversed string.",
+    "answer": "The word \"abc\" is already in reverse order. Therefore, the answer is"
+  }
+]

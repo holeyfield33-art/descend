@@ -9,7 +9,7 @@ from pathlib import Path
 from descend.dsl import generate_dsl, grade
 from descend.dsl.generator import generate_examples
 from descend.registry import canonical_hash
-from scripts.prepare_local_target import TARGETS, file_hash
+from scripts.prepare_local_target import REVISION, WEIGHT_HASH, file_hash
 
 
 def main():
@@ -20,12 +20,8 @@ def main():
     if subprocess.check_output(["git", "status", "--porcelain"], text=True).strip():
         raise SystemExit("Calibration requires a clean commit")
     target = Path(args.target)
-    metadata = json.loads((target / "download_manifest.json").read_text())
-    source = next((s for s in TARGETS.values() if s["model"] == metadata["model"] and s["revision"] == metadata["revision"]), None)
-    if source is None or file_hash(target / "model.safetensors") != source["weight_hash"]:
+    if file_hash(target / "model.safetensors") != WEIGHT_HASH:
         raise SystemExit("Base weight identity mismatch")
-    if any(file_hash(target / name) != digest for name, digest in metadata["hashes"].items()):
-        raise SystemExit("Target file identity mismatch")
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     torch.set_num_threads(2)
@@ -39,7 +35,7 @@ def main():
     if args.few_shot:
         recipes = [{"length": 2, "demonstrations": False}, {"length": 4, "demonstrations": False}]
     plan = {"label": "BASE DIFFICULTY CALIBRATION - NOT CLAIM-BEARING", "seed": 302,
-            "model": source["model"], "revision": source["revision"], "base_weight_hash": source["weight_hash"], "recipes": recipes,
+            "revision": REVISION, "base_weight_hash": WEIGHT_HASH, "recipes": recipes,
             "selection_rule": "First listed recipe with dev accuracy between 0.25 and 0.60 inclusive",
             "hidden_evaluated": False, "cloud_cost_usd": 0, "formal_data": False,
             "git_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
@@ -56,7 +52,7 @@ def main():
     sanity = []
     for question in ("What is 2 + 2? Return only the number.", "Reverse abc. Return only the reversed string."):
         text = tokenizer.apply_chat_template([{"role": "user", "content": question}],
-                                              tokenize=False, add_generation_prompt=True, enable_thinking=False)
+                                              tokenize=False, add_generation_prompt=True)
         inputs = tokenizer(text, return_tensors="pt")
         with torch.no_grad():
             generated = model.generate(**inputs, max_new_tokens=16, do_sample=False,
@@ -87,7 +83,7 @@ def main():
                 if time.monotonic() - started > 1200:
                     raise RuntimeError("Calibration deadline exceeded")
                 text = tokenizer.apply_chat_template([{"role": "system", "content": system}, *demonstration_messages,
-                    {"role": "user", "content": example["input"]}], tokenize=False, add_generation_prompt=True, enable_thinking=False)
+                    {"role": "user", "content": example["input"]}], tokenize=False, add_generation_prompt=True)
                 inputs = tokenizer(text, return_tensors="pt")
                 generated = model.generate(**inputs, max_new_tokens=32, do_sample=False,
                                            pad_token_id=tokenizer.eos_token_id)

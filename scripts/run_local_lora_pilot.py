@@ -11,7 +11,7 @@ from pathlib import Path
 from descend.dsl import generate_dsl, grade
 from descend.dsl.generator import generate_examples
 from descend.registry import canonical_hash
-from scripts.prepare_local_target import MODEL, REVISION, WEIGHT_HASH, file_hash
+from scripts.prepare_local_target import TARGETS, file_hash
 
 
 def write(path, value):
@@ -23,14 +23,17 @@ def main():
     parser.add_argument("--target", required=True)
     parser.add_argument("--steps", type=int, default=4)
     parser.add_argument("--seed", type=int, default=301)
+    parser.add_argument("--length", type=int, default=6)
+    parser.add_argument("--few-shot", action="store_true")
     args = parser.parse_args()
-    if not 1 <= args.steps <= 16 or args.seed < 301:
+    if not 1 <= args.steps <= 16 or args.seed < 301 or not 2 <= args.length <= 6:
         raise SystemExit("Invalid local feasibility pilot limits")
     if subprocess.check_output(["git", "status", "--porcelain"], text=True).strip():
         raise SystemExit("Local pilot requires a clean canonical Git commit")
     target = Path(args.target)
     manifest = json.loads((target / "download_manifest.json").read_text())
-    if manifest["revision"] != REVISION or file_hash(target / "model.safetensors") != WEIGHT_HASH:
+    source = next((s for s in TARGETS.values() if s["model"] == manifest["model"] and s["revision"] == manifest["revision"]), None)
+    if source is None or file_hash(target / "model.safetensors") != source["weight_hash"]:
         raise SystemExit("Target identity verification failed")
     if any(file_hash(target / name) != digest for name, digest in manifest["hashes"].items()):
         raise SystemExit("Target file changed since preparation")
@@ -49,7 +52,7 @@ def main():
             raise RuntimeError("Local pilot wall-clock budget exceeded")
     plan = {"label": "LOCAL REAL-WEIGHT PILOT - NOT CLAIM-BEARING", "formal_data": False,
         "backend": "local_cpu", "token_factory_training": False, "agent": "scripted feasibility recipe",
-        "model": MODEL, "revision": REVISION, "base_weight_hash": WEIGHT_HASH,
+        "model": source["model"], "revision": source["revision"], "base_weight_hash": source["weight_hash"],
         "git_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         "source_hash": file_hash(Path(__file__)), "seed": args.seed, "steps": args.steps,
         "dependency_lock_hash": file_hash("requirements-local-training-lock.txt"),
@@ -57,6 +60,7 @@ def main():
         "training": {"lr": 0.0002, "lora_r": 8, "lora_alpha": 16, "dropout": 0,
                      "target_modules": ["q_proj", "v_proj"], "max_sequence_tokens": 512},
         "packages": {name: importlib.metadata.version(name) for name in ("torch", "transformers", "peft", "safetensors")}}
+    plan["task_configuration"] = {"length": args.length, "few_shot": args.few_shot, "enable_thinking": False}
     write(root / "plan.json", plan)
     snapshots = {}
     for tree in ("descend", "scripts"):
@@ -77,17 +81,24 @@ def main():
               "select_even keeps indices 0,2,4; truncate keeps the first three characters; "
               "swap_halves splits at floor(length/2).")
     write(root / "system_prompt.json", {"content": system, "hash": canonical_hash(system)})
-    examples = generate_examples(dsl, dsl.train_templates, 2, args.seed + 99, min_len=4, max_len=6)
+    demonstrations = []
+    if args.few_shot:
+        for op in dsl.operators:
+            demonstrations.extend([{"role": "user", "content": json.dumps(
+                {"operators": [op.name], "string": "abcd"}, sort_keys=True, separators=(",", ":"))},
+                {"role": "assistant", "content": op.fn("abcd")}])
+    write(root / "demonstration_messages.json", demonstrations)
+    examples = generate_examples(dsl, dsl.train_templates, 2, args.seed + 99, min_len=args.length, max_len=args.length)
     random.Random(args.seed).shuffle(examples)
     training = examples[:8]
-    dev = generate_examples(dsl, dsl.dev_templates, 1, args.seed + 2, min_len=4, max_len=6)[:4]
+    dev = generate_examples(dsl, dsl.dev_templates, 1, args.seed + 2, min_len=args.length, max_len=args.length)[:4]
     write(root / "datasets.json", {"training": training, "dev": dev, "hidden_evaluated": False})
     tokenizer = AutoTokenizer.from_pretrained(target, local_files_only=True, trust_remote_code=False)
     model = AutoModelForCausalLM.from_pretrained(target, local_files_only=True,
             trust_remote_code=False, use_safetensors=True, dtype=torch.float32, attn_implementation="eager")
     def prompt(example):
-        return tokenizer.apply_chat_template([{"role": "system", "content": system},
-            {"role": "user", "content": example["input"]}], tokenize=False, add_generation_prompt=True)
+        return tokenizer.apply_chat_template([{"role": "system", "content": system}, *demonstrations,
+            {"role": "user", "content": example["input"]}], tokenize=False, add_generation_prompt=True, enable_thinking=False)
     def evaluate(current):
         current.eval()
         predictions = []
@@ -127,12 +138,12 @@ def main():
             optimizer.step()
             losses.append(float(loss.detach()))
             write(root / "training_progress.json", {"steps": len(losses), "losses": losses,
-                                                     "training_tokens": tokens})
+                "training_tokens": tokens, "example_indices": [i % len(training) for i in range(step + 1)]})
             print(json.dumps({"training_step": step + 1, "loss": losses[-1]}), flush=True)
         adapter_dir = root / "adapter"
         adapted.save_pretrained(adapter_dir, safe_serialization=True)
         hashes = {p.name: file_hash(p) for p in adapter_dir.iterdir() if p.is_file()}
-        write(root / "candidate.json", {"base_weight_hash": WEIGHT_HASH, "adapter_files": hashes,
+        write(root / "candidate.json", {"base_weight_hash": source["weight_hash"], "adapter_files": hashes,
               "adapter_identity": canonical_hash(hashes), "training_dataset_hash": canonical_hash(training),
               "training_tokens": tokens, "steps": args.steps, "synthetic_adapter": False})
         after = evaluate(adapted)

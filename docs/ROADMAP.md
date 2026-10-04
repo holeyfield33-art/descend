@@ -27,4 +27,4 @@ Run separate pilots, calibrate and freeze thresholds/budgets, then preregister 1
 
 ## Later
 - SM0 / SM1 / SM2 research tree (out of scope for this repo initially)
-- No claim-bearing experiment, real target fine-tune or paid deployment has been run.
+- No claim-bearing experiment or paid deployment has been run. A separate local real-weight LoRA feasibility pilot completed; its measured dev gain was zero. Task calibration continues before formal work. See [local pilot disclosure](LOCAL_REAL_WEIGHT_PILOT.md).

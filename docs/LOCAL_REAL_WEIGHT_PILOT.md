@@ -24,3 +24,17 @@ timeout 1800 python -m scripts.run_local_lora_pilot --target /path/to/controller
 ```
 
 This pilot is scripted feasibility work. Real Nemotron-controlled training, task calibration, hidden evaluation and 12 paired formal seeds remain subsequent gates.
+
+## Recorded results and target escalation
+
+Qwen2.5-0.5B-Instruct completed a real four-step LoRA pilot at `artifacts/pilots/local-training/20261004T171319Z`, implementation `62de26823a62759219c0a5d77d4a7484d3f1b67e`. It processed 690 measured training tokens and saved actual safetensors adapter weights. Base and adapted dev accuracy were both **0/4**; reload reproduced the adapted predictions exactly. The audit found 48 LoRA-B tensors with 196,608 nonzero values, consistent with updates from their zero initialization. This proves local execution and serialization, not useful adaptation.
+
+Base difficulty calibration at seed 302 scored **10%, 0%, 0%** for the three declared recipes. Conversational demonstrations then scored **10%, 0%**. All results remain under `artifacts/pilots/local-calibration/`; none met the predeclared 25–60% range. Qwen2.5-0.5B is therefore unsuitable for the tested task/prompt conditions so far.
+
+The next candidate is `Qwen/Qwen3-0.6B`, also in the documented LoRA list, with revision `c1899de289a04d12100db370d81485cdf75e47ca`, weight SHA-256 `f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b`. Its [official card](https://huggingface.co/Qwen/Qwen3-0.6B) documents `enable_thinking=False` for direct answers. No formal target choice has been frozen.
+
+Audit the saved real-weight pilot without loading weights or credentials:
+
+```bash
+python -m scripts.audit_local_pilot artifacts/pilots/local-training/20261004T171319Z
+```

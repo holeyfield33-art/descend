@@ -1,0 +1,155 @@
+{
+  "recipe": {
+    "length": 2,
+    "demonstrations": false
+  },
+  "system_prompt": "Apply the requested string operations left to right. Return only the resulting string. Operation definitions: {\"kordra0\": \"truncate\", \"lupmek1\": \"select_odd\", \"korzor2\": \"rotate_left\", \"vexyul3\": \"reverse\", \"talkor4\": \"swap_halves\", \"zorkor5\": \"duplicate\", \"meklup6\": \"select_even\"}. rotate_left/right move one character; select_odd keeps indices 1,3,5; select_even keeps indices 0,2,4; truncate keeps the first three characters; swap_halves splits at floor(length/2).",
+  "dataset": [
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"n1\"}",
+      "output": "1n"
+    },
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"do\"}",
+      "output": "od"
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"po\"}",
+      "output": "p"
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"ds\"}",
+      "output": "d"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"ft\"}",
+      "output": "ftft"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"il\"}",
+      "output": "ilil"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"3x\"}",
+      "output": "x3x3"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"t3\"}",
+      "output": "3t3t"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"gk\"}",
+      "output": "k"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"u7\"}",
+      "output": "7"
+    }
+  ],
+  "predictions": [
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"n1\"}",
+      "output": "n1"
+    },
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"do\"}",
+      "output": "d"
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"po\"}",
+      "output": "p"
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"ds\"}",
+      "output": "ds"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"ft\"}",
+      "output": "ft"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"il\"}",
+      "output": "i il"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"3x\"}",
+      "output": "3xc"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"t3\"}",
+      "output": "tt3"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"gk\"}",
+      "output": "ghk"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"u7\"}",
+      "output": "q9"
+    }
+  ],
+  "score": {
+    "accuracy": 0.1,
+    "n": 10.0,
+    "correct": 1.0
+  },
+  "dataset_hash": "649c0e60362afaf0b13e642f7bab2c6d718a38b6e6b69b8fcdbdb67ee8fae833",
+  "demonstration_messages": [
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"kordra0\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "abc"
+    },
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"lupmek1\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "bd"
+    },
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"korzor2\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "bcda"
+    },
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"vexyul3\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "dcba"
+    },
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"talkor4\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "cdab"
+    },
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"zorkor5\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "abcdabcd"
+    },
+    {
+      "role": "user",
+      "content": "{\"operators\":[\"meklup6\"],\"string\":\"abcd\"}"
+    },
+    {
+      "role": "assistant",
+      "content": "ac"
+    }
+  ]
+}
