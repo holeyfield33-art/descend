@@ -70,4 +70,15 @@ class RegistryStore:
         evs = self.events(run_id)
         if arm is not None:
             evs = [e for e in evs if e.get("arm") == arm]
-        return evs
+        allowed = {"run_start": ("arm", "budgets"),
+                   "manifest_issued": ("arm", "manifest_hash"),
+                   "dataset_created": ("dataset_hash", "n_examples", "source", "contamination"),
+                   "training_submitted": ("dataset_hash", "config"),
+                   "training_completed": ("status", "adapter_id", "adapter_hash"),
+                   "dev_eval": ("dev_accuracy",),
+                   "candidate_committed": ("identity",),
+                   "prediction_committed": ("prediction_hash",)}
+        return [{"event_type": e["event_type"],
+                 "payload": {k: e["payload"][k] for k in allowed[e["event_type"]]
+                             if k in e["payload"]}}
+                for e in evs if e["event_type"] in allowed]

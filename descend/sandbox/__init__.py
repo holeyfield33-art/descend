@@ -8,6 +8,14 @@ from .isolation import (
     try_outbound_http,
     FORBIDDEN_ENV_KEYS,
 )
+from .hard_isolation import (
+    isolation_available,
+    run_in_hard_isolation,
+    probe_script,
+    mock_tool_proxy_echo,
+    ISOLATION_RUNTIME,
+    NOBODY_UID,
+)
 
 __all__ = [
     "Workspace",
@@ -18,4 +26,10 @@ __all__ = [
     "run_agent_script",
     "try_outbound_http",
     "FORBIDDEN_ENV_KEYS",
+    "isolation_available",
+    "run_in_hard_isolation",
+    "probe_script",
+    "mock_tool_proxy_echo",
+    "ISOLATION_RUNTIME",
+    "NOBODY_UID",
 ]

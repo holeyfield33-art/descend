@@ -58,3 +58,7 @@ workspace_*/
 # OS
 .DS_Store
 Thumbs.db
+
+controller_state/
+runs/
+registry_data/
