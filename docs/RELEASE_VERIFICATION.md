@@ -15,4 +15,6 @@ The historical recovery and repair reports preserve the counts measured at their
 
 Published clean-checkout verification is the next release check and will be recorded here after publication.
 
+The first publication, `7ff3c769426bbeb04d0547ad6aa0172acd4d9726`, failed fresh-clone collection with nine errors on both platforms: three restored manifest implementation files were still ignored by the inherited unanchored `MANIFEST` rule under Windows's case-insensitive matching. Workspace tests could see those files, which is why they passed. The release correction anchors that generated-file rule to `/MANIFEST` and explicitly publishes `descend/manifest/build.py`, `neutral.py` and `schema.py`. No implementation was invented to mask the missing files.
+
 Phase status remains **PHASE 1.6 PARTIAL**. The five priority repairs are covered by tests. Remaining prerequisites include actual A/B length matching, complete dependency locking, a truncation anchor, real artifact/code identities and measured token accounting. Documentation/API inspection does not establish live account compatibility. No paid provider calls have been run.
