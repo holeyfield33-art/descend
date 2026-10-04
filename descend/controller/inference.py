@@ -41,7 +41,9 @@ class TokenFactoryInference:
         state.budgets.check()
         tools = tools_for_state(state)
         body = chat_request(model=self.model, messages=messages, max_tokens=max_tokens, tools=tools or None)
-        body.update(temperature=0, seed=seed)
+        # The authenticated verbose catalog does not advertise seed support for
+        # these Nemotron endpoints. Keep dataset seeds separate from inference.
+        body.update(temperature=0)
         body["tool_choice"] = "none" if (getattr(state, "candidate_committed", False)
             and getattr(state, "prediction_committed", False)) else "auto"
         # NVIDIA's documented vLLM/OpenAI request pattern for reasoning off.
@@ -74,5 +76,6 @@ class TokenFactoryInference:
         self.ledger.settle(reservation, total * rate_bound, record.get("id", ""))
         state.budgets.record_tokens(total)
         return {"request": body, "response": record, "reservation_id": reservation,
+                "dataset_seed": seed, "provider_seed_parameter_sent": False,
                 "provider_tokens": total, "accounted_upper_bound_usd": total * rate_bound / 1_000_000,
                 "estimated_list_price_usd": (prompt * input_price + completion * output_price) / 1_000_000}

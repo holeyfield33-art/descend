@@ -15,7 +15,7 @@ def main():
     key = os.environ["NEBIUS_API_KEY"]
     opener = urllib.request.build_opener(NoRedirect())
     result = {"timestamp": datetime.now(timezone.utc).isoformat(), "read_only": True, "paid_requests": 0, "checks": {}}
-    for route in ("/v1/fine_tuning/jobs", "/v0/dedicated_endpoints"):
+    for route in ("/v1/fine_tuning/jobs", "/v0/dedicated_endpoints", "/v0/models", "/v1/models?verbose=true"):
         request = urllib.request.Request("https://api.tokenfactory.nebius.com" + route,
                                          headers={"Authorization": "Bearer " + key})
         try:
@@ -24,6 +24,11 @@ def main():
             entries = payload.get("data", [])
             result["checks"][route] = {"http_status": 200, "object_count": len(entries),
                 "response_fields": sorted(payload), "object_fields": sorted(entries[0]) if entries else []}
+            if route == "/v1/models?verbose=true":
+                public = [{k: model[k] for k in ("id", "pricing", "supported_features", "supported_sampling_parameters")
+                           if k in model} for model in entries if model.get("owned_by") == "system"]
+                Path("controller_state/provider_verbose_models.json").write_text(json.dumps(public, indent=2), encoding="utf-8")
+                result["checks"][route]["nemotron_metadata"] = [model for model in public if "nemotron" in model["id"].lower()]
         except urllib.error.HTTPError as exc:
             result["checks"][route] = {"http_status": exc.code}
         except Exception as exc:

@@ -8,6 +8,7 @@ from pathlib import Path
 
 from descend.dsl import generate_dsl, grade
 from descend.dsl.generator import generate_examples
+from descend.dsl.decoding import allowed_output_tokens
 from descend.registry import canonical_hash
 from scripts.prepare_local_target import TARGETS, file_hash
 
@@ -16,6 +17,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", required=True)
     parser.add_argument("--few-shot", action="store_true")
+    parser.add_argument("--constrained", action="store_true")
     args = parser.parse_args()
     if subprocess.check_output(["git", "status", "--porcelain"], text=True).strip():
         raise SystemExit("Calibration requires a clean commit")
@@ -45,6 +47,7 @@ def main():
             "git_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
             "source_hash": file_hash(__file__), "dependency_lock_hash": file_hash("requirements-local-training-lock.txt")}
     plan["few_shot_chat_demonstrations"] = args.few_shot
+    plan["input_character_output_constraint"] = args.constrained
     (root / "plan.json").write_text(json.dumps(plan, indent=2), encoding="utf-8")
     (root / "source.py").write_bytes(Path(__file__).read_bytes())
     tokenizer = AutoTokenizer.from_pretrained(target, local_files_only=True, trust_remote_code=False)
@@ -89,8 +92,12 @@ def main():
                 text = tokenizer.apply_chat_template([{"role": "system", "content": system}, *demonstration_messages,
                     {"role": "user", "content": example["input"]}], tokenize=False, add_generation_prompt=True, enable_thinking=False)
                 inputs = tokenizer(text, return_tensors="pt")
+                kwargs = {}
+                if args.constrained:
+                    allowed = allowed_output_tokens(tokenizer, example["input"])
+                    kwargs["prefix_allowed_tokens_fn"] = lambda batch, ids: allowed
                 generated = model.generate(**inputs, max_new_tokens=32, do_sample=False,
-                                           pad_token_id=tokenizer.eos_token_id)
+                                           pad_token_id=tokenizer.eos_token_id, **kwargs)
                 answer = tokenizer.decode(generated[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()
                 predictions.append({"input": example["input"], "output": answer})
         record = {"recipe": recipe, "system_prompt": system, "dataset": examples, "predictions": predictions,

@@ -10,6 +10,7 @@ from pathlib import Path
 
 from descend.dsl import generate_dsl, grade
 from descend.dsl.generator import generate_examples
+from descend.dsl.decoding import allowed_output_tokens
 from descend.registry import canonical_hash
 from scripts.prepare_local_target import TARGETS, file_hash
 
@@ -25,6 +26,7 @@ def main():
     parser.add_argument("--seed", type=int, default=301)
     parser.add_argument("--length", type=int, default=6)
     parser.add_argument("--few-shot", action="store_true")
+    parser.add_argument("--constrained", action="store_true")
     args = parser.parse_args()
     if not 1 <= args.steps <= 16 or args.seed < 301 or not 2 <= args.length <= 6:
         raise SystemExit("Invalid local feasibility pilot limits")
@@ -60,7 +62,8 @@ def main():
         "training": {"lr": 0.0002, "lora_r": 8, "lora_alpha": 16, "dropout": 0,
                      "target_modules": ["q_proj", "v_proj"], "max_sequence_tokens": 512},
         "packages": {name: importlib.metadata.version(name) for name in ("torch", "transformers", "peft", "safetensors")}}
-    plan["task_configuration"] = {"length": args.length, "few_shot": args.few_shot, "enable_thinking": False}
+    plan["task_configuration"] = {"length": args.length, "few_shot": args.few_shot,
+                                   "enable_thinking": False, "input_character_output_constraint": args.constrained}
     write(root / "plan.json", plan)
     snapshots = {}
     for tree in ("descend", "scripts"):
@@ -106,8 +109,12 @@ def main():
             for example in dev:
                 check_time()
                 inputs = tokenizer(prompt(example), return_tensors="pt")
+                kwargs = {}
+                if args.constrained:
+                    allowed = allowed_output_tokens(tokenizer, example["input"])
+                    kwargs["prefix_allowed_tokens_fn"] = lambda batch, ids: allowed
                 output = current.generate(**inputs, max_new_tokens=32, do_sample=False,
-                                          pad_token_id=tokenizer.eos_token_id)
+                                          pad_token_id=tokenizer.eos_token_id, **kwargs)
                 text = tokenizer.decode(output[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()
                 predictions.append({"input": example["input"], "output": text})
         return {"score": grade(predictions, dev), "predictions": predictions}

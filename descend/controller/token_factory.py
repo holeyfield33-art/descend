@@ -74,3 +74,14 @@ def fine_tuning_request(*, model: str, training_file: str, n_epochs: int,
 def job_finished(status: str) -> bool:
     """Terminal states are finished; queued/running states need polling."""
     return status in TERMINAL_JOB_STATUSES
+
+
+def lora_model_request(*, name: str, base_model: str, job_id: str, checkpoint_id: str,
+                       description: str = "Descend pilot adapter") -> dict[str, str]:
+    """Prepare the cookbook's legacy POST /v0/models body; never deploy it.
+
+    Current account/target support and bounded pricing must be verified separately.
+    GET on that collection returned 405; this does not verify POST compatibility.
+    """
+    return {"name": _identifier(name), "base_model": _identifier(base_model),
+            "source": f"{_identifier(job_id)}:{_identifier(checkpoint_id)}", "description": description}

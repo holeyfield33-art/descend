@@ -87,7 +87,8 @@ def main():
             "go_rule": "At least 3 of 4 autonomous protocol completions", "runtime": runtime,
             "isolation": isolation, "agent_model": model_id, "target_model": "cpu-fake-target",
             "training_backend": "fake", "evaluation_backend": "synthetic hash score",
-            "sampling": {"temperature": 0, "max_tokens": 4096, "seed": "attempt seed", "enable_thinking": False},
+            "sampling": {"temperature": 0, "max_tokens": 4096, "dataset_seed": "attempt seed",
+                         "provider_seed": None, "enable_thinking": False},
             "tokenizer": {k: v for k, v in TOKENIZER_SOURCES[args.model].items() if k != "path"},
             "system_prompt_hash": canonical_hash(SYSTEM_PROMPT), "formal_data": False}
     write(root / "plan.json", plan)

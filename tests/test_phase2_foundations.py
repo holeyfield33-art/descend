@@ -90,6 +90,7 @@ def test_inference_charges_usage_and_retains_unknown_calls(tmp_path):
     state = SimpleNamespace(run_id="r", budgets=BudgetState())
     inference.complete([{"role": "user", "content": "test"}], state, seed=1)
     assert sent[-1]["tool_choice"] == "auto"
+    assert "seed" not in sent[-1]  # Dataset seed is not an advertised provider sampling parameter.
     assert sent[-1]["extra_body"] == {"chat_template_kwargs": {"enable_thinking": False}}
     assert state.budgets.tokens_used == 30
     assert ledger.summary()["unresolved_calls"] == 0
