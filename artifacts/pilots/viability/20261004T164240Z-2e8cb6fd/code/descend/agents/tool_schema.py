@@ -28,31 +28,3 @@ TOOLS = [
     _function("read_registry", "Read a filtered view of this run's own events."),
 ]
 ALLOWED_TOOLS = {tool["function"]["name"] for tool in TOOLS}
-
-
-def tools_for_state(state):
-    """Expose current operational limits; controller enforcement stays authoritative."""
-    import copy
-    tools = copy.deepcopy(TOOLS)
-    remaining = 100 - getattr(state, "generated_examples", 0)
-    candidate = getattr(state, "candidate_committed", False)
-    prediction = getattr(state, "prediction_committed", False)
-    available = []
-    for tool in tools:
-        function = tool["function"]
-        name = function["name"]
-        if prediction or (candidate and name not in {"commit_prediction", "read_registry"}):
-            continue
-        if name == "commit_prediction" and not candidate:
-            continue
-        if name == "build_dataset":
-            if remaining <= 0:
-                continue
-            function["parameters"]["properties"]["n_examples"]["maximum"] = remaining
-            function["description"] = f"Generate training data. {remaining} examples remain in the cumulative budget; depth 1 or 2."
-        if name == "submit_training" and not state.budgets.can_train():
-            continue
-        if name == "dev_eval" and not state.budgets.can_dev_eval():
-            continue
-        available.append(tool)
-    return available

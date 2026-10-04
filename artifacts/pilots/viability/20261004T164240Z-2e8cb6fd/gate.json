@@ -1,0 +1,38 @@
+{
+  "label": "PILOT — NOT CLAIM-BEARING",
+  "completed": 2,
+  "attempts": 4,
+  "go": false,
+  "cloud_accounting": {
+    "cap_usd": 20.0,
+    "accounted_upper_bound_usd": 0.290573,
+    "unresolved_calls": 0,
+    "calls": 73,
+    "billing_receipt": false
+  },
+  "artifact_path": "artifacts/pilots/viability/20261004T164240Z-2e8cb6fd",
+  "runtime": {
+    "git_sha": "3ec18d30aa3cb701e3958286fadd43c5308c53e8",
+    "worktree_dirty": false,
+    "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "dependency_lock_hash": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+    "installed_packages": {
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "openai": "2.46.0",
+      "tokenizers": "0.23.2"
+    },
+    "controller_code_hash": "d1b3cb2f82e92815eadbafca72f6498c6acfa5f1586458395b6e10eb92e4357d",
+    "evaluator_code_hash": "e4c5c7a53937eb95abb60b70206c656dbe225397aadebfe65386d9cd27391e2a",
+    "dsl_generator_hash": "5416c09aa110674be1c21b026168daff9545b99b91ed2d01a95e60818a47b3fd",
+    "provider_weight_hash": null,
+    "provider_weight_hash_reason": "Provider weights are not exposed",
+    "worker_runtime": {
+      "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+      "uid": 65534,
+      "gid": 65534
+    },
+    "source_snapshot_hash": "9cb71df888f50cf40aceee77dffe19d7b2d06024542a03b0ff3696c42cae31b7"
+  }
+}

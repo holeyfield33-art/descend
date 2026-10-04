@@ -35,12 +35,11 @@ class TokenFactoryInference:
         self.client = client
 
     def complete(self, messages, state, *, seed, max_tokens=4096):
-        from descend.agents.tool_schema import tools_for_state
+        from descend.agents.tool_schema import TOOLS
         if type(max_tokens) is not int or not 1 <= max_tokens <= 8192:
             raise ValueError("Invalid completion cap")
         state.budgets.check()
-        tools = tools_for_state(state)
-        body = chat_request(model=self.model, messages=messages, max_tokens=max_tokens, tools=tools or None)
+        body = chat_request(model=self.model, messages=messages, max_tokens=max_tokens, tools=TOOLS)
         body.update(temperature=0, seed=seed)
         body["tool_choice"] = "none" if (getattr(state, "candidate_committed", False)
             and getattr(state, "prediction_committed", False)) else "auto"
