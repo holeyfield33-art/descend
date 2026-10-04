@@ -43,6 +43,8 @@ def main():
         if len(records) == 2:
             counts = [r["evidence"]["response"]["usage"]["prompt_tokens"] for r in records]
             summary.update(provider_prompt_tokens=counts, matched=counts[0] == counts[1])
+            summary.update(provider_prompt_token_difference=abs(counts[0] - counts[1]),
+                           proposed_tolerance_tokens=1, within_proposed_tolerance=abs(counts[0] - counts[1]) <= 1)
         (root / "calibration.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
         print(json.dumps({k: v for k, v in summary.items() if k not in {"runtime", "records"}}))
 

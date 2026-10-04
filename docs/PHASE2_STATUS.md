@@ -8,6 +8,8 @@ Across all five batches: **20 attempts, 113 inference calls**, estimated list-pr
 
 Input-content lengths matched using pinned tokenizer data. In the successful Super batch, initial provider prompt usage was **1467 tokens for A and 1468 for B**. That private-wrapper difference remains unresolved before formal experiments; the viability GO concerns protocol completion only.
 
+Following the user's request to make the best choice, the proposed pre-formal matching policy is **exact local content-token equality and at most one provider prompt token difference**. This makes the intended approximate matching concrete. The observed difference is within that proposed tolerance; exact provider equality has not been established. Freeze this policy in the eventual preregistration and verify each pair's initial counts. Larger differences must not be silently accepted or excluded after observing outcomes.
+
 **Phase 2B external gate:** no real training job or paid deployment has been submitted. Account-specific training price and a verified small-target deployment/custom-weight path are needed to bound this phase within $20. The API and available read-only documentation did not establish that path. Browser tools could not access the pricing console. No claim-bearing data, frozen preregistration or formal result exists.
 
 Reproduce the archive checks without cloud calls: `python -m scripts.audit_viability`.
@@ -17,6 +19,8 @@ Reproduce the archive checks without cloud calls: `python -m scripts.audit_viabi
 The user requested the best choice and continued progress. A separate local CPU real-LoRA feasibility pilot completed successfully with Qwen2.5-0.5B-Instruct, including saved-adapter reload, at zero additional cloud spend. Accuracy remained 0/4. Five subsequent base-calibration recipes remained below the 25–60% range; the next tested candidate is Qwen3-0.6B. This is an explicitly disclosed local backend, not a completed Token Factory training/deployment route. [Local pilot notes](LOCAL_REAL_WEIGHT_PILOT.md) contain hashes, results and the task-definition correction.
 
 Two bounded provider-length calibration calls preserve the JSON-neutral revision at `artifacts/pilots/length-calibration/20261004T171504Z`. Input-content lengths matched, but provider prompt counts were 1468/1469. The difference remains measured, not claimed resolved. Cumulative conservative inference accounting is now **$0.539585 across 115 calls**, no unresolved holds. Hidden and formal datasets remain untouched in local feasibility/calibration work.
+
+Read-only account checks on 2026-10-04 returned HTTP 200 for `/v1/fine_tuning/jobs` and `/v0/dedicated_endpoints`, both with zero existing objects. The credential can access those listing routes; this does not verify submission rights, small-target deployment or pricing. No cloud training job or deployment was created.
 
 ## Scope and authorization
 
