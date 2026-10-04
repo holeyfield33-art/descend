@@ -15,7 +15,6 @@ from scripts.prepare_local_target import REVISION, WEIGHT_HASH, file_hash
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", required=True)
-    parser.add_argument("--few-shot", action="store_true")
     args = parser.parse_args()
     if subprocess.check_output(["git", "status", "--porcelain"], text=True).strip():
         raise SystemExit("Calibration requires a clean commit")
@@ -32,15 +31,12 @@ def main():
     dsl = generate_dsl(302)
     recipes = [{"length": 2, "demonstrations": False}, {"length": 4, "demonstrations": True},
                {"length": 6, "demonstrations": True}]
-    if args.few_shot:
-        recipes = [{"length": 2, "demonstrations": False}, {"length": 4, "demonstrations": False}]
     plan = {"label": "BASE DIFFICULTY CALIBRATION - NOT CLAIM-BEARING", "seed": 302,
             "revision": REVISION, "base_weight_hash": WEIGHT_HASH, "recipes": recipes,
             "selection_rule": "First listed recipe with dev accuracy between 0.25 and 0.60 inclusive",
             "hidden_evaluated": False, "cloud_cost_usd": 0, "formal_data": False,
             "git_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
             "source_hash": file_hash(__file__), "dependency_lock_hash": file_hash("requirements-local-training-lock.txt")}
-    plan["few_shot_chat_demonstrations"] = args.few_shot
     (root / "plan.json").write_text(json.dumps(plan, indent=2), encoding="utf-8")
     (root / "source.py").write_bytes(Path(__file__).read_bytes())
     tokenizer = AutoTokenizer.from_pretrained(target, local_files_only=True, trust_remote_code=False)
@@ -49,17 +45,6 @@ def main():
     model.eval()
     records = []
     started = time.monotonic()
-    sanity = []
-    for question in ("What is 2 + 2? Return only the number.", "Reverse abc. Return only the reversed string."):
-        text = tokenizer.apply_chat_template([{"role": "user", "content": question}],
-                                              tokenize=False, add_generation_prompt=True)
-        inputs = tokenizer(text, return_tensors="pt")
-        with torch.no_grad():
-            generated = model.generate(**inputs, max_new_tokens=16, do_sample=False,
-                                       pad_token_id=tokenizer.eos_token_id)
-        sanity.append({"prompt": question, "answer": tokenizer.decode(
-            generated[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()})
-    (root / "sanity.json").write_text(json.dumps(sanity, indent=2), encoding="utf-8")
     for index, recipe in enumerate(recipes):
         system = ("Apply the requested string operations left to right. Return only the resulting string. "
                   "Operation definitions: " + json.dumps({op.name: op.primitive for op in dsl.operators}) +
@@ -69,12 +54,6 @@ def main():
         if recipe["demonstrations"]:
             system += " Examples (input -> output): " + json.dumps([
                 {"operators": [op.name], "string": "abcd", "output": op.fn("abcd")} for op in dsl.operators])
-        demonstration_messages = []
-        if args.few_shot:
-            for op in dsl.operators:
-                demonstration_messages.extend([{"role": "user", "content": json.dumps(
-                    {"operators": [op.name], "string": "abcd"}, sort_keys=True, separators=(",", ":"))},
-                    {"role": "assistant", "content": op.fn("abcd")}])
         examples = generate_examples(dsl, dsl.dev_templates, 2, 304,
                     min_len=recipe["length"], max_len=recipe["length"])
         predictions = []
@@ -82,7 +61,7 @@ def main():
             for example in examples:
                 if time.monotonic() - started > 1200:
                     raise RuntimeError("Calibration deadline exceeded")
-                text = tokenizer.apply_chat_template([{"role": "system", "content": system}, *demonstration_messages,
+                text = tokenizer.apply_chat_template([{"role": "system", "content": system},
                     {"role": "user", "content": example["input"]}], tokenize=False, add_generation_prompt=True)
                 inputs = tokenizer(text, return_tensors="pt")
                 generated = model.generate(**inputs, max_new_tokens=32, do_sample=False,
@@ -90,8 +69,7 @@ def main():
                 answer = tokenizer.decode(generated[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True).strip()
                 predictions.append({"input": example["input"], "output": answer})
         record = {"recipe": recipe, "system_prompt": system, "dataset": examples, "predictions": predictions,
-                  "score": grade(predictions, examples), "dataset_hash": canonical_hash(examples),
-                  "demonstration_messages": demonstration_messages}
+                  "score": grade(predictions, examples), "dataset_hash": canonical_hash(examples)}
         records.append(record)
         (root / f"recipe-{index}.json").write_text(json.dumps(record, indent=2), encoding="utf-8")
         print(json.dumps({"recipe": recipe, "score": record["score"]}), flush=True)

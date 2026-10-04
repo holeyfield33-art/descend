@@ -1,0 +1,27 @@
+{
+  "label": "BASE DIFFICULTY CALIBRATION - NOT CLAIM-BEARING",
+  "seed": 302,
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "base_weight_hash": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "recipes": [
+    {
+      "length": 2,
+      "demonstrations": false
+    },
+    {
+      "length": 4,
+      "demonstrations": true
+    },
+    {
+      "length": 6,
+      "demonstrations": true
+    }
+  ],
+  "selection_rule": "First listed recipe with dev accuracy between 0.25 and 0.60 inclusive",
+  "hidden_evaluated": false,
+  "cloud_cost_usd": 0,
+  "formal_data": false,
+  "git_sha": "fb67e96a6eabe1c6df275db47123e258aea6779a",
+  "source_hash": "aa56ae4c42894b99f0f4f99f1daf727f599c5f9783aca618899b1801f2e09e1b",
+  "dependency_lock_hash": "19125aa7161cd911774fc7c1928fcef87ccf9857b3f95a52b303c9119cd761f3"
+}

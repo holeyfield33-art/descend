@@ -1,0 +1,97 @@
+{
+  "recipe": {
+    "length": 6,
+    "demonstrations": true
+  },
+  "system_prompt": "Apply the requested string operations left to right. Return only the resulting string. Operation definitions: {\"kordra0\": \"truncate\", \"lupmek1\": \"select_odd\", \"korzor2\": \"rotate_left\", \"vexyul3\": \"reverse\", \"talkor4\": \"swap_halves\", \"zorkor5\": \"duplicate\", \"meklup6\": \"select_even\"}. rotate_left/right move one character; select_odd keeps indices 1,3,5; select_even keeps indices 0,2,4; truncate keeps the first three characters; swap_halves splits at floor(length/2). Examples (input -> output): [{\"operators\": [\"kordra0\"], \"string\": \"abcd\", \"output\": \"abc\"}, {\"operators\": [\"lupmek1\"], \"string\": \"abcd\", \"output\": \"bd\"}, {\"operators\": [\"korzor2\"], \"string\": \"abcd\", \"output\": \"bcda\"}, {\"operators\": [\"vexyul3\"], \"string\": \"abcd\", \"output\": \"dcba\"}, {\"operators\": [\"talkor4\"], \"string\": \"abcd\", \"output\": \"cdab\"}, {\"operators\": [\"zorkor5\"], \"string\": \"abcd\", \"output\": \"abcdabcd\"}, {\"operators\": [\"meklup6\"], \"string\": \"abcd\", \"output\": \"ac\"}]",
+  "dataset": [
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"n162do\"}",
+      "output": "od261n"
+    },
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"poddsq\"}",
+      "output": "qsddop"
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"tyily3\"}",
+      "output": "tiy"
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"nt3ugk\"}",
+      "output": "n3g"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"u7z2gw\"}",
+      "output": "u7z2gwu7z2gw"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"slqyef\"}",
+      "output": "slqyefslqyef"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"s3dzxx\"}",
+      "output": "3dzxxs3dzxxs"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"mlvkr3\"}",
+      "output": "lvkr3mlvkr3m"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"boncfk\"}",
+      "output": "ock"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"7lbbw3\"}",
+      "output": "lb3"
+    }
+  ],
+  "predictions": [
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"n162do\"}",
+      "output": "d162on"
+    },
+    {
+      "input": "{\"operators\":[\"vexyul3\"],\"string\":\"poddsq\"}",
+      "output": "\"sdpsd\""
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"tyily3\"}",
+      "output": "\"tyillyt\""
+    },
+    {
+      "input": "{\"operators\":[\"meklup6\"],\"string\":\"nt3ugk\"}",
+      "output": "\"tng3u6kg\""
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"u7z2gw\"}",
+      "output": "u7wz2gws"
+    },
+    {
+      "input": "{\"operators\":[\"zorkor5\"],\"string\":\"slqyef\"}",
+      "output": "sllfyeq"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"s3dzxx\"}",
+      "output": "dxxs3dz"
+    },
+    {
+      "input": "{\"operators\":[\"korzor2\",\"zorkor5\"],\"string\":\"mlvkr3\"}",
+      "output": "mvlkr3"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"boncfk\"}",
+      "output": "bncfok"
+    },
+    {
+      "input": "{\"operators\":[\"lupmek1\",\"kordra0\"],\"string\":\"7lbbw3\"}",
+      "output": "bwb7l"
+    }
+  ],
+  "score": {
+    "accuracy": 0.0,
+    "n": 10.0,
+    "correct": 0.0
+  },
+  "dataset_hash": "869b7870b3a622a967b92405bdb09e738cd50cc2ddaf557b4b30137de744a7e4"
+}
