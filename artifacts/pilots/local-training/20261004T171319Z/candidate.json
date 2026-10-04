@@ -1,0 +1,13 @@
+{
+  "base_weight_hash": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "adapter_files": {
+    "adapter_config.json": "f29351308a69d38495873670baa6cc70d68c524da51e4bffc2d694a1fef937a4",
+    "adapter_model.safetensors": "7f93fd9df12aa6198ddab720946475627918786dfced042b443a6a5642249202",
+    "README.md": "d916c138e7e784d21c0a1b10c2f02697de5ebd4de7fe6f3d9582cbd9110b0a0c"
+  },
+  "adapter_identity": "a0f062172b62d5802ea1761f45327a3d795d10a5d05004bc58c00c34f4f301d0",
+  "training_dataset_hash": "712ebfd2e69d2881497663f7809a3a62446a510f00de1e6bd56187377ab39f6a",
+  "training_tokens": 690,
+  "steps": 4,
+  "synthetic_adapter": false
+}

@@ -1,0 +1,37 @@
+{
+  "label": "LOCAL REAL-WEIGHT PILOT - NOT CLAIM-BEARING",
+  "formal_data": false,
+  "backend": "local_cpu",
+  "token_factory_training": false,
+  "agent": "scripted feasibility recipe",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "base_weight_hash": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "git_sha": "62de26823a62759219c0a5d77d4a7484d3f1b67e",
+  "source_hash": "de4e843b36336fbf9c63197290ac442b6923e5141a98df6c232b2849b078669c",
+  "seed": 301,
+  "steps": 4,
+  "dependency_lock_hash": "19125aa7161cd911774fc7c1928fcef87ccf9857b3f95a52b303c9119cd761f3",
+  "device": "cpu",
+  "threads": 2,
+  "wall_clock_cap_sec": 1800,
+  "cloud_cost_usd": 0,
+  "training": {
+    "lr": 0.0002,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "dropout": 0,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "max_sequence_tokens": 512
+  },
+  "packages": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.18.0",
+    "peft": "0.21.2",
+    "safetensors": "0.8.0"
+  },
+  "source_snapshot_hash": "2b9afd1101914392ab9b09dcb79f0a9bdfb9b346af705094d0606ac45291b800"
+}

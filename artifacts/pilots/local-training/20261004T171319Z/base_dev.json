@@ -1,0 +1,25 @@
+{
+  "score": {
+    "accuracy": 0.0,
+    "n": 4.0,
+    "correct": 0.0
+  },
+  "predictions": [
+    {
+      "input": "{\"operators\":[\"yulqin0\"],\"string\":\"pmfq\"}",
+      "output": "pmqf"
+    },
+    {
+      "input": "{\"operators\":[\"qinkor6\"],\"string\":\"7zk04f\"}",
+      "output": "7zk04ff"
+    },
+    {
+      "input": "{\"operators\":[\"yulqin0\"],\"string\":\"78chz\"}",
+      "output": "78chz"
+    },
+    {
+      "input": "{\"operators\":[\"qinkor6\",\"mekfen3\"],\"string\":\"5sa0\"}",
+      "output": "s0a5"
+    }
+  ]
+}

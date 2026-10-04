@@ -1,0 +1,55 @@
+{
+  "training": [
+    {
+      "input": "{\"operators\":[\"kortal2\"],\"string\":\"1jcp\"}",
+      "output": "jp"
+    },
+    {
+      "input": "{\"operators\":[\"yulqin0\",\"qinkor6\"],\"string\":\"z64hz2\"}",
+      "output": "46z"
+    },
+    {
+      "input": "{\"operators\":[\"yulqin0\",\"qinkor6\"],\"string\":\"u18x3b\"}",
+      "output": "81u"
+    },
+    {
+      "input": "{\"operators\":[\"mekfen3\"],\"string\":\"e08bdd\"}",
+      "output": "e8d"
+    },
+    {
+      "input": "{\"operators\":[\"korqin4\",\"zortal5\"],\"string\":\"yr4kt8\"}",
+      "output": "4kt8yr"
+    },
+    {
+      "input": "{\"operators\":[\"qinkor6\"],\"string\":\"19qs2\"}",
+      "output": "2sq91"
+    },
+    {
+      "input": "{\"operators\":[\"qinkor6\"],\"string\":\"9qf53\"}",
+      "output": "35fq9"
+    },
+    {
+      "input": "{\"operators\":[\"mekfen3\"],\"string\":\"gfue\"}",
+      "output": "gu"
+    }
+  ],
+  "dev": [
+    {
+      "input": "{\"operators\":[\"yulqin0\"],\"string\":\"pmfq\"}",
+      "output": "pmf"
+    },
+    {
+      "input": "{\"operators\":[\"qinkor6\"],\"string\":\"7zk04f\"}",
+      "output": "f40kz7"
+    },
+    {
+      "input": "{\"operators\":[\"yulqin0\"],\"string\":\"78chz\"}",
+      "output": "78c"
+    },
+    {
+      "input": "{\"operators\":[\"qinkor6\",\"mekfen3\"],\"string\":\"5sa0\"}",
+      "output": "0s"
+    }
+  ],
+  "hidden_evaluated": false
+}

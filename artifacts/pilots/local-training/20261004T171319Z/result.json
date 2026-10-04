@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "base_dev": {
+    "accuracy": 0.0,
+    "n": 4.0,
+    "correct": 0.0
+  },
+  "adapted_dev": {
+    "accuracy": 0.0,
+    "n": 4.0,
+    "correct": 0.0
+  },
+  "reload_verified": true,
+  "hidden_evaluated": false,
+  "cloud_cost_usd": 0,
+  "elapsed_sec": 88.75509808200002,
+  "formal_data": false
+}

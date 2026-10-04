@@ -1,0 +1,4 @@
+{
+  "content": "Apply the requested string operations from left to right. Return only the resulting string, without quotes or explanation. Operation names mean: {\"yulqin0\": \"truncate\", \"mekvex1\": \"duplicate\", \"kortal2\": \"select_odd\", \"mekfen3\": \"select_even\", \"korqin4\": \"swap_halves\", \"zortal5\": \"rotate_right\", \"qinkor6\": \"reverse\"}. rotate_left/right move one character; select_odd keeps indices 1,3,5; select_even keeps indices 0,2,4; truncate keeps the first three characters; swap_halves splits at floor(length/2).",
+  "hash": "2b502cfc27c82707cfc9a36e6672ad7ce5fff68a0e98e0d5c2c40e181d75e5af"
+}
