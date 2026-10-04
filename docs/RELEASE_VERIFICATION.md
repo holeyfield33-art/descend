@@ -13,7 +13,19 @@ The historical recovery and repair reports preserve the counts measured at their
 | Cookbook checkout | Clean and unchanged at the pinned commit |
 | Paid provider requests | None; contract tests are offline |
 
-Published clean-checkout verification is the next release check and will be recorded here after publication.
+## Published clean-checkout checks
+
+A fresh clone from GitHub at `4b8ddc47166ad7005a43d81cbed82139ee90ffe6` was installed with `pip install -e ".[dev]"` in new Windows and Linux virtual environments. The source tree contains 91 tracked files, including all restored manifest implementations.
+
+| Check | Result |
+|---|---|
+| Fresh Linux checkout | 84 collected, 84 passed, no skips/failures/errors |
+| Fresh Windows checkout | 84 collected, 61 passed, 23 skipped, no failures/errors |
+| Fake A and B, seed 42, Linux isolation | Both completed; each registry chain verified with 11 events |
+| Checkout after verification | Clean; generated artifacts ignored |
+| Cookbook runtime dependency | None; the reference checkout was not installed or executed |
+
+The fake runs validate plumbing and synthetic scoring, not Nemotron inference or training quality. Subsequent release-documentation changes do not alter the tested implementation.
 
 The first publication, `7ff3c769426bbeb04d0547ad6aa0172acd4d9726`, failed fresh-clone collection with nine errors on both platforms: three restored manifest implementation files were still ignored by the inherited unanchored `MANIFEST` rule under Windows's case-insensitive matching. Workspace tests could see those files, which is why they passed. The release correction anchors that generated-file rule to `/MANIFEST` and explicitly publishes `descend/manifest/build.py`, `neutral.py` and `schema.py`. No implementation was invented to mask the missing files.
 

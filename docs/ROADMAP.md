@@ -7,7 +7,7 @@
 - Frozen prediction, private hidden seed, filtered feedback and enforced budgets are tested.
 - Registry, DSL, fake training, commitments and promotion run end to end.
 - Cookbook API research and offline request helpers are present; no cloud backend is enabled.
-- Remaining foundations: actual A/B length matching, complete dependency lock, registry truncation anchor, and an independently reproduced published checkout. See [repair evidence](PROTOCOL_REPAIR_REPORT.md) and [release verification](RELEASE_VERIFICATION.md).
+- Remaining foundations: actual A/B length matching, complete dependency lock, and registry truncation anchor. An independently reproduced published checkout passed all 84 Linux tests and both fake A/B runs. See [repair evidence](PROTOCOL_REPAIR_REPORT.md) and [release verification](RELEASE_VERIFICATION.md).
 
 ## Phase 2A: Nemotron viability with fake training
 

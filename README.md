@@ -26,7 +26,7 @@ DM0 is **not** AGI, recursive self-improvement, literal self-modification, or pr
 
 The fake worker runs in **Linux namespaces (`unshare`) + chroot**, as UID 65534 with no network. The controller stays outside and serves a bounded, run-scoped JSON pipe. The worker receives no controller object or hidden seed. Unsupported hosts fail closed; Windows runs protocol tests and skips Linux worker tests. The Dockerfile is not used by this runtime.
 
-See [`docs/PROTOCOL_REPAIR_REPORT.md`](docs/PROTOCOL_REPAIR_REPORT.md) for current results and [`docs/VERIFICATION_REPORT.md`](docs/VERIFICATION_REPORT.md) for the historical recovery audit. Phase 2A remains gated on public clean-checkout verification and the remaining prerequisites.
+See [`docs/PROTOCOL_REPAIR_REPORT.md`](docs/PROTOCOL_REPAIR_REPORT.md) for repair results and [`docs/VERIFICATION_REPORT.md`](docs/VERIFICATION_REPORT.md) for the historical recovery audit. Public clean-checkout verification has passed. Phase 2A remains gated on the remaining prerequisites.
 
 Release verification and current checkout evidence are recorded in [`docs/RELEASE_VERIFICATION.md`](docs/RELEASE_VERIFICATION.md). The original recovery/repair reports preserve their historical test counts.
 
