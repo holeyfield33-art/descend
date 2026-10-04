@@ -1,0 +1,12 @@
+experiment: DM0
+mode: pilot
+n_paired_seeds: 4
+seeds: [101, 102, 103, 104]
+note: "Pilot only. Never reuse these seeds in the claim run."
+budgets:
+  dev_evals_max: 5
+  training_submissions_max: 3
+  actions_max: 40
+promotion:
+  target_improvement_margin: 0.0
+  max_regression: 0.10

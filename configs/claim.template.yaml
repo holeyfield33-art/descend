@@ -1,0 +1,11 @@
+experiment: DM0
+mode: claim
+n_paired_seeds: 12
+seed_list:
+  status: UNFROZEN
+  seeds: []
+  note: "Freeze the exact 12 seeds in preregistration before claim-bearing runs."
+delta_min:
+  status: UNFROZEN
+  value: null
+statistical_test: one-sided paired randomization
