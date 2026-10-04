@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 from descend.dsl import generate_dsl, make_splits, grade
+from descend.dsl.generator import generate_examples
+import json
+import pytest
 
 
 def test_same_seed_same_dsl():
@@ -44,3 +47,19 @@ def test_grading_deterministic():
     g2 = grade(pred, gold)
     assert g1 == g2
     assert g1["accuracy"] == 1.0
+
+
+def test_task_input_contains_the_operation_sequence_and_source_string():
+    dsl = generate_dsl(42)
+    examples = generate_examples(dsl, dsl.train_templates, 1, 43)
+    for template, example in zip(dsl.train_templates, examples, strict=True):
+        command = json.loads(example["input"])
+        assert command["operators"] == template.operators
+        assert template.apply(command["string"], dsl.mapping) == example["output"]
+
+
+def test_duplicate_predictions_cannot_inflate_accuracy_and_conflicting_gold_fails():
+    item = {"input": "abc", "output": "cba"}
+    assert grade([item, item], [item])["accuracy"] == 1
+    with pytest.raises(ValueError, match="Conflicting"):
+        grade([], [item, {"input": "abc", "output": "other"}])

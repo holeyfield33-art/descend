@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import random
 from dataclasses import dataclass, field
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
@@ -119,5 +120,7 @@ def generate_examples(
             length = rng.randint(min_len, max_len)
             inp = "".join(rng.choice(alphabet) for _ in range(length))
             out = tmpl.apply(inp, dsl.mapping)
-            examples.append({"input": inp, "output": out})
+            command = json.dumps({"operators": tmpl.operators, "string": inp},
+                                 sort_keys=True, separators=(",", ":"))
+            examples.append({"input": command, "output": out})
     return examples

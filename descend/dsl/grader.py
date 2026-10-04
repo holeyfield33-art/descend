@@ -15,14 +15,21 @@ def grade(
     predictions and gold are lists of {"input": ..., "output": ...}.
     Matching is by input string; missing predictions count as incorrect.
     """
-    gold_map = {g["input"]: g["output"] for g in gold}
+    def unique_map(items):
+        result = {}
+        for item in items:
+            key, value = item.get("input", ""), item.get("output", "")
+            if key in result and result[key] != value:
+                raise ValueError("Conflicting outputs for the same task input")
+            result[key] = value
+        return result
+
+    gold_map = unique_map(gold)
     if not gold_map:
         return {"accuracy": 0.0, "n": 0, "correct": 0}
 
     correct = 0
-    for p in predictions:
-        inp = p.get("input", "")
-        pred = p.get("output", "")
+    for inp, pred in unique_map(predictions).items():
         if inp in gold_map and pred == gold_map[inp]:
             correct += 1
 

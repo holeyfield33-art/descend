@@ -76,6 +76,8 @@ Each viability invocation makes paid inference calls and preserves a separate fo
 
 ### Documentation
 
+The selected first real-weight target is Qwen2.5-0.5B-Instruct. A separate local CPU feasibility pilot avoids unpriced cloud operations; its backend choice and task-definition correction are disclosed in [the local pilot notes](docs/LOCAL_REAL_WEIGHT_PILOT.md). It does not supply formal DM0 data or verify a Token Factory training deployment.
+
 - [Architecture and trust zones](docs/ARCHITECTURE.md)
 - [Experimental design and status](docs/EXPERIMENT.md)
 - [Roadmap and phase gates](docs/ROADMAP.md)
