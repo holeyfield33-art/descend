@@ -47,6 +47,7 @@ class RunState:
     decision: Optional[Dict[str, Any]] = None
     failure: Optional[str] = None
     transcript: List[Dict[str, Any]] = field(default_factory=list)
+    reference_manifest: Optional[Dict[str, Any]] = None
 
 
 class Controller:
@@ -118,7 +119,7 @@ class Controller:
         )
 
         # Issue manifest / neutral
-        if arm == "A":
+        if arm in ("A", "B"):
             evidence = target_evidence or {
                 "target_checkpoint_id": "stub-base-v0",
                 "target_checkpoint_hash": STUB_BASE_HASH,
@@ -130,24 +131,10 @@ class Controller:
                 "baseline_failure_profile": {"common_errors": ["truncation"]},
                 "modification_lineage": [],
             }
-            manifest = build_arm_a_manifest(target_evidence=evidence, budgets=budgets.as_dict())
-        elif arm == "B":
-            # Build a dummy A first for length matching
-            dummy_a = build_arm_a_manifest(
-                target_evidence={
-                    "target_checkpoint_id": "x",
-                    "target_checkpoint_hash": "0" * 64,
-                    "architecture": "x",
-                    "parameter_count": 0,
-                    "tokenizer_characteristics": {},
-                    "adapter_compatibility": "x",
-                    "baseline_capability_profile": {},
-                    "baseline_failure_profile": {},
-                    "modification_lineage": [],
-                },
-                budgets=budgets.as_dict(),
-            )
-            manifest = build_arm_b_neutral(arm_a_manifest=dummy_a, budgets=budgets.as_dict())
+            arm_a = build_arm_a_manifest(target_evidence=evidence, budgets=budgets.as_dict())
+            state.reference_manifest = copy.deepcopy(arm_a)
+            manifest = arm_a if arm == "A" else build_arm_b_neutral(
+                arm_a_manifest=arm_a, budgets=budgets.as_dict())
         else:
             manifest = {"arm": "C", "note": "scripted baseline; no agent"}
 
@@ -248,6 +235,12 @@ class Controller:
                 "status": "ok",
             }
             state.candidate = cand
+            if fake_backend_result is None:
+                # The fake adapter is exactly these synthetic bytes, not LoRA
+                # weights. Its existing hash binds those bytes without invention.
+                adapter = self.roots.committed_path(run_id, "training-adapter.bin")
+                adapter.write_bytes(f"{dataset_hash}:{canonical_hash(config)}:{state.seed}".encode())
+                cand["_adapter_path"] = str(adapter)
             self.registry.append(
                 "candidate_created",
                 run_id,
@@ -279,15 +272,17 @@ class Controller:
             self._fail(run_id, f"invalid candidate: {reasons}")
             raise RuntimeError(f"invalid candidate: {reasons}")
 
+        from descend.controller.provenance import source_hash
         identity = build_candidate_identity(
             base_hash=STUB_BASE_HASH,
             adapter_hash=state.candidate["adapter_hash"],
             training_dataset_hash=state.candidate["training_dataset_hash"],
             training_config_hash=canonical_hash(state.candidate["training_config"]),
             agent_transcript_hash=transcript_hash or canonical_hash(state.transcript),
-            evaluator_code_hash=STUB_EVALUATOR_HASH,
-            controller_code_hash=STUB_CONTROLLER_HASH,
-            promotion_rule_hash=STUB_PROMOTION_HASH,
+            evaluator_code_hash=source_hash("descend/evaluation", "descend/dsl", "descend/controller/controller.py"),
+            controller_code_hash=source_hash("descend/controller", "descend/sandbox", "descend/tools"),
+            promotion_rule_hash=canonical_hash({"source_hash": source_hash("descend/controller/promotion.py"),
+                                                "configuration": self.promotion_config}),
         )
         state.candidate["identity"] = identity
         # TOCTOU: freeze committed bytes into controller-owned immutable storage
@@ -301,6 +296,15 @@ class Controller:
         }
         dest = self.roots.committed_path(run_id, "candidate.json")
         dest.write_text(_json.dumps(frozen, sort_keys=True), encoding="utf-8")
+        from descend.registry.canonical import canonical_dumps
+        self.roots.committed_path(run_id, "dataset.json").write_text(
+            canonical_dumps(state.datasets[state.candidate["training_dataset_hash"]]), encoding="utf-8")
+        self.roots.committed_path(run_id, "training-config.json").write_text(
+            canonical_dumps(state.candidate["training_config"]), encoding="utf-8")
+        if "_adapter_path" in state.candidate:
+            adapter_dest = self.roots.committed_path(run_id, "adapter.bin")
+            adapter_dest.write_bytes(Path(state.candidate["_adapter_path"]).read_bytes())
+            state.candidate["_adapter_path"] = str(adapter_dest)
         state.candidate["_frozen_path"] = str(dest)
         state.candidate["_frozen_hash"] = canonical_hash(frozen)
         state.candidate_committed = True
@@ -506,6 +510,13 @@ class Controller:
             raise RuntimeError("TOCTOU: frozen candidate hash mismatch")
         if loaded.get("adapter_hash") != state.candidate.get("adapter_hash"):
             raise RuntimeError("TOCTOU: adapter hash mutated after commit")
+        if "_adapter_path" in state.candidate:
+            if hashlib.sha256(Path(state.candidate["_adapter_path"]).read_bytes()).hexdigest() != loaded["adapter_hash"]:
+                raise RuntimeError("TOCTOU: adapter bytes changed")
+        for name, expected in (("dataset.json", loaded["training_dataset_hash"]),
+                               ("training-config.json", loaded["identity"]["components"]["H_training_config"])):
+            if hashlib.sha256(self.roots.committed_path(state.run_id, name).read_bytes()).hexdigest() != expected:
+                raise RuntimeError("TOCTOU: dataset/config bytes changed")
         pred_path = Path(state.prediction.get("_frozen_path", ""))
         if not pred_path.is_file():
             raise RuntimeError("TOCTOU: frozen prediction missing")

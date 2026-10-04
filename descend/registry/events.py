@@ -13,6 +13,7 @@ from .hashchain import GENESIS_HASH, compute_event_hash
 EVENT_TYPES = frozenset({
     "run_start",
     "manifest_issued",
+    "provider_inference",
     "dataset_created",
     "dev_eval",
     "training_submitted",

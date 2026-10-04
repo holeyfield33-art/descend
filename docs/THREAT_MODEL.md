@@ -61,9 +61,9 @@ namespace/runtime assumptions.
 - Theoretical breakout via kernel bugs is not ruled out (Level 3).
 - System runtime directories are read-only mounts. Controller assets must live outside them. `/workspace` and a size-limited `/tmp` are writable.
 - Contamination feedback intentionally exposes only a pass/fail flag, as requested; it is not a zero-information response. Counts, similarity and hidden scores are excluded from tools and agent registry views.
-- Fake token accounting uses conservative serialized character/byte units. Real model integration must charge measured provider/tokenizer usage before it is enabled.
+- Run token accounting combines conservative serialized character/byte units with measured provider usage. Before each inference request, a token/cost reservation bounds the call. Controller-owned SQLite accounting caps all enabled inference calls at the authorized $20; uncertain outcomes retain their reservations. Real training/deployment remain disabled until their costs can also be bounded.
 - See `PROTOCOL_REPAIR_REPORT.md` for remaining scientific and reproducibility gates; passing boundary tests does not establish measured model improvement.
-- Token Factory request preparation is offline and controller-owned. No provider SDK client, external tool or credential is exposed to the worker; the sibling cookbook is never mounted or imported. Current API/deployment limitations are documented in `TOKEN_FACTORY_REFERENCE.md`.
+- Token Factory inference runs controller-side. No provider SDK client, external tool or credential is exposed to the worker; proposals pass through the isolated JSON relay. The sibling cookbook is never mounted or imported. Current API/deployment limitations are documented in `TOKEN_FACTORY_REFERENCE.md` and `PHASE2_STATUS.md`.
 
 ## Acceptable outcomes
 

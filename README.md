@@ -26,19 +26,19 @@ DM0 is **not** AGI, recursive self-improvement, literal self-modification, or pr
 
 The fake worker runs in **Linux namespaces (`unshare`) + chroot**, as UID 65534 with no network. The controller stays outside and serves a bounded, run-scoped JSON pipe. The worker receives no controller object or hidden seed. Unsupported hosts fail closed; Windows runs protocol tests and skips Linux worker tests. The Dockerfile is not used by this runtime.
 
-See [`docs/PROTOCOL_REPAIR_REPORT.md`](docs/PROTOCOL_REPAIR_REPORT.md) for repair results and [`docs/VERIFICATION_REPORT.md`](docs/VERIFICATION_REPORT.md) for the historical recovery audit. Public clean-checkout verification has passed. Phase 2A remains gated on the remaining prerequisites.
+See [`docs/PROTOCOL_REPAIR_REPORT.md`](docs/PROTOCOL_REPAIR_REPORT.md) for historical repair results and [`docs/VERIFICATION_REPORT.md`](docs/VERIFICATION_REPORT.md) for the recovery audit. The Phase 2A launcher adds paired report matching, a full runtime dependency lock, registry head anchors, real local artifact/code hashes and measured provider usage.
 
 Release verification and current checkout evidence are recorded in [`docs/RELEASE_VERIFICATION.md`](docs/RELEASE_VERIFICATION.md). The original recovery/repair reports preserve their historical test counts.
 
 See [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) for Levels 1–3 and residual risks.
 
-**No claim-bearing DM0 experiment has been run yet.** No live Nemotron/Nebius backend or GPU training is enabled.
+**No claim-bearing DM0 experiment has been run yet.** A budgeted Nemotron inference launcher is available for Phase 2A viability with fake training. Real target training and deployment remain gated.
 
 ### Token Factory reference
 
 The official [Token Factory cookbook](https://github.com/nebius/token-factory-cookbook) was cloned alongside Descend as a read-only code book at commit `c2e6a2a4651ba8fd126365d7bbcd2b5621acb040`. Descend does not import it or require it at runtime. [`docs/TOKEN_FACTORY_REFERENCE.md`](docs/TOKEN_FACTORY_REFERENCE.md) records verified inference, training, LoRA/custom-model, deployment and evaluation patterns, including discrepancies between notebook examples and current docs. Small offline request helpers are adapted locally under `descend/controller/token_factory.py`; they do not send requests or enable a cloud backend.
 
-Nemotron is the planned agent; the trainable target remains a separate unresolved model. Neither the older Nano plan nor the notebook's model selection establishes current account availability.
+Authenticated catalog discovery confirmed `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` for the agent. The trainable target remains a separate unresolved model. See [Phase 2 status](docs/PHASE2_STATUS.md).
 
 ### Quick start
 
@@ -62,7 +62,17 @@ Store local settings in the Git-ignored `.env` using active `NAME=value` lines. 
 python -m descend.controller.environment --env-file .env --check
 ```
 
-Controller entry points must explicitly call `load_controller_environment` from `descend.controller.environment` before creating a provider client. Existing process variables take precedence. This does not change the parent terminal's environment. The isolated worker keeps its separate clean environment. Credential presence does not establish API validity or enable paid calls; the authorized cloud-spend ceiling is $20, with spend enforcement still required before paid operations.
+Controller entry points explicitly call `load_controller_environment` from `descend.controller.environment` before creating a provider client. Existing process variables take precedence. This does not change the parent terminal's environment. The isolated worker keeps its separate clean environment. The authorized cloud-spend ceiling is $20, enforced by controller-owned durable inference reservations. Unpriced training/deployment operations are disabled.
+
+For Phase 2A, on the privileged Linux controller host, install `requirements-lock.txt` and then `pip install --no-deps -e .`. From a clean Git checkout with controller credentials configured:
+
+```bash
+python -m scripts.provider_preflight
+python -m scripts.prepare_tokenizer
+python -m scripts.run_nemotron_viability
+```
+
+Each viability invocation makes paid inference calls and preserves a separate four-attempt batch under `artifacts/pilots/viability/`. The GO rule is at least three protocol completions. Seeds 201–204 are viability-only; no synthetic scores support H1. The pinned NVIDIA tokenizer matches A/B input-content token counts; a private provider chat template can still differ and must be audited before formal runs.
 
 ### Documentation
 

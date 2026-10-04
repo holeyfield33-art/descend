@@ -1,5 +1,11 @@
 # Provenance
 
+## Controller-side Nemotron loop
+
+The Phase 2A client adapts the pinned cookbook's `models/nemotron/run_nemotron.ipynb` OpenAI client/chat-completions pattern and `tool-calling/function_calling_1.ipynb` assistant/tool response sequence. Adapted code lives in `descend/controller/inference.py` and `descend/agents/nemotron.py`; the cookbook remains an unchanged sibling reference, never a runtime dependency. Descend adds its own explicit schemas, isolated relay, token/spend reservations and durable evidence handling. The existing copied MIT notice covers adapted cookbook patterns.
+
+Agent selection was confirmed by authenticated `/v1/models`: `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`. Input matching uses NVIDIA tokenizer data from `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16`, revision `bf77c3174f68ad409e1c2aa60daeb46e32d1c606`, SHA-256 `c6021eb6847e682f89aa52d5eb6e8c7d902a23acfc8137e25211cf84828f1592`. Only JSON tokenizer data is downloaded; no weights or remote Python code are loaded. This tokenizer does not prove the provider uses an identical private chat wrapper.
+
 Descend DM0 is a self-contained repository.
 
 No dependency on MRN-CRS, Aletheia Core, Mneme, K1 Memory, Geometric Brain, Helios, or any other prior project.

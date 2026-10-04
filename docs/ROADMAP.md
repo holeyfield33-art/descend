@@ -1,17 +1,17 @@
 # Roadmap
 
-## Current: Phase 1.6 partial, integrated CPU harness
+## Current: Phase 2A launcher, real Nemotron with fake training
 
 - Recovered the missing source/test/script tree from the supplied ZIP.
 - Fake A/B worker runs through the Linux OS boundary and controller-owned JSON pipe.
 - Frozen prediction, private hidden seed, filtered feedback and enforced budgets are tested.
 - Registry, DSL, fake training, commitments and promotion run end to end.
-- Cookbook API research and offline request helpers are present; no cloud backend is enabled.
-- Remaining foundations: actual A/B length matching, complete dependency lock, and registry truncation anchor. An independently reproduced published checkout passed all 84 Linux tests and both fake A/B runs. See [repair evidence](PROTOCOL_REPAIR_REPORT.md) and [release verification](RELEASE_VERIFICATION.md).
+- A controller-side Nano inference loop adds provider usage accounting and durable $20 spend reservations.
+- Paired evidence input matching, full runtime dependency lock, registry truncation anchors, and real local code/artifact hashes are implemented. See [Phase 2 status](PHASE2_STATUS.md); prior reports preserve their historical counts.
 
 ## Phase 2A: Nemotron viability with fake training
 
-After the foundation gate, adapt the smallest official Nemotron inference/tool-calling example through the controller-side proxy. Verify autonomous operation and real provider token accounting before changing the training backend. Confirm the exact active agent model ID; the older Nano plan is not proof of current availability. See [API research](TOKEN_FACTORY_REFERENCE.md).
+Execute four independent autonomous viability attempts from a clean commit. GO requires at least 3/4 protocol completions. Authenticated discovery confirmed `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`; inference and tool-call patterns are adapted from the pinned cookbook. Training/scoring remain fake in this gate.
 
 ## Phase 2B: Real training and controller-owned evaluation
 
@@ -23,4 +23,4 @@ Run separate pilots, calibrate and freeze thresholds/budgets, then preregister 1
 
 ## Later
 - SM0 / SM1 / SM2 research tree (out of scope for this repo initially)
-- No claim-bearing experiment, real inference call, real fine-tune or paid deployment has been run.
+- No claim-bearing experiment, real target fine-tune or paid deployment has been run.

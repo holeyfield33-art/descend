@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional
 from .build import default_operational
 
 
-def _pad_to_length(text: str, target_len: int, pad_char: str = "·") -> str:
+def _pad_to_length(text: str, target_len: int, pad_char: str = ".") -> str:
     if len(text) >= target_len:
         return text[:target_len]
     return text + (pad_char * (target_len - len(text)))
@@ -32,7 +32,7 @@ def build_arm_b_neutral(
         "or lineage evidence is supplied. Neutral filler follows to approximate "
         "payload length for the control comparison."
     )
-    neutral_text = _pad_to_length(neutral_body, max(len(evidence_str), 200))
+    neutral_text = _pad_to_length(neutral_body, len(evidence_str))
     return {
         "arm": "B",
         "operational": ops,

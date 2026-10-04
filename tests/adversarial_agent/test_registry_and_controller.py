@@ -52,10 +52,9 @@ def test_registry_truncate_detected():
         path.write_text("")  # truncate
         events = store.events("r1")
         assert events == []
-        # empty chain verifies, but experimental record is gone — verifier of
-        # expected length would fail at analysis time; chain itself is valid empty
+        # The independent controller-owned head detects even full truncation.
         ok, _ = store.verify("r1")
-        assert ok  # empty is valid; higher-level audit must check expected events
+        assert not ok
 
 
 @pytest.mark.skipif(not isolation_available()["available"],
