@@ -32,3 +32,20 @@ The first publication, `7ff3c769426bbeb04d0547ad6aa0172acd4d9726`, failed fresh-
 The checks above describe the recovery release. The current implementation additionally provides paired input matching, exact runtime dependency versions, truncation anchors, actual local artifact/source identities and measured provider usage. Real Nano/Super inference pilots have run with fake training/scoring. Real target training, deployment and formal DM0 claims remain gated; see [Phase 2 status](PHASE2_STATUS.md).
 
 At implementation commit `b08b25b`, Linux collected and passed all **101 tests**; native Windows passed **77**, with **24 Linux-only skips**. The live-budget schema test verifies exhaustion and commitment ordering without relaxing enforcement. An independent artifact audit checks all saved attempt records, anchored registries, transcripts, candidate bytes, frozen predictions and available runtime snapshots. The first failed batch has Git/source hashes but no byte-for-byte source snapshot; the audit reports this limitation explicitly.
+
+## Current published release verification
+
+A fresh GitHub clone at `54edc0513a48cb76fa644f0fd888bfb45bf40b55` was installed in a new Linux virtual environment using `requirements-lock.txt`, followed by `pip install --no-deps -e .`. The lock pins runtime/test dependencies; isolated build-tool dependencies are not pinned by it.
+
+| Check | Result |
+|---|---|
+| Fresh Linux clone | 102 passed, no skips or failures |
+| Current native Windows checkout | 78 passed, 24 Linux-only skips |
+| Archived pilot audit in fresh clone | All five batches, 20 attempts verified |
+| Latest real Super/fake-target viability | 4/4 completed; GO |
+| Python syntax and Markdown control characters | Passed |
+| Known current API credential in reachable Git objects | Absent from all 609 scanned objects |
+| Cookbook sibling | Unchanged; no runtime dependency |
+| Clean clone after verification | Clean |
+
+Current cloud accounting is $0.533707 conservatively across 113 calls, against the authorized $20 cap, with no unresolved calls. Real training/deployment and formal claim runs remain gated. The successful Super pilot had a one-token A/B provider-wrapper difference despite matching input-content counts; it does not establish formal length matching or H1.

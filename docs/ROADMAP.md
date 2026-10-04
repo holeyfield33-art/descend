@@ -15,6 +15,8 @@ Execute four independent autonomous viability attempts from a clean commit. GO r
 
 Failed Nano and Super batches remain preserved. Live tool schemas now reflect remaining budgets and commitment order. `python -m scripts.audit_viability` verifies archived pilot evidence without provider calls. Current results and the experimental gate are recorded in [Phase 2 status](PHASE2_STATUS.md).
 
+**Completed:** Super seeds 217–220 passed 4/4. Further viability calls are unnecessary for this gate. The next work is the real-training price/deployment gate; formal runs additionally require resolving the observed one-token provider-wrapper difference.
+
 ## Phase 2B: Real training and controller-owned evaluation
 
 Choose a separate target only after training and deployment compatibility are confirmed. Adapt the official file-upload/job/checkpoint workflow, freeze actual artifact bytes, then validate deployment and controller-owned dev/hidden scoring. Do not infer current custom-model deployment support from the legacy notebook alone.
