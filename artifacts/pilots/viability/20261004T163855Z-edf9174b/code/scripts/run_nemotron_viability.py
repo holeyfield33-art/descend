@@ -12,12 +12,12 @@ from descend.agents.nemotron import NemotronAgent
 from descend.agents.prompts import SYSTEM_PROMPT, user_prompt
 from descend.controller import Controller, BudgetState
 from descend.controller.environment import load_controller_environment
-from descend.controller.inference import TokenFactoryInference, NANO_MODEL_ID, SUPER_MODEL_ID
+from descend.controller.inference import TokenFactoryInference, NANO_MODEL_ID
 from descend.controller.provenance import runtime_record, byte_hash, PROJECT_ROOT
 from descend.controller.spend import SpendLedger
 from descend.registry import canonical_hash
 from descend.sandbox.hard_isolation import isolation_available, run_in_hard_isolation
-from scripts.prepare_tokenizer import prepare, TOKENIZER_SOURCES
+from scripts.prepare_tokenizer import prepare, TOKENIZER_HASH, REVISION, REPOSITORY
 
 
 def write(path, obj):
@@ -26,11 +26,9 @@ def write(path, obj):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", choices=["nano", "super"], default="nano")
     parser.add_argument("--seed-start", type=int, default=201,
                         help="Four consecutive viability-only seeds; must be >=201")
     args = parser.parse_args()
-    model_id = NANO_MODEL_ID if args.model == "nano" else SUPER_MODEL_ID
     if args.seed_start < 201:
         raise SystemExit("Viability seeds must be separate from formal/pilot seed sets")
     runtime = runtime_record()
@@ -52,10 +50,10 @@ def main():
     # Model selection uses authenticated catalog evidence, never a stale .env ID.
     catalog = json.loads(Path("controller_state/provider_preflight.json").read_text(encoding="utf-8"))
     models = catalog["checks"]["/v1/models"]["response"]["data"]
-    if model_id not in {model["id"] for model in models}:
-        raise SystemExit("Selected Nemotron is absent from the authenticated catalog")
+    if NANO_MODEL_ID not in {model["id"] for model in models}:
+        raise SystemExit("Nano is absent from the authenticated catalog")
     from tokenizers import Tokenizer
-    tokenizer = Tokenizer.from_file(str(prepare(model=args.model)))
+    tokenizer = Tokenizer.from_file(str(prepare()))
     count_tokens = lambda text: len(tokenizer.encode(text, add_special_tokens=False).ids)
     batch_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid4().hex[:8]
     root = Path("artifacts/pilots/viability") / batch_id
@@ -76,15 +74,15 @@ def main():
     runtime["source_snapshot_hash"] = canonical_hash(source_files)
     write(root / "source_snapshot.json", source_files)
     ledger = SpendLedger("controller_state/cloud-spend.sqlite")
-    client = TokenFactoryInference(api_key=key, ledger=ledger, model=model_id)
+    client = TokenFactoryInference(api_key=key, ledger=ledger)
     controller = Controller(workspace_root="runs", controller_root="controller_state")
     plan = {"label": "PILOT — NOT CLAIM-BEARING", "phase": "2A", "batch_id": batch_id,
             "attempts": [{"arm": arm, "seed": seed} for arm, seed in zip("ABAB", range(args.seed_start, args.seed_start + 4))],
             "go_rule": "At least 3 of 4 autonomous protocol completions", "runtime": runtime,
-            "isolation": isolation, "agent_model": model_id, "target_model": "cpu-fake-target",
+            "isolation": isolation, "agent_model": NANO_MODEL_ID, "target_model": "cpu-fake-target",
             "training_backend": "fake", "evaluation_backend": "synthetic hash score",
             "sampling": {"temperature": 0, "max_tokens": 4096, "seed": "attempt seed", "enable_thinking": False},
-            "tokenizer": {k: v for k, v in TOKENIZER_SOURCES[args.model].items() if k != "path"},
+            "tokenizer": {"repository": REPOSITORY, "revision": REVISION, "sha256": TOKENIZER_HASH},
             "system_prompt_hash": canonical_hash(SYSTEM_PROMPT), "formal_data": False}
     write(root / "plan.json", plan)
     results = []
@@ -101,7 +99,7 @@ def main():
         record = {**attempt, "run_id": run_id, "runtime": runtime, "isolation": isolation,
                   "label": plan["label"], "manifest": start["manifest"], "manifest_hash": canonical_hash(start["manifest"]),
                   "input_content_tokens": count_tokens(prompt), "paired_a_content_tokens": count_tokens(reference_prompt),
-                  "agent_model": model_id, "target_model": "cpu-fake-target", "budgets": state.budgets.as_dict(),
+                  "agent_model": NANO_MODEL_ID, "target_model": "cpu-fake-target", "budgets": state.budgets.as_dict(),
                   "hidden_seed_commitment": canonical_hash(state.hidden_seed), "claim_preregistration": None}
         write(directory / "manifest.json", record)
         print(json.dumps({"attempt_started": run_id, "arm": arm, "seed": seed}), flush=True)

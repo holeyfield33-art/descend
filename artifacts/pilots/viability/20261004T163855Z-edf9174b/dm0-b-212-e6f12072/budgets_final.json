@@ -1,0 +1,14 @@
+{
+  "dev_evals_used": 4,
+  "dev_evals_max": 5,
+  "training_submissions_used": 3,
+  "training_submissions_max": 3,
+  "actions_used": 9,
+  "actions_max": 40,
+  "wall_clock_budget_sec": 600,
+  "agent_token_budget": 200000,
+  "max_training_tokens": 50000,
+  "tokens_used": 25246,
+  "training_tokens_used": 14860,
+  "breached": true
+}

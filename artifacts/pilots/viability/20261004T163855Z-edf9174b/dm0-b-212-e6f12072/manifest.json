@@ -1,0 +1,116 @@
+{
+  "arm": "B",
+  "seed": 212,
+  "run_id": "dm0-b-212-e6f12072",
+  "runtime": {
+    "git_sha": "9ef3633b72ce69d25729f8aa2d75c464e296631b",
+    "worktree_dirty": false,
+    "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "dependency_lock_hash": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+    "installed_packages": {
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "openai": "2.46.0",
+      "tokenizers": "0.23.2"
+    },
+    "controller_code_hash": "f95cf814a2e782ca4eed23971e9ed82acd50f39e99b8943d6b624863503cc7e5",
+    "evaluator_code_hash": "e4c5c7a53937eb95abb60b70206c656dbe225397aadebfe65386d9cd27391e2a",
+    "dsl_generator_hash": "5416c09aa110674be1c21b026168daff9545b99b91ed2d01a95e60818a47b3fd",
+    "provider_weight_hash": null,
+    "provider_weight_hash_reason": "Provider weights are not exposed",
+    "worker_runtime": {
+      "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+      "uid": 65534,
+      "gid": 65534
+    },
+    "source_snapshot_hash": "168d73975d0fe6f7ebb1a7681644cc34410ca5c3ab5ad2f0914f628cd5ee7cee"
+  },
+  "isolation": {
+    "runtime": "linux-namespaces-unshare-chroot",
+    "unshare_path": "/usr/bin/unshare",
+    "available": true,
+    "uid": 0,
+    "euid": 0,
+    "is_root": true
+  },
+  "label": "PILOT — NOT CLAIM-BEARING",
+  "manifest": {
+    "arm": "B",
+    "operational": {
+      "tool_documentation": {
+        "build_dataset": "Request generation of training examples from permitted classes only.",
+        "dev_eval": "Evaluate a candidate on the development set (budgeted).",
+        "submit_training": "Submit a LoRA training job (budgeted).",
+        "commit_candidate": "Commit a final candidate adapter (irreversible).",
+        "commit_prediction": "Commit predictions and intervals before hidden eval (irreversible).",
+        "read_registry": "Read-only view of this run's registry events."
+      },
+      "allowed_actions": [
+        "build_dataset",
+        "dev_eval",
+        "submit_training",
+        "commit_candidate",
+        "commit_prediction",
+        "read_registry"
+      ],
+      "data_generator_limits": {
+        "max_examples_total": 100,
+        "allowed_depths": [
+          1,
+          2
+        ]
+      },
+      "budget_counters": {
+        "dev_evals_used": 0,
+        "dev_evals_max": 5,
+        "training_submissions_used": 0,
+        "training_submissions_max": 3,
+        "actions_used": 0,
+        "actions_max": 40
+      },
+      "wall_clock_budget_sec": 600,
+      "agent_token_budget": 200000,
+      "training_submission_budget": 3,
+      "dev_evaluation_budget": 5,
+      "max_training_tokens": 50000,
+      "editable_surfaces": [
+        "scratch/",
+        "datasets/",
+        "configs/",
+        "notes/"
+      ],
+      "sandbox_restrictions": [
+        "No raw credentials",
+        "No unrestricted network",
+        "No access to controller internals",
+        "No access to hidden examples or seeds"
+      ],
+      "candidate_commit_rules": "Candidate commit is irreversible. After commit the adapter artifact and its identity hash are frozen.",
+      "prediction_commit_rules": "Prediction commit is irreversible and required before hidden evaluation. Must include predicted_target_delta, interval_low, interval_high, predicted_regression_deltas, and rationale."
+    },
+    "neutral_content": "This control arm receives identical operational information and budgets. No target-model architecture, checkpoint, parameter, tokenizer, baseline, or lineage evidence is supplied. Neutral filler follows to approximate payload length for the control comparison.......................................................................................................................................................................................",
+    "neutral_content_length": 442
+  },
+  "manifest_hash": "857336009de7badd83662ee32bb12d4d87ec2321f5a83b4706d0f46a26f1eaba",
+  "input_content_tokens": 526,
+  "paired_a_content_tokens": 526,
+  "agent_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "target_model": "cpu-fake-target",
+  "budgets": {
+    "dev_evals_used": 0,
+    "dev_evals_max": 5,
+    "training_submissions_used": 0,
+    "training_submissions_max": 3,
+    "actions_used": 0,
+    "actions_max": 40,
+    "wall_clock_budget_sec": 600,
+    "agent_token_budget": 200000,
+    "max_training_tokens": 50000,
+    "tokens_used": 0,
+    "training_tokens_used": 0,
+    "breached": false
+  },
+  "hidden_seed_commitment": "2a2549a804521c0d1893f13405693fd407f02d6c4784bdb313168babd06ac479",
+  "claim_preregistration": null
+}

@@ -8,8 +8,6 @@ backend to validate protocol operation; scores are synthetic, not evidence of le
 Choose the dataset and training config, inspect capped dev results, and revise if useful.
 Commit a final candidate, then commit your quantitative prediction and interval.
 After both commits, terminate with a brief final response. Do not request hidden results.
-Invoke the offered functions to act; prose or free-standing JSON does not execute a tool.
-A final message closes the run. Keep responses brief until the protocol is complete.
 No code execution, raw network, credentials, controller internals or hidden data are available.
 The same operational instructions apply to every arm. Work without human coaching.
 """
