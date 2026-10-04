@@ -1,0 +1,4 @@
+# Pinned for clean-clone reproducibility (Phase 1.6)
+PyYAML==6.0.1
+jsonschema>=4.0
+pytest==9.0.3

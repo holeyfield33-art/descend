@@ -1,0 +1,7 @@
+# Optional portable agent boundary (Docker). Reference isolation uses unshare+chroot when Docker is absent.
+FROM python:3.12-slim
+RUN useradd -u 65534 -r -s /usr/sbin/nologin agent || true
+WORKDIR /workspace
+USER 65534:65534
+# Run with: docker run --network=none --read-only --tmpfs /tmp --mount type=bind,src=$WS,dst=/workspace,rw ...
+CMD ["python3", "-c", "print('agent container ready')"]
