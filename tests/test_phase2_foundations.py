@@ -81,12 +81,21 @@ def test_inference_charges_usage_and_retains_unknown_calls(tmp_path):
     ledger = SpendLedger(tmp_path / "spend.db")
     record = {"id": "id", "usage": {"prompt_tokens": 10, "completion_tokens": 20}, "choices": []}
     response = SimpleNamespace(model_dump=lambda **_: record)
-    client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=lambda **_: response)))
+    sent = []
+    def create(**kwargs):
+        sent.append(kwargs)
+        return response
+    client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=create)))
     inference = TokenFactoryInference(api_key="offline", ledger=ledger, client=client)
     state = SimpleNamespace(run_id="r", budgets=BudgetState())
     inference.complete([{"role": "user", "content": "test"}], state, seed=1)
+    assert sent[-1]["tool_choice"] == "required"
+    assert sent[-1]["extra_body"] == {"chat_template_kwargs": {"enable_thinking": False}}
     assert state.budgets.tokens_used == 30
     assert ledger.summary()["unresolved_calls"] == 0
+    state.candidate_committed = state.prediction_committed = True
+    inference.complete([{"role": "user", "content": "test"}], state, seed=1)
+    assert sent[-1]["tool_choice"] == "none"
     record["usage"] = None
     with pytest.raises(ProviderFailure):
         inference.complete([{"role": "user", "content": "test"}], state, seed=1)

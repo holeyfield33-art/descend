@@ -39,8 +39,6 @@ class TokenFactoryInference:
         state.budgets.check()
         body = chat_request(model=self.model, messages=messages, max_tokens=max_tokens, tools=TOOLS)
         body.update(temperature=0, seed=seed)
-        body["tool_choice"] = "none" if (getattr(state, "candidate_committed", False)
-            and getattr(state, "prediction_committed", False)) else "required"
         # NVIDIA's documented vLLM/OpenAI request pattern for reasoning off.
         # Validate provider behavior in pilots; keep the exact setting in evidence.
         body["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
