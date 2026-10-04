@@ -30,14 +30,14 @@ def user_prompt(manifest, *, reference_manifest=None, count_tokens=None):
              "A paragraph occupies part of a page. A book may contain many pages. ").split()
     neutral = "General reference material follows."
     for index in range(target + 1):
-        candidate = prefix + neutral
+        candidate = prefix + canonical_dumps({"reference": neutral})
         size = count_tokens(candidate)
         if size == target:
             return candidate
         if size > target:
             break
         next_word = words[index % len(words)]
-        if count_tokens(prefix + neutral + " " + next_word) > target:
+        if count_tokens(prefix + canonical_dumps({"reference": neutral + " " + next_word})) > target:
             next_word = "neutral"
         neutral += " " + next_word
     raise ValueError("Cannot match paired input length exactly with the pinned tokenizer")
