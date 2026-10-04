@@ -1,0 +1,54 @@
+{
+  "label": "PILOT — NOT CLAIM-BEARING",
+  "results": [
+    {
+      "status": "failed",
+      "category": "agent",
+      "error_type": "RuntimeError",
+      "turns": 4,
+      "run_id": "dm0-a-201-e76f5541",
+      "arm": "A",
+      "seed": 201,
+      "registry_valid": true,
+      "transcript_hash": "0a6b76b6c8bf399ebd770b31cb0569f14da922421e83f1cdeebea84422b9c38e"
+    },
+    {
+      "status": "incomplete",
+      "turns": 1,
+      "run_id": "dm0-b-202-933d7b39",
+      "arm": "B",
+      "seed": 202,
+      "registry_valid": true,
+      "transcript_hash": "64892cfb19c6011e3e07baa0a42f2d7314639a64e9aa3d9bfc4c523cc8054abb"
+    },
+    {
+      "status": "failed",
+      "category": "agent",
+      "error_type": "RuntimeError",
+      "turns": 4,
+      "run_id": "dm0-a-203-d90a3dbd",
+      "arm": "A",
+      "seed": 203,
+      "registry_valid": true,
+      "transcript_hash": "edcc5c22b844e3ad3e1698c8bb086eb6b20aa4c0354221dc0c95fa89a8552f4c"
+    },
+    {
+      "status": "failed",
+      "category": "agent",
+      "error_type": "RuntimeError",
+      "turns": 4,
+      "run_id": "dm0-b-204-f9e6767e",
+      "arm": "B",
+      "seed": 204,
+      "registry_valid": true,
+      "transcript_hash": "c5ee70ba240872a4f7e87cef00a1e35d196dd112045ba6b7b88dae60c3163ab5"
+    }
+  ],
+  "cloud_accounting": {
+    "cap_usd": 20.0,
+    "accounted_upper_bound_usd": 0.042095,
+    "unresolved_calls": 0,
+    "calls": 13,
+    "billing_receipt": false
+  }
+}

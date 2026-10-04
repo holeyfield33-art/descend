@@ -1,0 +1,71 @@
+{
+  "label": "PILOT — NOT CLAIM-BEARING",
+  "phase": "2A",
+  "batch_id": "20261004T081110Z-249a2674",
+  "attempts": [
+    {
+      "arm": "A",
+      "seed": 201
+    },
+    {
+      "arm": "B",
+      "seed": 202
+    },
+    {
+      "arm": "A",
+      "seed": 203
+    },
+    {
+      "arm": "B",
+      "seed": 204
+    }
+  ],
+  "go_rule": "At least 3 of 4 autonomous protocol completions",
+  "runtime": {
+    "git_sha": "1973cec71ed212e0fd15079410dc54ad3754b895",
+    "worktree_dirty": false,
+    "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "dependency_lock_hash": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+    "installed_packages": {
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "openai": "2.46.0",
+      "tokenizers": "0.23.2"
+    },
+    "controller_code_hash": "bb3714d77dd4475eaf5aba4d6a590b15b273e0f85566392eb51cdf7b2b85a7ab",
+    "evaluator_code_hash": "df745bb04d4a99dd74e45e8b0d37e32ee171fabfb27079483e0de553525b6a51",
+    "dsl_generator_hash": "5416c09aa110674be1c21b026168daff9545b99b91ed2d01a95e60818a47b3fd",
+    "provider_weight_hash": null,
+    "provider_weight_hash_reason": "Provider weights are not exposed",
+    "worker_runtime": {
+      "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+      "uid": 65534,
+      "gid": 65534
+    }
+  },
+  "isolation": {
+    "runtime": "linux-namespaces-unshare-chroot",
+    "unshare_path": "/usr/bin/unshare",
+    "available": true,
+    "uid": 0,
+    "euid": 0,
+    "is_root": true
+  },
+  "agent_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "target_model": "cpu-fake-target",
+  "training_backend": "fake",
+  "evaluation_backend": "synthetic hash score",
+  "sampling": {
+    "temperature": 0,
+    "max_tokens": 4096,
+    "seed": "attempt seed"
+  },
+  "tokenizer": {
+    "repository": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+    "revision": "bf77c3174f68ad409e1c2aa60daeb46e32d1c606",
+    "sha256": "c6021eb6847e682f89aa52d5eb6e8c7d902a23acfc8137e25211cf84828f1592"
+  },
+  "system_prompt_hash": "f4a753dc983a1f94766260fe80dc02e3fbb238d5ebc11d3d12d66e89205f5b50",
+  "formal_data": false
+}

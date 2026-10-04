@@ -280,7 +280,7 @@ class Controller:
             training_config_hash=canonical_hash(state.candidate["training_config"]),
             agent_transcript_hash=transcript_hash or canonical_hash(state.transcript),
             evaluator_code_hash=source_hash("descend/evaluation", "descend/dsl", "descend/controller/controller.py"),
-            controller_code_hash=source_hash("descend/controller", "descend/sandbox", "descend/tools"),
+            controller_code_hash=source_hash("descend"),
             promotion_rule_hash=canonical_hash({"source_hash": source_hash("descend/controller/promotion.py"),
                                                 "configuration": self.promotion_config}),
         )

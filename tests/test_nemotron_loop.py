@@ -14,6 +14,10 @@ class OfflineInference:
 
     def complete(self, messages, state, *, seed):
         self.turn += 1
+        if self.turn > 1:
+            status = json.loads(messages[-1]["content"])["operational_status"]
+            assert status["generation_examples_remaining"] == 100 - state.generated_examples
+            assert status["candidate_committed"] == state.candidate_committed
         dataset_hash = next(iter(state.datasets), "")
         actions = [
             ("build_dataset", {"n_examples": 16, "max_depth": 2}),

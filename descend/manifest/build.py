@@ -28,8 +28,8 @@ def default_operational(
             "commit_candidate",
             "commit_prediction",
             "read_registry",
-            "write_scratch",
         ],
+        "data_generator_limits": {"max_examples_total": 100, "allowed_depths": [1, 2]},
         "budget_counters": {
             "dev_evals_used": budgets.get("dev_evals_used", 0),
             "dev_evals_max": budgets.get("dev_evals_max", 5),

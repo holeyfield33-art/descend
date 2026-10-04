@@ -35,7 +35,7 @@ def runtime_record():
             "dependency_lock_hash": byte_hash(PROJECT_ROOT / "requirements-lock.txt"),
             "installed_packages": {name: importlib.metadata.version(name) for name in
                                    ("PyYAML", "jsonschema", "openai", "tokenizers")},
-            "controller_code_hash": source_hash("descend/controller", "descend/sandbox", "descend/tools"),
+            "controller_code_hash": source_hash("descend"),
             "evaluator_code_hash": source_hash("descend/evaluation", "descend/dsl", "descend/controller/controller.py"),
             "dsl_generator_hash": source_hash("descend/dsl"),
             "provider_weight_hash": None, "provider_weight_hash_reason": "Provider weights are not exposed"}

@@ -60,6 +60,12 @@ class NemotronAgent:
                 proposals = [tool_request(call, allowed_tools=ALLOWED_TOOLS) for call in calls]
                 responses = run_isolated_agent(controller, run_id, relay_source(proposals))
                 for call, response in zip(calls, responses, strict=True):
+                    response = {**response, "operational_status": {
+                        "budgets": state.budgets.as_dict(),
+                        "generation_examples_remaining": 100 - state.generated_examples,
+                        "training_tokens_remaining": state.budgets.max_training_tokens - state.budgets.training_tokens_used,
+                        "candidate_committed": state.candidate_committed,
+                        "prediction_committed": state.prediction_committed}}
                     messages.append({"role": "tool", "tool_call_id": call["id"],
                                      "content": json.dumps(response, allow_nan=False)})
             except Exception as exc:

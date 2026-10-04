@@ -21,6 +21,10 @@ The [official Nemotron page](https://nebius.com/services/token-factory/models/nv
 
 ## Remaining experimental gates
 
+The first real Nano viability batch (seeds 201–204, code `1973cec71ed212e0fd15079410dc54ad3754b895`) completed **0/4** protocols. Three attempts breached the cumulative data-generation limit; one consumed its 4096-token output cap during reasoning and returned no tool call. All failed attempts and valid registry chains are preserved under `artifacts/pilots/viability/20261004T081110Z-249a2674`. Its 13 provider calls cost an estimated $0.0059601 at the listed rates; conservative ledger accounting was $0.042095.
+
+Before escalating the model, the integration was corrected to provide live operational counters after tools and explicit cumulative generator limits. Neutral control text now uses ordinary prose instead of a repeated word. NVIDIA's [documented reasoning-off request pattern](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16) sets `chat_template_kwargs.enable_thinking=false`; this is logged identically for both arms and must be validated against the provider. A new batch uses viability-only seeds 205–208. The failed batch is not deleted or relabeled as a success.
+
 Real fine-tuning requires a supported small target with a verified deployment path and bounded cost. The [fine-tuning model guide](https://docs.tokenfactory.nebius.com/post-training/models) lists Qwen2.5-0.5B-Instruct, Qwen3-0.6B and Llama-3.2-1B-Instruct, but states that deployment currently uses dedicated endpoints. The authenticated templates do not establish an end-to-end deployment path for those small targets. Do not substitute a much larger target or submit an unbounded job to work around this gap.
 
 Before claim runs: validate real training/deployment/evaluation, obtain real pilot cost and task-difficulty evidence, freeze the Arm C recipe and prediction baselines, commit preregistration with 12 paired seeds and `delta_min`, verify provider input-length behavior, then freeze code. H1 cannot be evaluated using Phase 2A synthetic scores.

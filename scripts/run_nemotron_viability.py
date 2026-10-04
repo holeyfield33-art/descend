@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
@@ -12,7 +13,7 @@ from descend.agents.prompts import SYSTEM_PROMPT, user_prompt
 from descend.controller import Controller, BudgetState
 from descend.controller.environment import load_controller_environment
 from descend.controller.inference import TokenFactoryInference, NANO_MODEL_ID
-from descend.controller.provenance import runtime_record, byte_hash
+from descend.controller.provenance import runtime_record, byte_hash, PROJECT_ROOT
 from descend.controller.spend import SpendLedger
 from descend.registry import canonical_hash
 from descend.sandbox.hard_isolation import isolation_available, run_in_hard_isolation
@@ -24,6 +25,12 @@ def write(path, obj):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed-start", type=int, default=201,
+                        help="Four consecutive viability-only seeds; must be >=201")
+    args = parser.parse_args()
+    if args.seed_start < 201:
+        raise SystemExit("Viability seeds must be separate from formal/pilot seed sets")
     runtime = runtime_record()
     if runtime["worktree_dirty"]:
         raise SystemExit("Pilot requires a clean canonical Git commit")
@@ -51,15 +58,30 @@ def main():
     batch_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid4().hex[:8]
     root = Path("artifacts/pilots/viability") / batch_id
     root.mkdir(parents=True, exist_ok=False)
+    # Preserve the actual runtime source bytes, including checkout line endings.
+    source_files = {}
+    for tree in ("descend", "scripts", "configs"):
+        for source in sorted((PROJECT_ROOT / tree).rglob("*")):
+            if not source.is_file() or source.suffix not in (".py", ".yaml"):
+                continue
+            relative = source.relative_to(PROJECT_ROOT)
+            destination = root / "code" / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(source.read_bytes())
+            source_files[relative.as_posix()] = byte_hash(source)
+    (root / "code" / "requirements-lock.txt").write_bytes((PROJECT_ROOT / "requirements-lock.txt").read_bytes())
+    source_files["requirements-lock.txt"] = runtime["dependency_lock_hash"]
+    runtime["source_snapshot_hash"] = canonical_hash(source_files)
+    write(root / "source_snapshot.json", source_files)
     ledger = SpendLedger("controller_state/cloud-spend.sqlite")
     client = TokenFactoryInference(api_key=key, ledger=ledger)
     controller = Controller(workspace_root="runs", controller_root="controller_state")
     plan = {"label": "PILOT — NOT CLAIM-BEARING", "phase": "2A", "batch_id": batch_id,
-            "attempts": [{"arm": arm, "seed": seed} for arm, seed in zip("ABAB", (201, 202, 203, 204))],
+            "attempts": [{"arm": arm, "seed": seed} for arm, seed in zip("ABAB", range(args.seed_start, args.seed_start + 4))],
             "go_rule": "At least 3 of 4 autonomous protocol completions", "runtime": runtime,
             "isolation": isolation, "agent_model": NANO_MODEL_ID, "target_model": "cpu-fake-target",
             "training_backend": "fake", "evaluation_backend": "synthetic hash score",
-            "sampling": {"temperature": 0, "max_tokens": 4096, "seed": "attempt seed"},
+            "sampling": {"temperature": 0, "max_tokens": 4096, "seed": "attempt seed", "enable_thinking": False},
             "tokenizer": {"repository": REPOSITORY, "revision": REVISION, "sha256": TOKENIZER_HASH},
             "system_prompt_hash": canonical_hash(SYSTEM_PROMPT), "formal_data": False}
     write(root / "plan.json", plan)

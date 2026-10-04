@@ -6,6 +6,7 @@ from __future__ import annotations
 OPERATIONAL_KEYS = frozenset({
     "tool_documentation",
     "allowed_actions",
+    "data_generator_limits",
     "budget_counters",
     "wall_clock_budget_sec",
     "agent_token_budget",

@@ -39,6 +39,9 @@ class TokenFactoryInference:
         state.budgets.check()
         body = chat_request(model=self.model, messages=messages, max_tokens=max_tokens, tools=TOOLS)
         body.update(temperature=0, seed=seed)
+        # NVIDIA's documented vLLM/OpenAI request pattern for reasoning off.
+        # Validate provider behavior in pilots; keep the exact setting in evidence.
+        body["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
         # UTF-8 byte count bounds text tokens for the pinned byte-level tokenizer;
         # allowance covers provider/tool chat wrapping.
         input_bound = len(json.dumps(body, ensure_ascii=False).encode("utf-8")) + 8192

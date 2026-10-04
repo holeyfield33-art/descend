@@ -72,7 +72,7 @@ python -m scripts.prepare_tokenizer
 python -m scripts.run_nemotron_viability
 ```
 
-Each viability invocation makes paid inference calls and preserves a separate four-attempt batch under `artifacts/pilots/viability/`. The GO rule is at least three protocol completions. Seeds 201–204 are viability-only; no synthetic scores support H1. The pinned NVIDIA tokenizer matches A/B input-content token counts; a private provider chat template can still differ and must be audited before formal runs.
+Each viability invocation makes paid inference calls and preserves a separate four-attempt batch under `artifacts/pilots/viability/`. The GO rule is at least three protocol completions. Seeds 201–208 are reserved for viability; no synthetic scores support H1. The launcher defaults to 201; use `--seed-start 205` for the corrected batch. Live budget counters are returned after tools, and NVIDIA's reasoning-off request setting is recorded. The pinned NVIDIA tokenizer matches A/B input-content token counts; a private provider chat template can still differ and must be audited before formal runs. Experimental evidence retains exact bytes across Git checkouts.
 
 ### Documentation
 

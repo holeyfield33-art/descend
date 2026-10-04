@@ -1,0 +1,11 @@
+{
+  "decision": "REJECT",
+  "reasons": [
+    {
+      "criterion": "no_valid_candidate",
+      "passed": false
+    }
+  ],
+  "target_delta": 0.0,
+  "predicted_delta": 0.0
+}

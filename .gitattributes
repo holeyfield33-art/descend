@@ -1,0 +1,2 @@
+# Experimental evidence must retain the exact committed bytes on every platform.
+artifacts/** -text
