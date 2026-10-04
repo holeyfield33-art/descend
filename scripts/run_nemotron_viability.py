@@ -35,7 +35,7 @@ def main():
         workspace=Path("runs/runtime-probe/workspace"), controller_root=Path("controller_state"), timeout_sec=10)
     if not probe["ok"]:
         raise SystemExit("Isolated runtime probe failed; no paid call made")
-    runtime["worker_runtime"] = probe["result"]
+    runtime["worker_runtime"] = json.loads(probe["stdout"])
     load_controller_environment()
     key = os.environ.get("NEBIUS_API_KEY", "").strip()
     if not key:
