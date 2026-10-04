@@ -27,7 +27,7 @@ Minimum practical effect size δ_min (UNFROZEN until pilot).
 ## Status
 
 No claim-bearing DM0 experiment has been run yet.
-CPU-only fake-agent harness is the current milestone.
+Real-agent viability passed 4/4 with Nemotron Super and a fake training/scoring backend. This is a protocol gate, not an H1 result. Real training, calibration and formal preregistration remain gated. All failed pilot attempts are preserved; see [Phase 2 status](PHASE2_STATUS.md).
 
 The recovered Phase 1.6 harness now tests an integrated isolated fake worker, run-scoped tools, frozen predictions and budget enforcement. Its training and scores remain hash-derived fixtures; PROMOTE in a fake trial is not measured improvement.
 

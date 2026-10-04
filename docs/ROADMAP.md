@@ -6,12 +6,14 @@
 - Fake A/B worker runs through the Linux OS boundary and controller-owned JSON pipe.
 - Frozen prediction, private hidden seed, filtered feedback and enforced budgets are tested.
 - Registry, DSL, fake training, commitments and promotion run end to end.
-- A controller-side Nano inference loop adds provider usage accounting and durable $20 spend reservations.
+- A controller-side Nano/Super inference loop adds provider usage accounting and durable $20 spend reservations.
 - Paired evidence input matching, full runtime dependency lock, registry truncation anchors, and real local code/artifact hashes are implemented. See [Phase 2 status](PHASE2_STATUS.md); prior reports preserve their historical counts.
 
 ## Phase 2A: Nemotron viability with fake training
 
 Execute four independent autonomous viability attempts from a clean commit. GO requires at least 3/4 protocol completions. Authenticated discovery confirmed `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`; inference and tool-call patterns are adapted from the pinned cookbook. Training/scoring remain fake in this gate.
+
+Failed Nano and Super batches remain preserved. Live tool schemas now reflect remaining budgets and commitment order. `python -m scripts.audit_viability` verifies archived pilot evidence without provider calls. Current results and the experimental gate are recorded in [Phase 2 status](PHASE2_STATUS.md).
 
 ## Phase 2B: Real training and controller-owned evaluation
 

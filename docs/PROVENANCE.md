@@ -8,6 +8,8 @@ Agent selection was confirmed by authenticated `/v1/models`: `nvidia/NVIDIA-Nemo
 
 Descend DM0 is a self-contained repository.
 
+Super escalation uses catalog-confirmed `nvidia/nemotron-3-super-120b-a12b` and tokenizer-only JSON from `nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16`, pinned revision `2dc98e2afe4face0e4ce40972a915c45368bd34a`, SHA-256 `623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7`. Provider weight hashes remain unavailable and are recorded as null with a reason. Pilot targets, adapter bytes and scores are explicitly synthetic; they are not LoRA training artifacts. Preserved source snapshots bind actual checkout bytes rather than assumed Git line endings.
+
 No dependency on MRN-CRS, Aletheia Core, Mneme, K1 Memory, Geometric Brain, Helios, or any other prior project.
 
 Those projects are code books only. The prior project's initial provenance statement was recovered from the supplied archive; its historical reuse claims have not been independently audited.

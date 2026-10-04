@@ -1,0 +1,48 @@
+{
+  "label": "PILOT — NOT CLAIM-BEARING",
+  "results": [
+    {
+      "status": "completed",
+      "turns": 12,
+      "run_id": "dm0-a-217-ceecbc59",
+      "arm": "A",
+      "seed": 217,
+      "registry_valid": true,
+      "transcript_hash": "41c8694faafda19354899255482d69178194d353ac9ac6b718892489b96bf52d"
+    },
+    {
+      "status": "completed",
+      "turns": 10,
+      "run_id": "dm0-b-218-92210bc3",
+      "arm": "B",
+      "seed": 218,
+      "registry_valid": true,
+      "transcript_hash": "f59f2972d9b775f209f187653f3c9780868e3a7fd522f9208ee88f1eea2dca47"
+    },
+    {
+      "status": "completed",
+      "turns": 10,
+      "run_id": "dm0-a-219-3a08d89b",
+      "arm": "A",
+      "seed": 219,
+      "registry_valid": true,
+      "transcript_hash": "d1cb68f96d2871267cd7bef4a50688f8d4eb4c0dc6eb4690f0e7bd9b4e1200bb"
+    },
+    {
+      "status": "completed",
+      "turns": 8,
+      "run_id": "dm0-b-220-8cc4bc1c",
+      "arm": "B",
+      "seed": 220,
+      "registry_valid": true,
+      "transcript_hash": "45d9cbfe0a504699627efca0bc4b66ec32993ce0edafed01cb44db3d47fb83f8"
+    }
+  ],
+  "cloud_accounting": {
+    "cap_usd": 20.0,
+    "accounted_upper_bound_usd": 0.533707,
+    "unresolved_calls": 0,
+    "calls": 113,
+    "billing_receipt": false
+  }
+}

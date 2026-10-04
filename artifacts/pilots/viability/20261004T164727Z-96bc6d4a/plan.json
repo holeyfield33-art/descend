@@ -1,0 +1,73 @@
+{
+  "label": "PILOT — NOT CLAIM-BEARING",
+  "phase": "2A",
+  "batch_id": "20261004T164727Z-96bc6d4a",
+  "attempts": [
+    {
+      "arm": "A",
+      "seed": 217
+    },
+    {
+      "arm": "B",
+      "seed": 218
+    },
+    {
+      "arm": "A",
+      "seed": 219
+    },
+    {
+      "arm": "B",
+      "seed": 220
+    }
+  ],
+  "go_rule": "At least 3 of 4 autonomous protocol completions",
+  "runtime": {
+    "git_sha": "b08b25b8b9bfe06d4b1a882de783d92fbd7e98ec",
+    "worktree_dirty": false,
+    "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "dependency_lock_hash": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+    "installed_packages": {
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "openai": "2.46.0",
+      "tokenizers": "0.23.2"
+    },
+    "controller_code_hash": "5f8111cbd47a1b7cae031eb4d867036217df45024ba76ec41f7f93958c3dd86c",
+    "evaluator_code_hash": "e4c5c7a53937eb95abb60b70206c656dbe225397aadebfe65386d9cd27391e2a",
+    "dsl_generator_hash": "5416c09aa110674be1c21b026168daff9545b99b91ed2d01a95e60818a47b3fd",
+    "provider_weight_hash": null,
+    "provider_weight_hash_reason": "Provider weights are not exposed",
+    "worker_runtime": {
+      "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+      "uid": 65534,
+      "gid": 65534
+    },
+    "source_snapshot_hash": "3b307eaa5812d8b36ed01bd66b78ca84a7a0462df14ff379ad15c47197048f26"
+  },
+  "isolation": {
+    "runtime": "linux-namespaces-unshare-chroot",
+    "unshare_path": "/usr/bin/unshare",
+    "available": true,
+    "uid": 0,
+    "euid": 0,
+    "is_root": true
+  },
+  "agent_model": "nvidia/nemotron-3-super-120b-a12b",
+  "target_model": "cpu-fake-target",
+  "training_backend": "fake",
+  "evaluation_backend": "synthetic hash score",
+  "sampling": {
+    "temperature": 0,
+    "max_tokens": 4096,
+    "seed": "attempt seed",
+    "enable_thinking": false
+  },
+  "tokenizer": {
+    "repository": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+    "revision": "2dc98e2afe4face0e4ce40972a915c45368bd34a",
+    "sha256": "623c34567aebb18582765289fbe23d901c62704d6518d71866e0e58db892b5b7"
+  },
+  "system_prompt_hash": "1829e0f79f1aa4493067f8cfcf54756a80e6b2c27db739aeb524f77b8e636488",
+  "formal_data": false
+}

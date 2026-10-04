@@ -1,5 +1,17 @@
 # Phase 2 status
 
+## Current result
+
+**Phase 2A GO:** Nemotron Super completed **4/4** autonomous protocols at seeds 217–220, implementation `b08b25b8b9bfe06d4b1a882de783d92fbd7e98ec`. Evidence is preserved at `artifacts/pilots/viability/20261004T164727Z-96bc6d4a`. Every registry and frozen-artifact audit passed. Live budget schemas resolved the previous budget-overrun pattern without changing the caps. Ultra was not needed.
+
+Across all five batches: **20 attempts, 113 inference calls**, estimated list-price cost **$0.07699146**, conservative ledger total **$0.533707**, no unresolved calls. These are accounting estimates, not a billing receipt. All failed batches remain included. Four later batches preserve exact runtime source bytes; the first failed batch has source hashes/Git identity but no byte-for-byte snapshot.
+
+Input-content lengths matched using pinned tokenizer data. In the successful Super batch, initial provider prompt usage was **1467 tokens for A and 1468 for B**. That private-wrapper difference remains unresolved before formal experiments; the viability GO concerns protocol completion only.
+
+**Phase 2B external gate:** no real training job or paid deployment has been submitted. Account-specific training price and a verified small-target deployment/custom-weight path are needed to bound this phase within $20. The API and available read-only documentation did not establish that path. Browser tools could not access the pricing console. No claim-bearing data, frozen preregistration or formal result exists.
+
+Reproduce the archive checks without cloud calls: `python -m scripts.audit_viability`.
+
 ## Scope and authorization
 
 The user authorized autonomous DM0 work with a total cloud-spend ceiling of **$20**. Phase 2A uses real Nemotron inference with fake training and synthetic scoring. Its output is **PILOT — NOT CLAIM-BEARING**. No formal preregistration is frozen and no formal seed has run.
@@ -37,6 +49,6 @@ Real fine-tuning requires a supported small target with a verified deployment pa
 
 Before claim runs: validate real training/deployment/evaluation, obtain real pilot cost and task-difficulty evidence, freeze the Arm C recipe and prediction baselines, commit preregistration with 12 paired seeds and `delta_min`, verify provider input-length behavior, then freeze code. H1 cannot be evaluated using Phase 2A synthetic scores.
 
-Super seeds 213–216 at code 3ec18d30aa3cb701e3958286fadd43c5308c53e8 completed **2/4**. Both failures requested generation above the remaining cumulative limit. All registry chains verified; artifacts are preserved under rtifacts/pilots/viability/20261004T164240Z-2e8cb6fd. Cumulative conservative accounting reached .290573 across 73 calls, with no unresolved holds.
+Super seeds 213–216 at code `3ec18d30aa3cb701e3958286fadd43c5308c53e8` completed **2/4**. Both failures requested generation above the remaining cumulative limit. All registry chains verified; artifacts are preserved under `artifacts/pilots/viability/20261004T164240Z-2e8cb6fd`. Cumulative conservative accounting reached $0.290573 across 73 calls, with no unresolved holds.
 
-The next implementation revision exposes live budget limits in tool schemas, removes exhausted generation/training/dev tools, and exposes prediction only after candidate commit. Enforcement and caps are unchanged. A new Super batch uses viability seeds 217–220. These pilot revisions cannot be reused as frozen formal experiments.
+The final viability revision exposes live budget limits in tool schemas, removes exhausted generation/training/dev tools, and exposes prediction only after candidate commit. Enforcement and caps are unchanged. Super seeds 217–220 completed 4/4. These pilot revisions cannot be reused as frozen formal experiments.

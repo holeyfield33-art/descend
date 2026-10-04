@@ -20,7 +20,7 @@ The agent cannot read or write controller internals.
 Controller-written. Append-only. Hash-chained.
 Agent may receive a read-only view of its own run history; cannot append or modify.
 
-Agent views use an event/field allowlist and exclude hidden results, decisions and backing-chain hashes. Contamination feedback is only a pass/fail flag, per the current user-approved policy. The chain detects covered edits but has no external truncation anchor yet; append-only ownership and cryptographic tamper detection are separate guarantees.
+Agent views use an event/field allowlist and exclude hidden results, decisions and backing-chain hashes. Contamination feedback is only a pass/fail flag, per the current user-approved policy. An independent controller-owned head/count anchor detects log truncation; it does not protect against a compromised controller rewriting both files. Legacy unanchored logs fail verification.
 
 ## Arms
 

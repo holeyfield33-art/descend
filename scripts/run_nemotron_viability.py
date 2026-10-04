@@ -26,10 +26,14 @@ def write(path, obj):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", choices=["nano", "super"], default="nano")
-    parser.add_argument("--seed-start", type=int, default=201,
+    parser.add_argument("--model", choices=["nano", "super"], default="super")
+    parser.add_argument("--seed-start", type=int, required=True,
                         help="Four consecutive viability-only seeds; must be >=201")
     args = parser.parse_args()
+    for existing in Path("artifacts/pilots/viability").glob("*/plan.json"):
+        prior = json.loads(existing.read_text(encoding="utf-8"))
+        if {item["seed"] for item in prior["attempts"]} & set(range(args.seed_start, args.seed_start + 4)):
+            raise SystemExit("Viability seed already recorded; choose four unused seeds")
     model_id = NANO_MODEL_ID if args.model == "nano" else SUPER_MODEL_ID
     if args.seed_start < 201:
         raise SystemExit("Viability seeds must be separate from formal/pilot seed sets")

@@ -1,0 +1,71 @@
+{
+  "label": "PILOT - NOT CLAIM-BEARING",
+  "verified_batches": 5,
+  "records": [
+    {
+      "batch": "20261004T081110Z-249a2674",
+      "verified": true,
+      "attempts": 4,
+      "completed": 0,
+      "go": false,
+      "source_snapshot_available": false,
+      "provider_calls": 13,
+      "estimated_list_price_usd": 0.0059601,
+      "accounted_upper_bound_usd": 0.04209500000000001,
+      "formal_data": false,
+      "training_backend": "fake"
+    },
+    {
+      "batch": "20261004T163505Z-fe2f0233",
+      "verified": true,
+      "attempts": 4,
+      "completed": 2,
+      "go": false,
+      "source_snapshot_available": true,
+      "provider_calls": 14,
+      "estimated_list_price_usd": 0.0022592399999999996,
+      "accounted_upper_bound_usd": 0.034639,
+      "formal_data": false,
+      "training_backend": "fake"
+    },
+    {
+      "batch": "20261004T163855Z-edf9174b",
+      "verified": true,
+      "attempts": 4,
+      "completed": 0,
+      "go": false,
+      "source_snapshot_available": true,
+      "provider_calls": 16,
+      "estimated_list_price_usd": 0.0024073199999999997,
+      "accounted_upper_bound_usd": 0.03653699999999999,
+      "formal_data": false,
+      "training_backend": "fake"
+    },
+    {
+      "batch": "20261004T164240Z-2e8cb6fd",
+      "verified": true,
+      "attempts": 4,
+      "completed": 2,
+      "go": false,
+      "source_snapshot_available": true,
+      "provider_calls": 30,
+      "estimated_list_price_usd": 0.027916500000000004,
+      "accounted_upper_bound_usd": 0.177302,
+      "formal_data": false,
+      "training_backend": "fake"
+    },
+    {
+      "batch": "20261004T164727Z-96bc6d4a",
+      "verified": true,
+      "attempts": 4,
+      "completed": 4,
+      "go": true,
+      "source_snapshot_available": true,
+      "provider_calls": 40,
+      "estimated_list_price_usd": 0.038448300000000005,
+      "accounted_upper_bound_usd": 0.24313400000000002,
+      "formal_data": false,
+      "training_backend": "fake"
+    }
+  ]
+}

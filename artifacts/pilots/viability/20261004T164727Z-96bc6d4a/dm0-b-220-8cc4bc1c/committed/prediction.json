@@ -1,0 +1,1 @@
+{"interval_high": 0.88, "interval_low": 0.8, "predicted_regression_deltas": {"reg_shallow": 0.839}, "predicted_target_delta": 0.839, "rationale": "Based on the first training run achieving 0.8393 dev accuracy, predicting similar performance with reasonable interval accounting for variance between runs."}

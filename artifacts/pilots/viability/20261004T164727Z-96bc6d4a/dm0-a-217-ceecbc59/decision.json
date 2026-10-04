@@ -1,0 +1,47 @@
+{
+  "decision": "PROMOTE",
+  "reasons": [
+    {
+      "criterion": "candidate_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "criterion": "candidate_committed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "criterion": "prediction_committed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "criterion": "no_contamination",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "criterion": "budgets_respected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "criterion": "target_improvement",
+      "passed": true,
+      "detail": "delta=0.13166046037377332, margin=0.0"
+    },
+    {
+      "criterion": "interval_covers_observed",
+      "passed": true,
+      "detail": "not required by config"
+    },
+    {
+      "criterion": "regression_tolerance",
+      "passed": true,
+      "detail": "max_allowed_drop=0.05, deltas={'reg_shallow': 0.23}"
+    }
+  ],
+  "target_delta": 0.13166046037377332,
+  "predicted_delta": 0.4
+}

@@ -16,7 +16,7 @@ DM0 is **not** AGI, recursive self-improvement, literal self-modification, or pr
 | **B** | Same agent/tools/budgets; neutral length-matched content |
 | **C** | Fixed scripted LoRA recipe; no agent |
 
-### Security status (Phase 1.6 partial)
+### Tested security boundary
 
 | Claim | Status |
 |-------|--------|
@@ -38,7 +38,7 @@ See [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) for Levels 1–3 and residual
 
 The official [Token Factory cookbook](https://github.com/nebius/token-factory-cookbook) was cloned alongside Descend as a read-only code book at commit `c2e6a2a4651ba8fd126365d7bbcd2b5621acb040`. Descend does not import it or require it at runtime. [`docs/TOKEN_FACTORY_REFERENCE.md`](docs/TOKEN_FACTORY_REFERENCE.md) records verified inference, training, LoRA/custom-model, deployment and evaluation patterns, including discrepancies between notebook examples and current docs. Small offline request helpers are adapted locally under `descend/controller/token_factory.py`; they do not send requests or enable a cloud backend.
 
-Authenticated catalog discovery confirmed `nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B` for the agent. The trainable target remains a separate unresolved model. See [Phase 2 status](docs/PHASE2_STATUS.md).
+Authenticated catalog discovery confirmed Nano (`nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B`) and Super (`nvidia/nemotron-3-super-120b-a12b`). Real inference pilots have run with fake training/scoring; failed attempts remain preserved. The trainable target remains a separate unresolved model. See [Phase 2 status](docs/PHASE2_STATUS.md). Audit saved evidence offline with `python -m scripts.audit_viability`.
 
 ### Quick start
 
@@ -68,11 +68,11 @@ For Phase 2A, on the privileged Linux controller host, install `requirements-loc
 
 ```bash
 python -m scripts.provider_preflight
-python -m scripts.prepare_tokenizer
-python -m scripts.run_nemotron_viability
+python -m scripts.prepare_tokenizer --model super
+python -m scripts.run_nemotron_viability --model super --seed-start 221
 ```
 
-Each viability invocation makes paid inference calls and preserves a separate four-attempt batch under `artifacts/pilots/viability/`. The GO rule is at least three protocol completions. Seeds 201–208 are reserved for viability; no synthetic scores support H1. The launcher defaults to 201; use `--seed-start 205` for the corrected batch. Live budget counters are returned after tools, and NVIDIA's reasoning-off request setting is recorded. The pinned NVIDIA tokenizer matches A/B input-content token counts; a private provider chat template can still differ and must be audited before formal runs. Experimental evidence retains exact bytes across Git checkouts.
+Each viability invocation makes paid inference calls and preserves a separate four-attempt batch under `artifacts/pilots/viability/`. **The Super batch at seeds 217–220 passed 4/4**; no further viability call is required for that gate. Seeds 201–220 are already used for viability and cannot be reused. The launcher requires an explicit unused seed range. Live schemas and counters expose remaining budgets, and NVIDIA's reasoning-off request setting is recorded. The pinned tokenizer matches input-content lengths; the successful Super batch's provider prompt totals differed by one token between arms, an unresolved prerequisite for formal runs. All training/scoring in these pilots is fake; no synthetic score supports H1. Evidence retains exact bytes across Git checkouts.
 
 ### Documentation
 

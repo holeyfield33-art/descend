@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "hidden_accuracy": 0.13649464995518668,
+  "baseline": 0.25,
+  "target_delta": -0.11350535004481332,
+  "regression": {
+    "reg_shallow": 0.23
+  }
+}

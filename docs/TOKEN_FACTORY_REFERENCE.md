@@ -37,7 +37,9 @@ The sibling `../token-factory-cookbook` checkout is a read-only code book:
 
 `descend/controller/token_factory.py` contains small, network-free request builders and a provider-tool-call decoder adapted from those official examples. Contract tests route a sample decoded proposal through the actual run-scoped dispatcher. The helpers do not construct an SDK client, read credentials, submit jobs, create models, deploy endpoints or register a new cloud tool.
 
-The next integration must use those verified shapes through the controller proxy after the foundation gate. Add measured provider/tokenizer accounting, bounded retries, job ownership, immutable artifact download and exact model/provider metadata. Keep real Nemotron plus fake training as Phase 2A; real LoRA and deployment follow afterward. See [ROADMAP.md](ROADMAP.md).
+The controller-side `inference.py` now adapts the minimal OpenAI client pattern for live Nano/Super calls. It records measured usage, reserves bounded spend before each request, disables retries and redirects, and keeps credentials outside isolated workers. Native proposals cross the narrow JSON relay. Live schemas expose remaining operational budgets, while the controller enforces them independently. Authenticated discovery confirmed both exact IDs; the earlier unresolved catalog note above describes the initial documentation review.
+
+Real fine-tuning, checkpoint downloads, custom-weight registration and deployment remain gated on a verified small target and bounded account-specific prices. The offline helpers are not a completed real-training backend. See [Phase 2 status](PHASE2_STATUS.md) and [ROADMAP.md](ROADMAP.md).
 
 [nemotron]: https://github.com/nebius/token-factory-cookbook/blob/c2e6a2a4651ba8fd126365d7bbcd2b5621acb040/models/nemotron/run_nemotron.ipynb
 [nemotron-index]: https://github.com/nebius/token-factory-cookbook/blob/c2e6a2a4651ba8fd126365d7bbcd2b5621acb040/models/nemotron/README.md
