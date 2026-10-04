@@ -54,6 +54,16 @@ python scripts/run_fake_trial.py --arm B --seed 42
 
 On native Windows, use `.venv\Scripts\python -m pip install -e ".[dev]"` and `.venv\Scripts\python -m pytest`. Agent trials require the Linux runtime described above. Registry verification is available with `python scripts/verify_registry.py <run_id> --registry ./registry_data`; chain validity alone does not prove completeness after truncation.
 
+### Controller environment
+
+Store local settings in the Git-ignored `.env` using active `NAME=value` lines. A leading `#` comments out a setting; PowerShell `$env:NAME=...` commands do not belong in this file. Validate and load settings into a Python controller process without printing values or making requests:
+
+```bash
+python -m descend.controller.environment --env-file .env --check
+```
+
+Controller entry points must explicitly call `load_controller_environment` from `descend.controller.environment` before creating a provider client. Existing process variables take precedence. This does not change the parent terminal's environment. The isolated worker keeps its separate clean environment. Credential presence does not establish API validity or enable paid calls; the authorized cloud-spend ceiling is $20, with spend enforcement still required before paid operations.
+
 ### Documentation
 
 - [Architecture and trust zones](docs/ARCHITECTURE.md)
