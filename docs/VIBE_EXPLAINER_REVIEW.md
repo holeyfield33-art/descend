@@ -44,3 +44,9 @@ One bounded combined pilot reviewed Descend commit `d9fc489` with this static co
 The original `run_repo_steward.py` takes one `--repo` path per process. `run_repo_steward_fleet.py` now reads an explicit JSON allowlist of repository roots, mock/live modes, intervals and optional paired Vibe/ASI paths. A private local configuration at `controller_state/steward-repos.json` lists Descend, Vibe Explainer and Agent Security Index in **mock mode**; `configs/steward-repos.example.json` is a portable example. One no-cost `--once` pass scanned all three. A shared SQLite store and dashboard collect results. No watched repository is changed by the fleet runner.
 
 This is a first configuration layer, not a complete multi-repo release. It still reviews **only each checkout's latest commit**, so intermediate commits can be missed between polls; mock/live upload policy is explicit but per-repo spend caps, persisted commit cursors and richer dashboard health are absent. Every new commit should eventually be queued in order with a per-repository cursor and a clear policy for force-pushes and skipped commits.
+# Current phase notice
+
+Further Vibe/ASI integration and fleet development are parked by the new
+Repo Steward directive. This report remains historical pilot evidence.
+The current [WP0 boundary gate](STEWARD_BOUNDARY_REVIEW.md) and
+[phase report](STEWARD_PHASE_REPORT.md) take precedence over earlier next steps.

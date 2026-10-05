@@ -1,5 +1,21 @@
 # Descend
 
+## Repo Steward development status — 2026-10-05
+
+Repo Steward's act/evaluation/demo phase is paused at the WP0 inventory gate:
+the watcher can invoke configured Git text-conversion helpers on the controller
+host. See the [finding and proposed repair](docs/STEWARD_BOUNDARY_REVIEW.md).
+Do not scan untrusted checkouts until this is resolved. New paid calls require
+the directive's separate WP6 approval; the existing $20 ceiling is not that approval.
+
+The [phase report](docs/STEWARD_PHASE_REPORT.md),
+[engineering operating reference](docs/STEWARD_RUN_MANUAL.md),
+[interface inventory](docs/STEWARD_INVENTORY.md) and
+[extraction plan](docs/STEWARD_EXTRACTION_PLAN.md) describe the current state.
+The complete act slice, frozen evaluation and offline demo remain pending.
+No extraction has occurred; the new repository will be supplied by the user.
+The DM0 evidence below concerns its separate worker boundary.
+
 **Descend is an autonomous model-improvement laboratory with a judge the agent cannot touch.**
 
 ## DM0 — Evidence-backed autonomous model adaptation
