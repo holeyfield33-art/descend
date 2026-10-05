@@ -24,7 +24,7 @@ def main() -> None:
     if args.interval < 10:
         parser.error("Interval must be at least 10 seconds")
     # Mock observations must never suppress a later real review of the same commit.
-    store_name = "steward-reviews.sqlite" if args.live else "steward-mock.sqlite"
+    store_name = "steward-reviews-v2.sqlite" if args.live else "steward-mock-v2.sqlite"
     store = ReviewStore(Path("controller_state") / store_name)
     if args.live:
         load_controller_environment(args.env_file)
@@ -37,7 +37,12 @@ def main() -> None:
         reviewer = lambda snapshot: {"model": None, "content": "MOCK ONLY: no model review performed",
                                      "accounted_upper_bound_usd": 0, "formal_data": False}
     while True:
-        result = scan_once(args.repo, store, reviewer)
+        try:
+            result = scan_once(args.repo, store, reviewer)
+        except Exception as exc:
+            # The failed commit is sealed in SQLite and will not trigger another
+            # automatic provider call. Keep watching for a future commit.
+            result = {"status": "error", "error_type": type(exc).__name__}
         print(json.dumps(result, ensure_ascii=False), flush=True)
         if args.once:
             break

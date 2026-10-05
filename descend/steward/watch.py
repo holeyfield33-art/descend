@@ -65,21 +65,53 @@ class ReviewStore:
             row = db.execute("SELECT payload FROM reviews WHERE repo=? AND sha=?", (repo, sha)).fetchone()
         return json.loads(row[0]) if row else None
 
-    def save(self, result: dict) -> None:
+    def claim(self, snapshot: dict) -> bool:
+        pending = {key: value for key, value in snapshot.items() if key != "diff"}
+        pending["status"] = "in_progress"
         with sqlite3.connect(self.path) as db:
-            db.execute("INSERT OR IGNORE INTO reviews VALUES (?,?,?,?,?)",
-                       (result["repo"], result["sha"], datetime.now(timezone.utc).isoformat(),
-                        result["status"], json.dumps(result, ensure_ascii=False)))
+            cursor = db.execute("INSERT OR IGNORE INTO reviews VALUES (?,?,?,?,?)",
+                                (pending["repo"], pending["sha"], datetime.now(timezone.utc).isoformat(),
+                                 pending["status"], json.dumps(pending, ensure_ascii=False)))
+        return cursor.rowcount == 1
+
+    def update(self, result: dict) -> None:
+        with sqlite3.connect(self.path) as db:
+            db.execute("UPDATE reviews SET status=?,payload=? WHERE repo=? AND sha=?",
+                       (result["status"], json.dumps(result, ensure_ascii=False),
+                        result["repo"], result["sha"]))
+
+    def recent(self, limit: int = 50) -> list[dict]:
+        if type(limit) is not int or not 1 <= limit <= 200:
+            raise ValueError("Invalid review limit")
+        with sqlite3.connect(self.path) as db:
+            rows = db.execute("SELECT payload FROM reviews ORDER BY created_at DESC LIMIT ?", (limit,)).fetchall()
+        return [json.loads(row[0]) for row in rows]
 
 
 def scan_once(repo: str | Path, store: ReviewStore, reviewer: Callable[[dict], dict]) -> dict:
     snapshot = commit_snapshot(repo)
     existing = store.get(snapshot["repo"], snapshot["sha"])
     if existing is not None:
+        review = existing.get("review") or {}
+        if snapshot["status"] == "ready" and review.get("protocol_version") == 2:
+            from descend.steward.findings import validate_findings
+            refreshed = validate_findings(review.get("content", ""), snapshot["diff"], snapshot["paths"])
+            if any(review.get(key) != value for key, value in refreshed.items()):
+                review.update(refreshed)
+                store.update(existing)
         return {**existing, "cached": True}
+    if not store.claim(snapshot):
+        return {**store.get(snapshot["repo"], snapshot["sha"]), "cached": True}
     result = {key: value for key, value in snapshot.items() if key != "diff"}
     if snapshot["status"] == "ready":
-        result["review"] = reviewer(snapshot)
-        result["status"] = "reviewed"
-    store.save(result)
+        try:
+            result["review"] = reviewer(snapshot)
+            result["status"] = "reviewed"
+        except Exception as exc:
+            # Never auto-retry an ambiguous paid call after a crash or error.
+            result["status"] = "error"
+            result["error_type"] = type(exc).__name__
+            store.update(result)
+            raise
+    store.update(result)
     return result

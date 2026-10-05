@@ -82,6 +82,8 @@ The first local real-weight target was Qwen2.5-0.5B-Instruct. A separate CPU fea
 - [Experimental design and status](docs/EXPERIMENT.md)
 - [Roadmap and phase gates](docs/ROADMAP.md)
 - [Hackathon Repo Steward product direction](docs/HACKATHON_REPO_STEWARD.md)
+
+Repo Steward now has a read-only prototype: `python -m scripts.run_repo_steward --repo /path/to/git-checkout --once` records a no-cost mock scan; add `--live` to request a bounded Nemotron Super review through the controller spend ledger. Run `python -m scripts.view_repo_steward` to see validated diff citations at `http://127.0.0.1:8765/`. The dashboard checks citation provenance, not bug correctness. Both commands are documented in the linked product direction; this remains a prototype, not a complete hackathon submission.
 - [Locked specification corrections](docs/SPEC_DELTA_V1_RC.md)
 - [Source provenance and reference policy](docs/PROVENANCE.md)
 
