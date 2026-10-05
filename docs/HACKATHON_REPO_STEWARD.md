@@ -1,6 +1,6 @@
 # Hackathon direction: Repo Steward
 
-Status: scoped product direction, not a working submission. The existing Descend DM0 experiment remains separately labeled as pre-formal research. This document describes a new product built during the 2026 submission period; prior repository work must be disclosed in the final submission.
+Status: read-only watcher prototype, not a working submission. The existing Descend DM0 experiment remains separately labeled as pre-formal research. This document describes a new product built during the 2026 submission period; prior repository work must be disclosed in the final submission.
 
 ## Product
 
@@ -40,4 +40,16 @@ The prior Qwen2.5-0.5B and Qwen3-0.6B task-calibration failures do not decide th
 
 ## Next implementation slice
 
-Create a separate app package in Descend or a new standalone repository after the remaining reference folders are identified. First ship a read-only watch → snapshot → Nemotron review → SQLite finding loop with a deterministic mock provider for tests. Then add a minimal UI and a real bounded provider smoke test. Keep DM0 experimental claims and the Repo Steward product claims separate in the README and demo.
+The first slice is in `descend/steward/` and `scripts/run_repo_steward.py`. It polls an explicitly selected Git checkout, reviews the latest commit against its first parent (including merge commits), rejects sensitive or oversized diffs before provider calls, and records one result per repository/commit in SQLite. Mock and live state are separate. Live reviews use Nemotron Super with the existing durable $20 spend ledger and no provider retries. No repository code is executed. The current output is free text, so cited lines and bug validity are **not yet verified**; do not market it as an evidence-validated review card. The watcher intentionally does not review uncommitted changes, open a UI, draft patches, or expose action tools yet.
+
+Controller-only invocation from the Descend root:
+
+```bash
+python -m scripts.run_repo_steward --repo /absolute/path/to/checkout --once
+python -m scripts.run_repo_steward --repo /absolute/path/to/checkout --live --once
+python -m scripts.run_repo_steward --repo /absolute/path/to/checkout --live --interval 60
+```
+
+The first command is a no-cost transport mock, **not an AI review**. `--live` uploads the selected Git commit diff to Token Factory and can spend credits; use only with a repository whose code may be sent to that provider. A live review happens once per commit even if the polling process restarts. A failed or ambiguous provider call retains its spend reservation and may be retried on a later scan; the $20 ledger still bounds cumulative charges. The next slices are structured finding validation, a simple UI, user decision memory, a bounded draft-patch worktree, and a public demo/test build. Keep DM0 experimental claims and Repo Steward product claims separate in the README and demo.
+
+On 2026-10-05, one live Super smoke review of an owned `totals.py` commit found the intentionally omitted final list element. A separate manual fixture check returned 3 for `[1, 2, 3]` against expected 6. A restart returned the cached review without a second call. The provider reported 266 prompt and 383 completion tokens; the conservative ledger added $0.001298 and stood at $0.540883 across 116 calls, with no unresolved holds. See `artifacts/pilots/steward-smoke/20261005/result.json`. This is one simple seeded case, not a measured review success rate.

@@ -1,0 +1,17 @@
+{
+  "label": "REPO STEWARD PILOT - NOT A REVIEW QUALITY BENCHMARK",
+  "backend": "nvidia/nemotron-3-super-120b-a12b via Nebius Token Factory",
+  "fixture": "owned local Git repository with totals.py returning sum(items[:-1])",
+  "commit": "1bdda670624e645f8b1cfb45ac77069e31cdaca4",
+  "diff_sha256": "e5780c8badfff840534f3fcf6b980f91a0b614dff1ebddaef42e838607da9a5e",
+  "provider_id": "chatcmpl-a5dbab20ca0d9fab",
+  "provider_prompt_tokens": 266,
+  "provider_completion_tokens": 383,
+  "conservative_increment_usd": 0.001298,
+  "provider_list_price_estimate_usd": 0.0004245,
+  "finding_summary": "Model identified omission of the final list element and suggested total([1,2,3]) as a check.",
+  "independent_owned_fixture_check": {"input": [1, 2, 3], "actual": 3, "expected": 6},
+  "restart_check": "second invocation returned cached=true and made no additional provider call",
+  "ledger_after": {"calls": 116, "accounted_upper_bound_usd": 0.540883, "unresolved_calls": 0},
+  "limits": "One intentionally simple owned bug. Free-text finding validation, precision/recall and multi-repo product UX remain untested. The fixture was executed manually for this pilot; Repo Steward itself never executes watched code."
+}
