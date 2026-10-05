@@ -1,0 +1,18 @@
+{
+  "label": "REPO STEWARD + VIBE/ASI PILOT - NOT A SECURITY OR QUALITY BENCHMARK",
+  "descend_commit": "d9fc48964cde88aaadbd624ed44f9a3ca2832adf",
+  "vibe_report_sha256": "a1cd96b4c7c111f80015c998f4af8c85eaa1bdb3075d085391dd74e3bf8f488c",
+  "asi_catalog_source_hash": "sha256:9185745743107b97e68d34e20087204c46db2bd5a8dc41240446b70c3cf68bb1",
+  "provider_model": "nvidia/nemotron-3-super-120b-a12b",
+  "provider_id": "chatcmpl-8f478332677135ed",
+  "provider_prompt_tokens": 2991,
+  "provider_completion_tokens": 163,
+  "conservative_increment_usd": 0.006308,
+  "provider_list_price_estimate_usd": 0.001044,
+  "model_claim": "Strict built-in int validation in descend/steward/watch.py should be replaced by isinstance.",
+  "citation": {"model_line": 100, "controller_corrected_line": 104, "unique_added_line_match": true},
+  "maintainer_decision": "dismissed",
+  "decision_basis": "Strict builtin int is intentional for CLI/JSON input; isinstance would admit bool and unsupported numeric subclasses are not required.",
+  "ledger_after": {"calls": 118, "accounted_upper_bound_usd": 0.548195, "unresolved_calls": 0},
+  "limits": "One false positive on a single commit. Static Vibe/ASI context did not validate the bug claim. Raw Vibe report remains private."
+}

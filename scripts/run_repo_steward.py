@@ -11,6 +11,7 @@ from descend.controller.environment import load_controller_environment
 from descend.controller.spend import SpendLedger
 from descend.steward.reviewer import review_with_nemotron
 from descend.steward.watch import ReviewStore, scan_once
+from descend.steward.vibe_context import load_vibe_context
 
 
 def main() -> None:
@@ -20,7 +21,13 @@ def main() -> None:
     parser.add_argument("--interval", type=int, default=60, help="Polling seconds, at least 10")
     parser.add_argument("--live", action="store_true", help="Use paid Nemotron review; otherwise record mock output")
     parser.add_argument("--env-file", default=".env", help="Controller-only environment file")
+    parser.add_argument("--vibe-report", type=Path, help="Optional offline Vibe JSON for this exact commit")
+    parser.add_argument("--asi-catalog", type=Path, help="Exact local ASI catalog used by Vibe")
     args = parser.parse_args()
+    if bool(args.vibe_report) != bool(args.asi_catalog):
+        parser.error("--vibe-report and --asi-catalog must be supplied together")
+    if args.vibe_report and not args.live:
+        parser.error("--vibe-report requires --live; mock scans do not consume static context")
     if args.interval < 10:
         parser.error("Interval must be at least 10 seconds")
     # Mock observations must never suppress a later real review of the same commit.
@@ -32,7 +39,10 @@ def main() -> None:
         if not key:
             parser.error("NEBIUS_API_KEY missing")
         ledger = SpendLedger(Path("controller_state") / "cloud-spend.sqlite")
-        reviewer = lambda snapshot: review_with_nemotron(snapshot, api_key=key, ledger=ledger)
+        def reviewer(snapshot):
+            context = (load_vibe_context(args.vibe_report, args.asi_catalog, commit=snapshot["sha"])
+                       if args.vibe_report else None)
+            return review_with_nemotron(snapshot, api_key=key, ledger=ledger, static_context=context)
     else:
         reviewer = lambda snapshot: {"model": None, "content": "MOCK ONLY: no model review performed",
                                      "accounted_upper_bound_usd": 0, "formal_data": False}

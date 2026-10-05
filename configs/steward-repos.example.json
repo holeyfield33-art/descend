@@ -1,0 +1,7 @@
+{
+  "repositories": [
+    {"path": "../", "mode": "mock", "interval_seconds": 60},
+    {"path": "../../vibe-explainer", "mode": "mock", "interval_seconds": 60},
+    {"path": "../../agent-security-index", "mode": "mock", "interval_seconds": 60}
+  ]
+}

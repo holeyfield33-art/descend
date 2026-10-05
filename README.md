@@ -82,8 +82,11 @@ The first local real-weight target was Qwen2.5-0.5B-Instruct. A separate CPU fea
 - [Experimental design and status](docs/EXPERIMENT.md)
 - [Roadmap and phase gates](docs/ROADMAP.md)
 - [Hackathon Repo Steward product direction](docs/HACKATHON_REPO_STEWARD.md)
+- [Vibe Explainer and Agent Security Index review](docs/VIBE_EXPLAINER_REVIEW.md)
 
 Repo Steward now has a read-only prototype: `python -m scripts.run_repo_steward --repo /path/to/git-checkout --once` records a no-cost mock scan; add `--live` to request a bounded Nemotron Super review through the controller spend ledger. Run `python -m scripts.view_repo_steward` to see validated diff citations at `http://127.0.0.1:8765/`. A local triage CLI stores confirmed/dismissed maintainer decisions. The dashboard checks citation provenance, not bug correctness. Commands are documented in the linked product direction; this remains a prototype, not a complete hackathon submission.
+
+For several checkouts, use the explicit [fleet configuration example](configs/steward-repos.example.json) with `python -m scripts.run_repo_steward_fleet --config <your-private-config.json> --once`. Each entry has its own mock/live mode and polling interval. The optional Vibe/ASI report input is described in the [analyst review](docs/VIBE_EXPLAINER_REVIEW.md).
 - [Locked specification corrections](docs/SPEC_DELTA_V1_RC.md)
 - [Source provenance and reference policy](docs/PROVENANCE.md)
 

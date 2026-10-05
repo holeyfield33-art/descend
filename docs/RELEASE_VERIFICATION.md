@@ -59,3 +59,7 @@ After the structured validator and dashboard changes, native Windows collected *
 After the atomic review-claim change, native Windows collected **116 tests: 92 passed, 24 Linux-only skipped**. The added cases prove that a second watcher sees the in-progress claim instead of calling the provider and that a failed call is not retried automatically. The prior 114-test count remains a historical checkpoint.
 
 After persistent maintainer triage was added, native Windows collected **117 tests: 93 passed, 24 Linux-only skipped**. The decision test checks that a confirmed finding survives reopening the SQLite store and that a nonexistent finding cannot be triaged.
+
+An optional Vibe/ASI context adapter subsequently passed its focused validation test and a bounded live combined pilot. The private source-focused Vibe report is pinned to Descend commit `d9fc489`, with a complete inventory and matching ASI catalog hash; [the analyst review](VIBE_EXPLAINER_REVIEW.md) separates static leads from code-verified findings. The pilot's single Nemotron claim was citation-valid but dismissed after code review. Conservative ledger accounting is **$0.548195 across 118 calls**, no unresolved holds.
+
+After the explicit multi-repository fleet configuration and two config tests, native Windows collected **120 tests: 96 passed, 24 Linux-only skipped**. A no-cost fleet pass scanned Descend, Vibe Explainer and Agent Security Index from one private config; only Descend's latest commit contained code in that pass. No new provider calls were made by the fleet test.
