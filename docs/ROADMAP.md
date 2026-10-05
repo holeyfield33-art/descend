@@ -17,6 +17,8 @@ Failed Nano and Super batches remain preserved. Live tool schemas now reflect re
 
 **Completed:** Super seeds 217–220 passed 4/4. Further viability calls are unnecessary for this gate. The next work is the real-training price/deployment gate; formal runs additionally require resolving the observed one-token provider-wrapper difference.
 
+Qwen2.5-0.5B and Qwen3-0.6B failed the tested 25–60% base-difficulty recipes. Establish a suitable target/recipe before formal work; the local pilot does not verify the cloud path.
+
 ## Phase 2B: Real training and controller-owned evaluation
 
 Choose a separate target only after training and deployment compatibility are confirmed. Adapt the official file-upload/job/checkpoint workflow, freeze actual artifact bytes, then validate deployment and controller-owned dev/hidden scoring. Do not infer current custom-model deployment support from the legacy notebook alone.

@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "selected_recipe": null,
+  "scores": [
+    {
+      "accuracy": 0.0,
+      "n": 10.0,
+      "correct": 0.0
+    },
+    {
+      "accuracy": 0.0,
+      "n": 10.0,
+      "correct": 0.0
+    },
+    {
+      "accuracy": 0.0,
+      "n": 10.0,
+      "correct": 0.0
+    }
+  ],
+  "elapsed_sec": 172.86319956,
+  "hidden_evaluated": false,
+  "formal_data": false
+}

@@ -22,6 +22,8 @@ Two bounded provider-length calibration calls preserve the JSON-neutral revision
 
 Read-only account checks on 2026-10-04 returned HTTP 200 for `/v1/fine_tuning/jobs` and `/v0/dedicated_endpoints`, both with zero existing objects. The credential can access those listing routes; this does not verify submission rights, small-target deployment or pricing. No cloud training job or deployment was created.
 
+Qwen3-0.6B scored 0/10 on each of three tested recipes both without and with input-character constrained decoding. The failed runs are preserved under `artifacts/pilots/local-calibration/`. Neither small target has met the 25–60% base-difficulty gate, and no formal target is selected. The local backend remains separate from the unverified Token Factory training/deployment path.
+
 ## Scope and authorization
 
 The user authorized autonomous DM0 work with a total cloud-spend ceiling of **$20**. Phase 2A uses real Nemotron inference with fake training and synthetic scoring. Its output is **PILOT — NOT CLAIM-BEARING**. No formal preregistration is frozen and no formal seed has run.

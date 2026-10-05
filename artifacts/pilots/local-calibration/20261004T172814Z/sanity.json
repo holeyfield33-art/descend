@@ -1,0 +1,10 @@
+[
+  {
+    "prompt": "What is 2 + 2? Return only the number.",
+    "answer": "2"
+  },
+  {
+    "prompt": "Reverse abc. Return only the reversed string.",
+    "answer": "The reversed string of \"abc\" is **cba**."
+  }
+]
