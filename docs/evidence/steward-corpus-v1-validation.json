@@ -1,0 +1,2083 @@
+{
+  "complete": true,
+  "controller_python": "3.14.4",
+  "corpus_version": "steward-seeded-v1",
+  "expected_runs": 68,
+  "lock_sha256": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+  "manifest_sha256": "ca2fe86421bd7cacdb65cf283f802872eb7df581a8988791abc16d17fa67924c",
+  "provider_calls": 0,
+  "records": [
+    {
+      "case": "bug-off_by_one-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve([11, 2, 3]) == 16\nE   assert 13 == 16\nE    +  where 13 = solve([11, 2, 3])\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 13 == 16\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "9ccfceac7ceffce20bc740242475d4506db8697b79806f3c47383ee3fe7703e9",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ba7174a8ea85d4f2bd1c11b74f7249b40dbad379312fdf48188533a61af17264"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-off_by_one-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "c751f774d33c07dc9c12fc1b03df72ddfe74717e2ed56771869efd79ef654f0a",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ba7174a8ea85d4f2bd1c11b74f7249b40dbad379312fdf48188533a61af17264"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-comparison-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve(11) is True\nE   assert False is True\nE    +  where False = solve(11)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert False is True\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "99cafbef8f0af0e77922dcd00fb07dc537a81ef80c9ced255f4cc186e6cfd3bc",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "0f001b20a677c1798a7b20592be27d0413de60f50fd3e46a4df21c3865d6acd9"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-comparison-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.05s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "c56134359937bc871dd7550b0981e62b8c598b691b7caf0429c64f249785a5b5",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "0f001b20a677c1798a7b20592be27d0413de60f50fd3e46a4df21c3865d6acd9"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-empty_check-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve([]) is None\n           ^^^^^^^^^\napp.py:2: in solve\n    return values[0]\n           ^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - IndexError: list index out of range\n1 failed, 1 passed in 0.12s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "c5194913dc3a169f26abc3ef3562d121f0e65219a2b9e0f10d6e1264ba755240",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-empty_check-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.04s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "307dcf8ffd4050eb91ad6959437866859dcb3b32475fb0078feeab5a6ed13728",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-wrong_default-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve({}) is True\nE   assert False is True\nE    +  where False = solve({})\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert False is True\n1 failed, 1 passed in 0.05s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "cb3f796ab07b8b7a33af22de0e1057690f4a42b8e87e967d63b5f4fd0559275a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "cee6ba3c7adb89adce00feee4aa12a3028ce8a8fa0fe3a3c001622036150a4bc"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-wrong_default-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "e98326435804e37361b338f6a03abb306acf43c632cedf4f4713b3a8e0d28bbc",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "cee6ba3c7adb89adce00feee4aa12a3028ce8a8fa0fe3a3c001622036150a4bc"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-swapped_arguments-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve((14, 11)) == 3\nE   assert -3 == 3\nE    +  where -3 = solve((14, 11))\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert -3 == 3\n1 failed, 1 passed in 0.04s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "390eabff7f7123e7865a4fe5afd8538c86269b7b14f1e1ead89041fc5b571470",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "a96bfcfd6814c23b0aaeab6b4b99da5bb8ba81a83ee47b78786d6700352a7bb7"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-swapped_arguments-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.04s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "bce652d9ea685c00ed2d48e965c6b0dd29d604e541a8b66ded2f256ff0281ca3",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "a96bfcfd6814c23b0aaeab6b4b99da5bb8ba81a83ee47b78786d6700352a7bb7"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-boundary-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve(0) == 0\nE   assert 1 == 0\nE    +  where 1 = solve(0)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 1 == 0\n1 failed, 1 passed in 0.08s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "8504df3e03b6f670a406643dd50d696e5c29b1d8dfc02c46fc9e6e5c6a223bd1",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-boundary-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "17edcecff44dc0c449743fceb56c9e6b49c0ba4f0df3dc86c5028409185ef33e",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-resource_close-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:7: in test_reproducer\n    assert stream.closed\nE   assert False\nE    +  where False = <_io.StringIO object at 0x7082e2621990>.closed\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert False\n1 failed, 1 passed in 0.04s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "fa1239923b6d274fc5e7ece5604bb46ea879161354a7a45127b75054cfe81b3d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ed75784260feac278ca6795ca09955782a564033ef8cb7b9dfc357c18f8a908f"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-resource_close-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "050dbaf26e5f887e2d94b1c0c9ee4330ed555365c253672a858760f4608c7c2c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ed75784260feac278ca6795ca09955782a564033ef8cb7b9dfc357c18f8a908f"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-stale_state-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:5: in test_reproducer\n    assert solve(state) == 12\nE   AssertionError: assert 11 == 12\nE    +  where 11 = solve({'count': 12})\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - AssertionError: assert 11 == 12\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "e58fa7c6f7b8962481fbf251282aa9626735fd3b27911409295ff0a092fccbaa",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "698f9aa43bbbb10c16040df9254796e748e95de4b45fbd4d1c1ffa023c98a85c"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-stale_state-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "0ac3177b5e8357fe930798c91674f2cd0326357a5303de3803418349a4128e77",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "698f9aa43bbbb10c16040df9254796e748e95de4b45fbd4d1c1ffa023c98a85c"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-encoding-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve('café'.encode('utf-8')) == 'café'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\napp.py:2: in solve\n    return values.decode('ascii')\n           ^^^^^^^^^^^^^^^^^^^^^^\nE   UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 3: ordinal not in range(128)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - UnicodeDecodeError: 'ascii' code...\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "ef3a364e734c24ca003dd3bddb8b17cb7c2352956b63075629c228725e4ec63d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "3b6afa877bc1dd1cb90f5e906653c0eda74eed76681c3483d02578cbb72628c0"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-encoding-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "2aa562c9f6719b22da58c0e08b129a3f7054c8ab44636302302d12ab7b5ed678",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "3b6afa877bc1dd1cb90f5e906653c0eda74eed76681c3483d02578cbb72628c0"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-exception-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve([]) is None\n           ^^^^^^^^^\napp.py:3: in solve\n    return values[0]\n           ^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - IndexError: list index out of range\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "2e4a0b988263d0c33810a5c7284c2e9a77db0e996e9d1e6ff6563f0539898db2",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-exception-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "d49abd27aef3ce963ab57e733850993481b9620d5574b4979bb370adf831f23c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-integer_float-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve((23, 2)) == 11.5\nE   assert 11 == 11.5\nE    +  where 11 = solve((23, 2))\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 11 == 11.5\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "97442fe745320c82c5ec4fe1f85ca37d1b0e3bdb881ec4f4b66747f498ad4d5c",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7fc8541870390c1803967df83b6fd292611b435cbe4d811725a00d3a68636f94"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-integer_float-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "2d15bd7f60f87e8ffaa6afb9912ff1c593d68546d271f0eabf396c9e74c585c8",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7fc8541870390c1803967df83b6fd292611b435cbe4d811725a00d3a68636f94"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-shared_mutation-1",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:6: in test_reproducer\n    assert items == [12, 11]\nE   assert [11, 12] == [12, 11]\nE     \nE     At index 0 diff: 11 != 12\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert [11, 12] == [12, 11]\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "c15608573bc4deba17b579eac1701e984cf3cf031e760608cdb46bcaba77fd17",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "8a5785db80ef35c5bb2887122edda35c62101e089649745dad94d35aa5dd0456"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-shared_mutation-1",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "0ccdbcc74203524897d7eaad178169057070bbf0438862c442c86865e55e6a0c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "8a5785db80ef35c5bb2887122edda35c62101e089649745dad94d35aa5dd0456"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-off_by_one-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve([20, 2, 3]) == 25\nE   assert 22 == 25\nE    +  where 22 = solve([20, 2, 3])\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 22 == 25\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "9ccfceac7ceffce20bc740242475d4506db8697b79806f3c47383ee3fe7703e9",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d807c7e6ffd144262c485739db92c112238ee7da97ff3e6321d7dc4016e95952"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-off_by_one-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "c751f774d33c07dc9c12fc1b03df72ddfe74717e2ed56771869efd79ef654f0a",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d807c7e6ffd144262c485739db92c112238ee7da97ff3e6321d7dc4016e95952"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-comparison-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve(20) is True\nE   assert False is True\nE    +  where False = solve(20)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert False is True\n1 failed, 1 passed in 0.02s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "30e9e4a3ad237ad630f421bd53c4e0da39b1507ba4fb95d09ed86f784315eacf",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "caaac30a150cbf8d28cd729a03aa981c0256025fd0d601e578f8695dac04372b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-comparison-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "13cd67ff6cf57b25b16c76d7f597eb758e64ef41c5d2ec1e0274e23cf239976c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "caaac30a150cbf8d28cd729a03aa981c0256025fd0d601e578f8695dac04372b"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-empty_check-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve([]) is None\n           ^^^^^^^^^\napp.py:2: in solve\n    return values[0]\n           ^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - IndexError: list index out of range\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "c5194913dc3a169f26abc3ef3562d121f0e65219a2b9e0f10d6e1264ba755240",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-empty_check-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "307dcf8ffd4050eb91ad6959437866859dcb3b32475fb0078feeab5a6ed13728",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-wrong_default-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve({}) is True\nE   assert False is True\nE    +  where False = solve({})\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert False is True\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "cb3f796ab07b8b7a33af22de0e1057690f4a42b8e87e967d63b5f4fd0559275a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "cee6ba3c7adb89adce00feee4aa12a3028ce8a8fa0fe3a3c001622036150a4bc"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-wrong_default-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "e98326435804e37361b338f6a03abb306acf43c632cedf4f4713b3a8e0d28bbc",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "cee6ba3c7adb89adce00feee4aa12a3028ce8a8fa0fe3a3c001622036150a4bc"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-swapped_arguments-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve((23, 20)) == 3\nE   assert -3 == 3\nE    +  where -3 = solve((23, 20))\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert -3 == 3\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "390eabff7f7123e7865a4fe5afd8538c86269b7b14f1e1ead89041fc5b571470",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d4aac3046674256e07b95839cf41cef426c194c0b1665feae15949032f76ed4c"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-swapped_arguments-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "bce652d9ea685c00ed2d48e965c6b0dd29d604e541a8b66ded2f256ff0281ca3",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d4aac3046674256e07b95839cf41cef426c194c0b1665feae15949032f76ed4c"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-boundary-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve(0) == 0\nE   assert 1 == 0\nE    +  where 1 = solve(0)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 1 == 0\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "8504df3e03b6f670a406643dd50d696e5c29b1d8dfc02c46fc9e6e5c6a223bd1",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-boundary-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "17edcecff44dc0c449743fceb56c9e6b49c0ba4f0df3dc86c5028409185ef33e",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-resource_close-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:7: in test_reproducer\n    assert stream.closed\nE   assert False\nE    +  where False = <_io.StringIO object at 0x7a1ef0af1990>.closed\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert False\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "fa1239923b6d274fc5e7ece5604bb46ea879161354a7a45127b75054cfe81b3d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ed75784260feac278ca6795ca09955782a564033ef8cb7b9dfc357c18f8a908f"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-resource_close-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "050dbaf26e5f887e2d94b1c0c9ee4330ed555365c253672a858760f4608c7c2c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ed75784260feac278ca6795ca09955782a564033ef8cb7b9dfc357c18f8a908f"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-stale_state-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:5: in test_reproducer\n    assert solve(state) == 21\nE   AssertionError: assert 20 == 21\nE    +  where 20 = solve({'count': 21})\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - AssertionError: assert 20 == 21\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "e58fa7c6f7b8962481fbf251282aa9626735fd3b27911409295ff0a092fccbaa",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "fdeddac30150342eca2c4d5cea0b7ce6e9e554c449332474d7461466b72efd95"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-stale_state-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "0ac3177b5e8357fe930798c91674f2cd0326357a5303de3803418349a4128e77",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "fdeddac30150342eca2c4d5cea0b7ce6e9e554c449332474d7461466b72efd95"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-encoding-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve('café'.encode('utf-8')) == 'café'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\napp.py:2: in solve\n    return values.decode('ascii')\n           ^^^^^^^^^^^^^^^^^^^^^^\nE   UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 3: ordinal not in range(128)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - UnicodeDecodeError: 'ascii' code...\n1 failed, 1 passed in 0.07s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "ef3a364e734c24ca003dd3bddb8b17cb7c2352956b63075629c228725e4ec63d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "3b6afa877bc1dd1cb90f5e906653c0eda74eed76681c3483d02578cbb72628c0"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-encoding-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "2aa562c9f6719b22da58c0e08b129a3f7054c8ab44636302302d12ab7b5ed678",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "3b6afa877bc1dd1cb90f5e906653c0eda74eed76681c3483d02578cbb72628c0"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-exception-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve([]) is None\n           ^^^^^^^^^\napp.py:3: in solve\n    return values[0]\n           ^^^^^^^^^\nE   IndexError: list index out of range\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - IndexError: list index out of range\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "2e4a0b988263d0c33810a5c7284c2e9a77db0e996e9d1e6ff6563f0539898db2",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-exception-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "d49abd27aef3ce963ab57e733850993481b9620d5574b4979bb370adf831f23c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-integer_float-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve((41, 2)) == 20.5\nE   assert 20 == 20.5\nE    +  where 20 = solve((41, 2))\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 20 == 20.5\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "97442fe745320c82c5ec4fe1f85ca37d1b0e3bdb881ec4f4b66747f498ad4d5c",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "4b21157e4f47d071d76d1cfd1258e8326036bac1b7563770bb83c3f21cb4391d"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-integer_float-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "2d15bd7f60f87e8ffaa6afb9912ff1c593d68546d271f0eabf396c9e74c585c8",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "4b21157e4f47d071d76d1cfd1258e8326036bac1b7563770bb83c3f21cb4391d"
+      },
+      "split": "dev",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "bug-shared_mutation-2",
+      "expected_exit": 1,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 1,
+        "stderr": "",
+        "stdout": ".F                                                                       [100%]\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:6: in test_reproducer\n    assert items == [21, 20]\nE   assert [20, 21] == [21, 20]\nE     \nE     At index 0 diff: 20 != 21\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert [20, 21] == [21, 20]\n1 failed, 1 passed in 0.03s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "c15608573bc4deba17b579eac1701e984cf3cf031e760608cdb46bcaba77fd17",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7763c61e42ab2ffb44e1eeeb35b3dfa8c765a5a351f2ceca733b2c08136f84f3"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "bug-shared_mutation-2",
+      "expected_exit": 0,
+      "label": "bug",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests",
+          "test_reproducer.py"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "..                                                                       [100%]\n2 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "fix/app.py": "0ccdbcc74203524897d7eaad178169057070bbf0438862c442c86865e55e6a0c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7763c61e42ab2ffb44e1eeeb35b3dfa8c765a5a351f2ceca733b2c08136f84f3"
+      },
+      "split": "test",
+      "stage": "fix",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-1",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "e0344f76024b34d395a49c89ea8f0adf2af86f10a407c0d5c6292abf384a174a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-2",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "5ee2568058f10265d05227cef75e1857dd919e8146c4da3e50fbb9a9e4930d03",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-3",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "96da1e620154caf6fcd0fe46b68a27a5e1e98bed98d1d6bfddf5c21ebb60cb03",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-4",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "cf4a0443441dee73057764fdf7eff6d58f48a35b469821bf8f50d7b81a86c73f",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-5",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "ee33df070740f2e862eceb4572fcd96fb939953f1c199cb36f2f39ed702a79dd",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-6",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "064b0e4190fb5cbe539e0ed1707d2ba65b748d0ff99d51745c70f6143edf7a28",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-7",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "dd9bba9907d55157cae7c5a2aff59cbdd0aac33c9a6d2fe68d2713e7c9bea510",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-8",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "aae25b1808d402919fa2739d2390fb7138707a015d9dae472fbe596ddd530052",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-9",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.00s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "833c44579686a3e21a14ef92b6cee748bdb4d09a45084341544eb3b83f312fdd",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "clean-refactor-10",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "02a2e95ceb6a108495c4c3ed34a8839cf0507c80f035e5871d29f22291772078",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "hard-negative-1",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "d6c43836e58a61e65167f501dcec3135f53dfbd4d8ad504296a9194e6459367a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "hard-negative-2",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "913ba58df2548fa5c6c82036dcdc4181c0c2c2d8f0dcdd76c9b8cd4db66fce27",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "hard-negative-3",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "d0140e8509cd1445bbdfbf493e07891ad07ee34d883e38de9eaa481a20806f35",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "hard-negative-4",
+      "expected_exit": 0,
+      "label": "clean",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "a0095f640453c3bfd751f51d5d5a7693d45341163fe2283221274785e34f7335",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "decoy-1",
+      "expected_exit": 0,
+      "label": "decoy",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "67ec9f0694af091ff59285eaf2e9515997a59a1427ac727912ccf3ab3d856b41",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "decoy-2",
+      "expected_exit": 0,
+      "label": "decoy",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "083c91e248fbb03bb8c08d2c1e1f2d5e24b4492649394458424ab6ade975788d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "decoy-3",
+      "expected_exit": 0,
+      "label": "decoy",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "a4ed4dc4357b45a39d42f42176bca8f51528b7bf34e558a6655e732831172a51",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "decoy-4",
+      "expected_exit": 0,
+      "label": "decoy",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "a246a7c2b86f076e2b40bfdaa34a2c9bb61db3adb75b1ff1309802b6e8cf88b9",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "decoy-5",
+      "expected_exit": 0,
+      "label": "decoy",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "2792682c045c422b727be677c3ecd96c8278468fc22745db6e8decd4f953be70",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "dev",
+      "stage": "review",
+      "worker_error": null
+    },
+    {
+      "case": "decoy-6",
+      "expected_exit": 0,
+      "label": "decoy",
+      "label_validated": true,
+      "result": {
+        "argv": [
+          "/usr/local/lib/steward-test-runtime/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "pytest": "9.1.1",
+        "returncode": 0,
+        "stderr": "",
+        "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+      },
+      "snapshot_hashes": {
+        "review/app.py": "23d1170b16b7f9863af2d8f21d2d20bb8db562f094906f742377f40f6196d981",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "split": "test",
+      "stage": "review",
+      "worker_error": null
+    }
+  ],
+  "schema_version": 1,
+  "test_manifest_sha256": "e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043",
+  "test_runner": "/usr/local/lib/steward-test-runtime/bin/python",
+  "validated": 68
+}

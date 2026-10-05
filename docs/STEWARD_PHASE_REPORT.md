@@ -1,5 +1,34 @@
 # Repo Steward phase report
 
+## WP1 frozen corpus and isolated label validation
+
+Freeze commit `a810a3f` precedes all fixture execution. The 44 original seeded
+cases comprise 24 bugs, 10 clean refactors, 4 hard negatives and 6 injection
+decoys; split is 12 dev / 32 test. Test manifest SHA-256:
+`e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043`.
+Every snapshot, diff and bug reproducer is hash-pinned. Windows corpus rebuild,
+hash/path rejection and execution-refusal tests: 3 passed.
+
+Command from the workspace under Ubuntu root:
+`/opt/steward-wp0-venv/bin/python -m scripts.check_steward_corpus --output controller_state/steward-corpus-validation.json`.
+Output: `{"complete": true, "validated": 68, "expected_runs": 68, "provider_calls": 0}`.
+Each of the 24 bug reproducers failed on reviewed code and passed on fixed code
+(48 runs); all 20 clean/hard-negative/decoy snapshots passed their existing
+smoke test. Execution occurred only inside the Linux namespace worker. Raw
+per-case outputs, hashes, exit codes and runner identity are in
+[`evidence/steward-corpus-v1-validation.json`](evidence/steward-corpus-v1-validation.json).
+
+These are label checks, not model accuracy or patch-verification results.
+The evaluator sees ground truth; future reviewer input must not. The frozen
+review protocol is the unchanged existing reviewer source at `a810a3f`.
+Repeated families across dev/test and weak existing tests limit conclusions.
+No real-history cases or external evaluator data were added. No paid calls.
+
+The manifest-freeze commit and subsequent validation commit are separate to
+meet the requirement to commit the test split before its first run. Corpus
+bytes remain unchanged; a Git attributes rule now prevents Windows CRLF
+conversion of frozen diff files. No labels were edited after validation.
+
 ## Authorized WP0 repair and baseline
 
 **WP0 acceptance gate met:** repair commit `3af3ed9` was pushed, then freshly

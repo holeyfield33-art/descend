@@ -1,5 +1,16 @@
 # Provenance
 
+## Repo Steward corpus v1
+
+Generator `descend/steward/corpus.py` and all `eval/v1` fixtures are original
+owned MIT-licensed synthetic code. Seed: 20261005. Freeze commit: `a810a3f`,
+before isolated label validation. No reference-repository snippets, private
+evaluator answers, or model-generated labels were used. The 44 cases include
+24 bugs, 10 clean refactors, 4 hard negatives and 6 separate injection decoys.
+The 12 dev / 32 test split intentionally retains repeated families and is
+not a held-out-family benchmark. `eval/review-protocol-v1.json` records the
+unchanged review source and parameters; no provider run has used this corpus.
+
 ## Repo Steward WP0 boundary repair (2026-10-05)
 
 The Git invocation policy, offline doctor and new regression tests are original

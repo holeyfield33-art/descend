@@ -1,0 +1,13 @@
+{
+  "protocol_version": 2,
+  "source_commit": "a810a3f",
+  "source_path": "descend/steward/reviewer.py",
+  "source_sha256": "dae4d3a15d9f7bf53b857ab4bb0088f05800f55540476e2b099eefc5ee9c696d",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "temperature": 0,
+  "max_tokens": 1000,
+  "enable_thinking": false,
+  "static_context": null,
+  "provider_calls_at_freeze": 0,
+  "note": "Existing reviewer prompt frozen without test-split model execution; model variants require a separately frozen configuration before any call. Corpus labels, fixes and reproducers must never enter review prompts."
+}

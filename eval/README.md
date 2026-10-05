@@ -23,3 +23,23 @@ existing tests deliberately only check the API exists. This is a measurement
 of a narrow seeded task, not general repository review accuracy. Ground-truth
 location matching alone is weak. No real-history performance claim is possible.
 Reproducers require isolated Linux validation before WP1 is complete.
+
+Frozen source commit: `a810a3f`; test manifest SHA-256:
+`e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043`.
+`review-protocol-v1.json` records the existing reviewer source/parameters.
+Corpus v1 bytes are exempt from Git line-ending conversion so hashes survive
+Windows and Linux checkouts. A changed corpus requires a new version.
+
+The current label checker uses a trusted pytest 9.1.1 runtime at
+`/usr/local/lib/steward-test-runtime/bin/python` within the read-only `/usr`
+mount. Provision only dependencies there, never keys or controller state:
+
+```bash
+python3 -m venv /usr/local/lib/steward-test-runtime
+/usr/local/lib/steward-test-runtime/bin/python -m pip install pytest==9.1.1
+python -m scripts.check_steward_corpus --output controller_state/corpus-validation.json
+```
+
+The checker refuses Windows and unavailable Linux isolation. This checks owned
+fixtures; it is not the future hostile-model-code executor or its resource-limit
+assurance. Controller environment and provider clients are absent from the worker.

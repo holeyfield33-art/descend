@@ -5,6 +5,7 @@ import difflib
 import hashlib
 import json
 import random
+import re
 from pathlib import Path
 
 SEED = 20261005
@@ -132,11 +133,18 @@ def build_corpus(output: Path) -> dict:
 
 
 def verify_manifest(root: Path) -> dict:
+    root = root.resolve(strict=True)
     manifest = json.loads((root / "manifest.json").read_bytes())
+    seen = set()
     for case in manifest["cases"]:
+        if not isinstance(case.get("id"), str) or not re.fullmatch(r"[a-z0-9_-]+", case["id"]) or case["id"] in seen:
+            raise ValueError("Invalid or duplicate corpus identifier")
+        seen.add(case["id"])
         for name, expected in case["files"].items():
+            if name not in {"review.diff", "fix.diff", "test_reproducer.py", *[f"{stage}/{name}" for stage in ("base", "review", "fix") for name in ("app.py", "tests/test_existing.py")]}:
+                raise ValueError("Unexpected corpus file")
             path = root / "cases" / case["id"] / name
-            if path.is_symlink() or not path.is_file() or digest(path.read_bytes()) != expected:
+            if any(p.is_symlink() for p in (path, *path.parents)) or not path.is_file() or digest(path.read_bytes()) != expected:
                 raise ValueError("Corpus content hash mismatch")
     test_bytes = (root / "test-manifest.json").read_bytes()
     if digest(test_bytes) != (root / "test-manifest.sha256").read_text().strip():

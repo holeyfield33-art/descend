@@ -94,11 +94,19 @@ and each skip reason. Windows Linux-only skips are not security passes.
 Repeat from a fresh public clone, recording SHA, Python, helper paths and lock
 hash. Current execution evidence is in the phase report.
 
-WP1 needs a frozen corpus and isolated reproducer validation; WP2 needs scoring,
+WP1 now has a frozen corpus and 68 successful isolated label checks. Rebuild
+without executing fixtures using `python -m scripts.build_steward_corpus --output
+controller_state/corpus-rebuild` (the output directory must be empty). See
+[`eval/README.md`](../eval/README.md) for the pinned Linux pytest runtime setup
+and `python -m scripts.check_steward_corpus --output controller_state/corpus-validation.json`.
+The checker refuses native Windows. Frozen hashes and full per-case evidence
+are recorded in the phase report. Never send labels, fixes or reproducers to
+the reviewer. WP2 still needs scoring,
 B0/B1 and blind adjudication; WP3 needs the export-only act worker and tamper
 checks; WP4 needs the attack matrix and independent red-team handoff. WP5 needs
 the one-command offline demo and scanned static bundle. Those commands do not
-exist yet, so this manual deliberately provides no pretend invocations.
+exist yet, apart from the corpus commands above, so this manual provides no
+pretend invocations for the remaining work.
 
 WP6 requires written approval after the estimate. WP7 adds measured results,
 fresh-clone evidence and the final complete manual. Human deploys the bundle
