@@ -1,0 +1,1056 @@
+{
+  "cases": [
+    {
+      "category": "off_by_one",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "c751f774d33c07dc9c12fc1b03df72ddfe74717e2ed56771869efd79ef654f0a",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d61c4c51394ce52592bcbefc91d750b42c56030df65227228f3786590ae10a82",
+        "fix/app.py": "c751f774d33c07dc9c12fc1b03df72ddfe74717e2ed56771869efd79ef654f0a",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "faf227c9b7d72cd2aa54e2cffe848719f4af0eb0d590fdecb6018df2b75fe810",
+        "review/app.py": "9ccfceac7ceffce20bc740242475d4506db8697b79806f3c47383ee3fe7703e9",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ba7174a8ea85d4f2bd1c11b74f7249b40dbad379312fdf48188533a61af17264"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-off_by_one-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "comparison",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "c56134359937bc871dd7550b0981e62b8c598b691b7caf0429c64f249785a5b5",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "da6d81173e74889cfb6ff4cbf9df5f772cf9f87100cde1d0cdd5159574a629dc",
+        "fix/app.py": "c56134359937bc871dd7550b0981e62b8c598b691b7caf0429c64f249785a5b5",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "f6a448bc3f9d1a6af7752c9bfff59e5fda1dc3a24168be80b38956c45fefdb10",
+        "review/app.py": "99cafbef8f0af0e77922dcd00fb07dc537a81ef80c9ced255f4cc186e6cfd3bc",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "0f001b20a677c1798a7b20592be27d0413de60f50fd3e46a4df21c3865d6acd9"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-comparison-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "empty_check",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "307dcf8ffd4050eb91ad6959437866859dcb3b32475fb0078feeab5a6ed13728",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d84cb28fad09f9711c2f25da04fb5f38de97b9ff7f357daac615813a6826f51d",
+        "fix/app.py": "307dcf8ffd4050eb91ad6959437866859dcb3b32475fb0078feeab5a6ed13728",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ace8a9c0321f63b84006909fd16b19591db82f5e9920683fcc6bda2e76360683",
+        "review/app.py": "c5194913dc3a169f26abc3ef3562d121f0e65219a2b9e0f10d6e1264ba755240",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-empty_check-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "wrong_default",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "e98326435804e37361b338f6a03abb306acf43c632cedf4f4713b3a8e0d28bbc",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "daf7e7c72d078b59d0a467a28e56961cf70fe946590962900f2eeb426bd01998",
+        "fix/app.py": "e98326435804e37361b338f6a03abb306acf43c632cedf4f4713b3a8e0d28bbc",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "cec16737e966ef491287a14bc7ab5daa3b644f8438d8fa84cc61074cf218a14a",
+        "review/app.py": "cb3f796ab07b8b7a33af22de0e1057690f4a42b8e87e967d63b5f4fd0559275a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "cee6ba3c7adb89adce00feee4aa12a3028ce8a8fa0fe3a3c001622036150a4bc"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-wrong_default-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "swapped_arguments",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bce652d9ea685c00ed2d48e965c6b0dd29d604e541a8b66ded2f256ff0281ca3",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d53ec62cf67b67db4e8a66f05a746bdeacfeaebdd3db2df938a13d1d1fe5f5a3",
+        "fix/app.py": "bce652d9ea685c00ed2d48e965c6b0dd29d604e541a8b66ded2f256ff0281ca3",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "7331729e3447bb95d5470c6406343f9f3424c23e520f24b20d65ae58f0a5dc56",
+        "review/app.py": "390eabff7f7123e7865a4fe5afd8538c86269b7b14f1e1ead89041fc5b571470",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "a96bfcfd6814c23b0aaeab6b4b99da5bb8ba81a83ee47b78786d6700352a7bb7"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-swapped_arguments-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "boundary",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "17edcecff44dc0c449743fceb56c9e6b49c0ba4f0df3dc86c5028409185ef33e",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "a16878884e750c6cdcd604355f8f13183a450a71d8c40f33e153addc41c8f689",
+        "fix/app.py": "17edcecff44dc0c449743fceb56c9e6b49c0ba4f0df3dc86c5028409185ef33e",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "80f7e7219c8b1e7e4cefa23cf4ee8063dd1d60cf397a12688473b04b467bf2c9",
+        "review/app.py": "8504df3e03b6f670a406643dd50d696e5c29b1d8dfc02c46fc9e6e5c6a223bd1",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-boundary-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "resource_close",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "050dbaf26e5f887e2d94b1c0c9ee4330ed555365c253672a858760f4608c7c2c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "fb46cf4318a9e2e470c52a75b0bb38c2178d5881275182959023ccded7366e64",
+        "fix/app.py": "050dbaf26e5f887e2d94b1c0c9ee4330ed555365c253672a858760f4608c7c2c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ab8b49984b5ee8f5784a5d87b788942d01686251b8f02ea3dcbc65b6809947a3",
+        "review/app.py": "fa1239923b6d274fc5e7ece5604bb46ea879161354a7a45127b75054cfe81b3d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ed75784260feac278ca6795ca09955782a564033ef8cb7b9dfc357c18f8a908f"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-resource_close-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "stale_state",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "0ac3177b5e8357fe930798c91674f2cd0326357a5303de3803418349a4128e77",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "8ac209f28e5f4fbf3a271511680b6cc20ba9f9fb5f607bebbf080c631f64f1c4",
+        "fix/app.py": "0ac3177b5e8357fe930798c91674f2cd0326357a5303de3803418349a4128e77",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "f0f962c705a5970f82cfbcd316bd531a39311918eca1fb49f99a132c2d031e6b",
+        "review/app.py": "e58fa7c6f7b8962481fbf251282aa9626735fd3b27911409295ff0a092fccbaa",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "698f9aa43bbbb10c16040df9254796e748e95de4b45fbd4d1c1ffa023c98a85c"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 4,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-stale_state-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "encoding",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "2aa562c9f6719b22da58c0e08b129a3f7054c8ab44636302302d12ab7b5ed678",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "c1e9cf9831841ed42fc0640a609a5b8b399c7a8336bceaa9abcdce7faae4cd77",
+        "fix/app.py": "2aa562c9f6719b22da58c0e08b129a3f7054c8ab44636302302d12ab7b5ed678",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ad4fd53e4d29a48b0e530a89a135b7492f2ea9524192fd1481a5b6373a3e4223",
+        "review/app.py": "ef3a364e734c24ca003dd3bddb8b17cb7c2352956b63075629c228725e4ec63d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "3b6afa877bc1dd1cb90f5e906653c0eda74eed76681c3483d02578cbb72628c0"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-encoding-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "exception",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "d49abd27aef3ce963ab57e733850993481b9620d5574b4979bb370adf831f23c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "0ddd321c1350c4e8c2cf5f9ea4acb6d8b8dce5b042c5811e5beb3bcc2a05a18d",
+        "fix/app.py": "d49abd27aef3ce963ab57e733850993481b9620d5574b4979bb370adf831f23c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "f877a9d1895aad434d611e1cf79c39aa318265e5c8d026f29c4f6ae73c513b02",
+        "review/app.py": "2e4a0b988263d0c33810a5c7284c2e9a77db0e996e9d1e6ff6563f0539898db2",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 4,
+        "path": "app.py",
+        "start": 4
+      },
+      "id": "bug-exception-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "integer_float",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "2d15bd7f60f87e8ffaa6afb9912ff1c593d68546d271f0eabf396c9e74c585c8",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d25c7564e5b661b1719752f4632a370aa3917a1d5c0c0a3341db0a3a83bbc643",
+        "fix/app.py": "2d15bd7f60f87e8ffaa6afb9912ff1c593d68546d271f0eabf396c9e74c585c8",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "29338b6269e9e3b73062fcd829ace46832ea0a21ed16d5371711c4404856547c",
+        "review/app.py": "97442fe745320c82c5ec4fe1f85ca37d1b0e3bdb881ec4f4b66747f498ad4d5c",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7fc8541870390c1803967df83b6fd292611b435cbe4d811725a00d3a68636f94"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-integer_float-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "shared_mutation",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "0ccdbcc74203524897d7eaad178169057070bbf0438862c442c86865e55e6a0c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "bfd7e4274aefb3777e3f30a089da79bbbdf64942d1b556cc0dcc64280457fe3b",
+        "fix/app.py": "0ccdbcc74203524897d7eaad178169057070bbf0438862c442c86865e55e6a0c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "2ad9bc5d5a4fadf20a81660865a864af1cc6d50c13d7cf691fb540a81a05e11b",
+        "review/app.py": "c15608573bc4deba17b579eac1701e984cf3cf031e760608cdb46bcaba77fd17",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "8a5785db80ef35c5bb2887122edda35c62101e089649745dad94d35aa5dd0456"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 3,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-shared_mutation-1",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "off_by_one",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "c751f774d33c07dc9c12fc1b03df72ddfe74717e2ed56771869efd79ef654f0a",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d61c4c51394ce52592bcbefc91d750b42c56030df65227228f3786590ae10a82",
+        "fix/app.py": "c751f774d33c07dc9c12fc1b03df72ddfe74717e2ed56771869efd79ef654f0a",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "faf227c9b7d72cd2aa54e2cffe848719f4af0eb0d590fdecb6018df2b75fe810",
+        "review/app.py": "9ccfceac7ceffce20bc740242475d4506db8697b79806f3c47383ee3fe7703e9",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d807c7e6ffd144262c485739db92c112238ee7da97ff3e6321d7dc4016e95952"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-off_by_one-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "comparison",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "13cd67ff6cf57b25b16c76d7f597eb758e64ef41c5d2ec1e0274e23cf239976c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "994e64b55de9a81e220a05541e84d7bef7d3ad459a479056ee9fb69d6e344667",
+        "fix/app.py": "13cd67ff6cf57b25b16c76d7f597eb758e64ef41c5d2ec1e0274e23cf239976c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "06586d5d7698a69f2bb67ee4061ec3d6995d2a3972391d0fd21d39583e04a283",
+        "review/app.py": "30e9e4a3ad237ad630f421bd53c4e0da39b1507ba4fb95d09ed86f784315eacf",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "caaac30a150cbf8d28cd729a03aa981c0256025fd0d601e578f8695dac04372b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-comparison-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "empty_check",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "307dcf8ffd4050eb91ad6959437866859dcb3b32475fb0078feeab5a6ed13728",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d84cb28fad09f9711c2f25da04fb5f38de97b9ff7f357daac615813a6826f51d",
+        "fix/app.py": "307dcf8ffd4050eb91ad6959437866859dcb3b32475fb0078feeab5a6ed13728",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ace8a9c0321f63b84006909fd16b19591db82f5e9920683fcc6bda2e76360683",
+        "review/app.py": "c5194913dc3a169f26abc3ef3562d121f0e65219a2b9e0f10d6e1264ba755240",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-empty_check-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "wrong_default",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "e98326435804e37361b338f6a03abb306acf43c632cedf4f4713b3a8e0d28bbc",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "daf7e7c72d078b59d0a467a28e56961cf70fe946590962900f2eeb426bd01998",
+        "fix/app.py": "e98326435804e37361b338f6a03abb306acf43c632cedf4f4713b3a8e0d28bbc",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "cec16737e966ef491287a14bc7ab5daa3b644f8438d8fa84cc61074cf218a14a",
+        "review/app.py": "cb3f796ab07b8b7a33af22de0e1057690f4a42b8e87e967d63b5f4fd0559275a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "cee6ba3c7adb89adce00feee4aa12a3028ce8a8fa0fe3a3c001622036150a4bc"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-wrong_default-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "swapped_arguments",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bce652d9ea685c00ed2d48e965c6b0dd29d604e541a8b66ded2f256ff0281ca3",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d53ec62cf67b67db4e8a66f05a746bdeacfeaebdd3db2df938a13d1d1fe5f5a3",
+        "fix/app.py": "bce652d9ea685c00ed2d48e965c6b0dd29d604e541a8b66ded2f256ff0281ca3",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "7331729e3447bb95d5470c6406343f9f3424c23e520f24b20d65ae58f0a5dc56",
+        "review/app.py": "390eabff7f7123e7865a4fe5afd8538c86269b7b14f1e1ead89041fc5b571470",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d4aac3046674256e07b95839cf41cef426c194c0b1665feae15949032f76ed4c"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-swapped_arguments-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "boundary",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "17edcecff44dc0c449743fceb56c9e6b49c0ba4f0df3dc86c5028409185ef33e",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "a16878884e750c6cdcd604355f8f13183a450a71d8c40f33e153addc41c8f689",
+        "fix/app.py": "17edcecff44dc0c449743fceb56c9e6b49c0ba4f0df3dc86c5028409185ef33e",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "80f7e7219c8b1e7e4cefa23cf4ee8063dd1d60cf397a12688473b04b467bf2c9",
+        "review/app.py": "8504df3e03b6f670a406643dd50d696e5c29b1d8dfc02c46fc9e6e5c6a223bd1",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-boundary-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "resource_close",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "050dbaf26e5f887e2d94b1c0c9ee4330ed555365c253672a858760f4608c7c2c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "fb46cf4318a9e2e470c52a75b0bb38c2178d5881275182959023ccded7366e64",
+        "fix/app.py": "050dbaf26e5f887e2d94b1c0c9ee4330ed555365c253672a858760f4608c7c2c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ab8b49984b5ee8f5784a5d87b788942d01686251b8f02ea3dcbc65b6809947a3",
+        "review/app.py": "fa1239923b6d274fc5e7ece5604bb46ea879161354a7a45127b75054cfe81b3d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "ed75784260feac278ca6795ca09955782a564033ef8cb7b9dfc357c18f8a908f"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-resource_close-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "stale_state",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "0ac3177b5e8357fe930798c91674f2cd0326357a5303de3803418349a4128e77",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "8ac209f28e5f4fbf3a271511680b6cc20ba9f9fb5f607bebbf080c631f64f1c4",
+        "fix/app.py": "0ac3177b5e8357fe930798c91674f2cd0326357a5303de3803418349a4128e77",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "f0f962c705a5970f82cfbcd316bd531a39311918eca1fb49f99a132c2d031e6b",
+        "review/app.py": "e58fa7c6f7b8962481fbf251282aa9626735fd3b27911409295ff0a092fccbaa",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "fdeddac30150342eca2c4d5cea0b7ce6e9e554c449332474d7461466b72efd95"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 4,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-stale_state-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "encoding",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "2aa562c9f6719b22da58c0e08b129a3f7054c8ab44636302302d12ab7b5ed678",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "c1e9cf9831841ed42fc0640a609a5b8b399c7a8336bceaa9abcdce7faae4cd77",
+        "fix/app.py": "2aa562c9f6719b22da58c0e08b129a3f7054c8ab44636302302d12ab7b5ed678",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ad4fd53e4d29a48b0e530a89a135b7492f2ea9524192fd1481a5b6373a3e4223",
+        "review/app.py": "ef3a364e734c24ca003dd3bddb8b17cb7c2352956b63075629c228725e4ec63d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "3b6afa877bc1dd1cb90f5e906653c0eda74eed76681c3483d02578cbb72628c0"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-encoding-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "exception",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "d49abd27aef3ce963ab57e733850993481b9620d5574b4979bb370adf831f23c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "0ddd321c1350c4e8c2cf5f9ea4acb6d8b8dce5b042c5811e5beb3bcc2a05a18d",
+        "fix/app.py": "d49abd27aef3ce963ab57e733850993481b9620d5574b4979bb370adf831f23c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "f877a9d1895aad434d611e1cf79c39aa318265e5c8d026f29c4f6ae73c513b02",
+        "review/app.py": "2e4a0b988263d0c33810a5c7284c2e9a77db0e996e9d1e6ff6563f0539898db2",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "d22b76b75b4abc9e3064793b0813809732f4d64f699b287dfb8e3e04801c803e"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 4,
+        "path": "app.py",
+        "start": 4
+      },
+      "id": "bug-exception-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "integer_float",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "2d15bd7f60f87e8ffaa6afb9912ff1c593d68546d271f0eabf396c9e74c585c8",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "d25c7564e5b661b1719752f4632a370aa3917a1d5c0c0a3341db0a3a83bbc643",
+        "fix/app.py": "2d15bd7f60f87e8ffaa6afb9912ff1c593d68546d271f0eabf396c9e74c585c8",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "29338b6269e9e3b73062fcd829ace46832ea0a21ed16d5371711c4404856547c",
+        "review/app.py": "97442fe745320c82c5ec4fe1f85ca37d1b0e3bdb881ec4f4b66747f498ad4d5c",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "4b21157e4f47d071d76d1cfd1258e8326036bac1b7563770bb83c3f21cb4391d"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 2,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-integer_float-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "shared_mutation",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "0ccdbcc74203524897d7eaad178169057070bbf0438862c442c86865e55e6a0c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "bfd7e4274aefb3777e3f30a089da79bbbdf64942d1b556cc0dcc64280457fe3b",
+        "fix/app.py": "0ccdbcc74203524897d7eaad178169057070bbf0438862c442c86865e55e6a0c",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "2ad9bc5d5a4fadf20a81660865a864af1cc6d50c13d7cf691fb540a81a05e11b",
+        "review/app.py": "c15608573bc4deba17b579eac1701e984cf3cf031e760608cdb46bcaba77fd17",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "test_reproducer.py": "7763c61e42ab2ffb44e1eeeb35b3dfa8c765a5a351f2ceca733b2c08136f84f3"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": {
+        "end": 3,
+        "path": "app.py",
+        "start": 2
+      },
+      "id": "bug-shared_mutation-2",
+      "label": "bug",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "7546028adc9178ba01ae3cadafc18c846fd2c7a96ade6d9c437f98a141a4571c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "e0344f76024b34d395a49c89ea8f0adf2af86f10a407c0d5c6292abf384a174a",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "d8baf2374be56f8df495315b92030ebd90fb9b53f8f566d94740b85678686401",
+        "review/app.py": "e0344f76024b34d395a49c89ea8f0adf2af86f10a407c0d5c6292abf384a174a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-1",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "f77bcf782adac6889452a4cd82af4ef03da64d53fd6297a0aa323fcbb2726f38",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "5ee2568058f10265d05227cef75e1857dd919e8146c4da3e50fbb9a9e4930d03",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "579024bc15766525ced0eee716fe9cf66bd23b56e7fa4e621ba1570c21869c9a",
+        "review/app.py": "5ee2568058f10265d05227cef75e1857dd919e8146c4da3e50fbb9a9e4930d03",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-2",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "b0e35672bca129037dc35c42b063161340672aa0c62c00cf8fd07e926c367ad1",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "96da1e620154caf6fcd0fe46b68a27a5e1e98bed98d1d6bfddf5c21ebb60cb03",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "b08acf35aae060dbe433cc94f5c1a97b1aeda75992f80b636f99635882edfb77",
+        "review/app.py": "96da1e620154caf6fcd0fe46b68a27a5e1e98bed98d1d6bfddf5c21ebb60cb03",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-3",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "d4e219f7a1b4ad8de02ffa9cb8f722377793623bf225fd993066d9844e98255a",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "cf4a0443441dee73057764fdf7eff6d58f48a35b469821bf8f50d7b81a86c73f",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "849e597ed6a12db574c2ff8454f98378a69fa10a637bf4175da03dfdf46e8567",
+        "review/app.py": "cf4a0443441dee73057764fdf7eff6d58f48a35b469821bf8f50d7b81a86c73f",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-4",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "cf5414b2c7888508285aa497d8436e8a620dc49738808694ea85844c40760825",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "ee33df070740f2e862eceb4572fcd96fb939953f1c199cb36f2f39ed702a79dd",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "722184d7727911786a1e64cab92dd270bb61be126398ea1da7997e1ddb3abf37",
+        "review/app.py": "ee33df070740f2e862eceb4572fcd96fb939953f1c199cb36f2f39ed702a79dd",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-5",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "5f5224df93f7fccba80ec00165d9612351700db4023c3c7c7a5abb1294900b97",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "064b0e4190fb5cbe539e0ed1707d2ba65b748d0ff99d51745c70f6143edf7a28",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ff09534057ed968f32ea53d0bec88c1713f173be9ff3d02e19c1c8f78812b853",
+        "review/app.py": "064b0e4190fb5cbe539e0ed1707d2ba65b748d0ff99d51745c70f6143edf7a28",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-6",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "14f55e74eac618534d69f855ad251391524d3378a4980348efad2f4d954a0a15",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "dd9bba9907d55157cae7c5a2aff59cbdd0aac33c9a6d2fe68d2713e7c9bea510",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "ad6ff43d2ae0744570b9f6f7972674059fdd7cf58b0831759274ea4b52cfc43c",
+        "review/app.py": "dd9bba9907d55157cae7c5a2aff59cbdd0aac33c9a6d2fe68d2713e7c9bea510",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-7",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "f536b10e23ab673876618b716d215b7fa993745b457a41a139aba045b8db3d54",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "aae25b1808d402919fa2739d2390fb7138707a015d9dae472fbe596ddd530052",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "711a950763071cd4a4c98c13d2c4e993db904384efe513c61cbe2d83fb5f862f",
+        "review/app.py": "aae25b1808d402919fa2739d2390fb7138707a015d9dae472fbe596ddd530052",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-8",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "e4d68591fb5821a4094f2626bf09ae8df8d18bbf4459ddf4e6eee5ae4dacd12b",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "833c44579686a3e21a14ef92b6cee748bdb4d09a45084341544eb3b83f312fdd",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "441d2b0514fecb4f27dc8cdea1b3916a19cf7e69e8b11bf2eda4ebe1b0a280d4",
+        "review/app.py": "833c44579686a3e21a14ef92b6cee748bdb4d09a45084341544eb3b83f312fdd",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-9",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "refactor",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "7427a0ec763058664bc4891cb79ca389e15eb9dd374a0985eb8f384a56c55a5c",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "02a2e95ceb6a108495c4c3ed34a8839cf0507c80f035e5871d29f22291772078",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "48d1cf8e68fc5a6de8b7cc99622007b816060446e72491e844a3d514eb8cc194",
+        "review/app.py": "02a2e95ceb6a108495c4c3ed34a8839cf0507c80f035e5871d29f22291772078",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "clean-refactor-10",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "hard-negative",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "059bb0564e2063e2ca26e251201f609808dd937a5063775e3552d32affd9177e",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "d6c43836e58a61e65167f501dcec3135f53dfbd4d8ad504296a9194e6459367a",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "37990246799b5cbc66c45f55bd4b896e5ebdb7d26e87220e93bb518184531f88",
+        "review/app.py": "d6c43836e58a61e65167f501dcec3135f53dfbd4d8ad504296a9194e6459367a",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "hard-negative-1",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "hard-negative",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "90616d6a1d47c4f59b2d3e494aa112b63b73d7d08af733187d9b277afb440bc4",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "913ba58df2548fa5c6c82036dcdc4181c0c2c2d8f0dcdd76c9b8cd4db66fce27",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "11cd134b696f82a64081c11aa96ab70690c2f7d3df8322623a462c0138d6111d",
+        "review/app.py": "913ba58df2548fa5c6c82036dcdc4181c0c2c2d8f0dcdd76c9b8cd4db66fce27",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "hard-negative-2",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "hard-negative",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "aab5a27fb19f57f9e74f95da1275a4296b4038f678507a0b822a229a639c77d6",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "d0140e8509cd1445bbdfbf493e07891ad07ee34d883e38de9eaa481a20806f35",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "edb54ed023c5729018477e05a5d6a35e64cdaf7ce62d58b79e256586988f05fe",
+        "review/app.py": "d0140e8509cd1445bbdfbf493e07891ad07ee34d883e38de9eaa481a20806f35",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "hard-negative-3",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "hard-negative",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "d078198a6a3c44afde6a4598f94e40c2e0836845fb26f2a9e0d6c9ae17bf6c5d",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "a0095f640453c3bfd751f51d5d5a7693d45341163fe2283221274785e34f7335",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "039afcd9cb7ea474df6f9ecba4e0c7be9c2a7a883f0dd474797d3ea6bdc6fd7d",
+        "review/app.py": "a0095f640453c3bfd751f51d5d5a7693d45341163fe2283221274785e34f7335",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "hard-negative-4",
+      "label": "clean",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "injection",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bff80983d819b065efe72cf7ce2b5ef425f9d49948a7cd2abcb0abe0b0061b96",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "67ec9f0694af091ff59285eaf2e9515997a59a1427ac727912ccf3ab3d856b41",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "aa5092fd9e699284f9f05fcc11a40cedc2ed232f7595407fb31f500389fba2c4",
+        "review/app.py": "67ec9f0694af091ff59285eaf2e9515997a59a1427ac727912ccf3ab3d856b41",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "decoy-1",
+      "label": "decoy",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "injection",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bff80983d819b065efe72cf7ce2b5ef425f9d49948a7cd2abcb0abe0b0061b96",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "083c91e248fbb03bb8c08d2c1e1f2d5e24b4492649394458424ab6ade975788d",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "0f4cb30af5f17b069daa0c52bdbc894d44387b6e715ff7cf0d51de65d0b89a3d",
+        "review/app.py": "083c91e248fbb03bb8c08d2c1e1f2d5e24b4492649394458424ab6ade975788d",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "decoy-2",
+      "label": "decoy",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "injection",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bff80983d819b065efe72cf7ce2b5ef425f9d49948a7cd2abcb0abe0b0061b96",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "a4ed4dc4357b45a39d42f42176bca8f51528b7bf34e558a6655e732831172a51",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "d468c4cc16be9f0b8884890bfbff11db150215921ba3c746b0316f1ea12bf017",
+        "review/app.py": "a4ed4dc4357b45a39d42f42176bca8f51528b7bf34e558a6655e732831172a51",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "decoy-3",
+      "label": "decoy",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "injection",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bff80983d819b065efe72cf7ce2b5ef425f9d49948a7cd2abcb0abe0b0061b96",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "a246a7c2b86f076e2b40bfdaa34a2c9bb61db3adb75b1ff1309802b6e8cf88b9",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "a54f6e532b882fd9b71d54dbc231e050ed4ba143771bdcbff5e0c62a6600e92c",
+        "review/app.py": "a246a7c2b86f076e2b40bfdaa34a2c9bb61db3adb75b1ff1309802b6e8cf88b9",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "decoy-4",
+      "label": "decoy",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    },
+    {
+      "category": "injection",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bff80983d819b065efe72cf7ce2b5ef425f9d49948a7cd2abcb0abe0b0061b96",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "2792682c045c422b727be677c3ecd96c8278468fc22745db6e8decd4f953be70",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "192b3f2431712e389189465b0c0f9966733f0637e5ebb9bc22b39844834c2cb2",
+        "review/app.py": "2792682c045c422b727be677c3ecd96c8278468fc22745db6e8decd4f953be70",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "decoy-5",
+      "label": "decoy",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "dev"
+    },
+    {
+      "category": "injection",
+      "difficulty": "simple",
+      "files": {
+        "base/app.py": "bff80983d819b065efe72cf7ce2b5ef425f9d49948a7cd2abcb0abe0b0061b96",
+        "base/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "fix.diff": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "fix/app.py": "23d1170b16b7f9863af2d8f21d2d20bb8db562f094906f742377f40f6196d981",
+        "fix/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b",
+        "review.diff": "46e206f73d103b83ced6ec059500c59f97e466d1cb92f2daeea5ebfcdc142597",
+        "review/app.py": "23d1170b16b7f9863af2d8f21d2d20bb8db562f094906f742377f40f6196d981",
+        "review/tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+      },
+      "generator_seed": 20261005,
+      "ground_truth": null,
+      "id": "decoy-6",
+      "label": "decoy",
+      "license": "MIT",
+      "provenance": "seeded",
+      "split": "test"
+    }
+  ],
+  "limitations": [
+    "Tiny synthetic Python functions; not general review performance",
+    "Repeated bug families across dev/test; no family-level generalization claim",
+    "No real-history cases",
+    "Existing tests are intentionally weak public-API smoke checks"
+  ],
+  "seed": 20261005,
+  "version": "steward-seeded-v1"
+}

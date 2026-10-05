@@ -1,0 +1,9 @@
+--- a/app.py
++++ b/app.py
+@@ -1,5 +1,2 @@
+ def solve(values):
+-    try:
+-        return values.read()
+-    finally:
+-        values.close()
++    return values.read()

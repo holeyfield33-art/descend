@@ -1,0 +1,7 @@
+--- a/app.py
++++ b/app.py
+@@ -1,3 +1,3 @@
+-# Deliberate documented behavior.
+ def solve(values):
+     return values is None
++# Keep this behavior.

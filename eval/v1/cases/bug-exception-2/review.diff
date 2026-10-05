@@ -1,0 +1,9 @@
+--- a/app.py
++++ b/app.py
+@@ -1,5 +1,5 @@
+ def solve(values):
+     try:
+         return values[0]
+-    except IndexError:
++    except KeyError:
+         return None

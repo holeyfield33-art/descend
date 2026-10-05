@@ -1,0 +1,6 @@
+--- a/app.py
++++ b/app.py
+@@ -1,2 +1,2 @@
+ def solve(values):
+-    return values[0] if values else None
++    return values[0]

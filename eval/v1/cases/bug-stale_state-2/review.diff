@@ -1,0 +1,8 @@
+--- a/app.py
++++ b/app.py
+@@ -1,3 +1,4 @@
+ def solve(values):
++    old = values['count']
+     values['count'] += 1
+-    return values['count']
++    return old

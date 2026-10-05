@@ -1,0 +1,7 @@
+--- a/app.py
++++ b/app.py
+@@ -1,2 +1,3 @@
+ def solve(values):
+-    return values + 7
++    result = values + 7
++    return result

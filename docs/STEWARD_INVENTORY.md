@@ -1,5 +1,20 @@
 # Repo Steward inventory
 
+## WP1 planned interfaces (recorded before implementation/testing)
+
+`scripts.build_steward_corpus.main` and `descend.steward.corpus.build_corpus`
+write owned generated Python snapshots, diffs, reproducers and JSON manifests
+under a caller-selected empty output directory. No generated source is imported
+or executed by the generator. `verify_manifest` reads bytes and checks hashes.
+`scripts.check_steward_corpus.main` reads frozen manifests and copies each owned
+fixture into a new scratch directory; invokes only the Linux isolated worker,
+then writes bounded test results/hashes to an explicit report path. The worker
+runs a controller-selected pinned pytest argv, never a fixture-selected command.
+No provider, credentials, sibling imports, Git mutation or checkout patching.
+Ground truth stays in evaluator manifests, separate from future review inputs.
+The worker pytest runtime is trusted installed package code under a read-only
+system runtime mount; it is not a controller asset store.
+
 Worker compatibility addition: the trusted wrapper bind-mounts only `/dev/null`
 inside its new chroot before dropping UID.
 Git otherwise refuses even `init` in the minimal worker. No host device tree
