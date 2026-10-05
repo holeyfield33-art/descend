@@ -57,3 +57,5 @@ A subsequent structured-review pilot made one more Super call, then corrected th
 After the structured validator and dashboard changes, native Windows collected **114 tests: 90 passed, 24 Linux-only skipped**. The new tests cover valid and fabricated citations, unique-line correction, ambiguity, malformed responses and HTML escaping.
 
 After the atomic review-claim change, native Windows collected **116 tests: 92 passed, 24 Linux-only skipped**. The added cases prove that a second watcher sees the in-progress claim instead of calling the provider and that a failed call is not retried automatically. The prior 114-test count remains a historical checkpoint.
+
+After persistent maintainer triage was added, native Windows collected **117 tests: 93 passed, 24 Linux-only skipped**. The decision test checks that a confirmed finding survives reopening the SQLite store and that a nonexistent finding cannot be triaged.

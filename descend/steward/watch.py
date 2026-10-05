@@ -59,6 +59,9 @@ class ReviewStore:
             db.execute("CREATE TABLE IF NOT EXISTS reviews (repo TEXT NOT NULL, sha TEXT NOT NULL, "
                        "created_at TEXT NOT NULL, status TEXT NOT NULL, payload TEXT NOT NULL, "
                        "PRIMARY KEY(repo, sha))")
+            db.execute("CREATE TABLE IF NOT EXISTS decisions (repo TEXT NOT NULL, sha TEXT NOT NULL, "
+                       "finding_index INTEGER NOT NULL, decision TEXT NOT NULL, note TEXT NOT NULL, "
+                       "decided_at TEXT NOT NULL, PRIMARY KEY(repo, sha, finding_index))")
 
     def get(self, repo: str, sha: str) -> dict | None:
         with sqlite3.connect(self.path) as db:
@@ -85,7 +88,34 @@ class ReviewStore:
             raise ValueError("Invalid review limit")
         with sqlite3.connect(self.path) as db:
             rows = db.execute("SELECT payload FROM reviews ORDER BY created_at DESC LIMIT ?", (limit,)).fetchall()
-        return [json.loads(row[0]) for row in rows]
+            decisions = db.execute("SELECT repo,sha,finding_index,decision,note,decided_at FROM decisions").fetchall()
+        indexed = {}
+        for repo, sha, index, decision, note, decided_at in decisions:
+            indexed.setdefault((repo, sha), {})[index] = {"decision": decision, "note": note,
+                                                          "decided_at": decided_at}
+        results = [json.loads(row[0]) for row in rows]
+        for result in results:
+            result["decisions"] = indexed.get((result["repo"], result["sha"]), {})
+        return results
+
+    def decide(self, repo: str, sha: str, finding_index: int, decision: str, note: str = "") -> dict:
+        if decision not in ("confirmed", "dismissed"):
+            raise ValueError("Decision must be confirmed or dismissed")
+        if type(finding_index) is not int or finding_index < 0:
+            raise ValueError("Invalid finding index")
+        if not isinstance(note, str) or len(note) > 1000:
+            raise ValueError("Invalid note")
+        review = self.get(repo, sha)
+        findings = (review or {}).get("review", {}).get("findings", [])
+        if finding_index >= len(findings):
+            raise ValueError("Finding does not exist or lacks validated citation")
+        at = datetime.now(timezone.utc).isoformat()
+        with sqlite3.connect(self.path) as db:
+            db.execute("INSERT INTO decisions VALUES (?,?,?,?,?,?) ON CONFLICT(repo,sha,finding_index) "
+                       "DO UPDATE SET decision=excluded.decision,note=excluded.note,decided_at=excluded.decided_at",
+                       (repo, sha, finding_index, decision, note, at))
+        return {"repo": repo, "sha": sha, "finding_index": finding_index,
+                "decision": decision, "note": note, "decided_at": at}
 
 
 def scan_once(repo: str | Path, store: ReviewStore, reviewer: Callable[[dict], dict]) -> dict:

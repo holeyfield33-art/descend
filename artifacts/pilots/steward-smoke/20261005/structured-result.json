@@ -14,6 +14,7 @@
   "independent_owned_fixture_check": {"input": [2, 4], "actual": 2.0, "expected": 3},
   "restart_check": "cached review revalidated locally, with no additional provider call",
   "dashboard_check": {"loopback_http_status": 200, "finding_visible": true, "line_correction_visible": true},
+  "maintainer_decision": {"decision": "confirmed", "basis": "Owned fixture returned 2 for [2,4]; expected 3", "persisted_across_store_reopen": true},
   "ledger_after": {"calls": 117, "accounted_upper_bound_usd": 0.541887, "unresolved_calls": 0},
   "limits": "One intentionally simple owned bug; this does not measure real-world review accuracy. Exact line matching validates citation provenance, not the reasoning or severity. The owned fixture was executed manually; Repo Steward never executes watched code."
 }

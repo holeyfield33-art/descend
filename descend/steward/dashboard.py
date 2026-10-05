@@ -13,6 +13,7 @@ def render_reviews(rows: list[dict]) -> str:
         review = row.get("review") or {}
         findings = review.get("findings") or []
         heading = f"{escape(str(row.get('repo', 'unknown')))} · {escape(str(row.get('sha', ''))[:12])}"
+        decisions = row.get("decisions") or {}
         findings_html = "".join(
             "<li><strong>" + escape(str(item.get("severity", ""))) + "</strong> "
             + escape(str(item.get("path", ""))) + ":" + escape(str(item.get("line", "")))
@@ -20,8 +21,10 @@ def render_reviews(rows: list[dict]) -> str:
             + "<pre>" + escape(str(item.get("evidence", ""))) + "</pre>"
             + ("<p>Line corrected from model citation " + escape(str(item.get("reported_line")))
                + " by exact added-line match.</p>" if item.get("line_corrected") else "")
+            + "<p>Maintainer: " + escape(str((decisions.get(index) or decisions.get(str(index)) or {})
+                                            .get("decision", "unreviewed"))) + "</p>"
             + "<p>Check: " + escape(str(item.get("verification", ""))) + "</p></li>"
-            for item in findings)
+            for index, item in enumerate(findings))
         note = review.get("parse_error") or ("No cited findings" if not findings else "")
         if review.get("rejected"):
             note += f" · {len(review['rejected'])} unsupported citation(s) withheld"

@@ -97,3 +97,17 @@ def test_failed_review_is_not_retried_automatically(tmp_path):
     result = scan_once(repo, store, lambda _: (_ for _ in ()).throw(AssertionError("retried")))
     assert result["status"] == "error"
     assert result["cached"] is True
+
+
+def test_maintainer_decision_persists_and_requires_validated_finding(tmp_path):
+    store = ReviewStore(tmp_path / "state.sqlite")
+    snapshot = {"repo": "test-repo", "sha": "a" * 40, "status": "ready", "diff": ""}
+    assert store.claim(snapshot)
+    row = {"repo": "test-repo", "sha": "a" * 40, "status": "reviewed",
+           "review": {"findings": [{"path": "app.py", "line": 1, "evidence": "x = 1"}]}}
+    store.update(row)
+    stored = store.decide("test-repo", "a" * 40, 0, "confirmed", "Reproduced locally")
+    assert stored["decision"] == "confirmed"
+    assert ReviewStore(tmp_path / "state.sqlite").recent()[0]["decisions"][0]["note"] == "Reproduced locally"
+    with pytest.raises(ValueError):
+        store.decide("test-repo", "a" * 40, 1, "dismissed")
