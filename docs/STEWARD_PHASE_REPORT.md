@@ -2,6 +2,27 @@
 
 ## Authorized WP0 repair and baseline
 
+**WP0 acceptance gate met:** repair commit `3af3ed9` was pushed, then freshly
+cloned from `https://github.com/holeyfield33-art/descend.git` on both platforms.
+Linux native checkout `/root/steward-wp0-fresh-3af3ed9`: 125 passed, zero skips.
+Windows fresh checkout `controller_state/wp0-fresh-3af3ed9`: 100 passed,
+25 skipped with the same reasons as baseline. Both used the installed locked
+environments recorded by doctor; these were fresh source clones, not freshly
+created second virtual environments. Both checkout statuses were clean.
+
+Commands: `git clone https://github.com/holeyfield33-art/descend.git <destination>`,
+then from the clone root `<locked-python> -m descend doctor` and
+`<locked-python> -m pytest -q -ra`. Linux interpreter:
+`/opt/steward-wp0-venv/bin/python`; Windows interpreter:
+`C:\Users\SuperAdmin\.vscode\descend\.venv\Scripts\python.exe`.
+Complete fresh-suite output is in `evidence/steward-wp0/fresh-*-suite.txt`.
+The lock SHA-256 on both platforms is
+`8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea`.
+
+Provenance chain: initial inventory `1b7dad1`, authorized repair and baseline
+`3af3ed9`, followed by this evidence-only closure. No evaluation result or act
+capability is implied by WP0 completion.
+
 The user authorized repair and continuation after checkpoint `1b7dad1`.
 The initial stop recorded below is historical; no further continuation approval
 is needed. New code: hardened Git invocations, offline `descend doctor`, platform

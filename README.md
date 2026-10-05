@@ -2,7 +2,8 @@
 
 ## Repo Steward development status — 2026-10-05
 
-Repo Steward's act/evaluation/demo phase is in WP0 baseline verification.
+Repo Steward's WP0 inventory and baseline gate is complete: fresh public clones
+passed 125 Linux tests and 100 Windows tests (25 explicit skips).
 The watcher Git helper-execution issue has been repaired and tested with an
 isolated positive control. See the [finding and repair](docs/STEWARD_BOUNDARY_REVIEW.md).
 New paid calls require
