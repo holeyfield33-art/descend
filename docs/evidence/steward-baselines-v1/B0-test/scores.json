@@ -1,0 +1,85 @@
+{
+  "adjudicated": null,
+  "arm": "B0",
+  "cases": 32,
+  "citation_valid": {
+    "denominator": 0,
+    "numerator": 0,
+    "rate": null,
+    "wilson95": null
+  },
+  "classifications": [],
+  "clean_false_alarm": {
+    "denominator": 11,
+    "numerator": 0,
+    "rate": 0.0,
+    "wilson95": [
+      0,
+      0.2588329669680317
+    ]
+  },
+  "cost_usd": {
+    "observed_cases": 32,
+    "total": 0
+  },
+  "decoy_false_alarm": {
+    "denominator": 5,
+    "numerator": 0,
+    "rate": 0.0,
+    "wilson95": [
+      0,
+      0.43448246478317476
+    ]
+  },
+  "errors": [],
+  "false_positives": [],
+  "false_positives_count": 0,
+  "latency_seconds": {
+    "median": null,
+    "observed_cases": 0
+  },
+  "limitation": "Small seeded sample; location matching is weak; correlated families are not independent trials.",
+  "location_tolerance": 2,
+  "metric_version": "v1",
+  "misses": [
+    "bug-off_by_one-1",
+    "bug-empty_check-1",
+    "bug-wrong_default-1",
+    "bug-swapped_arguments-1",
+    "bug-resource_close-1",
+    "bug-stale_state-1",
+    "bug-encoding-1",
+    "bug-exception-1",
+    "bug-shared_mutation-1",
+    "bug-off_by_one-2",
+    "bug-comparison-2",
+    "bug-swapped_arguments-2",
+    "bug-boundary-2",
+    "bug-encoding-2",
+    "bug-exception-2",
+    "bug-shared_mutation-2"
+  ],
+  "precision": {
+    "denominator": 0,
+    "numerator": 0,
+    "rate": null,
+    "wilson95": null
+  },
+  "provider_usage": {
+    "completion_tokens": null,
+    "observed_cases": 0,
+    "prompt_tokens": null
+  },
+  "recall": {
+    "denominator": 16,
+    "numerator": 0,
+    "rate": 0.0,
+    "wilson95": [
+      0,
+      0.1936076805344365
+    ]
+  },
+  "split": "test",
+  "true_positives": 0,
+  "verification": null
+}

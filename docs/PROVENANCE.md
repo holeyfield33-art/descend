@@ -1,5 +1,15 @@
 # Provenance
 
+## Repo Steward scoring and deterministic baselines
+
+`scoring.py`, the baseline runner and scorer CLI are original implementations
+of the predeclared `STEWARD_METRICS.md` definitions. The baseline uses pinned
+pytest 9.1.1 and ruff 0.16.10 as installed tools, not copied source. The separate
+evaluation dependency lock records their dependencies. B0/B1 receive only base
+and review snapshots: neither receives fixes, labels nor reproducer tests.
+No model or sibling repository contributes scoring labels. Wilson intervals
+are descriptive and do not correct for correlated synthetic cases.
+
 ## Repo Steward corpus v1
 
 Generator `descend/steward/corpus.py` and all `eval/v1` fixtures are original

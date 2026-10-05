@@ -1,0 +1,4057 @@
+{
+  "arm": "B1",
+  "corpus_version": "steward-seeded-v1",
+  "eval_lock_sha256": "7c4be978c00865d6ab6ad26a3a49a2020b5a1b130c91c245a5c002f5c5a627dd",
+  "provider_calls": 0,
+  "results": [
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-off_by_one-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.6351219909999983,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-comparison-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.6074498720000037,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-empty_check-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.6958806069999994,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-wrong_default-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.494429193000009,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.02s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-swapped_arguments-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.534045230000004,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-boundary-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.3732372259999863,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-resource_close-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.4387427719999977,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-stale_state-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.423741234000005,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-encoding-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.3650205400000033,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-exception-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.173266900999991,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-integer_float-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.0348538329999997,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-shared_mutation-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1664277769999956,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-off_by_one-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9460628060000005,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.00s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-comparison-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9162690769999955,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-empty_check-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9313458529999963,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.00s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-wrong_default-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1210098850000065,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-swapped_arguments-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1886266540000037,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-boundary-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1735224950000003,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-resource_close-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.4542903119999977,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-stale_state-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9869714430000016,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-encoding-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.099659411999994,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-exception-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1817063940000025,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-integer_float-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9873746859999954,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-shared_mutation-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.7952927550000055,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.6569594639999963,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.699814106000005,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-3",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1704129399999914,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-4",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 3.6190235799999897,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.02s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-5",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.8321130409999995,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-6",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 3.323406954999996,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-7",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 3.867755013000007,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.02s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-8",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.6996473640000147,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-9",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 3.6174357790000045,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.02s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-10",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 3.3348939360000145,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.02s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.5612857350000127,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 3.4312981569999863,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.02s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-3",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.362455557000004,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-4",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.975316313999997,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-1",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.0766761739999993,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-2",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9086088079999968,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.00s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-3",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.951645622000001,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-4",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 1.9920227589999797,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-5",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.1688952659999927,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-6",
+      "content": "{\"findings\": []}",
+      "error": null,
+      "latency_seconds": 2.4105420159999937,
+      "stages": {
+        "base": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.01s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        },
+        "review": {
+          "lint": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/ruff",
+              "check",
+              "--isolated",
+              "--no-cache",
+              "--output-format",
+              "json",
+              "app.py"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "[]"
+          },
+          "tests": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-m",
+              "pytest",
+              "-q",
+              "--tb=short",
+              "-p",
+              "no:cacheprovider",
+              "tests"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": ".                                                                        [100%]\n1 passed in 0.00s\n"
+          },
+          "versions": {
+            "argv": [
+              "/usr/local/lib/steward-test-runtime/bin/python",
+              "-c",
+              "import pytest; import importlib.metadata as m; print(pytest.__version__, m.version(\"ruff\"))"
+            ],
+            "returncode": 0,
+            "stderr": "",
+            "stdout": "9.1.1 0.16.10\n"
+          }
+        }
+      },
+      "tokens": null
+    }
+  ],
+  "test_manifest_sha256": "e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043"
+}

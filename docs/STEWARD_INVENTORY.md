@@ -1,5 +1,17 @@
 # Repo Steward inventory
 
+## WP2 planned interfaces (before testing)
+
+`scoring.wilson` and `score_results` are pure functions over exported cases and
+findings; no source execution or provider access. `blind_sheet` emits anonymous
+finding text/snippets with opaque IDs, while a separate controller mapping
+retains case/arm identities. `scripts.score_steward_results.main` reads explicit
+manifest/results files and writes JSON scores/sheets. `scripts.run_steward_baselines`
+reads frozen snapshots, copies only base/review trees into scratch workers,
+runs controller-pinned pytest/ruff argv under Linux isolation, and exports
+B0/B1 results. Labels are used only by the scoring step, never baseline commands.
+No fixes/reproducers in baseline inputs; no model/network/credentials.
+
 ## WP1 planned interfaces (recorded before implementation/testing)
 
 `scripts.build_steward_corpus.main` and `descend.steward.corpus.build_corpus`

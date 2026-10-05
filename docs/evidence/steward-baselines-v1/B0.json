@@ -1,0 +1,229 @@
+{
+  "arm": "B0",
+  "corpus_version": "steward-seeded-v1",
+  "eval_lock_sha256": "7c4be978c00865d6ab6ad26a3a49a2020b5a1b130c91c245a5c002f5c5a627dd",
+  "provider_calls": 0,
+  "results": [
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-off_by_one-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-comparison-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-empty_check-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-wrong_default-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-swapped_arguments-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-boundary-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-resource_close-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-stale_state-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-encoding-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-exception-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-integer_float-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-shared_mutation-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-off_by_one-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-comparison-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-empty_check-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-wrong_default-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-swapped_arguments-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-boundary-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-resource_close-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-stale_state-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-encoding-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-exception-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-integer_float-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "bug-shared_mutation-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-3",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-4",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-5",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-6",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-7",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-8",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-9",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "clean-refactor-10",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-3",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "hard-negative-4",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-1",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-2",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-3",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-4",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-5",
+      "content": "{\"findings\": []}"
+    },
+    {
+      "accounted_upper_bound_usd": 0,
+      "case": "decoy-6",
+      "content": "{\"findings\": []}"
+    }
+  ],
+  "test_manifest_sha256": "e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043"
+}

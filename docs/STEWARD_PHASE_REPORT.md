@@ -1,5 +1,26 @@
 # Repo Steward phase report
 
+## WP2 offline scoring and baseline results
+
+Definitions: `STEWARD_METRICS.md`. Implementation: `scoring.py`, scoring CLI,
+isolated baseline runner, `requirements-steward-eval-lock.txt`. Scorer tests:
+3 passed, covering duplicates, invalid/wrong locations, clean/decoy alarms,
+multiple findings, missing/error cases and Wilson values. A provider error
+cannot earn recall from partial content. Full Windows regression: 131 collected,
+106 passed, 25 skipped (same isolation/symlink reasons); the subsequent localized
+provider-error check also passed. See `evidence/steward-wp2-windows.txt`.
+
+Linux command:
+`/opt/steward-wp0-venv/bin/python -m scripts.run_steward_baselines --output controller_state/steward-baselines-v1`.
+Output: `{"cases": 44, "errors": 0, "provider_calls": 0}`. For each arm B0/B1:
+`python -m scripts.score_steward_results --results controller_state/steward-baselines-v1/B1.json --output controller_state/steward-baselines-v1/B1-test --split test`
+(substitute B0 for B1). Each yielded 32 cases, TP 0, FP 0, misses 16.
+All raw outputs and hash identities are preserved under
+`evidence/steward-baselines-v1/`; [EVALUATION.md](EVALUATION.md) lists all misses,
+intervals and the intentionally weak baseline limitation. Adjudication sheets
+and mappings are versioned exports; empty baseline sheets require no decisions.
+Act verification and model metrics remain unmeasured. Additional spend: $0.
+
 ## WP1 frozen corpus and isolated label validation
 
 Freeze commit `a810a3f` precedes all fixture execution. The 44 original seeded

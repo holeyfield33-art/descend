@@ -101,8 +101,16 @@ controller_state/corpus-rebuild` (the output directory must be empty). See
 and `python -m scripts.check_steward_corpus --output controller_state/corpus-validation.json`.
 The checker refuses native Windows. Frozen hashes and full per-case evidence
 are recorded in the phase report. Never send labels, fixes or reproducers to
-the reviewer. WP2 still needs scoring,
-B0/B1 and blind adjudication; WP3 needs the export-only act worker and tamper
+the reviewer. WP2 now has scoring, B0/B1 and blind adjudication-sheet exports.
+Provision `requirements-steward-eval-lock.txt` into the trusted Linux pytest
+runtime, then run `python -m scripts.run_steward_baselines --output
+controller_state/steward-baselines-v1`. Score each arm with
+`python -m scripts.score_steward_results --results controller_state/steward-baselines-v1/B1.json
+--output controller_state/B1-test --split test`. B0 uses the same command with
+its exported filename. Scores include every miss/error; blind sheets exclude
+model/case labels and their mappings remain separate. Never present automatic
+location matching as human-adjudicated accuracy. See `EVALUATION.md`.
+WP3 still needs the export-only act worker and tamper
 checks; WP4 needs the attack matrix and independent red-team handoff. WP5 needs
 the one-command offline demo and scanned static bundle. Those commands do not
 exist yet, apart from the corpus commands above, so this manual provides no
