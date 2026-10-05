@@ -1,5 +1,26 @@
 # Repo Steward inventory
 
+Worker compatibility addition: the trusted wrapper bind-mounts only `/dev/null`
+inside its new chroot before dropping UID.
+Git otherwise refuses even `init` in the minimal worker. No host device tree
+is mounted and no controller path becomes visible. The isolated Git positive
+control exercises this addition; existing isolation tests are retained.
+
+WP0 diagnostics extension: `doctor.diagnose(root)` reads `.python-version`,
+`requirements-lock.txt` and installed package metadata, resolves helper paths,
+and calls the existing namespace prerequisite probe. `descend.__main__.main`
+exposes `python -m descend doctor` / installed `descend doctor`, with `--root`
+and fail-closed `--require-act`. Writes JSON to stdout only; no credentials,
+provider calls, target execution or filesystem mutation. Tests will validate
+missing dependencies and act refusal; act readiness remains false until WP3.
+
+Repair extension: `watch.git_environment()` constructs a minimal process
+environment without credentials or inherited Git overrides; `_git` pins the
+resolved executable, disables fsmonitor/hooks/protocols/replacement objects,
+and all diff paths disable textconv/external diff/submodule recursion. Reads:
+trusted process PATH at module import and Windows SystemRoot only. Writes:
+none beyond existing Git reads. Tests: `test_steward_git_boundary.py`.
+
 WP0 static inventory, 2026-10-05. Source: `b59a470231ec99d33ba297204dec9d4844c563ee`.
 Inventory precedes new tests. This is an interface and data-flow inventory,
 not a claim of test coverage or security assurance. See the open

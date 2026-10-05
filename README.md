@@ -2,10 +2,10 @@
 
 ## Repo Steward development status — 2026-10-05
 
-Repo Steward's act/evaluation/demo phase is paused at the WP0 inventory gate:
-the watcher can invoke configured Git text-conversion helpers on the controller
-host. See the [finding and proposed repair](docs/STEWARD_BOUNDARY_REVIEW.md).
-Do not scan untrusted checkouts until this is resolved. New paid calls require
+Repo Steward's act/evaluation/demo phase is in WP0 baseline verification.
+The watcher Git helper-execution issue has been repaired and tested with an
+isolated positive control. See the [finding and repair](docs/STEWARD_BOUNDARY_REVIEW.md).
+New paid calls require
 the directive's separate WP6 approval; the existing $20 ceiling is not that approval.
 
 The [phase report](docs/STEWARD_PHASE_REPORT.md),

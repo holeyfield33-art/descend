@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "python": "3.14.4",
+  "python_pin": "3.14.4",
+  "python_pin_file": ".python-version",
+  "platform": "linux",
+  "helpers": {
+    "git": "/usr/bin/git",
+    "unshare": "/usr/bin/unshare",
+    "chroot": "/usr/bin/chroot",
+    "setpriv": "/usr/bin/setpriv",
+    "mount": "/usr/bin/mount",
+    "test_runner_python": "/opt/steward-wp0-venv/bin/python",
+    "test_runner_binary": "/usr/bin/python3.14"
+  },
+  "lock_sha256": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+  "dependency_mismatches": [],
+  "isolation": {
+    "runtime": "linux-namespaces-unshare-chroot",
+    "unshare_path": "/usr/bin/unshare",
+    "available": true,
+    "uid": 0,
+    "euid": 0,
+    "is_root": true
+  },
+  "protocol_ready": true,
+  "act_ready": false,
+  "act_reason": "Act worker not implemented; prerequisites alone are not readiness",
+  "provider_calls": 0
+}

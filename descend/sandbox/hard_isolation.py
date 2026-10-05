@@ -150,6 +150,9 @@ def run_in_hard_isolation(
 
         ROOT=__CHROOT__
         mkdir -p "$ROOT"/{workspace,tmp,proc,dev,usr,lib,lib64,bin,etc}
+        # Git and test runners require a real null device, not a writable file.
+        touch "$ROOT/dev/null"
+        mount --bind /dev/null "$ROOT/dev/null"
 
         for d in /usr /lib /lib64 /bin; do
           if [ -d "$d" ]; then

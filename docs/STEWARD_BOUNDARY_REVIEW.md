@@ -1,7 +1,10 @@
 # Steward boundary review: Git helper execution
 
-Status: OPEN; static source review, 2026-10-05, source `b59a470231ec99d33ba297204dec9d4844c563ee`.
-No exploit was executed. WP0 is paused at the directive's stop-and-ask gate.
+Status: repair implemented, 2026-10-05; original source `b59a470231ec99d33ba297204dec9d4844c563ee`.
+The user authorized repair and autonomous continuation after the documented
+stop. The isolated positive-control regression now passes: the configured
+helper executes when explicitly enabled, and never during repaired root or
+parent-commit scans (mock and canned live callbacks; zero provider calls).
 
 ## Finding
 
@@ -42,10 +45,22 @@ any existing watched checkout is malicious or that a credential was exposed.
 5. Re-run the full inventory coverage, Windows protocol and Linux suites, then
    fresh-clone verification. Retain the original tests unchanged.
 
-The repair is proposed, not implemented. It preserves read-only review and the
-future export-only act boundary. No sandbox escape or secret access was tested.
+The repair preserves read-only review and the future export-only act boundary.
+`git_environment` strips inherited credentials/Git overrides, disables global
+and system config and lazy fetching; `_git` pins an absolute executable and
+disables fsmonitor, hooks, network protocols, replacement objects and recursive
+submodules. Every diff path explicitly disables both helper types. Repository
+local configuration is still read by Git; this is not a universal assurance
+against malicious Git objects or vulnerabilities in Git itself. Output capture
+still needs a resource bound in the later hardening phase.
 
-## Why work stopped
+The regression initially failed because Git required `/dev/null` in the
+minimal worker. A character-device creation attempt was unusable in this WSL
+environment; the final implementation bind-mounts just `/dev/null`, not `/dev`.
+The positive control and Git reads then succeeded. No secret access, external
+network access or controller-host exploit was performed.
+
+## Why work initially stopped
 
 Section 8 of the user-supplied Repo Steward directive requires stopping and
 asking upon finding a route to a secret, network, or real-checkout modification:

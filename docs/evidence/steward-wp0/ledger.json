@@ -1,0 +1,19 @@
+{
+  "start": {
+    "cap_usd": 20.0,
+    "accounted_upper_bound_usd": 0.548195,
+    "unresolved_calls": 0,
+    "calls": 118,
+    "halted": false,
+    "billing_receipt": false
+  },
+  "end": {
+    "cap_usd": 20.0,
+    "accounted_upper_bound_usd": 0.548195,
+    "unresolved_calls": 0,
+    "calls": 118,
+    "halted": false,
+    "billing_receipt": false
+  },
+  "new_provider_calls": 0
+}

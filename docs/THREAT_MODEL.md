@@ -3,9 +3,10 @@
 ## Repo Steward scope notice
 
 The DM0 worker claims below do not cover Steward's controller-side Git reader.
-The [open helper-execution finding](STEWARD_BOUNDARY_REVIEW.md) prevents claiming
-that current Steward scans cannot execute checkout-configured helpers.
-WP0 stopped for the required human decision. No act worker is implemented;
+The [helper-execution repair](STEWARD_BOUNDARY_REVIEW.md) disables Git textconv
+and external diff helpers, with a Linux-isolated positive-control regression.
+This does not cover arbitrary Git vulnerabilities. The user authorized repair
+and continuation after the initial stop. No act worker is implemented;
 its threat model and measured limits remain pending.
 
 ## Assets

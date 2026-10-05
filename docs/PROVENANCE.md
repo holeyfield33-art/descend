@@ -1,5 +1,23 @@
 # Provenance
 
+## Repo Steward WP0 boundary repair (2026-10-05)
+
+The Git invocation policy, offline doctor and new regression tests are original
+local changes based on source `b59a470231ec99d33ba297204dec9d4844c563ee` and the
+inventory checkpoint `1b7dad1668ce09dc4f5196675786149d04853e79`.
+The user subsequently authorized repairing the discovered boundary and
+continuing without continuation prompts. Git's official `git-diff` documentation
+informed the separate `--no-textconv`/`--no-ext-diff` flags; no upstream source was
+copied. No sibling checkout was modified or imported. The harmless helper
+positive control runs only in the Linux namespace worker. New test fixtures
+are owned synthetic code, not external evaluation answers.
+
+Runtime pins reflect the actual supported environments: Linux Python 3.14.4
+in `.python-version`, Windows Python 3.14.6 in `.python-version.windows`.
+They are deliberately recorded separately, not represented as identical
+interpreters. The dependency lock remains shared; source text is LF while
+historical `artifacts/**` retains exact bytes.
+
 ## Controller-side Nemotron loop
 
 The Phase 2A client adapts the pinned cookbook's `models/nemotron/run_nemotron.ipynb` OpenAI client/chat-completions pattern and `tool-calling/function_calling_1.ipynb` assistant/tool response sequence. Adapted code lives in `descend/controller/inference.py` and `descend/agents/nemotron.py`; the cookbook remains an unchanged sibling reference, never a runtime dependency. Descend adds its own explicit schemas, isolated relay, token/spend reservations and durable evidence handling. The existing copied MIT notice covers adapted cookbook patterns.

@@ -39,6 +39,7 @@ dev = [
 ]
 
 [project.scripts]
+descend = "descend.__main__:main"
 descend-run-fake = "scripts.run_fake_trial:main"
 
 [tool.setuptools.packages.find]

@@ -1,2 +1,8 @@
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.sh text eol=lf
+requirements*.txt text eol=lf
 # Experimental evidence must retain the exact committed bytes on every platform.
 artifacts/** -text

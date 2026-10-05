@@ -1,5 +1,41 @@
 # Repo Steward phase report
 
+## Authorized WP0 repair and baseline
+
+The user authorized repair and continuation after checkpoint `1b7dad1`.
+The initial stop recorded below is historical; no further continuation approval
+is needed. New code: hardened Git invocations, offline `descend doctor`, platform
+Python pins and LF source attributes. Worker compatibility: bind only `/dev/null`
+so Git can run inside the jail. Existing tests were not removed or weakened.
+
+| Command | Actual result |
+|---|---|
+| `.venv\Scripts\python -m descend doctor` | Protocol ready; no dependency mismatch; act readiness false |
+| `.venv\Scripts\python -m pytest -q -ra` | 125 collected, 100 passed, 25 skipped, zero failures |
+| `/opt/steward-wp0-venv/bin/python -m descend doctor` in Ubuntu | Protocol ready; namespace prerequisite available; act readiness false |
+| `/opt/steward-wp0-venv/bin/python -m pytest -q -ra` in Ubuntu | 125 collected, 125 passed, zero skips/failures |
+
+Full output and all 25 Windows skip reasons are preserved in
+[`evidence/steward-wp0/`](evidence/steward-wp0/): unavailable Linux namespace
+execution and one unavailable Windows symlink privilege. Windows skips are not
+boundary passes. Doctor records interpreter invocation and binary separately,
+absolute helper paths and the dependency lock hash. Linux uses 3.14.4; Windows
+uses 3.14.6. Build-tool dependencies remain a reproducibility limitation.
+
+The isolated helper positive control initially failed because the jail lacked
+`/dev/null`. Creating a device node did not yield a usable device in this WSL
+environment; the final single-device bind mount passed. The initial Linux full
+run was 124 passed / 1 failed; final full run was 125 passed. No failures were
+dropped from the report. Windows initially ran before doctor/probe additions:
+99 passed / 24 skipped; final counts above supersede that intermediate result.
+
+Ledger start/end: $0.548195, 118 calls, zero unresolved holds, no new calls.
+Fresh public clone verification follows the repair commit before WP1 begins.
+WP0 required a documentation stop checkpoint plus a repair commit, rather than
+one commit, to preserve the mandated escalation and subsequent authorization.
+
+## Initial checkpoint history
+
 2026-10-05; WP0 checkpoint, not phase completion.
 Source inspected: `b59a470231ec99d33ba297204dec9d4844c563ee`.
 

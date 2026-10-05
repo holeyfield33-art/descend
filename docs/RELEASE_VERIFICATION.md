@@ -1,11 +1,11 @@
 # Release verification
 
-**2026-10-05 Steward checkpoint:** the new WP0 baseline and fresh-clone checks
-have not run. Static inventory found a controller-side Git helper execution
-path and triggered the directive's stop condition. WSL startup and a namespace
-prerequisite probe now succeed, but they are not a suite result. See the
-[phase report](STEWARD_PHASE_REPORT.md). Counts below retain their historical
-scope and do not validate the proposed act/evaluation/demo phase.
+**2026-10-05 Steward WP0:** the authorized Git helper repair passes the full
+Linux suite (125 passed, no skips) and Windows suite (100 passed, 25 skips;
+Linux worker unavailable and one symlink-privilege skip). Doctor records both
+environments and reports act readiness false. Fresh-clone verification follows
+publication. See the [phase report](STEWARD_PHASE_REPORT.md) for complete
+output, intermediate failures and limitations. Older counts below are historical.
 
 This update publishes the recovered source tree, integrated fake-worker boundary, protocol repairs, offline Token Factory request preparation and current documentation. The cookbook remains a separate read-only reference checkout at `c2e6a2a4651ba8fd126365d7bbcd2b5621acb040`; it is not a runtime dependency.
 

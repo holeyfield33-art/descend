@@ -1,7 +1,7 @@
 # Hackathon direction: Repo Steward
 
-**Current gate (2026-10-05):** WP0 is paused on the
-[Git helper execution finding](STEWARD_BOUNDARY_REVIEW.md). The new directive
+**Current gate (2026-10-05):** WP0 baseline verification follows the authorized
+[Git helper execution repair](STEWARD_BOUNDARY_REVIEW.md). The new directive
 supersedes the roadmap below: fleet, commit cursors and further Vibe/ASI work
 are parked; act, frozen evaluation and offline demo are next after the gate.
 The following earlier live commands are interface documentation, not renewed

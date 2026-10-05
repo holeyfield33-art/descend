@@ -2,17 +2,19 @@
 
 Status: current prototype operating reference, 2026-10-05. The complete
 act/evaluation/demo manual is pending implementation and measured verification.
-WP0 stopped at the [Git helper execution gate](STEWARD_BOUNDARY_REVIEW.md).
-Do not scan untrusted checkouts until it is resolved. No new live call is
+WP0 resumed with the authorized [Git helper execution repair](STEWARD_BOUNDARY_REVIEW.md).
+No new live call is
 authorized by the earlier $20 ceiling: WP6 requires a written cost approval.
 
 ## Environment and installation
 
 Run from the Descend root. Keep references as sibling codebooks only.
-The baseline has `requirements-lock.txt` (pytest 9.1.1); Python is not yet pinned
-in a version file. Prior environments were Windows 3.14.6 and WSL 3.14.4.
-Do not report these as a single reproducible runtime. Build tools are not fully
-locked. The required doctor command has not been implemented.
+The baseline has `requirements-lock.txt` (pytest 9.1.1). Python is pinned to
+3.14.4 for Linux in `.python-version`, and 3.14.6 for Windows in
+`.python-version.windows`. They are separately identified runtimes. Build tools
+are not fully locked. Run `python -m descend doctor` from the repository root
+to check exact installed versions and record helper paths and the lock hash.
+`--require-act` currently exits nonzero because WP3 is not implemented.
 
 For a trusted clean checkout, the existing installation sequence is:
 
@@ -43,10 +45,9 @@ An ambiguous failure keeps its reservation. Reconcile with provider records
 before authorizing more spend. Recorded session total: $0.548195 conservative
 accounting, 118 calls, zero unresolved holds; this is not a billing receipt.
 
-## Existing review operations (held pending boundary repair)
+## Existing review operations
 
-The following documents existing interfaces, not permission to resume scans.
-After the gate is cleared, a transport-only scan uses:
+For an explicitly selected owned checkout, a transport-only scan uses:
 
 ```powershell
 .venv\Scripts\python -m scripts.run_repo_steward --repo C:\absolute\owned-checkout --once
@@ -86,12 +87,12 @@ are withheld. No apply, push, PR or generated-code execution tool exists here.
 
 ## Verification and future delivery gates
 
-After the boundary gate is resolved, record the full output of
+Record the full output of
 `.venv\Scripts\python -m pytest -ra` on Windows and
 `.venv/bin/python -m pytest -ra` in WSL. Record collected/passed/failed counts
 and each skip reason. Windows Linux-only skips are not security passes.
 Repeat from a fresh public clone, recording SHA, Python, helper paths and lock
-hash. These commands were not rerun in this stopped session.
+hash. Current execution evidence is in the phase report.
 
 WP1 needs a frozen corpus and isolated reproducer validation; WP2 needs scoring,
 B0/B1 and blind adjudication; WP3 needs the export-only act worker and tamper

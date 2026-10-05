@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "python": "3.14.6",
+  "python_pin": "3.14.6",
+  "python_pin_file": ".python-version.windows",
+  "platform": "win32",
+  "helpers": {
+    "git": "C:\\Program Files\\Git\\cmd\\git.EXE",
+    "unshare": null,
+    "chroot": null,
+    "setpriv": null,
+    "mount": null,
+    "test_runner_python": "C:\\Users\\SuperAdmin\\.vscode\\descend\\.venv\\Scripts\\python.exe",
+    "test_runner_binary": "C:\\Users\\SuperAdmin\\.vscode\\descend\\.venv\\Scripts\\python.exe"
+  },
+  "lock_sha256": "8d01bb9825baef3466071a82cbbe876d4754e728b5bc7b7ce2cbee2f41ee23ea",
+  "dependency_mismatches": [],
+  "isolation": {
+    "runtime": "linux-namespaces-unshare-chroot",
+    "unshare_path": null,
+    "available": false,
+    "uid": null,
+    "euid": null,
+    "is_root": false,
+    "reason": "unshare not found or non-POSIX host"
+  },
+  "protocol_ready": true,
+  "act_ready": false,
+  "act_reason": "Act worker not implemented; prerequisites alone are not readiness",
+  "provider_calls": 0
+}

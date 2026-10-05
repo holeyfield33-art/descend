@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import shutil
 import sqlite3
 import subprocess
 from datetime import datetime, timezone
@@ -14,11 +16,29 @@ CODE_EXTENSIONS = frozenset({".py", ".js", ".jsx", ".ts", ".tsx", ".go", ".rs"})
 SECRET_PATH = re.compile(r"(^|/)(\.env(?:\..*)?|[^/]*(?:secret|credential|private.?key)[^/]*)$", re.I)
 SECRET_LINE = re.compile(r"(?i)(api[_-]?key|access[_-]?token|password|private[_-]?key)\s*[=:]\s*['\"]?[^\s'\"]{8,}")
 MAX_DIFF_BYTES = 12_000
+GIT_EXECUTABLE = shutil.which("git")
+
+
+def git_environment() -> dict[str, str]:
+    """Controller-owned Git environment; never inherit credentials or Git overrides."""
+    env = {"PATH": os.defpath, "LANG": "C", "LC_ALL": "C",
+           "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull,
+           "GIT_TERMINAL_PROMPT": "0", "GIT_NO_LAZY_FETCH": "1",
+           "GIT_OPTIONAL_LOCKS": "0", "GIT_LITERAL_PATHSPECS": "1"}
+    if os.name == "nt":
+        # Windows process startup requires SystemRoot; no arbitrary inherited keys.
+        env["SystemRoot"] = os.environ.get("SystemRoot", r"C:\Windows")
+    return env
 
 
 def _git(repo: Path, *args: str) -> bytes:
-    return subprocess.run(["git", "-C", str(repo), *args], check=True, capture_output=True,
-                          timeout=20).stdout
+    if GIT_EXECUTABLE is None:
+        raise RuntimeError("Git executable unavailable")
+    return subprocess.run([GIT_EXECUTABLE, "--no-pager", "--no-replace-objects",
+                           "-c", "core.fsmonitor=false", "-c", "core.hooksPath=" + os.devnull,
+                           "-c", "protocol.allow=never", "-c", "submodule.recurse=false",
+                           "-C", str(repo), *args], check=True, capture_output=True,
+                          timeout=20, env=git_environment()).stdout
 
 
 def commit_snapshot(repo: str | Path) -> dict:
@@ -30,18 +50,18 @@ def commit_snapshot(repo: str | Path) -> dict:
     lineage = _git(root, "rev-list", "--parents", "-n", "1", "HEAD").decode().split()
     parent = lineage[1] if len(lineage) > 1 else None
     if parent:
-        names = _git(root, "diff", "--name-only", "--no-ext-diff", parent, sha).decode().splitlines()
+        names = _git(root, "diff", "--name-only", "--no-ext-diff", "--no-textconv", "--ignore-submodules=all", parent, sha).decode().splitlines()
     else:
-        names = _git(root, "diff-tree", "--no-commit-id", "--name-only", "-r", "--root", sha).decode().splitlines()
+        names = _git(root, "diff-tree", "--no-commit-id", "--name-only", "--no-ext-diff", "--no-textconv", "--ignore-submodules=all", "-r", "--root", sha).decode().splitlines()
     if any(SECRET_PATH.search(name.replace("\\", "/")) for name in names):
         return {"repo": str(root), "sha": sha, "status": "skipped_sensitive_path", "paths": names}
     selected = [name for name in names if Path(name).suffix.lower() in CODE_EXTENSIONS]
     if not selected:
         return {"repo": str(root), "sha": sha, "status": "skipped_no_code", "paths": names}
     if parent:
-        raw = _git(root, "diff", "--patch", "--no-ext-diff", "--no-renames", parent, sha, "--", *selected)
+        raw = _git(root, "diff", "--patch", "--no-ext-diff", "--no-textconv", "--ignore-submodules=all", "--no-renames", parent, sha, "--", *selected)
     else:
-        raw = _git(root, "show", "--format=", "--no-ext-diff", "--no-renames", sha, "--", *selected)
+        raw = _git(root, "show", "--format=", "--no-ext-diff", "--no-textconv", "--ignore-submodules=all", "--no-renames", sha, "--", *selected)
     if len(raw) > MAX_DIFF_BYTES:
         return {"repo": str(root), "sha": sha, "status": "skipped_large_diff", "paths": selected}
     diff = raw.decode("utf-8", errors="replace")
