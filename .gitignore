@@ -62,3 +62,6 @@ Thumbs.db
 controller_state/
 runs/
 registry_data/
+
+# Separate local reference checkout, never a Descend runtime dependency.
+/repo-specialization-framework/

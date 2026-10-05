@@ -81,6 +81,7 @@ The first local real-weight target was Qwen2.5-0.5B-Instruct. A separate CPU fea
 - [Architecture and trust zones](docs/ARCHITECTURE.md)
 - [Experimental design and status](docs/EXPERIMENT.md)
 - [Roadmap and phase gates](docs/ROADMAP.md)
+- [Hackathon Repo Steward product direction](docs/HACKATHON_REPO_STEWARD.md)
 - [Locked specification corrections](docs/SPEC_DELTA_V1_RC.md)
 - [Source provenance and reference policy](docs/PROVENANCE.md)
 
