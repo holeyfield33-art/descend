@@ -2,6 +2,12 @@
 
 ## Repo Steward development status — 2026-10-06
 
+The [current gap register and improvement plan](docs/STEWARD_GAP_PLAN.md)
+reviews the pinned repo-specialization-framework reference and lists 32 known
+product, evaluation and submission gaps with completion criteria. It recommends
+reliable live review-to-verification first, then bounded repository context;
+fine-tuning remains optional. This assessment does not change the frozen results.
+
 Repo Steward's WP0 inventory and baseline gate is complete: fresh public clones
 passed 125 Linux tests and 100 Windows tests (25 explicit skips).
 The watcher Git helper-execution issue has been repaired and tested with an
