@@ -1,5 +1,43 @@
 # Repo Steward phase report
 
+## WP3 restricted act slice
+
+Files: `act.py`, `act_worker.py`, `act_proxy.py`, offline act/corpus CLIs, two
+test modules, doctor extension, scope/run documentation and provenance.
+Controller decisions come from a trusted pytest reporter and hash checks.
+All classification paths are exercised. The proxy's fake-client tests verify
+zero caps, one-shot claims, no SDK retry and held ambiguous reservations.
+
+Final full regression commands use the same interpreters/`-m pytest -q -ra` as
+WP0: Linux **148 passed, zero skips**; Windows **119 passed, 29 skips**, all
+reasons preserved in `evidence/steward-wp3-*-suite` equivalents
+[`steward-wp3-linux.txt`](evidence/steward-wp3-linux.txt) and
+[`steward-wp3-windows.txt`](evidence/steward-wp3-windows.txt).
+Localized Linux act/proxy: 17 passed. A subsequent transport-options/doctor
+check: 3 passed on Windows. Windows's four additional skips are act execution
+requiring Linux namespaces; they are not passes.
+
+Initial act tests: 4 failed / 9 passed because chroot reset cwd. After the
+trusted bootstrap corrected cwd: 3 failed / 10 passed because short pytest
+text omitted AssertionError's type. Replacing text inference with the trusted
+exception/outcome hook resolved this. Existing tests were not weakened.
+
+Command: `python -m scripts.check_steward_act_corpus --output controller_state/steward-act-corpus-v1` under Ubuntu.
+Output: `{"complete": true, "cases": 24, "provider_calls": 0}`.
+All 24 generator-known test/fix pairs classified PATCH_VERIFIED; original
+snapshots were hash-checked unchanged. Cards/patches are in
+[`evidence/steward-act-corpus-v1/`](evidence/steward-act-corpus-v1/).
+These are **mock/oracle** proposals, not model generation success rates.
+
+Scope deviation: initial act supports only `app.py::solve(values)` and simple
+assertion tests in a restricted grammar. Unsupported real repositories refuse.
+Scratch Git trees come from exact blobs without registering a Git worktree,
+which avoids checkout helper execution and `.git` links to the real checkout.
+Source is mounted read-only rather than writable; only a bounded tmpfs can be
+written. Limits and concurrency caveats are in [STEWARD_ACT.md](STEWARD_ACT.md).
+Kernel/runtime exploits remain outside measured assurance. WP4 attacks are next;
+no final independent red-team grade is claimed. No additional real API calls.
+
 ## WP2 offline scoring and baseline results
 
 Definitions: `STEWARD_METRICS.md`. Implementation: `scoring.py`, scoring CLI,

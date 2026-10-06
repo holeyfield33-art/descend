@@ -13,8 +13,11 @@ The [phase report](docs/STEWARD_PHASE_REPORT.md),
 [engineering operating reference](docs/STEWARD_RUN_MANUAL.md),
 [interface inventory](docs/STEWARD_INVENTORY.md) and
 [extraction plan](docs/STEWARD_EXTRACTION_PLAN.md) describe the current state.
-The frozen seeded corpus now has 44 cases and 68 successful isolated label
-checks. Model evaluation, the act slice and the offline demo remain pending.
+The frozen seeded corpus has 44 cases and 68 successful isolated label checks.
+The [restricted act slice](docs/STEWARD_ACT.md) verified all 24 known fixture
+test/fix pairs in offline mock/oracle checks, exporting patches only.
+The [offline baseline evaluation](docs/EVALUATION.md) reports all misses and
+limits. Model evaluation, the attack matrix and the offline demo remain pending.
 No extraction has occurred; the new repository will be supplied by the user.
 The DM0 evidence below concerns its separate worker boundary.
 

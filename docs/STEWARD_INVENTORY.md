@@ -1,5 +1,47 @@
 # Repo Steward inventory
 
+## WP3 planned interfaces (before implementation/tests)
+
+Completed interface inventory supplements: `act.source_hash` is pure SHA-256;
+`validate_source` is an AST parser/allowlist with no execution; `ActStore.__init__`
+creates the `acts` table and parent directory, and `finish` updates the sealed
+claim payload/status. Columns: repo, sha, finding, status, payload; primary key
+(repo, sha, finding). `run_steward_act.materialize_git` reads commit/tree/blob
+objects via the hardened Git wrapper, creates only supported source files in a
+new scratch directory, and reads the exact diff; never invokes checkout.
+`check_steward_act_corpus.main` reads frozen evaluator tests/fixes for explicitly
+labeled mock/oracle proposals, invokes verification and writes cards/summary.
+`act_worker` writes a controller-owned reporter into the jail, captures bounded
+stdout, and parses exactly one reporter record; it never interprets model
+claims as results. Tests include an actual Git blob-materialization fixture.
+
+Proxy extension: `act_proxy.generate_proposal` accepts an explicitly supplied
+controller client, bounded snapshot/excerpt, existing validated finding,
+action store and ledger. It performs sensitive/schema gates, atomically claims
+the finding, reserves spend, sends exactly one structured chat request, settles
+valid usage and seals failures without retry. The CLI remains offline-only;
+no default live client is created. Tests use an injected fake client and separate
+temporary ledgers. Provider data crosses only the controller boundary; no SDK
+or key reaches the worker. Official request/client patterns are adapted from
+the existing cookbook-derived reviewer, with provenance recorded.
+
+`act_worker.run_tests` accepts controller-owned scratch source and a fixed pytest
+target list. Linux-only namespaces/chroot, read-only source/runtime mounts,
+tmpfs bounded by bytes/inodes, one unprivileged process, CPU/address-space/open
+file/wall/output limits. Reads scratch source and trusted runtime; writes only
+scratch jail setup, bounded `/tmp` and controller-captured output. No keys,
+network, writable checkout mount or model-selected shell command.
+`act.validate_proposal` checks exact JSON keys/caps/path and a deliberately
+restricted Python AST for pure functions/tests; unsupported code refuses.
+`act.verify_proposal` makes disposable copies, hash-pins the original test,
+runs before/after with existing tests, and writes evidence plus export-only
+patch. `ActStore.claim` adds a separate durable SQLite action claim keyed by
+repository/commit/finding, enforcing zero and per-commit caps before work.
+`scripts.run_steward_act` is the offline canned-proposal CLI. No live proposal
+provider is enabled in WP3; claims/limits must precede any future WP6 call.
+No real checkout apply/push/branch tools. Initial supported code is narrow
+Python function fixtures; arbitrary repository test infrastructure is refused.
+
 ## WP2 planned interfaces (before testing)
 
 `scoring.wilson` and `score_results` are pure functions over exported cases and

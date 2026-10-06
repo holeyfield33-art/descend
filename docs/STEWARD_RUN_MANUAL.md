@@ -110,8 +110,11 @@ controller_state/steward-baselines-v1`. Score each arm with
 its exported filename. Scores include every miss/error; blind sheets exclude
 model/case labels and their mappings remain separate. Never present automatic
 location matching as human-adjudicated accuracy. See `EVALUATION.md`.
-WP3 still needs the export-only act worker and tamper
-checks; WP4 needs the attack matrix and independent red-team handoff. WP5 needs
+WP3 now provides the restricted export-only act worker and tamper checks; see
+[`STEWARD_ACT.md`](STEWARD_ACT.md) for schema, scope, limits, proposal and corpus
+commands. `doctor --require-act` checks Linux runtime prerequisites. It is not
+a red-team grade. WP4 still needs the attack matrix and independent red-team
+handoff. WP5 needs
 the one-command offline demo and scanned static bundle. Those commands do not
 exist yet, apart from the corpus commands above, so this manual provides no
 pretend invocations for the remaining work.

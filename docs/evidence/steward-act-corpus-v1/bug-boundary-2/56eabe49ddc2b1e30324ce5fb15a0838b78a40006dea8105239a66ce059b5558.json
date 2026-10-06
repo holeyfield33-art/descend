@@ -1,0 +1,198 @@
+{
+  "after": {
+    "argv": [
+      "/usr/local/lib/steward-test-runtime/bin/python",
+      "-I",
+      "-B",
+      "/runner.py",
+      "-q",
+      "--tb=short",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "pythonpath=/workspace",
+      "test_reproducer.py",
+      "tests"
+    ],
+    "controller_report": {
+      "calls": [
+        {
+          "exception": null,
+          "nodeid": "test_reproducer.py::test_reproducer",
+          "outcome": "passed",
+          "xfail": false
+        },
+        {
+          "exception": null,
+          "nodeid": "tests/test_existing.py::test_public_api",
+          "outcome": "passed",
+          "xfail": false
+        }
+      ],
+      "collected": 2,
+      "exitstatus": 0
+    },
+    "helpers": {
+      "chroot": "/usr/bin/chroot",
+      "mkdir": "/usr/bin/mkdir",
+      "mount": "/usr/bin/mount",
+      "setpriv": "/usr/bin/setpriv",
+      "touch": "/usr/bin/touch",
+      "unshare": "/usr/bin/unshare"
+    },
+    "limit_reason": null,
+    "limits": {
+      "cpu_seconds": 5,
+      "memory_mb": 256,
+      "open_files": 64,
+      "output_bytes": 32768,
+      "processes": 1,
+      "source_bytes": 1048576,
+      "source_files": 128,
+      "tmp_bytes": 8388608,
+      "tmp_inodes": 256,
+      "wall_seconds": 15
+    },
+    "network": "isolated",
+    "output": "..                                                                       [100%]STEWARD_TEST_REPORT={\"calls\": [{\"nodeid\": \"test_reproducer.py::test_reproducer\", \"outcome\": \"passed\", \"exception\": null, \"xfail\": false}, {\"nodeid\": \"tests/test_existing.py::test_public_api\", \"outcome\": \"passed\", \"exception\": null, \"xfail\": false}], \"collected\": 2, \"exitstatus\": 0}\n\n2 passed in 0.02s\n",
+    "returncode": 0,
+    "source_mount": "read-only",
+    "uid": 65534
+  },
+  "classification": "PATCH_VERIFIED",
+  "corpus_version": "steward-seeded-v1",
+  "cost_usd": 0,
+  "existing_before": {
+    "argv": [
+      "/usr/local/lib/steward-test-runtime/bin/python",
+      "-I",
+      "-B",
+      "/runner.py",
+      "-q",
+      "--tb=short",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "pythonpath=/workspace",
+      "tests"
+    ],
+    "controller_report": {
+      "calls": [
+        {
+          "exception": null,
+          "nodeid": "tests/test_existing.py::test_public_api",
+          "outcome": "passed",
+          "xfail": false
+        }
+      ],
+      "collected": 1,
+      "exitstatus": 0
+    },
+    "helpers": {
+      "chroot": "/usr/bin/chroot",
+      "mkdir": "/usr/bin/mkdir",
+      "mount": "/usr/bin/mount",
+      "setpriv": "/usr/bin/setpriv",
+      "touch": "/usr/bin/touch",
+      "unshare": "/usr/bin/unshare"
+    },
+    "limit_reason": null,
+    "limits": {
+      "cpu_seconds": 5,
+      "memory_mb": 256,
+      "open_files": 64,
+      "output_bytes": 32768,
+      "processes": 1,
+      "source_bytes": 1048576,
+      "source_files": 128,
+      "tmp_bytes": 8388608,
+      "tmp_inodes": 256,
+      "wall_seconds": 15
+    },
+    "network": "isolated",
+    "output": ".                                                                        [100%]STEWARD_TEST_REPORT={\"calls\": [{\"nodeid\": \"tests/test_existing.py::test_public_api\", \"outcome\": \"passed\", \"exception\": null, \"xfail\": false}], \"collected\": 1, \"exitstatus\": 0}\n\n1 passed in 0.01s\n",
+    "returncode": 0,
+    "source_mount": "read-only",
+    "uid": 65534
+  },
+  "finding": {
+    "evidence": "    return max(1, values)",
+    "line": 2,
+    "path": "app.py",
+    "reason": "MOCK/oracle seeded finding",
+    "severity": "low",
+    "verification": "Controller test"
+  },
+  "kind": "mock",
+  "lock_sha256": "7c4be978c00865d6ab6ad26a3a49a2020b5a1b130c91c245a5c002f5c5a627dd",
+  "patch_diff": "--- a/app.py\n+++ b/app.py\n@@ -1,2 +1,2 @@\n def solve(values):\n-    return max(1, values)\n+    return max(0, values)\n",
+  "patch_export": "a16878884e750c6cdcd604355f8f13183a450a71d8c40f33e153addc41c8f689.patch",
+  "patch_sha256": "a16878884e750c6cdcd604355f8f13183a450a71d8c40f33e153addc41c8f689",
+  "proposal_sha256": "53d405c52788bc2b55b3d8065ec35fbf9a8a5a1e21a22ce372cfd6433a7f44fd",
+  "provider_calls": 0,
+  "reproducer_before": {
+    "argv": [
+      "/usr/local/lib/steward-test-runtime/bin/python",
+      "-I",
+      "-B",
+      "/runner.py",
+      "-q",
+      "--tb=short",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "pythonpath=/workspace",
+      "test_reproducer.py"
+    ],
+    "controller_report": {
+      "calls": [
+        {
+          "exception": "AssertionError",
+          "nodeid": "test_reproducer.py::test_reproducer",
+          "outcome": "failed",
+          "xfail": false
+        }
+      ],
+      "collected": 1,
+      "exitstatus": 1
+    },
+    "helpers": {
+      "chroot": "/usr/bin/chroot",
+      "mkdir": "/usr/bin/mkdir",
+      "mount": "/usr/bin/mount",
+      "setpriv": "/usr/bin/setpriv",
+      "touch": "/usr/bin/touch",
+      "unshare": "/usr/bin/unshare"
+    },
+    "limit_reason": null,
+    "limits": {
+      "cpu_seconds": 5,
+      "memory_mb": 256,
+      "open_files": 64,
+      "output_bytes": 32768,
+      "processes": 1,
+      "source_bytes": 1048576,
+      "source_files": 128,
+      "tmp_bytes": 8388608,
+      "tmp_inodes": 256,
+      "wall_seconds": 15
+    },
+    "network": "isolated",
+    "output": "F                                                                        [100%]STEWARD_TEST_REPORT={\"calls\": [{\"nodeid\": \"test_reproducer.py::test_reproducer\", \"outcome\": \"failed\", \"exception\": \"AssertionError\", \"xfail\": false}], \"collected\": 1, \"exitstatus\": 1}\n\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve(0) == 0\nE   assert 1 == 0\nE    +  where 1 = solve(0)\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 1 == 0\n1 failed in 0.02s\n",
+    "returncode": 1,
+    "source_mount": "read-only",
+    "uid": 65534
+  },
+  "review_diff_sha256": "80f7e7219c8b1e7e4cefa23cf4ee8063dd1d60cf397a12688473b04b467bf2c9",
+  "schema_version": 1,
+  "seeded_case": "bug-boundary-2",
+  "source_hashes": {
+    "app.py": "8504df3e03b6f670a406643dd50d696e5c29b1d8dfc02c46fc9e6e5c6a223bd1",
+    "tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+  },
+  "source_root_unchanged": true,
+  "test_manifest_sha256": "e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043",
+  "test_sha256": "7aadcceda23576ab08cefea772d82a177b728c99b6af91b7ece34d563a06e903",
+  "test_source": "from app import solve\n\ndef test_reproducer():\n    assert solve(0) == 0\n",
+  "usage": null
+}

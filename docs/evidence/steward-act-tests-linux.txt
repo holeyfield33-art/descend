@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.4, pytest-9.1.1, pluggy-1.6.0
+rootdir: /mnt/c/Users/SuperAdmin/.vscode/descend
+configfile: pyproject.toml
+plugins: anyio-4.15.1, cov-7.1.0
+collected 17 items
+
+tests/test_steward_act.py ...............                                [ 88%]
+tests/test_steward_act_proxy.py ..                                       [100%]
+
+============================= 17 passed in 10.39s ==============================

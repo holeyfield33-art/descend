@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 from descend.sandbox.hard_isolation import isolation_available
+from descend.steward.act_worker import LIMITS, PYTHON
 
 
 def diagnose(root: Path) -> dict:
@@ -16,7 +17,7 @@ def diagnose(root: Path) -> dict:
     lock = root / "requirements-lock.txt"
     pin_file = ".python-version.windows" if sys.platform == "win32" else ".python-version"
     pin = (root / pin_file).read_text(encoding="utf-8").strip()
-    helpers = {name: shutil.which(name) for name in ("git", "unshare", "chroot", "setpriv", "mount")}
+    helpers = {name: shutil.which(name) for name in ("git", "unshare", "chroot", "setpriv", "mount", "mkdir", "touch")}
     helpers["test_runner_python"] = str(Path(sys.executable).absolute())
     helpers["test_runner_binary"] = str(Path(sys.executable).resolve())
     mismatches = []
@@ -32,12 +33,15 @@ def diagnose(root: Path) -> dict:
             mismatches.append({"package": name, "expected": expected, "actual": actual})
     isolation = isolation_available()
     protocol_ready = platform.python_version() == pin and not mismatches and helpers["git"] is not None
+    act_ready = protocol_ready and isolation["available"] and Path(PYTHON).is_file() and all(helpers[n] for n in ("unshare", "chroot", "setpriv", "mount", "mkdir", "touch"))
     return {"schema_version": 1, "python": platform.python_version(), "python_pin": pin,
             "python_pin_file": pin_file,
             "platform": sys.platform, "helpers": helpers,
             "lock_sha256": hashlib.sha256(lock.read_bytes()).hexdigest(),
             "dependency_mismatches": mismatches, "isolation": isolation,
             "protocol_ready": protocol_ready,
-            "act_ready": False,
-            "act_reason": "Act worker not implemented; prerequisites alone are not readiness",
+            "act_ready": bool(act_ready), "act_runtime_python": PYTHON,
+            "act_scope": "Restricted app.py solve(values) and assertion tests; export only",
+            "act_limits": LIMITS,
+            "act_reason": "Runtime prerequisites ready; consult measured tests for assurance" if act_ready else "Linux privilege or pinned runtime prerequisites unavailable",
             "provider_calls": 0}

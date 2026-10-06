@@ -1,5 +1,23 @@
 # Provenance
 
+## Repo Steward act slice
+
+`act.py`, `act_worker.py`, the offline CLI and their fixture tests are original
+local code. The act namespace wrapper reuses Descend's namespace/chroot design
+with a new controller-owned pytest reporter, read-only source mounts and
+explicit resource limits. It executes a restricted Python function grammar;
+unsupported repositories refuse. This is not general arbitrary-code patching.
+The reviewed Git tree is materialized from exact blobs into an unregistered
+scratch source tree, avoiding `git checkout` filters and `.git` links to the
+real checkout. The model cannot select test commands or file destinations.
+
+`act_proxy.py` adapts the existing cookbook-derived reviewer/chat request
+pattern, using an injected controller client and the durable reservation policy.
+It adds one-shot action claims, bounded source/citation checks and schema guards.
+Its tests use fake clients and isolated mock ledgers; no new real calls occurred.
+Corpus act checks use the known generator tests/fixes and are labeled
+`mock/oracle`, never Nemotron-generated proposals or quality measurements.
+
 ## Repo Steward scoring and deterministic baselines
 
 `scoring.py`, the baseline runner and scorer CLI are original implementations
