@@ -6,5 +6,7 @@
 requirements*.txt text eol=lf
 # Frozen corpus hashes refer to exact committed bytes, including diff files.
 eval/v1/** -text
+# Audit card/patch hashes must survive checkout without byte conversion.
+docs/evidence/** -text
 # Experimental evidence must retain the exact committed bytes on every platform.
 artifacts/** -text

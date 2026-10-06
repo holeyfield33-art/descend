@@ -1,0 +1,6 @@
+--- a/app.py
++++ b/app.py
+@@ -1,2 +1,2 @@
+ def solve(values):
+-    return values.decode('ascii')
++    return values.decode('utf-8')

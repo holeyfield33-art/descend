@@ -1,7 +1,6 @@
 """Git boundary contracts: hostile configuration is data, never a helper launch."""
 import os
 from pathlib import Path
-from types import SimpleNamespace
 
 import pytest
 
@@ -31,9 +30,9 @@ def test_all_snapshot_git_calls_are_controller_owned(tmp_path, monkeypatch, root
             result = b"app.py\n"
         else:
             result = b"diff --git a/app.py b/app.py\n--- a/app.py\n+++ b/app.py\n@@ -0,0 +1 @@\n+x = 1\n"
-        return SimpleNamespace(stdout=result)
+        return result
 
-    monkeypatch.setattr(watch.subprocess, "run", run)
+    monkeypatch.setattr(watch, "capture_git", run)
     assert watch.commit_snapshot(tmp_path)["status"] == "ready"
     assert len(calls) == 5
     for argv, kwargs in calls:
@@ -64,6 +63,11 @@ def test_configured_textconv_never_executes_during_scan(tmp_path):
     workspace = tmp_path / "agent" / "workspace"
     workspace.mkdir(parents=True)
     (workspace / "watch.py").write_bytes(Path(watch.__file__).read_bytes())
+    package = workspace / "descend" / "steward"
+    package.mkdir(parents=True)
+    (workspace / "descend" / "__init__.py").write_text("")
+    (package / "__init__.py").write_text("")
+    (package / "git_output.py").write_bytes(Path(watch.__file__).with_name("git_output.py").read_bytes())
     source = r'''
 import json, os, subprocess
 from pathlib import Path

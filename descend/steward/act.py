@@ -164,6 +164,7 @@ def _passed(result: dict) -> bool:
     report = result.get("controller_report")
     return (result["returncode"] == 0 and result["limit_reason"] is None and report is not None
             and report["exitstatus"] == 0 and report["collected"] > 0
+            and report.get("seccomp_installed") is True
             and len(report["calls"]) == report["collected"]
             and all(call["outcome"] == "passed" and not call["xfail"] for call in report["calls"]))
 
@@ -210,6 +211,7 @@ def verify_proposal(snapshot: Path, finding: dict, raw: str, export: Path, *, re
                 report = before.get("controller_report")
                 reproduced = (before["returncode"] == 1 and before["limit_reason"] is None and report is not None
                               and report["exitstatus"] == 1 and report["collected"] == 1 and len(report["calls"]) == 1
+                              and report.get("seccomp_installed") is True
                               and report["calls"][0]["outcome"] == "failed" and report["calls"][0]["exception"] == expected
                               and not report["calls"][0]["xfail"])
                 if not reproduced:

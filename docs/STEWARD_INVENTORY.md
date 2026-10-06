@@ -1,5 +1,48 @@
 # Repo Steward inventory
 
+## Offline demo interfaces
+
+`scripts.demo_steward.run(output)` creates a new owned Git fixture and local
+SQLite stores in disposable/controller scratch. It commits only its own seeded
+source, invokes the watcher with a canned reviewer, reads exact Git blobs into
+scratch, verifies a known proposal exclusively in the Linux worker, and exports
+an evidence card/patch. It checks idle/restart deduplication and original source
+hashes. `main` rejects native Windows and existing output directories. No client,
+credential loader, runtime codebook or real-checkout apply tool is used.
+Public export is a static escaped HTML page plus owned fixture/evaluation JSON,
+LICENSE and hash manifest; SQLite/private paths are excluded. Size is capped at
+500 KiB and sensitive patterns are checked. Deviation: this interface supplement
+was recorded after the first owned demo execution, rather than before it.
+
+## WP4 planned hardening/tests
+
+Syscall-filter extension: `act_seccomp.install` is a trusted bootstrap helper,
+copied to the jail outside the source mount. It checks Linux x86_64, constructs
+an architecture-checking seccomp BPF filter and installs it after no-new-privs.
+Blocks links, process execution/creation, sockets, namespace/mount/privileged
+introspection, SysV IPC, memfd and io_uring operations. Errors abort the worker;
+no fallback. This complements tmpfs inode/byte and rlimit quotas; inode quotas
+alone do not limit the number of hardlink directory entries. No input from
+model/repository controls the filter. Reads libc/kernel interfaces only, writes
+the process's syscall policy, and requires explicit physical probe coverage.
+The filter is an allowlist, not a blacklist: unknown syscalls and the x32 ABI
+deny. `doctor.diagnose(..., probe_act=True)` writes one owned assertion fixture
+to temporary scratch and invokes the same worker, recording bootstrap/filter
+hashes and actual filter installation. `doctor --require-act` requests this
+probe; it makes no provider request and loads no credential file.
+
+`git_output.capture_git` starts the controller-resolved Git argv with its minimal
+environment and bounded stdout/stderr, kills on timeout/overflow, returns only
+stdout on success, and omits private stderr from errors. Writes no files;
+threads drain inherited pipes. `_git` uses it for every Git read. Existing
+command-policy assertions are preserved while mocking this new capture boundary.
+Finding parsing adds UTF-8/size/depth/type/field-length refusal, including
+unhashable severity values. Attack tests cover canned compliance with injected
+comments/docstrings/strings/README/filenames/commit messages, unsafe schema/test
+variants, sensitive/oversize pre-call gates, replay/races, and Linux worker
+file/link/network/env/process/resource attempts. Raw worker probes are owned
+test code and run only in isolation. Kernel exploits are manual, not run.
+
 ## WP3 planned interfaces (before implementation/tests)
 
 Completed interface inventory supplements: `act.source_hash` is pure SHA-256;

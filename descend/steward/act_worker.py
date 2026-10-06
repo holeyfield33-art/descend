@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 import json
+import hashlib
+import platform
 import selectors
 import shlex
 import shutil
@@ -41,17 +43,20 @@ def run_tests(workspace: Path, targets: list[str]) -> dict:
         raise ValueError("Source byte cap exceeded")
     if any(workspace == Path(p) or Path(p) in workspace.parents for p in ("/usr", "/lib", "/bin")):
         raise ValueError("Source must be outside system runtime mounts")
-    argv = [PYTHON, "-I", "-B", "/runner.py", "-q", "--tb=short", "-p", "no:cacheprovider",
+    argv = [PYTHON, "-I", "-B", "/runner.py", "-q", "-s", "--tb=short", "-p", "no:cacheprovider",
             "-o", "pythonpath=/workspace", *targets]
     with tempfile.TemporaryDirectory(prefix="steward-act-jail-") as temporary:
         jail = Path(temporary) / "root"
         jail.mkdir(mode=0o755)
+        shutil.copyfile(Path(__file__).with_name("act_seccomp.py"), jail / "seccomp.py")
         # chroot starts in /; this controller-owned bootstrap selects cwd without
         # turning the configured argv into a shell command.
         bootstrap = '''import os, sys, json
 os.chdir('/workspace')
 import pytest
 assert pytest.__version__ == '9.1.1', 'Pinned pytest runtime mismatch'
+import runpy
+runpy.run_path('/seccomp.py', run_name='__main__')
 class Evidence:
     def __init__(self):
         self.calls = []
@@ -64,7 +69,7 @@ class Evidence:
                                'exception': call.excinfo.type.__name__ if call.excinfo else None,
                                'xfail': hasattr(report, 'wasxfail')})
     def pytest_sessionfinish(self, session, exitstatus):
-        print('STEWARD_TEST_REPORT=' + json.dumps({'calls': self.calls, 'collected': session.testscollected, 'exitstatus': int(exitstatus)}))
+        print('STEWARD_TEST_REPORT=' + json.dumps({'calls': self.calls, 'collected': session.testscollected, 'exitstatus': int(exitstatus), 'seccomp_installed': True}))
 raise SystemExit(pytest.main(sys.argv[1:], plugins=[Evidence()]))
 '''
         (jail / "runner.py").write_text(bootstrap, encoding="utf-8")
@@ -88,8 +93,8 @@ raise SystemExit(pytest.main(sys.argv[1:], plugins=[Evidence()]))
         wrapper.chmod(0o755)
         env = {"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8", "HOME": "/tmp", "TMPDIR": "/tmp",
                "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "PYTHONDONTWRITEBYTECODE": "1"}
-        command = [helpers["unshare"], "--mount", "--net", "--pid", "--fork", "--kill-child=KILL", str(wrapper)]
-        proc = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, start_new_session=True)
+        command = [helpers["unshare"], "--mount", "--net", "--pid", "--ipc", "--fork", "--kill-child=KILL", str(wrapper)]
+        proc = subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, start_new_session=True)
         output = bytearray()
         reason = None
         deadline = time.monotonic() + LIMITS["wall_seconds"]
@@ -133,5 +138,8 @@ raise SystemExit(pytest.main(sys.argv[1:], plugins=[Evidence()]))
             except ValueError:
                 pass
         return {"returncode": proc.returncode, "output": text, "controller_report": report,
+                "bootstrap_sha256": hashlib.sha256(bootstrap.encode()).hexdigest(),
+                "syscall_filter_sha256": hashlib.sha256((jail / "seccomp.py").read_bytes()).hexdigest(),
+                "kernel": platform.release(), "architecture": platform.machine(),
                 "limit_reason": reason, "limits": LIMITS, "helpers": helpers, "argv": argv,
                 "network": "isolated", "source_mount": "read-only", "uid": 65534}

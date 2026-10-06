@@ -51,8 +51,11 @@ and system config and lazy fetching; `_git` pins an absolute executable and
 disables fsmonitor, hooks, network protocols, replacement objects and recursive
 submodules. Every diff path explicitly disables both helper types. Repository
 local configuration is still read by Git; this is not a universal assurance
-against malicious Git objects or vulnerabilities in Git itself. Output capture
-still needs a resource bound in the later hardening phase.
+against malicious Git objects or vulnerabilities in Git itself. WP4 adds a
+2 MiB combined stdout/stderr bound and a 20-second deadline for every Git read;
+private stderr is omitted from failure messages. The isolated reader fixture
+now includes the new capture module, while preserving the helper positive
+control and root/parent/mock/canned-live assertions.
 
 The regression initially failed because Git required `/dev/null` in the
 minimal worker. A character-device creation attempt was unusable in this WSL

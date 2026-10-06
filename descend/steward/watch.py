@@ -7,14 +7,14 @@ import os
 import re
 import shutil
 import sqlite3
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
+from descend.steward.git_output import capture_git
 
 CODE_EXTENSIONS = frozenset({".py", ".js", ".jsx", ".ts", ".tsx", ".go", ".rs"})
 SECRET_PATH = re.compile(r"(^|/)(\.env(?:\..*)?|[^/]*(?:secret|credential|private.?key)[^/]*)$", re.I)
-SECRET_LINE = re.compile(r"(?i)(api[_-]?key|access[_-]?token|password|private[_-]?key)\s*[=:]\s*['\"]?[^\s'\"]{8,}")
+SECRET_LINE = re.compile(r"(?i)(api[_-]?key|access[_-]?token|password|private[_-]?key)\s*[=:]\s*['\"]?[^\s'\"]{8,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|\b(?:ghp_|github_pat_|sk-)[A-Za-z0-9_-]{20,}")
 MAX_DIFF_BYTES = 12_000
 GIT_EXECUTABLE = shutil.which("git")
 
@@ -34,11 +34,10 @@ def git_environment() -> dict[str, str]:
 def _git(repo: Path, *args: str) -> bytes:
     if GIT_EXECUTABLE is None:
         raise RuntimeError("Git executable unavailable")
-    return subprocess.run([GIT_EXECUTABLE, "--no-pager", "--no-replace-objects",
+    return capture_git([GIT_EXECUTABLE, "--no-pager", "--no-replace-objects",
                            "-c", "core.fsmonitor=false", "-c", "core.hooksPath=" + os.devnull,
                            "-c", "protocol.allow=never", "-c", "submodule.recurse=false",
-                           "-C", str(repo), *args], check=True, capture_output=True,
-                          timeout=20, env=git_environment()).stdout
+                           "-C", str(repo), *args], timeout=20, env=git_environment())
 
 
 def commit_snapshot(repo: str | Path) -> dict:

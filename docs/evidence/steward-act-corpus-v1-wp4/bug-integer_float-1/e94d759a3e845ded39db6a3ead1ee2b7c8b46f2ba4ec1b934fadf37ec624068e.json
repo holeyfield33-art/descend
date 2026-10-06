@@ -1,0 +1,216 @@
+{
+  "after": {
+    "architecture": "x86_64",
+    "argv": [
+      "/usr/local/lib/steward-test-runtime/bin/python",
+      "-I",
+      "-B",
+      "/runner.py",
+      "-q",
+      "-s",
+      "--tb=short",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "pythonpath=/workspace",
+      "test_reproducer.py",
+      "tests"
+    ],
+    "bootstrap_sha256": "56dd452222f2355f11d128f511033f85a6ac0179868fa346a5c20203e45a8b35",
+    "controller_report": {
+      "calls": [
+        {
+          "exception": null,
+          "nodeid": "test_reproducer.py::test_reproducer",
+          "outcome": "passed",
+          "xfail": false
+        },
+        {
+          "exception": null,
+          "nodeid": "tests/test_existing.py::test_public_api",
+          "outcome": "passed",
+          "xfail": false
+        }
+      ],
+      "collected": 2,
+      "exitstatus": 0,
+      "seccomp_installed": true
+    },
+    "helpers": {
+      "chroot": "/usr/bin/chroot",
+      "mkdir": "/usr/bin/mkdir",
+      "mount": "/usr/bin/mount",
+      "setpriv": "/usr/bin/setpriv",
+      "touch": "/usr/bin/touch",
+      "unshare": "/usr/bin/unshare"
+    },
+    "kernel": "6.18.33.2-microsoft-standard-WSL2",
+    "limit_reason": null,
+    "limits": {
+      "cpu_seconds": 5,
+      "memory_mb": 256,
+      "open_files": 64,
+      "output_bytes": 32768,
+      "processes": 1,
+      "source_bytes": 1048576,
+      "source_files": 128,
+      "tmp_bytes": 8388608,
+      "tmp_inodes": 256,
+      "wall_seconds": 15
+    },
+    "network": "isolated",
+    "output": "..STEWARD_TEST_REPORT={\"calls\": [{\"nodeid\": \"test_reproducer.py::test_reproducer\", \"outcome\": \"passed\", \"exception\": null, \"xfail\": false}, {\"nodeid\": \"tests/test_existing.py::test_public_api\", \"outcome\": \"passed\", \"exception\": null, \"xfail\": false}], \"collected\": 2, \"exitstatus\": 0, \"seccomp_installed\": true}\n\n2 passed in 0.01s\n",
+    "returncode": 0,
+    "source_mount": "read-only",
+    "syscall_filter_sha256": "bd03d40ba17c7becb7adf7a03ccf4ceb5e655f9e95dc65343e4db7dcf98281be",
+    "uid": 65534
+  },
+  "classification": "PATCH_VERIFIED",
+  "corpus_version": "steward-seeded-v1",
+  "cost_usd": 0,
+  "existing_before": {
+    "architecture": "x86_64",
+    "argv": [
+      "/usr/local/lib/steward-test-runtime/bin/python",
+      "-I",
+      "-B",
+      "/runner.py",
+      "-q",
+      "-s",
+      "--tb=short",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "pythonpath=/workspace",
+      "tests"
+    ],
+    "bootstrap_sha256": "56dd452222f2355f11d128f511033f85a6ac0179868fa346a5c20203e45a8b35",
+    "controller_report": {
+      "calls": [
+        {
+          "exception": null,
+          "nodeid": "tests/test_existing.py::test_public_api",
+          "outcome": "passed",
+          "xfail": false
+        }
+      ],
+      "collected": 1,
+      "exitstatus": 0,
+      "seccomp_installed": true
+    },
+    "helpers": {
+      "chroot": "/usr/bin/chroot",
+      "mkdir": "/usr/bin/mkdir",
+      "mount": "/usr/bin/mount",
+      "setpriv": "/usr/bin/setpriv",
+      "touch": "/usr/bin/touch",
+      "unshare": "/usr/bin/unshare"
+    },
+    "kernel": "6.18.33.2-microsoft-standard-WSL2",
+    "limit_reason": null,
+    "limits": {
+      "cpu_seconds": 5,
+      "memory_mb": 256,
+      "open_files": 64,
+      "output_bytes": 32768,
+      "processes": 1,
+      "source_bytes": 1048576,
+      "source_files": 128,
+      "tmp_bytes": 8388608,
+      "tmp_inodes": 256,
+      "wall_seconds": 15
+    },
+    "network": "isolated",
+    "output": ".STEWARD_TEST_REPORT={\"calls\": [{\"nodeid\": \"tests/test_existing.py::test_public_api\", \"outcome\": \"passed\", \"exception\": null, \"xfail\": false}], \"collected\": 1, \"exitstatus\": 0, \"seccomp_installed\": true}\n\n1 passed in 0.02s\n",
+    "returncode": 0,
+    "source_mount": "read-only",
+    "syscall_filter_sha256": "bd03d40ba17c7becb7adf7a03ccf4ceb5e655f9e95dc65343e4db7dcf98281be",
+    "uid": 65534
+  },
+  "finding": {
+    "evidence": "    return values[0] // values[1]",
+    "line": 2,
+    "path": "app.py",
+    "reason": "MOCK/oracle seeded finding",
+    "severity": "low",
+    "verification": "Controller test"
+  },
+  "kind": "mock",
+  "lock_sha256": "7c4be978c00865d6ab6ad26a3a49a2020b5a1b130c91c245a5c002f5c5a627dd",
+  "patch_diff": "--- a/app.py\n+++ b/app.py\n@@ -1,2 +1,2 @@\n def solve(values):\n-    return values[0] // values[1]\n+    return values[0] / values[1]\n",
+  "patch_export": "d25c7564e5b661b1719752f4632a370aa3917a1d5c0c0a3341db0a3a83bbc643.patch",
+  "patch_sha256": "d25c7564e5b661b1719752f4632a370aa3917a1d5c0c0a3341db0a3a83bbc643",
+  "proposal_sha256": "30d6e2e1e0edfe932823162fb792c6bf243a8250d49ae4dafb28deb6857a9361",
+  "provider_calls": 0,
+  "reproducer_before": {
+    "architecture": "x86_64",
+    "argv": [
+      "/usr/local/lib/steward-test-runtime/bin/python",
+      "-I",
+      "-B",
+      "/runner.py",
+      "-q",
+      "-s",
+      "--tb=short",
+      "-p",
+      "no:cacheprovider",
+      "-o",
+      "pythonpath=/workspace",
+      "test_reproducer.py"
+    ],
+    "bootstrap_sha256": "56dd452222f2355f11d128f511033f85a6ac0179868fa346a5c20203e45a8b35",
+    "controller_report": {
+      "calls": [
+        {
+          "exception": "AssertionError",
+          "nodeid": "test_reproducer.py::test_reproducer",
+          "outcome": "failed",
+          "xfail": false
+        }
+      ],
+      "collected": 1,
+      "exitstatus": 1,
+      "seccomp_installed": true
+    },
+    "helpers": {
+      "chroot": "/usr/bin/chroot",
+      "mkdir": "/usr/bin/mkdir",
+      "mount": "/usr/bin/mount",
+      "setpriv": "/usr/bin/setpriv",
+      "touch": "/usr/bin/touch",
+      "unshare": "/usr/bin/unshare"
+    },
+    "kernel": "6.18.33.2-microsoft-standard-WSL2",
+    "limit_reason": null,
+    "limits": {
+      "cpu_seconds": 5,
+      "memory_mb": 256,
+      "open_files": 64,
+      "output_bytes": 32768,
+      "processes": 1,
+      "source_bytes": 1048576,
+      "source_files": 128,
+      "tmp_bytes": 8388608,
+      "tmp_inodes": 256,
+      "wall_seconds": 15
+    },
+    "network": "isolated",
+    "output": "FSTEWARD_TEST_REPORT={\"calls\": [{\"nodeid\": \"test_reproducer.py::test_reproducer\", \"outcome\": \"failed\", \"exception\": \"AssertionError\", \"xfail\": false}], \"collected\": 1, \"exitstatus\": 1, \"seccomp_installed\": true}\n\n=================================== FAILURES ===================================\n_______________________________ test_reproducer ________________________________\ntest_reproducer.py:4: in test_reproducer\n    assert solve((23, 2)) == 11.5\nE   assert 11 == 11.5\nE    +  where 11 = solve((23, 2))\n=========================== short test summary info ============================\nFAILED test_reproducer.py::test_reproducer - assert 11 == 11.5\n1 failed in 0.02s\n",
+    "returncode": 1,
+    "source_mount": "read-only",
+    "syscall_filter_sha256": "bd03d40ba17c7becb7adf7a03ccf4ceb5e655f9e95dc65343e4db7dcf98281be",
+    "uid": 65534
+  },
+  "review_diff_sha256": "29338b6269e9e3b73062fcd829ace46832ea0a21ed16d5371711c4404856547c",
+  "schema_version": 1,
+  "seeded_case": "bug-integer_float-1",
+  "source_hashes": {
+    "app.py": "97442fe745320c82c5ec4fe1f85ca37d1b0e3bdb881ec4f4b66747f498ad4d5c",
+    "tests/test_existing.py": "c42592dfe2d918f5ca33eaf83a3df3b81a15dfad5d2d7471364d79bedfa9923b"
+  },
+  "source_root_unchanged": true,
+  "test_manifest_sha256": "e4893ad12a6d1e10863d43f5065ceaf9f0b88c2fbd565f9dd097d66d2db75043",
+  "test_sha256": "7fc8541870390c1803967df83b6fd292611b435cbe4d811725a00d3a68636f94",
+  "test_source": "from app import solve\n\ndef test_reproducer():\n    assert solve((23, 2)) == 11.5\n",
+  "usage": null
+}

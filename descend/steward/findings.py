@@ -34,8 +34,10 @@ def added_lines(diff: str) -> dict[tuple[str, int], str]:
 
 def validate_findings(content: str, diff: str, paths: list[str]) -> dict:
     try:
+        if not isinstance(content, str) or len(content.encode("utf-8")) > 32000:
+            return {"findings": [], "rejected": [], "parse_error": "Response exceeds byte cap or is not text"}
         data = json.loads(content)
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, RecursionError, UnicodeError):
         return {"findings": [], "rejected": [], "parse_error": "Response was not JSON"}
     if not isinstance(data, dict) or not isinstance(data.get("findings"), list):
         return {"findings": [], "rejected": [], "parse_error": "Expected a findings array"}
@@ -47,8 +49,8 @@ def validate_findings(content: str, diff: str, paths: list[str]) -> dict:
             reason = "Finding is not an object"
         else:
             path, line, evidence = item.get("path"), item.get("line"), item.get("evidence")
-            if (not isinstance(path, str) or path not in paths or type(line) is not int
-                    or line < 1 or not isinstance(evidence, str) or not evidence.strip()):
+            if (not isinstance(path, str) or len(path) > 1000 or path not in paths or type(line) is not int
+                    or line < 1 or not isinstance(evidence, str) or len(evidence) > 5000 or not evidence.strip()):
                 reason = "Invalid path, line or evidence"
             elif additions.get((path, line), "").strip() != evidence.strip():
                 matches = [number for (candidate_path, number), source in additions.items()
@@ -58,11 +60,11 @@ def validate_findings(content: str, diff: str, paths: list[str]) -> dict:
                 else:
                     reason = "Evidence does not uniquely match an added line"
             if reason is None:
-                if item.get("severity") not in SEVERITIES:
+                if not isinstance(item.get("severity"), str) or item["severity"] not in SEVERITIES:
                     reason = "Invalid severity"
-                elif not isinstance(item.get("reason"), str) or not item["reason"].strip():
+                elif not isinstance(item.get("reason"), str) or len(item["reason"]) > 2000 or not item["reason"].strip():
                     reason = "Missing reason"
-                elif not isinstance(item.get("verification"), str) or not item["verification"].strip():
+                elif not isinstance(item.get("verification"), str) or len(item["verification"]) > 2000 or not item["verification"].strip():
                     reason = "Missing verification idea"
         if reason:
             rejected.append({"index": index, "reason": reason})

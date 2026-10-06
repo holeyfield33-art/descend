@@ -1,0 +1,77 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\SuperAdmin\.vscode\descend
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1, cov-7.1.0
+collected 197 items
+
+tests\adversarial_agent\test_env_and_network.py ...                      [  1%]
+tests\adversarial_agent\test_filesystem_escape.py ...s.                  [  4%]
+tests\adversarial_agent\test_hard_isolation.py .sssssssss                [  9%]
+tests\adversarial_agent\test_integrated_boundary.py sss.s                [ 11%]
+tests\adversarial_agent\test_process_probe.py .                          [ 12%]
+tests\adversarial_agent\test_registry_and_controller.py ...s..           [ 15%]
+tests\adversarial_agent\test_toctou.py sss                               [ 16%]
+tests\test_budget_enforcement.py ....                                    [ 18%]
+tests\test_candidate_identity.py ..                                      [ 19%]
+tests\test_controller_environment.py .......                             [ 23%]
+tests\test_controller_flow.py sss                                        [ 24%]
+tests\test_dsl_generator.py .......                                      [ 28%]
+tests\test_hashchain.py .....                                            [ 30%]
+tests\test_hidden_isolation.py ...                                       [ 32%]
+tests\test_live_tool_schema.py .                                         [ 32%]
+tests\test_local_pilot_audit.py .                                        [ 33%]
+tests\test_nemotron_loop.py s.                                           [ 34%]
+tests\test_output_grammar.py .                                           [ 35%]
+tests\test_phase2_foundations.py .......                                 [ 38%]
+tests\test_prediction_commit.py .ss                                      [ 40%]
+tests\test_protocol_repairs.py ................                          [ 48%]
+tests\test_registry.py ..                                                [ 49%]
+tests\test_repo_steward.py .....                                         [ 51%]
+tests\test_steward_act.py ...........ssss                                [ 59%]
+tests\test_steward_act_proxy.py ..                                       [ 60%]
+tests\test_steward_attacks.py ..................................s..sssss [ 81%]
+sssssss                                                                  [ 85%]
+tests\test_steward_corpus.py ...                                         [ 86%]
+tests\test_steward_dashboard.py .                                        [ 87%]
+tests\test_steward_doctor.py .                                           [ 87%]
+tests\test_steward_findings.py .....                                     [ 90%]
+tests\test_steward_fleet.py ..                                           [ 91%]
+tests\test_steward_git_boundary.py ...s                                  [ 93%]
+tests\test_steward_scoring.py ...                                        [ 94%]
+tests\test_steward_vibe_context.py .                                     [ 95%]
+tests\test_token_factory_contracts.py ........                           [ 99%]
+tests\test_viability_audit.py .                                          [100%]
+
+=========================== short test summary info ===========================
+SKIPPED [1] tests\adversarial_agent\test_filesystem_escape.py:57: symlink not permitted in this environment
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:73: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:79: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:85: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:91: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:101: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:109: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:116: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:124: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] tests\adversarial_agent\test_hard_isolation.py:129: hard isolation unavailable: {'runtime': 'linux-namespaces-unshare-chroot', 'unshare_path': None, 'available': False, 'uid': None, 'euid': None, 'is_root': False, 'reason': 'unshare not found or non-POSIX host'}
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_integrated_boundary.py:18: Linux namespace/chroot privileges required; no soft fallback
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_integrated_boundary.py:29: Linux namespace/chroot privileges required; no soft fallback
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_integrated_boundary.py:90: Linux namespace/chroot privileges required; no soft fallback
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_integrated_boundary.py:108: Linux namespace/chroot privileges required; no soft fallback
+SKIPPED [1] tests\adversarial_agent\test_registry_and_controller.py:60: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_toctou.py:20: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_toctou.py:45: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\adversarial_agent\test_toctou.py:67: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_controller_flow.py:17: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_controller_flow.py:48: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_controller_flow.py:63: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_nemotron_loop.py:41: Requires integrated Linux boundary
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_prediction_commit.py:27: isolated fake worker requires Linux namespace privileges
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_prediction_commit.py:46: isolated fake worker requires Linux namespace privileges
+SKIPPED [4] tests\test_steward_act.py:89: Act execution requires Linux namespaces
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_steward_attacks.py:145: symlink privilege unavailable
+SKIPPED [10] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_steward_attacks.py:165: Physical act probes require Linux namespace worker
+SKIPPED [2] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_steward_attacks.py:231: Physical act probes require Linux namespace worker
+SKIPPED [1] \mnt\c\Users\SuperAdmin\.vscode\descend\tests\test_steward_git_boundary.py:61: Git helper execution probe requires Linux namespace worker
+====================== 155 passed, 42 skipped in 35.20s =======================

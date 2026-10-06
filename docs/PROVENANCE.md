@@ -75,6 +75,21 @@ Those projects are code books only. The prior project's initial provenance state
 
 All hashing uses standard SHA-256 and canonical JSON serialization implemented in-tree.
 
+## Steward WP4 and offline demo
+
+`git_output.py`, `act_seccomp.py`, adversarial fixtures and `scripts/demo_steward.py`
+are original local implementations. The demo fixture, finding, reproducer and
+fix are explicitly owned and canned; they contain no sibling repository data.
+Its public bundle includes the Descend LICENSE and per-file SHA-256 manifest.
+No runtime dependency on a codebook was introduced.
+
+The syscall filter uses the Linux x86_64 syscall ABI and Python ctypes, without
+copying upstream implementation code. Official kernel references checked:
+[seccomp filtering](https://docs.kernel.org/userspace-api/seccomp_filter.html)
+and [tmpfs quotas](https://docs.kernel.org/filesystems/tmpfs.html). Seccomp
+complements namespaces and resource limits; it is not a complete sandbox alone.
+The inode limit is paired with denied link creation to bound temporary names.
+
 ## Recovery source
 
 Missing implementation, tests, scripts and documentation were restored from the user's `descend.zip` rather than reconstructed from completion reports. [VERIFICATION_REPORT.md](VERIFICATION_REPORT.md) records the archive hash and initial public state; [RECOVERED_FILES.txt](RECOVERED_FILES.txt) lists recovered paths. The protocol/boundary changes and their tests are local Descend implementations, described in [PROTOCOL_REPAIR_REPORT.md](PROTOCOL_REPAIR_REPORT.md).

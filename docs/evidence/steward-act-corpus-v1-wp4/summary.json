@@ -1,0 +1,128 @@
+{
+  "cases": [
+    {
+      "case": "bug-off_by_one-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-comparison-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-empty_check-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-wrong_default-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-swapped_arguments-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-boundary-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-resource_close-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-stale_state-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-encoding-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-exception-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-integer_float-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-shared_mutation-1",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-off_by_one-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-comparison-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-empty_check-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-wrong_default-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-swapped_arguments-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-boundary-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-resource_close-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-stale_state-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-encoding-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-exception-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-integer_float-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    },
+    {
+      "case": "bug-shared_mutation-2",
+      "classification": "PATCH_VERIFIED",
+      "source_root_unchanged": true
+    }
+  ],
+  "complete": true,
+  "kind": "mock/oracle",
+  "limitation": "Known generator tests and fixes; no model-generated proposals or review accuracy measured",
+  "provider_calls": 0
+}

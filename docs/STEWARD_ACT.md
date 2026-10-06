@@ -65,6 +65,15 @@ limits, exact hashes and outputs before considering human application.
 
 ## Provider proxy
 
+WP4 adds an architecture-checked, default-deny Linux x86_64 syscall filter loaded
+after trusted pytest startup and before target collection. Unknown/x32 syscalls,
+links, subprocess execution, process creation, network and namespace operations
+are denied. Loading failures have no fallback. IPC is isolated too. Pytest
+capture is disabled so the controller's 32 KiB output bound applies immediately.
+Evidence records bootstrap/filter hashes, architecture and kernel. Run
+`python -m descend doctor --require-act` to exercise the actual benign worker
+probe, rather than relying only on executable availability.
+
 `act_proxy.generate_proposal` adapts the existing official cookbook-derived
 chat pattern into a one-call controller proxy. It requires an explicitly
 supplied client, validates sensitive/bounded source and citation, claims the

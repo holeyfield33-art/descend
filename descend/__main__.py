@@ -12,7 +12,7 @@ def main():
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--require-act", action="store_true")
     args = parser.parse_args()
-    report = diagnose(args.root)
+    report = diagnose(args.root, probe_act=args.require_act)
     print(json.dumps(report, indent=2))
     raise SystemExit(0 if report["act_ready" if args.require_act else "protocol_ready"] else 1)
 

@@ -1,5 +1,41 @@
 # Repo Steward phase report
 
+## WP4 automated boundary checks
+
+Linux `/opt/steward-wp0-venv/bin/python -m pytest -q`: **197 passed, zero
+skips**, 90.88 seconds. Windows `.venv\Scripts\python -m pytest -q -ra`:
+**155 passed, 42 skipped** (first run 30.25 seconds). Recorded outputs are
+`evidence/steward-wp4-linux.txt` and `evidence/steward-wp4-windows.txt`.
+The 49 new attack cases include physical syscall/resource probes, six real Git
+injection carriers with canned compliance, tamper rejection, 100 deterministic
+JSON fuzz inputs and concurrent claims. See [coverage](STEWARD_ATTACK_MATRIX.md).
+
+Git capture now bounds combined stdout/stderr to 2 MiB / 20 seconds and omits
+stderr from errors. Finding parsing adds byte/depth/type limits. The worker
+uses architecture-checked default-deny seccomp and IPC isolation. Pytest capture
+is disabled so the 32 KiB controller output cap applies immediately. Trusted
+verification requires the filter-installed flag and records bootstrap/filter
+hashes. `doctor --require-act` passed its actual benign worker probe; output:
+`evidence/steward-wp4-doctor.json`.
+
+Initial localized failures: missing new capture-module copy in the isolated
+Git fixture; socket creation denied before the network test's connection-only
+assertion; doctor fixture mount root inaccessible to UID 65534. Repairs copied
+the owned module, asserted denial across creation/connection, and set only the
+owned probe root to 0755. Existing assertions were retained. The filter was
+strengthened from a deny list to an explicit allowlist. A subsequent localized
+suite passed 75 tests before the final reporter/doctor changes; the full suite
+above validates those reporter changes, and the doctor probe was rerun after
+its permissions correction.
+
+`python -m scripts.check_steward_act_corpus --output controller_state/steward-act-corpus-v1-wp4`
+rechecked all 24 known generator test/fix pairs: complete true, all
+PATCH_VERIFIED, original snapshots unchanged, zero provider calls. New cards in
+`evidence/steward-act-corpus-v1-wp4/` preserve kernel/filter identities separately
+from historical WP3 cards. These are mock/oracle checks, not model quality.
+Independent red-team review remains pending; [handoff](STEWARD_REDTEAM_HANDOFF.md).
+Accounted spend remains $0.548195 across 118 historical calls; new real calls: 0.
+
 ## WP3 restricted act slice
 
 Files: `act.py`, `act_worker.py`, `act_proxy.py`, offline act/corpus CLIs, two
