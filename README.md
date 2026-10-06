@@ -17,7 +17,12 @@ The frozen seeded corpus has 44 cases and 68 successful isolated label checks.
 The [restricted act slice](docs/STEWARD_ACT.md) verified all 24 known fixture
 test/fix pairs in offline mock/oracle checks, exporting patches only.
 The [offline baseline evaluation](docs/EVALUATION.md) reports all misses and
-limits. Model evaluation, the attack matrix and the offline demo remain pending.
+limits. The [attack matrix](docs/STEWARD_ATTACK_MATRIX.md) covers automated
+checks; independent red-team review remains pending. The
+[offline demo](docs/STEWARD_DEMO.md) runs an owned fixture through review,
+verification, patch export and restart deduplication with zero provider calls.
+Current regression: 197 Linux passes; 155 Windows passes / 42 explicit skips.
+Model evaluation remains gated on its written cost approval.
 No extraction has occurred; the new repository will be supplied by the user.
 The DM0 evidence below concerns its separate worker boundary.
 

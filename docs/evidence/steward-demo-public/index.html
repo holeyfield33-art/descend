@@ -1,0 +1,101 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Repo Steward offline evidence</title><style>body{max-width:900px;margin:40px auto;padding:20px;font:17px system-ui;background:#101923;color:#e7edf5}pre{white-space:pre-wrap;overflow-wrap:anywhere}h1{color:#8ddcc9}</style><h1>Repo Steward: offline evidence</h1><p>MOCK / owned seeded fixture. No provider calls. Export only. Live model results and independent red-team review are pending.</p><pre>{
+  &quot;demo&quot;: {
+    &quot;schema_version&quot;: 1,
+    &quot;kind&quot;: &quot;mock/owned seeded fixture&quot;,
+    &quot;provider_calls&quot;: 0,
+    &quot;cost_usd&quot;: 0,
+    &quot;reviewed_commit&quot;: &quot;ea58e6db6bea512863ff73f1049c3f27130278ad&quot;,
+    &quot;idle_cached&quot;: true,
+    &quot;idle_mock_calls&quot;: 0,
+    &quot;new_bug_findings&quot;: 1,
+    &quot;mock_review_calls&quot;: 2,
+    &quot;classification&quot;: &quot;PATCH_VERIFIED&quot;,
+    &quot;restart_cached&quot;: true,
+    &quot;restart_mock_calls&quot;: 0,
+    &quot;repeated_action_claim&quot;: false,
+    &quot;checkout_unchanged&quot;: true,
+    &quot;source_root_unchanged&quot;: true,
+    &quot;patch_export&quot;: &quot;d61c4c51394ce52592bcbefc91d750b42c56030df65227228f3786590ae10a82.patch&quot;,
+    &quot;human_approval&quot;: &quot;Required before manually applying an exported patch; no apply tool exists&quot;,
+    &quot;limitation&quot;: &quot;Canned finding and known test/fix; this measures controller behavior, not Nemotron quality&quot;,
+    &quot;complete&quot;: true
+  },
+  &quot;owned_fixture&quot;: {
+    &quot;review&quot;: &quot;def solve(values):\n    return sum(values[:-1])\n&quot;,
+    &quot;fix&quot;: &quot;def solve(values):\n    return sum(values)\n&quot;,
+    &quot;test&quot;: &quot;from app import solve\ndef test_reproducer():\n    assert solve([1, 2]) == 3\n&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;baseline_test_metrics&quot;: {
+      &quot;B0&quot;: {
+        &quot;cases&quot;: 32,
+        &quot;precision&quot;: {
+          &quot;denominator&quot;: 0,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: null,
+          &quot;wilson95&quot;: null
+        },
+        &quot;recall&quot;: {
+          &quot;denominator&quot;: 16,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: 0.0,
+          &quot;wilson95&quot;: [
+            0,
+            0.1936076805344365
+          ]
+        },
+        &quot;clean_false_alarm&quot;: {
+          &quot;denominator&quot;: 11,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: 0.0,
+          &quot;wilson95&quot;: [
+            0,
+            0.2588329669680317
+          ]
+        },
+        &quot;citation_valid&quot;: {
+          &quot;denominator&quot;: 0,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: null,
+          &quot;wilson95&quot;: null
+        }
+      },
+      &quot;B1&quot;: {
+        &quot;cases&quot;: 32,
+        &quot;precision&quot;: {
+          &quot;denominator&quot;: 0,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: null,
+          &quot;wilson95&quot;: null
+        },
+        &quot;recall&quot;: {
+          &quot;denominator&quot;: 16,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: 0.0,
+          &quot;wilson95&quot;: [
+            0,
+            0.1936076805344365
+          ]
+        },
+        &quot;clean_false_alarm&quot;: {
+          &quot;denominator&quot;: 11,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: 0.0,
+          &quot;wilson95&quot;: [
+            0,
+            0.2588329669680317
+          ]
+        },
+        &quot;citation_valid&quot;: {
+          &quot;denominator&quot;: 0,
+          &quot;numerator&quot;: 0,
+          &quot;rate&quot;: null,
+          &quot;wilson95&quot;: null
+        }
+      }
+    },
+    &quot;baseline_limitation&quot;: &quot;Existing tests only check callable API; all 16 seeded test bugs missed. No model accuracy measured.&quot;,
+    &quot;live_model_measurement&quot;: &quot;Not run&quot;,
+    &quot;independent_redteam&quot;: &quot;Pending&quot;
+  }
+}</pre></html>

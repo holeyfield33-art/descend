@@ -9,6 +9,10 @@ scratch, verifies a known proposal exclusively in the Linux worker, and exports
 an evidence card/patch. It checks idle/restart deduplication and original source
 hashes. `main` rejects native Windows and existing output directories. No client,
 credential loader, runtime codebook or real-checkout apply tool is used.
+`scripts.plan_steward_live.plan` verifies corpus hashes and writes only a proposed
+offline configuration with seeded repeat selection, source hashes and bounded
+accounting math; no client or credential IO. Its initial plan generation was
+recorded here afterward, the same inventory-order deviation as the demo.
 Public export is a static escaped HTML page plus owned fixture/evaluation JSON,
 LICENSE and hash manifest; SQLite/private paths are excluded. Size is capped at
 500 KiB and sensitive patterns are checked. Deviation: this interface supplement

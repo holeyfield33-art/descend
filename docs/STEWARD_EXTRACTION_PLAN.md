@@ -1,10 +1,12 @@
 # Repo Steward extraction plan
 
 Plan only, 2026-10-05. No repository was created or extracted. The user will
-provide the new repository. Resolve the [open gate](STEWARD_BOUNDARY_REVIEW.md)
+provide the new repository. Preserve the [repair evidence](STEWARD_BOUNDARY_REVIEW.md)
 and finish the package gates before representing an extraction as ready.
 
-1. Copy `descend/steward/` and the four Steward scripts with their tests.
+1. Copy an explicit allowlist from `descend/steward/` and its scripts/tests,
+   including corpus/scoring, Git capture, act/proxy/worker/syscall filter and
+   `scripts/demo_steward.py`. Preserve each source commit/hash.
    Retain parked fleet/context modules only if explicitly included in the new
    product; they must not become development priorities in this phase.
 2. Extract the minimal controller environment parser, durable spend ledger,

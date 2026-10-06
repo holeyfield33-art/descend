@@ -1,9 +1,11 @@
 # Hackathon direction: Repo Steward
 
-**Current gate (2026-10-05):** WP0 baseline verification follows the authorized
-[Git helper execution repair](STEWARD_BOUNDARY_REVIEW.md). The new directive
+**Current gate (2026-10-05):** WP0–WP3 offline evidence and WP4 automated checks
+are implemented; the [offline demo](STEWARD_DEMO.md) exports a verified patch
+from an owned canned fixture. Independent red-team review and approved live
+comparative evaluation remain pending. The new directive
 supersedes the roadmap below: fleet, commit cursors and further Vibe/ASI work
-are parked; act, frozen evaluation and offline demo are next after the gate.
+are parked. Read the current phase report before interpreting the older roadmap.
 The following earlier live commands are interface documentation, not renewed
 permission to spend. See the [run manual](STEWARD_RUN_MANUAL.md) and
 [phase report](STEWARD_PHASE_REPORT.md). Current conservative ledger total is

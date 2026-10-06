@@ -1,0 +1,21 @@
+{
+  "checkout_unchanged": true,
+  "classification": "PATCH_VERIFIED",
+  "complete": true,
+  "cost_usd": 0,
+  "human_approval": "Required before manually applying an exported patch; no apply tool exists",
+  "idle_cached": true,
+  "idle_mock_calls": 0,
+  "kind": "mock/owned seeded fixture",
+  "limitation": "Canned finding and known test/fix; this measures controller behavior, not Nemotron quality",
+  "mock_review_calls": 2,
+  "new_bug_findings": 1,
+  "patch_export": "d61c4c51394ce52592bcbefc91d750b42c56030df65227228f3786590ae10a82.patch",
+  "provider_calls": 0,
+  "repeated_action_claim": false,
+  "restart_cached": true,
+  "restart_mock_calls": 0,
+  "reviewed_commit": "ea58e6db6bea512863ff73f1049c3f27130278ad",
+  "schema_version": 1,
+  "source_root_unchanged": true
+}

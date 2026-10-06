@@ -6,8 +6,12 @@ The DM0 worker claims below do not cover Steward's controller-side Git reader.
 The [helper-execution repair](STEWARD_BOUNDARY_REVIEW.md) disables Git textconv
 and external diff helpers, with a Linux-isolated positive-control regression.
 This does not cover arbitrary Git vulnerabilities. The user authorized repair
-and continuation after the initial stop. No act worker is implemented;
-its threat model and measured limits remain pending.
+and continuation after the initial stop. Steward now has a restricted Linux
+act worker with read-only source/runtime, namespace/UID isolation, resource
+caps and a default-deny x86_64 syscall filter. It exports patches only.
+See [scope and limits](STEWARD_ACT.md) and [automated attack coverage](STEWARD_ATTACK_MATRIX.md).
+Independent review, arbitrary-repository support and kernel exploit assurance
+remain unproven. The offline demo uses owned canned fixtures, not live proposals.
 
 ## Assets
 

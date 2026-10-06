@@ -1,5 +1,12 @@
 # Release verification
 
+**2026-10-05 Steward WP4/WP5:** 197 Linux passes, zero skips; 155 Windows
+passes, 42 explicit skips. The doctor ran the actual filtered worker probe.
+All 24 known fixture fixes reverified. The owned offline demo demonstrated
+PATCH_VERIFIED, unchanged checkout, restart deduplication and zero provider calls.
+These are mock/oracle results. Independent red-team and live comparative model
+evaluation remain pending. See [phase evidence](STEWARD_PHASE_REPORT.md).
+
 **2026-10-05 Steward WP0:** the authorized Git helper repair passes the full
 Linux suite (125 passed, no skips) and Windows suite (100 passed, 25 skips;
 Linux worker unavailable and one symlink-privilege skip). Doctor records both

@@ -1,7 +1,7 @@
 # Repo Steward engineering run manual
 
-Status: current prototype operating reference, 2026-10-05. The complete
-act/evaluation/demo manual is pending implementation and measured verification.
+Status: offline act/evaluation/demo operating manual, 2026-10-05.
+Live comparative evaluation and independent red-team review remain pending.
 WP0 resumed with the authorized [Git helper execution repair](STEWARD_BOUNDARY_REVIEW.md).
 No new live call is
 authorized by the earlier $20 ceiling: WP6 requires a written cost approval.
@@ -110,14 +110,30 @@ controller_state/steward-baselines-v1`. Score each arm with
 its exported filename. Scores include every miss/error; blind sheets exclude
 model/case labels and their mappings remain separate. Never present automatic
 location matching as human-adjudicated accuracy. See `EVALUATION.md`.
-WP3 now provides the restricted export-only act worker and tamper checks; see
+WP3 provides the restricted export-only act worker and tamper checks; see
 [`STEWARD_ACT.md`](STEWARD_ACT.md) for schema, scope, limits, proposal and corpus
-commands. `doctor --require-act` checks Linux runtime prerequisites. It is not
-a red-team grade. WP4 still needs the attack matrix and independent red-team
-handoff. WP5 needs
-the one-command offline demo and scanned static bundle. Those commands do not
-exist yet, apart from the corpus commands above, so this manual provides no
-pretend invocations for the remaining work.
+commands. `doctor --require-act` executes a benign test through the actual
+Linux worker and requires its syscall filter. It is not a red-team grade.
+WP4's [attack matrix](STEWARD_ATTACK_MATRIX.md) and
+[independent handoff](STEWARD_REDTEAM_HANDOFF.md) document coverage and limits.
+
+For WP5 run `python -m scripts.demo_steward --output controller_state/new-demo`
+in provisioned Linux/WSL, from the repo root. Use a new output directory and
+run serially. Expect `complete: true`, `PATCH_VERIFIED`, zero provider calls,
+checkout unchanged and repeated action claim false. Native Windows refuses;
+the committed static bundle is a recorded mock view. See [demo details](STEWARD_DEMO.md).
+Publish only the generated `public/` directory after checking its hash manifest
+and LICENSE. Never publish the SQLite stores, `.env` or controller scratch.
+The bundle has no action tools and deployment remains a human task.
+
+Troubleshooting: a false `act_ready` means stop execution and inspect the probe's
+error, helper paths, Linux x86_64 architecture, root namespace privileges and
+the pinned runtime under `/usr/local/lib/steward-test-runtime`. No soft fallback
+is available. ERROR/TAMPERED results export no applicable patch. Existing action
+claims remain sealed after failure; do not erase state to retry a paid action.
+Check watched Git status and exact SHA before human patch application, then run
+the repository's normal validation. A recorded approval note is not execution
+authority and a model statement that tests passed is not evidence.
 
 WP6 requires written approval after the estimate. WP7 adds measured results,
 fresh-clone evidence and the final complete manual. Human deploys the bundle

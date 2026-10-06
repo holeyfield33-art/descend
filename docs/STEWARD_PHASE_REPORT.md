@@ -1,5 +1,33 @@
 # Repo Steward phase report
 
+## WP5 offline demo and static export
+
+`python -m scripts.demo_steward --output controller_state/steward-demo-wp5`
+under the provisioned Ubuntu controller returned complete true: one new bug
+finding, PATCH_VERIFIED, watched source unchanged, zero idle/restart mock calls,
+duplicate action denied and zero provider calls/cost. Two canned reviews cover
+the clean warm-up and seeded bug. Report and static bundle:
+`evidence/steward-demo-wp5.json`, `evidence/steward-demo-public/`.
+No provider quality is measured. The HTML is escaped, static and has no action
+controls or external resources. The LICENSE matches the repository; every
+bundle hash verified. A public-file scan covered 64 files with zero private-key
+or long common token-prefix matches; this is heuristic and no credential
+values were loaded. The demo integration test exercises the actual Linux worker:
+1 passed in 4.32 seconds, repeated after adding exported baseline intervals
+(1 passed in 4.67 seconds). Native Windows localized checks: doctor 1 passed,
+demo 1 explicit Linux-only skip. An intervening WSL startup attempt failed with
+`Wsl/Service/CreateInstance/CreateVm/0x800705b4`; no distributions were running.
+`wsl --shutdown` and a fresh invocation recovered it. The final public scan
+covered 66 files with zero matches; current bundle hashes/license verified.
+
+Local Git incident after WP4 commit: `refs/heads/main` contained 41 NUL bytes.
+Its reflog and readable commit object independently identified
+`c720592faa915515d06d5f81bc01887b66ea5c6d`. The damaged bytes were saved in ignored
+controller state and that exact reference restored with an atomic write/fsync.
+No reset, history rewrite or worktree replacement occurred. Cause is unknown;
+do not infer a worker escape from an unexplained host metadata incident.
+WP4 code/evidence commit: `c720592`; prior WP3 commit: `3caa90f`.
+
 ## WP4 automated boundary checks
 
 Linux `/opt/steward-wp0-venv/bin/python -m pytest -q`: **197 passed, zero

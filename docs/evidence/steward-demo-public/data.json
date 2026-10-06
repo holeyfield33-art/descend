@@ -1,0 +1,101 @@
+{
+  "demo": {
+    "checkout_unchanged": true,
+    "classification": "PATCH_VERIFIED",
+    "complete": true,
+    "cost_usd": 0,
+    "human_approval": "Required before manually applying an exported patch; no apply tool exists",
+    "idle_cached": true,
+    "idle_mock_calls": 0,
+    "kind": "mock/owned seeded fixture",
+    "limitation": "Canned finding and known test/fix; this measures controller behavior, not Nemotron quality",
+    "mock_review_calls": 2,
+    "new_bug_findings": 1,
+    "patch_export": "d61c4c51394ce52592bcbefc91d750b42c56030df65227228f3786590ae10a82.patch",
+    "provider_calls": 0,
+    "repeated_action_claim": false,
+    "restart_cached": true,
+    "restart_mock_calls": 0,
+    "reviewed_commit": "ea58e6db6bea512863ff73f1049c3f27130278ad",
+    "schema_version": 1,
+    "source_root_unchanged": true
+  },
+  "evaluation": {
+    "baseline_limitation": "Existing tests only check callable API; all 16 seeded test bugs missed. No model accuracy measured.",
+    "baseline_test_metrics": {
+      "B0": {
+        "cases": 32,
+        "citation_valid": {
+          "denominator": 0,
+          "numerator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "clean_false_alarm": {
+          "denominator": 11,
+          "numerator": 0,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2588329669680317
+          ]
+        },
+        "precision": {
+          "denominator": 0,
+          "numerator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "recall": {
+          "denominator": 16,
+          "numerator": 0,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.1936076805344365
+          ]
+        }
+      },
+      "B1": {
+        "cases": 32,
+        "citation_valid": {
+          "denominator": 0,
+          "numerator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "clean_false_alarm": {
+          "denominator": 11,
+          "numerator": 0,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.2588329669680317
+          ]
+        },
+        "precision": {
+          "denominator": 0,
+          "numerator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "recall": {
+          "denominator": 16,
+          "numerator": 0,
+          "rate": 0.0,
+          "wilson95": [
+            0,
+            0.1936076805344365
+          ]
+        }
+      }
+    },
+    "independent_redteam": "Pending",
+    "live_model_measurement": "Not run"
+  },
+  "owned_fixture": {
+    "fix": "def solve(values):\n    return sum(values)\n",
+    "review": "def solve(values):\n    return sum(values[:-1])\n",
+    "test": "from app import solve\ndef test_reproducer():\n    assert solve([1, 2]) == 3\n"
+  }
+}
