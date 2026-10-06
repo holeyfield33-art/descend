@@ -1,5 +1,16 @@
 # Repo Steward inventory
 
+## Live-result export (2026-10-06)
+
+`scripts.export_steward_evaluation.export(source, output)` reads only result JSON
+and the frozen owned corpus, validates primary/repeat identities, computes
+citation-set repeat consistency, and generates Markdown plus escaped static
+HTML/JSON, LICENSE and hash manifest. Model text is never executed. Output is
+new-only, capped at 500 KiB, with sensitive-pattern checks before any output
+write. Tests exercise hostile HTML, secret-like output and unowned identities.
+Inventory-order deviation: the first report generation preceded this supplement;
+the hostile-export tests follow it. The exporter makes no provider/key reads.
+
 ## Offline demo interfaces
 
 Additional persistence repair: controller spend/review/action SQLite connection
@@ -34,7 +45,7 @@ LICENSE and hash manifest; SQLite/private paths are excluded. Size is capped at
 500 KiB and sensitive patterns are checked. Deviation: this interface supplement
 was recorded after the first owned demo execution, rather than before it.
 
-## WP4 planned hardening/tests
+## WP4 interfaces (inventory recorded before tests)
 
 Syscall-filter extension: `act_seccomp.install` is a trusted bootstrap helper,
 copied to the jail outside the source mount. It checks Linux x86_64, constructs
@@ -155,8 +166,8 @@ none beyond existing Git reads. Tests: `test_steward_git_boundary.py`.
 
 WP0 static inventory, 2026-10-05. Source: `b59a470231ec99d33ba297204dec9d4844c563ee`.
 Inventory precedes new tests. This is an interface and data-flow inventory,
-not a claim of test coverage or security assurance. See the open
-[Git boundary finding](STEWARD_BOUNDARY_REVIEW.md).
+not a claim of test coverage or security assurance. The historical finding was
+repaired; see the [Git boundary finding](STEWARD_BOUNDARY_REVIEW.md).
 
 ## Modules and callable surfaces
 
@@ -235,7 +246,7 @@ WP3 worker. No runtime design was changed in this inventory phase.
 | Fleet configuration | `tests/test_steward_fleet.py` |
 | Vibe/ASI identity | `tests/test_steward_vibe_context.py` |
 
-Mapping is not exhaustive adversarial coverage. New baseline execution,
-coverage of all inventory rows, helper-execution regression tests, and the WP4
-attack matrix remain pending. References are read-only codebooks; no source,
+This mapping preserves the initial inventory snapshot. Current baseline and
+helper-execution checks are recorded in the phase report; current adversarial
+coverage and manual not-run rows are in STEWARD_ATTACK_MATRIX.md. References are read-only codebooks; no source,
 held-out answers, or private evaluator data were copied into fixtures.

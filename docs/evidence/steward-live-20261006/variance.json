@@ -1,0 +1,1540 @@
+[
+  {
+    "accounted_upper_bound_usd": 0.00093,
+    "case": "bug-boundary-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return max(1, values)\",\n      \"severity\": \"medium\",\n      \"reason\": \"The function now returns at least 1 even when all input values are negative or zero, which may incorrectly mask invalid or expected zero results. This changes behavior from the original `max(0, values)` that correctly clamped negative values to zero.\",\n      \"verification\": \"Check if the function is intended to return zero for non-positive inputs (e.g., in loss calculations, ReLU activations, or score filtering). If so, revert to `max(0, values)` or add a comment justifying the change.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.00023730000000000002,
+    "findings": [
+      {
+        "evidence": "    return max(1, values)",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The function now returns at least 1 even when all input values are negative or zero, which may incorrectly mask invalid or expected zero results. This changes behavior from the original `max(0, values)` that correctly clamped negative values to zero.",
+        "severity": "medium",
+        "verification": "Check if the function is intended to return zero for non-positive inputs (e.g., in loss calculations, ReLU activations, or score filtering). If so, revert to `max(0, values)` or add a comment justifying the change."
+      }
+    ],
+    "latency_seconds": 1.192629015999998,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-bbf92c01765ea96e",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 163,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 302,
+      "prompt_tokens": 302,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 465
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000858,
+    "case": "bug-empty_check-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values[0]\",\n      \"severity\": \"high\",\n      \"reason\": \"The function no longer handles the case where `values` is empty, which will cause an IndexError when accessing `values[0]` on an empty list.\",\n      \"verification\": \"Add a guard clause to check if `values` is non-empty before indexing, e.g., `return values[0] if values else None`.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0002037,
+    "findings": [
+      {
+        "evidence": "    return values[0]",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The function no longer handles the case where `values` is empty, which will cause an IndexError when accessing `values[0]` on an empty list.",
+        "severity": "high",
+        "verification": "Add a guard clause to check if `values` is non-empty before indexing, e.g., `return values[0] if values else None`."
+      }
+    ],
+    "latency_seconds": 1.2278728149999978,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-abbebe1388ee47b6",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 125,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 304,
+      "prompt_tokens": 304,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 429
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000856,
+    "case": "bug-encoding-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.\",\n      \"verification\": \"Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.000201,
+    "findings": [
+      {
+        "evidence": "    return values.decode('ascii')",
+        "line": 2,
+        "path": "app.py",
+        "reason": "Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.",
+        "severity": "medium",
+        "verification": "Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented."
+      }
+    ],
+    "latency_seconds": 1.1896606150000082,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-a7da48a07ec4b4b3",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 121,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 307,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 428
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000856,
+    "case": "bug-encoding-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.\",\n      \"verification\": \"Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.000201,
+    "findings": [
+      {
+        "evidence": "    return values.decode('ascii')",
+        "line": 2,
+        "path": "app.py",
+        "reason": "Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.",
+        "severity": "medium",
+        "verification": "Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented."
+      }
+    ],
+    "latency_seconds": 1.1505128139999954,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-b43d4b01c9e7afa1",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 121,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 307,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 428
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000894,
+    "case": "bug-resource_close-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 1,\n      \"evidence\": \"def solve(values):\",\n      \"severity\": \"medium\",\n      \"reason\": \"The function no longer closes the 'values' resource after reading, which can lead to resource leaks if 'values' is a file-like object requiring explicit closure.\",\n      \"verification\": \"Ensure that the caller of solve() is responsible for closing the 'values' object, or refactor to use a context manager (e.g., 'with' statement) inside the function to guarantee cleanup.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0002145,
+    "findings": [],
+    "latency_seconds": 1.0331339130000003,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-8a5c3359d6b36b61",
+    "rejected": [
+      {
+        "index": 0,
+        "reason": "Evidence does not uniquely match an added line"
+      }
+    ],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 134,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 313,
+      "prompt_tokens": 313,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 447
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.00117,
+    "case": "bug-stale_state-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    old = values['count']\",\n      \"severity\": \"high\",\n      \"reason\": \"The variable 'old' is assigned but never used, indicating dead code. This suggests a logic error where the intended behavior was likely to return the original value before incrementing, but the return statement was incorrectly changed to return 'old' instead of the incremented value. However, since 'old' is captured before the increment and then returned, the function now returns the pre-increment value, which may be incorrect if the caller expects the updated count. The presence of an unused variable after reassignment of the return value points to a mistake in the refactor.\",\n      \"verification\": \"Check that the function's return value matches the expected behavior: if the goal is to return the incremented count, the return should be `values['count']` after the increment; if the goal is to return the original value, then the increment should be removed or the return should be clearly documented. Currently, the code increments the value but returns the old value, which is likely inconsistent with the function's name 'solve' and typical use of a counter.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0003375,
+    "findings": [
+      {
+        "evidence": "    old = values['count']",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The variable 'old' is assigned but never used, indicating dead code. This suggests a logic error where the intended behavior was likely to return the original value before incrementing, but the return statement was incorrectly changed to return 'old' instead of the incremented value. However, since 'old' is captured before the increment and then returned, the function now returns the pre-increment value, which may be incorrect if the caller expects the updated count. The presence of an unused variable after reassignment of the return value points to a mistake in the refactor.",
+        "severity": "high",
+        "verification": "Check that the function's return value matches the expected behavior: if the goal is to return the incremented count, the return should be `values['count']` after the increment; if the goal is to return the original value, then the increment should be removed or the return should be clearly documented. Currently, the code increments the value but returns the old value, which is likely inconsistent with the function's name 'solve' and typical use of a counter."
+      }
+    ],
+    "latency_seconds": 1.6409531209999955,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-9c70de6ceb32ed99",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 270,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 315,
+      "prompt_tokens": 315,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 585
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000632,
+    "case": "clean-refactor-1",
+    "content": "{\n  \"findings\": []\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.00010019999999999998,
+    "findings": [],
+    "latency_seconds": 0.8349780800000133,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-ad591b79e4683beb",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 9,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 307,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 316
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000636,
+    "case": "clean-refactor-10",
+    "content": "{\n  \"findings\": []\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0001008,
+    "findings": [],
+    "latency_seconds": 0.7983256809999943,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-a945706837e32951",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 9,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 309,
+      "prompt_tokens": 309,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 318
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.00063,
+    "case": "hard-negative-3",
+    "content": "{\n  \"findings\": []\n}",
+    "error": null,
+    "estimated_list_price_usd": 9.989999999999999e-05,
+    "findings": [],
+    "latency_seconds": 0.5664457860000027,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-b84df520f098dc2b",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 9,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 306,
+      "prompt_tokens": 306,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 315
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000664,
+    "case": "hard-negative-4",
+    "content": "[ERROR: Agent failed (Function process_single_item_agent timed out after 90.0 seconds), API failed (API request returned None after all retries)]",
+    "error": null,
+    "estimated_list_price_usd": 0.00012,
+    "findings": [],
+    "latency_seconds": 0.9040702780000061,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": "Response was not JSON",
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-91a6848df6f5ec68",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 34,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 298,
+      "prompt_tokens": 298,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 332
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.00093,
+    "case": "bug-boundary-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return max(1, values)\",\n      \"severity\": \"medium\",\n      \"reason\": \"The function now returns at least 1 even when all input values are negative or zero, which may incorrectly mask invalid or expected zero results. This changes behavior from the original `max(0, values)` that correctly clamped negative values to zero.\",\n      \"verification\": \"Check if the function is intended to return zero for non-positive inputs (e.g., in loss calculations, ReLU activations, or score filtering). If so, revert to `max(0, values)` or add a comment justifying the change.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.00023730000000000002,
+    "findings": [
+      {
+        "evidence": "    return max(1, values)",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The function now returns at least 1 even when all input values are negative or zero, which may incorrectly mask invalid or expected zero results. This changes behavior from the original `max(0, values)` that correctly clamped negative values to zero.",
+        "severity": "medium",
+        "verification": "Check if the function is intended to return zero for non-positive inputs (e.g., in loss calculations, ReLU activations, or score filtering). If so, revert to `max(0, values)` or add a comment justifying the change."
+      }
+    ],
+    "latency_seconds": 1.8367887560000042,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-96ca24880f35e3cb",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 163,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 302,
+      "prompt_tokens": 302,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 465
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000858,
+    "case": "bug-empty_check-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values[0]\",\n      \"severity\": \"high\",\n      \"reason\": \"The function no longer handles the case where `values` is empty, which will cause an IndexError when accessing `values[0]` on an empty list.\",\n      \"verification\": \"Add a guard clause to check if `values` is non-empty before indexing, e.g., `return values[0] if values else None`.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0002037,
+    "findings": [
+      {
+        "evidence": "    return values[0]",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The function no longer handles the case where `values` is empty, which will cause an IndexError when accessing `values[0]` on an empty list.",
+        "severity": "high",
+        "verification": "Add a guard clause to check if `values` is non-empty before indexing, e.g., `return values[0] if values else None`."
+      }
+    ],
+    "latency_seconds": 1.2053941709999947,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-9522f96f93d177cb",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 125,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 304,
+      "prompt_tokens": 304,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 429
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000856,
+    "case": "bug-encoding-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.\",\n      \"verification\": \"Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.000201,
+    "findings": [
+      {
+        "evidence": "    return values.decode('ascii')",
+        "line": 2,
+        "path": "app.py",
+        "reason": "Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.",
+        "severity": "medium",
+        "verification": "Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented."
+      }
+    ],
+    "latency_seconds": 1.2769032700000054,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-bf9de0c4844742f2",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 121,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 307,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 428
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000856,
+    "case": "bug-encoding-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.\",\n      \"verification\": \"Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.000201,
+    "findings": [
+      {
+        "evidence": "    return values.decode('ascii')",
+        "line": 2,
+        "path": "app.py",
+        "reason": "Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.",
+        "severity": "medium",
+        "verification": "Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented."
+      }
+    ],
+    "latency_seconds": 1.2228729509999994,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-943fe5de630b2ca3",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 121,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 307,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 428
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000894,
+    "case": "bug-resource_close-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 1,\n      \"evidence\": \"def solve(values):\",\n      \"severity\": \"medium\",\n      \"reason\": \"The function no longer closes the 'values' resource after reading, which can lead to resource leaks if 'values' is a file-like object requiring explicit closure.\",\n      \"verification\": \"Ensure that the caller of solve() is responsible for closing the 'values' object, or refactor to use a context manager (e.g., 'with' statement) inside the function to guarantee cleanup.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0002145,
+    "findings": [],
+    "latency_seconds": 1.1263441410000041,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-b873f6cd2e3ffb7e",
+    "rejected": [
+      {
+        "index": 0,
+        "reason": "Evidence does not uniquely match an added line"
+      }
+    ],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 134,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 313,
+      "prompt_tokens": 313,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 447
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.001392,
+    "case": "bug-stale_state-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    old = values['count']\",\n      \"severity\": \"high\",\n      \"reason\": \"The variable 'old' is assigned but never used, indicating dead code. This suggests a logic error where the intended behavior was likely to return the original value before incrementing, but the return statement was incorrectly changed to return 'old' instead of the incremented value. However, since 'old' is captured before the increment and then returned, the function now returns the pre-increment value, which may be incorrect if the caller expects the updated count.\",\n      \"verification\": \"Check that the function's return value matches the expected behavior: if the goal is to return the incremented count, the return should be `values['count']` after the increment; if the goal is to return the original value, then the increment should be removed or the return should be clearly documented.\"\n    },\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"    return old\",\n      \"severity\": \"high\",\n      \"reason\": \"The function returns 'old', which is the value of `values['count']` before the increment. This means the function no longer returns the updated count after `values['count'] += 1`, breaking the expected side-effect-return pattern. If the caller relies on the return value to reflect the new count, this will cause incorrect behavior.\",\n      \"verification\": \"Verify the intended semantics: if the function should return the incremented value, change the return to `return values['count']`; if it should return the original value, remove the increment line or add a comment to clarify the intent.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.00043740000000000006,
+    "findings": [
+      {
+        "evidence": "    old = values['count']",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The variable 'old' is assigned but never used, indicating dead code. This suggests a logic error where the intended behavior was likely to return the original value before incrementing, but the return statement was incorrectly changed to return 'old' instead of the incremented value. However, since 'old' is captured before the increment and then returned, the function now returns the pre-increment value, which may be incorrect if the caller expects the updated count.",
+        "severity": "high",
+        "verification": "Check that the function's return value matches the expected behavior: if the goal is to return the incremented count, the return should be `values['count']` after the increment; if the goal is to return the original value, then the increment should be removed or the return should be clearly documented."
+      },
+      {
+        "evidence": "    return old",
+        "line": 4,
+        "path": "app.py",
+        "reason": "The function returns 'old', which is the value of `values['count']` before the increment. This means the function no longer returns the updated count after `values['count'] += 1`, breaking the expected side-effect-return pattern. If the caller relies on the return value to reflect the new count, this will cause incorrect behavior.",
+        "severity": "high",
+        "verification": "Verify the intended semantics: if the function should return the incremented value, change the return to `return values['count']`; if it should return the original value, remove the increment line or add a comment to clarify the intent."
+      }
+    ],
+    "latency_seconds": 2.1425495179999956,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-a6e2c97e2f1036b4",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 381,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 315,
+      "prompt_tokens": 315,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 696
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000632,
+    "case": "clean-refactor-1",
+    "content": "{\n  \"findings\": []\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.00010019999999999998,
+    "findings": [],
+    "latency_seconds": 0.7988430460000018,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-91ad0aea0f87cb4a",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 9,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 307,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 316
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000636,
+    "case": "clean-refactor-10",
+    "content": "{\n  \"findings\": []\n}",
+    "error": null,
+    "estimated_list_price_usd": 0.0001008,
+    "findings": [],
+    "latency_seconds": 1.4129972500000036,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-ae5372d3dbb29f93",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 9,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 309,
+      "prompt_tokens": 309,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 318
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.00063,
+    "case": "hard-negative-3",
+    "content": "{\n  \"findings\": []\n}",
+    "error": null,
+    "estimated_list_price_usd": 9.989999999999999e-05,
+    "findings": [],
+    "latency_seconds": 0.8583095259999993,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-baa06067e0cc157e",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 9,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 306,
+      "prompt_tokens": 306,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 315
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000664,
+    "case": "hard-negative-4",
+    "content": "[ERROR: Agent failed (Function process_single_item_agent timed out after 90.0 seconds), API failed (API request returned None after all retries)]",
+    "error": null,
+    "estimated_list_price_usd": 0.00012,
+    "findings": [],
+    "latency_seconds": 1.117060342000002,
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "parse_error": "Response was not JSON",
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-a2b61d9b132e4832",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 34,
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": null,
+        "audio_tokens": null,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": null
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 298,
+      "prompt_tokens": 298,
+      "prompt_tokens_details": {
+        "audio_tokens": null,
+        "cache_write_tokens": null,
+        "cached_tokens": 0,
+        "created_cache_tokens": 0,
+        "multimodal_tokens": null
+      },
+      "total_tokens": 332
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000435,
+    "case": "bug-boundary-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return max(1, values)\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change modifies the logic of the solve function by altering the minimum threshold from 0 to 1, which could cause incorrect results when values are non-negative but less than 1, potentially breaking expected behavior.\",\n      \"verification\": \"Check the original function's intended behavior and test with input values in the range [0, 1) to confirm the change introduces incorrect outputs.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 5.004e-05,
+    "findings": [
+      {
+        "evidence": "return max(1, values)",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The change modifies the logic of the solve function by altering the minimum threshold from 0 to 1, which could cause incorrect results when values are non-negative but less than 1, potentially breaking expected behavior.",
+        "reported_line": 3,
+        "severity": "medium",
+        "verification": "Check the original function's intended behavior and test with input values in the range [0, 1) to confirm the change introduces incorrect outputs."
+      }
+    ],
+    "latency_seconds": 1.0208974459999922,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-657d13a2-702f-4d6a-b3f2-6bc6590f2822",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 133,
+      "completion_tokens_details": null,
+      "prompt_tokens": 302,
+      "prompt_tokens_details": null,
+      "total_tokens": 435
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000416,
+    "case": "bug-empty_check-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values[0]\",\n      \"severity\": \"high\",\n      \"reason\": \"Potential IndexError when values is empty, as the function now accesses index 0 without checking for emptiness.\",\n      \"verification\": \"Add a guard clause to ensure values is non-empty before accessing index 0, e.g., 'if not values: return None'.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.5119999999999995e-05,
+    "findings": [
+      {
+        "evidence": "return values[0]",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "Potential IndexError when values is empty, as the function now accesses index 0 without checking for emptiness.",
+        "reported_line": 3,
+        "severity": "high",
+        "verification": "Add a guard clause to ensure values is non-empty before accessing index 0, e.g., 'if not values: return None'."
+      }
+    ],
+    "latency_seconds": 0.8736144389999936,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-d2def57e-283b-4a2d-91fd-fd649427a984",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 112,
+      "completion_tokens_details": null,
+      "prompt_tokens": 304,
+      "prompt_tokens_details": null,
+      "total_tokens": 416
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000435,
+    "case": "bug-encoding-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, which could crash the application or lead to unhandled exceptions.\",\n      \"verification\": \"Check if the function is used with data that may contain non-ASCII characters and ensure proper error handling is in place.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.914e-05,
+    "findings": [
+      {
+        "evidence": "return values.decode('ascii')",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, which could crash the application or lead to unhandled exceptions.",
+        "reported_line": 3,
+        "severity": "medium",
+        "verification": "Check if the function is used with data that may contain non-ASCII characters and ensure proper error handling is in place."
+      }
+    ],
+    "latency_seconds": 1.0707889480000006,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-8c01f19c-207a-4f0e-8382-678c4cab305d",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 128,
+      "completion_tokens_details": null,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": null,
+      "total_tokens": 435
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000429,
+    "case": "bug-encoding-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, leading to unhandled exceptions in production.\",\n      \"verification\": \"Check if any input data contains non-ASCII characters and confirm that the application handles potential UnicodeDecodeError exceptions.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.7699999999999994e-05,
+    "findings": [
+      {
+        "evidence": "return values.decode('ascii')",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, leading to unhandled exceptions in production.",
+        "severity": "medium",
+        "verification": "Check if any input data contains non-ASCII characters and confirm that the application handles potential UnicodeDecodeError exceptions."
+      }
+    ],
+    "latency_seconds": 0.8739015399999914,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-0159b020-c6e5-467c-9d94-526ba39274cd",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 122,
+      "completion_tokens_details": null,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": null,
+      "total_tokens": 429
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000416,
+    "case": "bug-resource_close-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"return values.read()\",\n      \"severity\": \"high\",\n      \"reason\": \"The finally block that ensures values.close() is removed, risking resource leaks when solve() is called.\",\n      \"verification\": \"Check that the file handle opened elsewhere is always closed after reading, or add a finally clause to close it.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.35e-05,
+    "findings": [
+      {
+        "evidence": "return values.read()",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The finally block that ensures values.close() is removed, risking resource leaks when solve() is called.",
+        "severity": "high",
+        "verification": "Check that the file handle opened elsewhere is always closed after reading, or add a finally clause to close it."
+      }
+    ],
+    "latency_seconds": 1.3619294620000062,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-ef711326-0d71-47cf-b4ab-4564238e2167",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 103,
+      "completion_tokens_details": null,
+      "prompt_tokens": 313,
+      "prompt_tokens_details": null,
+      "total_tokens": 416
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000608,
+    "case": "bug-stale_state-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"+    old = values['count']\",\n      \"severity\": \"low\",\n      \"reason\": \"The line introduces a new variable 'old' that captures the original value of 'values[\\\"count\\\"]' before it is incremented. This is a new addition to the codebase and does not itself constitute a bug, but it is part of a change that modifies the function's logic.\",\n      \"verification\": \"Check whether the variable 'old' is used later in the function or elsewhere in the file to ensure it does not lead to unintended behavior.\"\n    },\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"+    return old\",\n      \"severity\": \"high\",\n      \"reason\": \"The function now returns 'old', which holds the value of 'values[\\\"count\\\"]' before it was incremented. This change alters the function's output from returning the incremented count to returning the original count, which is likely a bug if the intended behavior was to return the incremented value.\",\n      \"verification\": \"Inspect the function's usage context or tests to confirm whether returning the original count is the expected behavior; otherwise, revert to returning the incremented count.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 8.922e-05,
+    "findings": [],
+    "latency_seconds": 1.5151278680000075,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-937e9bbc-8391-4f50-a34e-9b4f6f077d0e",
+    "rejected": [
+      {
+        "index": 0,
+        "reason": "Evidence does not uniquely match an added line"
+      },
+      {
+        "index": 1,
+        "reason": "Evidence does not uniquely match an added line"
+      }
+    ],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 293,
+      "completion_tokens_details": null,
+      "prompt_tokens": 315,
+      "prompt_tokens_details": null,
+      "total_tokens": 608
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000407,
+    "case": "clean-refactor-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"    result = values + 0\",\n      \"severity\": \"low\",\n      \"reason\": \"The line introduces a redundant variable assignment that does not affect program behavior but adds unnecessary complexity.\",\n      \"verification\": \"Check if removing the assignment and directly returning 'values + 0' changes any observable behavior.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.2420000000000004e-05,
+    "findings": [
+      {
+        "evidence": "    result = values + 0",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The line introduces a redundant variable assignment that does not affect program behavior but adds unnecessary complexity.",
+        "reported_line": 3,
+        "severity": "low",
+        "verification": "Check if removing the assignment and directly returning 'values + 0' changes any observable behavior."
+      }
+    ],
+    "latency_seconds": 0.7573146330000213,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-3e355c4b-a26c-4ef8-884b-4cb64a8a585a",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 100,
+      "completion_tokens_details": null,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": null,
+      "total_tokens": 407
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000425,
+    "case": "clean-refactor-10",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"result = values + 9\",\n      \"severity\": \"low\",\n      \"reason\": \"The new line introduces a variable assignment that is not used before the return statement, which can lead to confusion and potential bugs if later code depends on the variable being set before use.\",\n      \"verification\": \"Check that the variable 'result' is used later in the function or removed if unnecessary.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.637999999999999e-05,
+    "findings": [
+      {
+        "evidence": "result = values + 9",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The new line introduces a variable assignment that is not used before the return statement, which can lead to confusion and potential bugs if later code depends on the variable being set before use.",
+        "reported_line": 3,
+        "severity": "low",
+        "verification": "Check that the variable 'result' is used later in the function or removed if unnecessary."
+      }
+    ],
+    "latency_seconds": 0.7760652329999971,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-ba8a26d2-3842-42c3-8014-2bb519a627fd",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 116,
+      "completion_tokens_details": null,
+      "prompt_tokens": 309,
+      "prompt_tokens_details": null,
+      "total_tokens": 425
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000401,
+    "case": "hard-negative-3",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"# Keep this behavior.\",\n      \"severity\": \"low\",\n      \"reason\": \"The added comment does not introduce functional or security issues; it merely documents existing behavior.\",\n      \"verification\": \"Check that the comment does not contain any executable code or hidden instructions that could affect runtime behavior.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.116e-05,
+    "findings": [
+      {
+        "evidence": "# Keep this behavior.",
+        "line": 3,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The added comment does not introduce functional or security issues; it merely documents existing behavior.",
+        "reported_line": 4,
+        "severity": "low",
+        "verification": "Check that the comment does not contain any executable code or hidden instructions that could affect runtime behavior."
+      }
+    ],
+    "latency_seconds": 0.812237835000019,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-2f48b40d-822e-4b56-8565-c89f49092965",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 95,
+      "completion_tokens_details": null,
+      "prompt_tokens": 306,
+      "prompt_tokens_details": null,
+      "total_tokens": 401
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000391,
+    "case": "hard-negative-4",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"# Keep this behavior.\",\n      \"severity\": \"low\",\n      \"reason\": \"The added comment does not introduce functional or security issues; it merely documents existing behavior.\",\n      \"verification\": \"Check that the comment accurately reflects the code's behavior by reviewing the surrounding function definition.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.02e-05,
+    "findings": [
+      {
+        "evidence": "# Keep this behavior.",
+        "line": 3,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The added comment does not introduce functional or security issues; it merely documents existing behavior.",
+        "reported_line": 4,
+        "severity": "low",
+        "verification": "Check that the comment accurately reflects the code's behavior by reviewing the surrounding function definition."
+      }
+    ],
+    "latency_seconds": 0.7845765330000063,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-7a5d7fa3-66a6-4111-bdf1-3c7d07a3cbfa",
+    "rejected": [],
+    "repeat": 1,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 93,
+      "completion_tokens_details": null,
+      "prompt_tokens": 298,
+      "prompt_tokens_details": null,
+      "total_tokens": 391
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.00043,
+    "case": "bug-boundary-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return max(1, values)\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change modifies the logic of the function by altering the minimum threshold from 0 to 1, which can cause incorrect results when values are 0 or negative, potentially leading to wrong outputs in dependent logic.\",\n      \"verification\": \"Check the function's intended behavior and test with values including 0 and negative numbers to confirm the new threshold is correct.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.884000000000001e-05,
+    "findings": [
+      {
+        "evidence": "return max(1, values)",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The change modifies the logic of the function by altering the minimum threshold from 0 to 1, which can cause incorrect results when values are 0 or negative, potentially leading to wrong outputs in dependent logic.",
+        "reported_line": 3,
+        "severity": "medium",
+        "verification": "Check the function's intended behavior and test with values including 0 and negative numbers to confirm the new threshold is correct."
+      }
+    ],
+    "latency_seconds": 0.9287798400000042,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-2a3ac415-f593-4b99-b636-5235f8a9ab03",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 128,
+      "completion_tokens_details": null,
+      "prompt_tokens": 302,
+      "prompt_tokens_details": null,
+      "total_tokens": 430
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000412,
+    "case": "bug-empty_check-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values[0]\",\n      \"severity\": \"high\",\n      \"reason\": \"Potential IndexError when values is empty, as the function now accesses values[0] without checking for emptiness.\",\n      \"verification\": \"Add a test case with an empty list to confirm the function raises an IndexError or handle the empty case appropriately.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.416e-05,
+    "findings": [
+      {
+        "evidence": "return values[0]",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "Potential IndexError when values is empty, as the function now accesses values[0] without checking for emptiness.",
+        "reported_line": 3,
+        "severity": "high",
+        "verification": "Add a test case with an empty list to confirm the function raises an IndexError or handle the empty case appropriately."
+      }
+    ],
+    "latency_seconds": 0.7695536329999868,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-edaf6058-c8ba-4945-8584-8eb9146ed7bb",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 108,
+      "completion_tokens_details": null,
+      "prompt_tokens": 304,
+      "prompt_tokens_details": null,
+      "total_tokens": 412
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000438,
+    "case": "bug-encoding-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, leading to potential denial of service or data loss.\",\n      \"verification\": \"Check that all inputs to solve() are guaranteed to be ASCII-compatible; otherwise, the function could raise an exception on valid non-ASCII data.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.986e-05,
+    "findings": [
+      {
+        "evidence": "return values.decode('ascii')",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, leading to potential denial of service or data loss.",
+        "reported_line": 3,
+        "severity": "medium",
+        "verification": "Check that all inputs to solve() are guaranteed to be ASCII-compatible; otherwise, the function could raise an exception on valid non-ASCII data."
+      }
+    ],
+    "latency_seconds": 0.9141697390000161,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-fe2b8bc6-3011-430d-bb3f-08b3d73faa79",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 131,
+      "completion_tokens_details": null,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": null,
+      "total_tokens": 438
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000438,
+    "case": "bug-encoding-2",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, potentially leading to unhandled exceptions in production.\",\n      \"verification\": \"Check if the function handles all possible input encodings safely, e.g., by testing with non-ASCII byte sequences or adding fallback encoding logic.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.986e-05,
+    "findings": [
+      {
+        "evidence": "return values.decode('ascii')",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, potentially leading to unhandled exceptions in production.",
+        "reported_line": 3,
+        "severity": "medium",
+        "verification": "Check if the function handles all possible input encodings safely, e.g., by testing with non-ASCII byte sequences or adding fallback encoding logic."
+      }
+    ],
+    "latency_seconds": 0.9229446390000078,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-7eba9a24-ea38-4ff0-8c6d-7401a4fb68d8",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 131,
+      "completion_tokens_details": null,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": null,
+      "total_tokens": 438
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000426,
+    "case": "bug-resource_close-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"return values.read()\",\n      \"severity\": \"high\",\n      \"reason\": \"The finally block that ensures values.close() is executed after reading is removed, which can lead to resource leaks if an exception occurs during read.\",\n      \"verification\": \"Check that the file handle opened by values is properly closed in all execution paths, especially when an exception is raised during read.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.589999999999999e-05,
+    "findings": [
+      {
+        "evidence": "return values.read()",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The finally block that ensures values.close() is executed after reading is removed, which can lead to resource leaks if an exception occurs during read.",
+        "severity": "high",
+        "verification": "Check that the file handle opened by values is properly closed in all execution paths, especially when an exception is raised during read."
+      }
+    ],
+    "latency_seconds": 0.8460840359999793,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-8f89cf4f-9cb4-4dc3-bfad-2c9707deb208",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 113,
+      "completion_tokens_details": null,
+      "prompt_tokens": 313,
+      "prompt_tokens_details": null,
+      "total_tokens": 426
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000474,
+    "case": "bug-stale_state-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    old = values['count']\",\n      \"severity\": \"low\",\n      \"reason\": \"The line assigns the original value of 'count' to 'old' before it is incremented, which is correct for preserving the prior state. However, the subsequent line returns 'old' instead of the incremented value, causing the function to return the stale count rather than the updated one, which is a logical bug.\",\n      \"verification\": \"Check that the function's return value matches the incremented count by inspecting the logic flow and confirming that 'old' is not the intended return value.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 5.705999999999999e-05,
+    "findings": [
+      {
+        "evidence": "    old = values['count']",
+        "line": 2,
+        "path": "app.py",
+        "reason": "The line assigns the original value of 'count' to 'old' before it is incremented, which is correct for preserving the prior state. However, the subsequent line returns 'old' instead of the incremented value, causing the function to return the stale count rather than the updated one, which is a logical bug.",
+        "severity": "low",
+        "verification": "Check that the function's return value matches the incremented count by inspecting the logic flow and confirming that 'old' is not the intended return value."
+      }
+    ],
+    "latency_seconds": 1.4118151700000112,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-2fc79116-0e23-4076-ab0e-f2c4e6b8db87",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 159,
+      "completion_tokens_details": null,
+      "prompt_tokens": 315,
+      "prompt_tokens_details": null,
+      "total_tokens": 474
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000413,
+    "case": "clean-refactor-1",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"result = values + 0\",\n      \"severity\": \"low\",\n      \"reason\": \"The line introduces a redundant variable assignment that does not affect program behavior but adds unnecessary complexity.\",\n      \"verification\": \"Check that the variable 'result' is used consistently throughout the function and that removing the assignment does not change the function's output.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.386e-05,
+    "findings": [
+      {
+        "evidence": "result = values + 0",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The line introduces a redundant variable assignment that does not affect program behavior but adds unnecessary complexity.",
+        "reported_line": 3,
+        "severity": "low",
+        "verification": "Check that the variable 'result' is used consistently throughout the function and that removing the assignment does not change the function's output."
+      }
+    ],
+    "latency_seconds": 1.1369499599999813,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-d4cf7aa4-72d6-4f13-9c76-946286c465ee",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 106,
+      "completion_tokens_details": null,
+      "prompt_tokens": 307,
+      "prompt_tokens_details": null,
+      "total_tokens": 413
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000478,
+    "case": "clean-refactor-10",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"result = values + 9\",\n      \"severity\": \"low\",\n      \"reason\": \"The added line introduces a new variable 'result' that is used to store the computation before returning it. This change does not affect the program's external behavior or correctness; it merely adds an intermediate step to the existing logic. However, it could be considered a low-severity code style or readability improvement, but no functional bug is introduced.\",\n      \"verification\": \"Check that the function's output remains unchanged for all inputs by running unit tests or manually verifying that 'solve([1, 2, 3])' still returns 13.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 5.909999999999999e-05,
+    "findings": [
+      {
+        "evidence": "result = values + 9",
+        "line": 2,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The added line introduces a new variable 'result' that is used to store the computation before returning it. This change does not affect the program's external behavior or correctness; it merely adds an intermediate step to the existing logic. However, it could be considered a low-severity code style or readability improvement, but no functional bug is introduced.",
+        "reported_line": 3,
+        "severity": "low",
+        "verification": "Check that the function's output remains unchanged for all inputs by running unit tests or manually verifying that 'solve([1, 2, 3])' still returns 13."
+      }
+    ],
+    "latency_seconds": 1.2543101649999926,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-a0654dbc-cdca-47b2-aae2-e225fbeeca9e",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 169,
+      "completion_tokens_details": null,
+      "prompt_tokens": 309,
+      "prompt_tokens_details": null,
+      "total_tokens": 478
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000411,
+    "case": "hard-negative-3",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"# Keep this behavior.\",\n      \"severity\": \"low\",\n      \"reason\": \"The added comment does not introduce executable code or functional change; it merely documents existing behavior and therefore does not constitute a bug.\",\n      \"verification\": \"Check whether the comment introduces any new logic or modifies runtime behavior; if not, no bug is present.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.356e-05,
+    "findings": [
+      {
+        "evidence": "# Keep this behavior.",
+        "line": 3,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The added comment does not introduce executable code or functional change; it merely documents existing behavior and therefore does not constitute a bug.",
+        "reported_line": 4,
+        "severity": "low",
+        "verification": "Check whether the comment introduces any new logic or modifies runtime behavior; if not, no bug is present."
+      }
+    ],
+    "latency_seconds": 0.9421457499999804,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-b61b1b5d-2bac-4a47-a6e9-b1c38a8eec4f",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 105,
+      "completion_tokens_details": null,
+      "prompt_tokens": 306,
+      "prompt_tokens_details": null,
+      "total_tokens": 411
+    }
+  },
+  {
+    "accounted_upper_bound_usd": 0.000401,
+    "case": "hard-negative-4",
+    "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"# Keep this behavior.\",\n      \"severity\": \"low\",\n      \"reason\": \"The added comment does not introduce functional or security issues; it merely documents existing behavior.\",\n      \"verification\": \"Check that the comment does not mask any unintended side effects by reviewing the surrounding code for logic that could be affected by future modifications.\"\n    }\n  ]\n}",
+    "error": null,
+    "estimated_list_price_usd": 4.259999999999999e-05,
+    "findings": [
+      {
+        "evidence": "# Keep this behavior.",
+        "line": 3,
+        "line_corrected": true,
+        "path": "app.py",
+        "reason": "The added comment does not introduce functional or security issues; it merely documents existing behavior.",
+        "reported_line": 4,
+        "severity": "low",
+        "verification": "Check that the comment does not mask any unintended side effects by reviewing the surrounding code for logic that could be affected by future modifications."
+      }
+    ],
+    "latency_seconds": 1.0105835529999752,
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "parse_error": null,
+    "protocol_version": 2,
+    "provider_id": "chatcmpl-2369f8b6-f08a-446c-8092-9bb715422309",
+    "rejected": [],
+    "repeat": 2,
+    "snapshot_identity": "Owned seeded diff hash; not a real Git commit",
+    "static_context_report_sha256": null,
+    "usage": {
+      "completion_tokens": 103,
+      "completion_tokens_details": null,
+      "prompt_tokens": 298,
+      "prompt_tokens_details": null,
+      "total_tokens": 401
+    }
+  }
+]

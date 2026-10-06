@@ -77,6 +77,14 @@ All hashing uses standard SHA-256 and canonical JSON serialization implemented i
 
 ## Steward WP4 and offline demo
 
+The approved 2026-10-06 live evaluation uses only the original frozen owned
+seeded corpus, v4 source hashes and recorded Token Factory responses. Raw
+request/response identities and hashes are preserved in
+`evidence/steward-live-20261006/ARTIFACT_MANIFEST.json`. The report/export script
+is an original local implementation; it renders model text as escaped data and
+imports no codebook. Live evidence and the older mock/oracle cards are labeled
+separately. No provider weight hash or billing receipt is available.
+
 `git_output.py`, `act_seccomp.py`, adversarial fixtures and `scripts/demo_steward.py`
 are original local implementations. The demo fixture, finding, reproducer and
 fix are explicitly owned and canned; they contain no sibling repository data.

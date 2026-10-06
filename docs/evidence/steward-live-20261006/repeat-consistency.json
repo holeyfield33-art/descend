@@ -1,0 +1,130 @@
+{
+  "Nano": {
+    "cases": [
+      {
+        "case": "bug-boundary-2",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-empty_check-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-encoding-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-encoding-2",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-resource_close-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-stale_state-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": false
+      },
+      {
+        "case": "clean-refactor-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "clean-refactor-10",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "hard-negative-3",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "hard-negative-4",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      }
+    ],
+    "definition": "Same accepted citation set and parse/error status across primary plus two repeats; reason wording excluded",
+    "stable": {
+      "denominator": 10,
+      "numerator": 9,
+      "rate": 0.9,
+      "wilson95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ]
+    }
+  },
+  "Super": {
+    "cases": [
+      {
+        "case": "bug-boundary-2",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-empty_check-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-encoding-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-encoding-2",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-resource_close-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "bug-stale_state-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": false
+      },
+      {
+        "case": "clean-refactor-1",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "clean-refactor-10",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "hard-negative-3",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      },
+      {
+        "case": "hard-negative-4",
+        "runs": 3,
+        "stable_citations_and_parse_status": true
+      }
+    ],
+    "definition": "Same accepted citation set and parse/error status across primary plus two repeats; reason wording excluded",
+    "stable": {
+      "denominator": 10,
+      "numerator": 9,
+      "rate": 0.9,
+      "wilson95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ]
+    }
+  }
+}

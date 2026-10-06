@@ -79,4 +79,5 @@ chat pattern into a one-call controller proxy. It requires an explicitly
 supplied client, validates sensitive/bounded source and citation, claims the
 action, reserves conservative spend, validates usage and proposal, and never
 automatically retries. Tests inject fake clients and separate mock ledgers.
-The CLI remains offline; live activation belongs to approved WP6 measurement.
+The canned-proposal CLI remains offline. The approved frozen WP6 evaluator
+uses this proxy for bounded live proposals after the primary reviews.

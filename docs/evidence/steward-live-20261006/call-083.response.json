@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"# Keep this behavior.\",\n      \"severity\": \"low\",\n      \"reason\": \"The added comment does not introduce executable code or a bug; it merely documents intent and does not affect program behavior.\",\n      \"verification\": \"Check that the comment does not contain any executable statements or affect control flow.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297065,
+  "id": "chatcmpl-1c3e3a0b-c0d5-497f-b9be-4b5ca338cfa7",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 97,
+    "completion_tokens_details": null,
+    "prompt_tokens": 298,
+    "prompt_tokens_details": null,
+    "total_tokens": 395
+  }
+}

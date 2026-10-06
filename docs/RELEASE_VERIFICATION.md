@@ -1,5 +1,13 @@
 # Release verification
 
+**2026-10-06 live measurement:** user-approved frozen plan completed all
+104 review calls and one proposal. The proposal failed syntax validation and
+halted acts; no live generated code executed and no patch applied. All responses,
+usage/IDs, errors, false positives and misses are retained. Additional accounted
+spend $0.065495; cumulative $0.613690, zero holds. New public exporter tests:
+3 Windows passes, including HTML escaping and pre-write secret/identity refusal.
+See [live results](STEWARD_LIVE_RESULTS.md) and the updated run manual.
+
 **Final offline readiness at `46428f9`:** fresh public Linux clone 202 passed,
 zero skips; fresh public Windows clone 158 passed, 44 explicit skips. Both source
 statuses clean. Locked environments reused. Final frozen-plan hashes verified

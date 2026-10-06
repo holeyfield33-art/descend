@@ -1,0 +1,55 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changing from UTF-8 to ASCII encoding may cause UnicodeDecodeError when input contains non-ASCII bytes, breaking functionality for valid UTF-8 inputs.\",\n      \"verification\": \"Add input validation or exception handling for decode errors, or revert to UTF-8 unless ASCII-only input is guaranteed and documented.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297013,
+  "ec_transfer_params": null,
+  "id": "chatcmpl-b43d4b01c9e7afa1",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g5001743e3-dp2-9bbaa064",
+  "usage": {
+    "completion_tokens": 121,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 307,
+    "prompt_tokens": 307,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "created_cache_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 428
+  }
+}

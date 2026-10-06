@@ -13,6 +13,11 @@ See [scope and limits](STEWARD_ACT.md) and [automated attack coverage](STEWARD_A
 Independent review, arbitrary-repository support and kernel exploit assurance
 remain unproven. The offline demo uses owned canned fixtures, not live proposals.
 
+The approved 2026-10-06 live run rejected its first generated proposal for
+invalid Python syntax before execution; no live patch was applied. This is one
+observed refusal, not broad model/patch safety assurance. Every raw failure is
+retained in the live report, with independent review still pending.
+
 ## Assets
 
 - Hidden evaluation set and labels

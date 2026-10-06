@@ -1,0 +1,17 @@
+{
+  "act_attempts": 1,
+  "additional_accounted_upper_bound_usd": 0.065495,
+  "automatic_resume": false,
+  "halted": true,
+  "kind": "live",
+  "ledger_end": {
+    "accounted_upper_bound_usd": 0.61369,
+    "billing_receipt": false,
+    "calls": 223,
+    "cap_usd": 20.0,
+    "unresolved_calls": 0
+  },
+  "plan_sha256": "f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce",
+  "provider_calls": 105,
+  "review_rows": 104
+}

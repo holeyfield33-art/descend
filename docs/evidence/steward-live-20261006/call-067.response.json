@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values.get('enabled', False)\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changed default value from True to False in values.get('enabled', ...) call, which may alter behavior when 'enabled' key is missing.\",\n      \"verification\": \"Check if the original default True was required for correct logic; confirm that False is safe in all contexts where the key may be absent.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297049,
+  "id": "chatcmpl-37e041b3-800a-46c8-bf8a-c6ced586e25a",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 118,
+    "completion_tokens_details": null,
+    "prompt_tokens": 302,
+    "prompt_tokens_details": null,
+    "total_tokens": 420
+  }
+}

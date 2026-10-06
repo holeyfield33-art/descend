@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"    result = values + 0\",\n      \"severity\": \"low\",\n      \"reason\": \"The line introduces a redundant variable assignment that does not affect program behavior but adds unnecessary complexity.\",\n      \"verification\": \"Check if removing the assignment and directly returning 'values + 0' changes any observable behavior.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297073,
+  "id": "chatcmpl-3e355c4b-a26c-4ef8-884b-4cb64a8a585a",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 100,
+    "completion_tokens_details": null,
+    "prompt_tokens": 307,
+    "prompt_tokens_details": null,
+    "total_tokens": 407
+  }
+}

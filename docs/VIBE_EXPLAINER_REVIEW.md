@@ -48,5 +48,5 @@ This is a first configuration layer, not a complete multi-repo release. It still
 
 Further Vibe/ASI integration and fleet development are parked by the new
 Repo Steward directive. This report remains historical pilot evidence.
-The current [WP0 boundary gate](STEWARD_BOUNDARY_REVIEW.md) and
+The completed [Git boundary repair](STEWARD_BOUNDARY_REVIEW.md) and
 [phase report](STEWARD_PHASE_REPORT.md) take precedence over earlier next steps.

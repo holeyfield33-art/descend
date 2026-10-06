@@ -1,5 +1,15 @@
 # Roadmap
 
+## Current product: Repo Steward
+
+Offline review/verify/export, frozen corpus, baselines, attack matrix and demo
+are implemented. The user approved the $8 bounded Super/Nano evaluation on
+2026-10-06; it completed with 105 calls and a rejected act proposal. See
+[evaluation](EVALUATION.md), [run manual](STEWARD_RUN_MANUAL.md)
+and [phase report](STEWARD_PHASE_REPORT.md). Independent red-team review,
+human adjudication, hosted deployment and repository extraction remain pending.
+The DM0 roadmap below is historical and parked.
+
 ## Current: Phase 2A launcher, real Nemotron with fake training
 
 - Recovered the missing source/test/script tree from the supplied ZIP.

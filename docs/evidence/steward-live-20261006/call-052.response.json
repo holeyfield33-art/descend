@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return max(1, values)\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change modifies the logic of the function to always return at least 1, which may break expected behavior for inputs where the original max(0, values) would return 0.\",\n      \"verification\": \"Check the function's intended behavior and test with inputs that would have resulted in 0 under the original implementation to confirm the change introduces a bug.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297033,
+  "id": "chatcmpl-cc837987-84ae-424b-9e7e-0de4788d9559",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 128,
+    "completion_tokens_details": null,
+    "prompt_tokens": 302,
+    "prompt_tokens_details": null,
+    "total_tokens": 430
+  }
+}

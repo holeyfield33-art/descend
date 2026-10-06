@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"values.sort()\",\n      \"severity\": \"low\",\n      \"reason\": \"The change replaces a pure function that returns a new sorted list with an in-place sort that mutates the input list, which can cause side effects for callers expecting immutability.\",\n      \"verification\": \"Check if any other code relies on the original list remaining unchanged after calling solve().\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297044,
+  "id": "chatcmpl-cc743d46-0d2c-494d-9da5-2c9171d34033",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 113,
+    "completion_tokens_details": null,
+    "prompt_tokens": 301,
+    "prompt_tokens_details": null,
+    "total_tokens": 414
+  }
+}

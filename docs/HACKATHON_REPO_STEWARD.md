@@ -1,17 +1,21 @@
 # Hackathon direction: Repo Steward
 
-**Current gate (2026-10-05):** WP0–WP3 offline evidence and WP4 automated checks
+**Current gate (2026-10-06):** WP0–WP3 offline evidence and WP4 automated checks
 are implemented; the [offline demo](STEWARD_DEMO.md) exports a verified patch
-from an owned canned fixture. Independent red-team review and approved live
-comparative evaluation remain pending. The new directive
+from an owned canned fixture. The user approved the $8 frozen Super/Nano
+evaluation, which completed with 105 calls and one rejected act proposal.
+Both models detected 15/16 seeded bugs by automatic location scoring; Nano
+falsely flagged all 11 clean/hard-negative cases, and Super had seven schema
+failures. See [all measured results](STEWARD_LIVE_RESULTS.md). Independent
+red-team review and human adjudication remain pending. The directive
 supersedes the roadmap below: fleet, commit cursors and further Vibe/ASI work
 are parked. Read the current phase report before interpreting the older roadmap.
 The following earlier live commands are interface documentation, not renewed
 permission to spend. See the [run manual](STEWARD_RUN_MANUAL.md) and
 [phase report](STEWARD_PHASE_REPORT.md). Current conservative ledger total is
-$0.548195 across 118 calls; older totals below are historical checkpoints.
+$0.613690 across 223 calls; older totals below are historical checkpoints.
 
-Status: read-only watcher prototype, not a working submission. The existing Descend DM0 experiment remains separately labeled as pre-formal research. This document describes a new product built during the 2026 submission period; prior repository work must be disclosed in the final submission.
+Status: restricted review/verify/export prototype; submission preparation is incomplete. The existing Descend DM0 experiment remains separately labeled as pre-formal research. This document describes a new product built during the 2026 submission period; prior repository work must be disclosed in the final submission.
 
 ## Product
 
@@ -63,7 +67,7 @@ python -m scripts.view_repo_steward --port 8765
 python -m scripts.triage_repo_steward --repo /absolute/path/to/checkout --sha FULL_COMMIT_SHA --finding 0 --decision confirmed --note "Reproduced locally"
 ```
 
-The first command is a no-cost transport mock, **not an AI review**. `--live` uploads the selected Git commit diff to Token Factory and can spend credits; use only with a repository whose code may be sent to that provider. SQLite atomically claims each repository/commit before reviewing, so two watcher processes do not make duplicate paid attempts. A failed or ambiguous call retains its spend reservation and seals that commit as `error`; a process crash leaves `in_progress`. Neither is retried automatically. The watcher continues polling for future commits after a handled failure. Open `http://127.0.0.1:8765/` after starting the dashboard in a separate terminal. The triage command records a maintainer decision on a citation-validated finding; `dismissed` is also supported. These decisions persist across restarts and appear on the read-only dashboard. They do not train the model or prove review quality. The next slices are per-repository commit cursors, a bounded draft-patch worktree, and a public demo/test build. Keep DM0 experimental claims and Repo Steward product claims separate in the README and demo.
+The first command is a no-cost transport mock, **not an AI review**. `--live` uploads the selected Git commit diff to Token Factory and can spend credits; use only with a repository whose code may be sent to that provider. SQLite atomically claims each repository/commit before reviewing, so two watcher processes do not make duplicate paid attempts. A failed or ambiguous call retains its spend reservation and seals that commit as `error`; a process crash leaves `in_progress`. Neither is retried automatically. The watcher continues polling for future commits after a handled failure. Open `http://127.0.0.1:8765/` after starting the dashboard in a separate terminal. The triage command records a maintainer decision on a citation-validated finding; `dismissed` is also supported. These decisions persist across restarts and appear on the read-only dashboard. They do not train the model or prove review quality. The restricted act worker and public offline demo now exist. Commit cursors and fleet expansion remain parked; see the current phase report. Keep DM0 experimental claims and Repo Steward product claims separate in the README and demo.
 
 On 2026-10-05, one live Super smoke review of an owned `totals.py` commit found the intentionally omitted final list element. A separate manual fixture check returned 3 for `[1, 2, 3]` against expected 6. A restart returned the cached review without a second call. The provider reported 266 prompt and 383 completion tokens; the conservative ledger added $0.001298 and stood at $0.540883 across 116 calls, with no unresolved holds. See `artifacts/pilots/steward-smoke/20261005/result.json`. This is one simple seeded case, not a measured review success rate.
 

@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"return values.read()\",\n      \"severity\": \"high\",\n      \"reason\": \"The finally block that ensures values.close() is executed after reading is removed, which can lead to resource leaks if an exception occurs during read.\",\n      \"verification\": \"Check that the file handle opened by values is properly closed in all execution paths, especially when an exception is raised during read.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297080,
+  "id": "chatcmpl-8f89cf4f-9cb4-4dc3-bfad-2c9707deb208",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 113,
+    "completion_tokens_details": null,
+    "prompt_tokens": 313,
+    "prompt_tokens_details": null,
+    "total_tokens": 426
+  }
+}

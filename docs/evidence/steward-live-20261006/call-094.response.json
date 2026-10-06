@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return max(1, values)\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change modifies the logic of the function by altering the minimum threshold from 0 to 1, which can cause incorrect results when values are 0 or negative, potentially leading to wrong outputs in dependent logic.\",\n      \"verification\": \"Check the function's intended behavior and test with values including 0 and negative numbers to confirm the new threshold is correct.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297076,
+  "id": "chatcmpl-2a3ac415-f593-4b99-b636-5235f8a9ab03",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 128,
+    "completion_tokens_details": null,
+    "prompt_tokens": 302,
+    "prompt_tokens_details": null,
+    "total_tokens": 430
+  }
+}

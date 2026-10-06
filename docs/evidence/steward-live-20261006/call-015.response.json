@@ -1,0 +1,55 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 2,\n      \"evidence\": \"    return values.get('enabled', False)\",\n      \"severity\": \"medium\",\n      \"reason\": \"Changed default value from True to False for 'enabled' key, which may invert intended logic and cause features to be disabled by default when callers expect them enabled.\",\n      \"verification\": \"Check callers of solve() to ensure they handle the case where 'enabled' is missing and now defaults to False, particularly if the function is used to enable features or behaviors.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": null
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791296994,
+  "ec_transfer_params": null,
+  "id": "chatcmpl-ba5ec05cb38b1034",
+  "kv_transfer_params": null,
+  "metrics": null,
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.1.dev1+g5001743e3-dp2-9bbaa064",
+  "usage": {
+    "completion_tokens": 133,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 302,
+    "prompt_tokens": 302,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "created_cache_tokens": 0,
+      "multimodal_tokens": null
+    },
+    "total_tokens": 435
+  }
+}

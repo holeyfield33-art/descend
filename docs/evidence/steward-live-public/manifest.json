@@ -1,0 +1,10 @@
+{
+  "files": {
+    "LICENSE": "b09456bea04242f1fecb3e238e2549ee4358e79e6bd896ae101108a4524658f8",
+    "data.json": "b7d5168386f0c401e3bbe48039161f185b577c7221af22f7829da8bb7c5639b4",
+    "index.html": "1df3e06c74ee8c93b6dea4321a409acbef8d76a523e48682cbe2f281f900f3a9"
+  },
+  "license": "Descend LICENSE; original owned fixtures",
+  "secret_pattern_matches": 0,
+  "source_plan_sha256": "f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce"
+}

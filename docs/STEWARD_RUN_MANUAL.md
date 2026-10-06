@@ -1,10 +1,11 @@
 # Repo Steward engineering run manual
 
-Status: offline act/evaluation/demo operating manual, 2026-10-05.
-Live comparative evaluation and independent red-team review remain pending.
+Status: offline act/evaluation/demo operating manual, 2026-10-06.
+Live comparative evaluation is complete; independent red-team review and human
+adjudication remain pending. Read STEWARD_LIVE_RESULTS.md before using the scores.
 WP0 resumed with the authorized [Git helper execution repair](STEWARD_BOUNDARY_REVIEW.md).
-No new live call is
-authorized by the earlier $20 ceiling: WP6 requires a written cost approval.
+The user approved frozen plan v4 on 2026-10-06: $8 additional cap, $6.40 stop
+threshold, cumulative ceiling $20. This approval covers only that workload.
 
 ## Environment and installation
 
@@ -14,7 +15,9 @@ The baseline has `requirements-lock.txt` (pytest 9.1.1). Python is pinned to
 `.python-version.windows`. They are separately identified runtimes. Build tools
 are not fully locked. Run `python -m descend doctor` from the repository root
 to check exact installed versions and record helper paths and the lock hash.
-`--require-act` currently exits nonzero because WP3 is not implemented.
+`--require-act` runs a benign test through the actual Linux x86_64 worker and
+requires its syscall filter. It passed in the recorded Linux public-clone check;
+native Windows fails closed for act execution.
 
 For a trusted clean checkout, the existing installation sequence is:
 
@@ -43,7 +46,8 @@ The shared ledger is `controller_state/cloud-spend.sqlite`. Do not delete it,
 reset reservations, or create a substitute ledger to bypass accounting.
 An ambiguous failure keeps its reservation. Reconcile with provider records
 before authorizing more spend. Recorded session total: $0.548195 conservative
-accounting, 118 calls, zero unresolved holds; this is not a billing receipt.
+accounting before the live run, 118 calls. After the approved run: $0.613690,
+223 calls, zero unresolved holds; this is not a billing receipt.
 
 ## Existing review operations
 
@@ -163,3 +167,26 @@ WP7 adds measured results,
 fresh-clone evidence and the final complete manual. Human deploys the bundle
 and creates the new repository. Follow the [extraction plan](STEWARD_EXTRACTION_PLAN.md)
 only after receiving that destination and authorization.
+
+## Completed live run and public export
+
+The approved v4 workload ran once on 2026-10-06: 104 review calls plus one
+proposal, then a fail-closed act halt. Never repeat it or clear corpus claims.
+The source JSON preserves the original proposed status; separate approval and
+execution evidence establish its completed state. No remaining budget authorizes
+a second workload. Raw owned-fixture responses, request hashes, usage and all
+errors are preserved under `docs/evidence/steward-live-20261006/`.
+
+To regenerate the read-only live report/bundle without keys or network:
+
+```bash
+python -m scripts.export_steward_evaluation --source docs/evidence/steward-live-20261006 --output controller_state/new-live-export
+```
+
+Output must be new. The exporter rejects unowned cases and sensitive patterns
+before writing, escapes HTML, copies LICENSE and creates a hash manifest under
+a 500 KiB cap. Publish only `public/`; human deployment remains pending. The
+committed live bundle is `docs/evidence/steward-live-public/`; the older demo
+bundle remains explicitly mock. No static bundle includes approval, SQLite or
+environment files. Human adjudication sheets are exported separately; review
+them without the model/label mapping before recording semantic judgments.

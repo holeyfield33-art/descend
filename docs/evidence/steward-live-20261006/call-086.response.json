@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values.decode('ascii')\",\n      \"severity\": \"medium\",\n      \"reason\": \"The change from 'utf-8' to 'ascii' encoding may cause UnicodeDecodeError when processing non-ASCII input, which could crash the application or lead to unhandled exceptions.\",\n      \"verification\": \"Check if the function is used with data that may contain non-ASCII characters and ensure proper error handling is in place.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297068,
+  "id": "chatcmpl-8c01f19c-207a-4f0e-8382-678c4cab305d",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 128,
+    "completion_tokens_details": null,
+    "prompt_tokens": 307,
+    "prompt_tokens_details": null,
+    "total_tokens": 435
+  }
+}

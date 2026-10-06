@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 4,\n      \"evidence\": \"# Keep this behavior.\",\n      \"severity\": \"low\",\n      \"reason\": \"The added comment does not introduce executable code or functional change; it merely documents existing behavior and therefore does not constitute a bug.\",\n      \"verification\": \"Check whether the comment introduces any new logic or modifies runtime behavior; if not, no bug is present.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297084,
+  "id": "chatcmpl-b61b1b5d-2bac-4a47-a6e9-b1c38a8eec4f",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 105,
+    "completion_tokens_details": null,
+    "prompt_tokens": 306,
+    "prompt_tokens_details": null,
+    "total_tokens": 411
+  }
+}

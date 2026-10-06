@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"result = values + 3\",\n      \"severity\": \"low\",\n      \"reason\": \"The new variable 'result' is introduced but never used; it adds unnecessary code without functional benefit.\",\n      \"verification\": \"Check if 'result' is referenced later in the function; if not, it can be safely removed.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297053,
+  "id": "chatcmpl-2cad2b19-be80-4310-b41d-35ff94344043",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 103,
+    "completion_tokens_details": null,
+    "prompt_tokens": 307,
+    "prompt_tokens_details": null,
+    "total_tokens": 410
+  }
+}

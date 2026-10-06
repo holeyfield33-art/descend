@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"    result = values + 1\",\n      \"severity\": \"low\",\n      \"reason\": \"The new line introduces a variable assignment that is not used before the return statement, which may indicate dead code or a future logic error.\",\n      \"verification\": \"Check that the variable 'result' is used later in the function or that its assignment is intentional.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297052,
+  "id": "chatcmpl-6b33e37b-ac67-4230-af2c-6577b3ce67b7",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 110,
+    "completion_tokens_details": null,
+    "prompt_tokens": 303,
+    "prompt_tokens_details": null,
+    "total_tokens": 413
+  }
+}

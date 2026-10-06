@@ -1,0 +1,34 @@
+[
+  {
+    "case": "bug-boundary-2",
+    "error_type": "RuntimeError"
+  },
+  {
+    "case": "bug-comparison-2",
+    "error_type": "NOT_RUN"
+  },
+  {
+    "case": "bug-empty_check-1",
+    "error_type": "NOT_RUN"
+  },
+  {
+    "case": "bug-encoding-1",
+    "error_type": "NOT_RUN"
+  },
+  {
+    "case": "bug-encoding-2",
+    "error_type": "NOT_RUN"
+  },
+  {
+    "case": "bug-exception-1",
+    "error_type": "NOT_RUN"
+  },
+  {
+    "case": "bug-exception-2",
+    "error_type": "NOT_RUN"
+  },
+  {
+    "case": "bug-off_by_one-1",
+    "error_type": "NOT_RUN"
+  }
+]

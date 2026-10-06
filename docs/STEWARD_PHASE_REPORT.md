@@ -1,5 +1,52 @@
 # Repo Steward phase report
 
+## WP6 live completion and documentation — 2026-10-06
+
+The user explicitly approved the cost plan. Controller-only approval text named
+frozen v4 SHA `f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce`
+and the $8 additional cap. Command under Ubuntu, from the Descend root:
+`/opt/steward-wp0-venv/bin/python -m scripts.run_steward_live --plan eval/steward-live-plan-v4.json --approval controller_state/live-approval.txt --output controller_state/steward-live-20261006`.
+The plan hash check and actual worker probe passed before key/client use.
+
+Result: **105 provider calls** — all 64 primary reviews, all 40 repeats, one act
+proposal. SDK transport errors: zero. Super had seven primary response-schema
+errors; six were pseudo timeout/error text in model content, not observed SDK
+timeouts. Raw responses and provider usage/IDs are retained without retries.
+The invalid act source contained literal backslash-n sequences and failed Python
+syntax validation before any live generated code ran. The run halted acts;
+seven other candidates are NOT_RUN. No live patch was verified, exported or applied.
+The global spend ledger is not financially halted; the corpus/run claims remain
+sealed. No prompt/schema repair, result deletion or frozen-test rerun occurred.
+
+Automatic primary scores: both recall 15/16; Super precision 16/17, clean alarms
+0/11 with seven schema failures; Nano precision 15/29, clean alarms 11/11.
+Both repeat subsets were stable on 9/10 cases by accepted-citation/parse-status
+signature. One proposal was attempted, zero verified; the denominator is one,
+not all eight candidates. These are weak location metrics on correlated seeded
+functions, not human-adjudicated general accuracy. Full Wilson tables and every
+FP/miss/error: [STEWARD_LIVE_RESULTS.md](STEWARD_LIVE_RESULTS.md).
+
+Ledger start/end: $0.548195 / **$0.613690**, 118 / **223 calls**,
+zero unresolved holds at end, $20 cumulative cap, halted false, no billing
+receipt. Additional accounted upper bound **$0.065495**; observed usage
+32,322 prompt + 11,641 completion tokens. The approved $6.40 stop threshold
+was not reached; validation failure ended acts instead.
+
+Public evidence retains 223 original JSON files plus derived repeat metrics,
+with per-file SHA-256 manifest, under `evidence/steward-live-20261006/`.
+SQLite, environment and approval files are excluded. All raw JSON passed the
+sensitive-content heuristic. The live static bundle is 63,551 bytes, has no
+script/action controls, copies LICENSE and includes a hash manifest. It is
+separate from the recorded mock demo; no deployment occurred.
+
+The new offline export command validates owned case identities and sensitive
+patterns before writing output; hostile HTML is escaped. Export tests: **3 passed**
+on Windows, including secret-like output and unowned-identity rejection.
+Command: `python -m scripts.export_steward_evaluation --source docs/evidence/steward-live-20261006 --output controller_state/new-live-export`.
+User-facing docs were reconciled; historical reports/counts remain labeled.
+Independent red-team review, blind human adjudication, human deployment/video
+and destination-repository extraction remain pending. No sibling was modified.
+
 ## WP6 preparation — offline only
 
 Final published-code gate at **`46428f9ce74d3d69b35ce43e82ad1cfe9f82ccde`**:

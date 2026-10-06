@@ -1,0 +1,87 @@
+[
+  {
+    "automatic": "TP",
+    "case": "bug-off_by_one-1",
+    "id": "48f8cd20f22a194a0588001f"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-empty_check-1",
+    "id": "26d774387026ddbbf4399bb0"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-wrong_default-1",
+    "id": "86eb33245bb8bcb0e2fa46bb"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-swapped_arguments-1",
+    "id": "d6eacf21487c336623c7bfce"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-stale_state-1",
+    "id": "e9efb51931d78c7625c92669"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-stale_state-1",
+    "id": "d272dcfac4bde3d5d83f8b21"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-encoding-1",
+    "id": "67e28279e6f87081fd98a3eb"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-exception-1",
+    "id": "88225eb48bb8609bf7bea6f5"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-shared_mutation-1",
+    "id": "050682bc16b85ce17615db48"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-off_by_one-2",
+    "id": "8de3bea909334384c7202236"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-comparison-2",
+    "id": "7c4ba084e378ccaab06cf406"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-swapped_arguments-2",
+    "id": "7c2d83fe1a96f955e8b499bf"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-boundary-2",
+    "id": "7785ac3f45a3848bd732ac42"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-encoding-2",
+    "id": "91b99cd28924bfec24873ecb"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-exception-2",
+    "id": "4c7e5060fdf877a6e2996478"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-shared_mutation-2",
+    "id": "0eb71167f991548cd6cc0b46"
+  },
+  {
+    "automatic": "FP",
+    "case": "decoy-2",
+    "id": "f3a6d415ba5a4b58b66538cc"
+  }
+]

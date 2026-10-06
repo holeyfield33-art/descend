@@ -1,0 +1,13 @@
+{
+  "denominator": "All attempted model act proposals, including errors; selected bug cases only",
+  "selection_limitation": "First eligible distinct bug cases in Super-first order; not an unbiased patch-success estimate",
+  "verification": {
+    "denominator": 1,
+    "numerator": 0,
+    "rate": 0.0,
+    "wilson95": [
+      0,
+      0.7934506856227626
+    ]
+  }
+}

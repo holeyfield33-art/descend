@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"values.sort()\",\n      \"severity\": \"low\",\n      \"reason\": \"The added line mutates the input list in place, which may cause side effects for callers expecting the original list to remain unchanged.\",\n      \"verification\": \"Check if any other part of the codebase relies on the original ordering of `values` after calling `solve`.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297045,
+  "id": "chatcmpl-1296a1e4-3b93-4576-959f-9edf43ee127f",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 111,
+    "completion_tokens_details": null,
+    "prompt_tokens": 301,
+    "prompt_tokens_details": null,
+    "total_tokens": 412
+  }
+}

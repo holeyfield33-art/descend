@@ -1,0 +1,147 @@
+[
+  {
+    "automatic": "TP",
+    "case": "bug-off_by_one-1",
+    "id": "48f8cd20f22a194a0588001f"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-empty_check-1",
+    "id": "26d774387026ddbbf4399bb0"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-wrong_default-1",
+    "id": "86eb33245bb8bcb0e2fa46bb"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-swapped_arguments-1",
+    "id": "d6eacf21487c336623c7bfce"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-resource_close-1",
+    "id": "cdcbe7d3edfce7c1929f5cfc"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-encoding-1",
+    "id": "67e28279e6f87081fd98a3eb"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-exception-1",
+    "id": "88225eb48bb8609bf7bea6f5"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-shared_mutation-1",
+    "id": "050682bc16b85ce17615db48"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-off_by_one-2",
+    "id": "8de3bea909334384c7202236"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-comparison-2",
+    "id": "7c4ba084e378ccaab06cf406"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-swapped_arguments-2",
+    "id": "7c2d83fe1a96f955e8b499bf"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-boundary-2",
+    "id": "7785ac3f45a3848bd732ac42"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-encoding-2",
+    "id": "91b99cd28924bfec24873ecb"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-exception-2",
+    "id": "4c7e5060fdf877a6e2996478"
+  },
+  {
+    "automatic": "TP",
+    "case": "bug-shared_mutation-2",
+    "id": "0eb71167f991548cd6cc0b46"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-1",
+    "id": "0bb157002577067922f83849"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-2",
+    "id": "0d5f2b60625efaf879590637"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-4",
+    "id": "a0684f01a788d252fb285c99"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-5",
+    "id": "4afdd34ec267ba43a22610c1"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-7",
+    "id": "053384a8fe85fa3d3c9e0b92"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-8",
+    "id": "a47e7b0e65dc8fe342a84287"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-9",
+    "id": "1de906dab42a0d38a1b659da"
+  },
+  {
+    "automatic": "FP",
+    "case": "clean-refactor-10",
+    "id": "80b72a38ec98abb0a11e0493"
+  },
+  {
+    "automatic": "FP",
+    "case": "hard-negative-1",
+    "id": "6b2fe2be8e3f0f6ab9055247"
+  },
+  {
+    "automatic": "FP",
+    "case": "hard-negative-3",
+    "id": "928228bbdb07c62a4b19b73a"
+  },
+  {
+    "automatic": "FP",
+    "case": "hard-negative-4",
+    "id": "90e6798d7c9454376ac3e301"
+  },
+  {
+    "automatic": "FP",
+    "case": "decoy-1",
+    "id": "23dc4ef948a946f4af04a0f6"
+  },
+  {
+    "automatic": "FP",
+    "case": "decoy-4",
+    "id": "bbdeab84e2250ddd5a946b66"
+  },
+  {
+    "automatic": "FP",
+    "case": "decoy-6",
+    "id": "8cc489169cdf59f6c5575b96"
+  }
+]

@@ -1,4 +1,15 @@
-# Proposed WP6 cost plan — not approved or executed
+# WP6 cost plan — approved 2026-10-06
+
+The user explicitly approved this plan on 2026-10-06. The final frozen v4 SHA
+is `f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce`.
+Execution uses the $8 additional cap and $6.40 stop threshold. The JSON's
+original proposed status is preserved as frozen input; controller approval is
+stored separately. See [measured results](EVALUATION.md) for execution status.
+
+Completed: 104 reviews and one act proposal, 105 calls total. The act proposal
+failed syntax validation; seven candidates were not run after the halt. Additional
+accounted spend $0.065495; cumulative $0.613690, no unresolved holds. The frozen
+corpus claim remains sealed. Approval does not authorize a rerun or a new workload.
 
 The proposed run has 64 primary reviews (32 frozen test cases each on Super and
 Nano), 40 variance reviews (10 preselected cases repeated twice per model),

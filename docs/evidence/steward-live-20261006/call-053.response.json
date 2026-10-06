@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"    return values > 20\",\n      \"severity\": \"low\",\n      \"reason\": \"The change modifies the condition from >= 20 to > 20, which alters the logic of the function solve. This could cause values exactly equal to 20 to be treated as false when they were previously true, introducing a potential bug.\",\n      \"verification\": \"Check the function's intended behavior and test with input value 20 to confirm whether the new condition matches the expected outcome.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297034,
+  "id": "chatcmpl-c313f45c-7839-4566-8c2b-5608d4a246a2",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 139,
+    "completion_tokens_details": null,
+    "prompt_tokens": 308,
+    "prompt_tokens_details": null,
+    "total_tokens": 447
+  }
+}

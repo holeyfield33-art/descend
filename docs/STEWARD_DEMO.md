@@ -29,3 +29,8 @@ The measured [report](evidence/steward-demo-wp5.json) says PATCH_VERIFIED,
 checkout unchanged, idle/restart calls zero and repeated action claim false.
 This is a controller demo with a known finding/test/fix, not live model accuracy.
 The demo is serial; do not run worker jobs concurrently under the shared UID.
+
+The separate [live-results bundle](evidence/steward-live-public/index.html)
+records the completed 2026-10-06 Super/Nano evaluation and rejected proposal.
+It does not turn this canned demo into a live run. Regeneration and public-export
+checks are documented in the run manual. Neither bundle has been deployed.

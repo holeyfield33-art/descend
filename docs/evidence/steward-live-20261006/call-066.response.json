@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "annotations": null,
+        "audio": null,
+        "content": "{\n  \"findings\": [\n    {\n      \"path\": \"app.py\",\n      \"line\": 3,\n      \"evidence\": \"return values[1] - values[0]\",\n      \"severity\": \"low\",\n      \"reason\": \"The subtraction order has been reversed, which changes the function's output and can cause incorrect results for any input where values[0] != values[1].\",\n      \"verification\": \"Re-run the existing test suite or add a unit test that verifies the function returns the expected difference for known inputs, e.g., assert solve([5, 3]) == 2.\"\n    }\n  ]\n}",
+        "function_call": null,
+        "reasoning": null,
+        "refusal": null,
+        "role": "assistant",
+        "tool_calls": []
+      },
+      "routed_experts": null,
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "created": 1791297048,
+  "id": "chatcmpl-ec7a4201-6f08-4b9f-9d49-b5c3a13bf529",
+  "kv_transfer_params": null,
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "moderation": null,
+  "object": "chat.completion",
+  "prompt_logprobs": null,
+  "prompt_text": null,
+  "prompt_token_ids": null,
+  "service_tier": null,
+  "system_fingerprint": "vllm-0.22.0-b08c96cd",
+  "usage": {
+    "completion_tokens": 137,
+    "completion_tokens_details": null,
+    "prompt_tokens": 317,
+    "prompt_tokens_details": null,
+    "total_tokens": 454
+  }
+}

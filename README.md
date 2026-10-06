@@ -1,13 +1,13 @@
 # Descend
 
-## Repo Steward development status — 2026-10-05
+## Repo Steward development status — 2026-10-06
 
 Repo Steward's WP0 inventory and baseline gate is complete: fresh public clones
 passed 125 Linux tests and 100 Windows tests (25 explicit skips).
 The watcher Git helper-execution issue has been repaired and tested with an
 isolated positive control. See the [finding and repair](docs/STEWARD_BOUNDARY_REVIEW.md).
-New paid calls require
-the directive's separate WP6 approval; the existing $20 ceiling is not that approval.
+The user approved the frozen WP6 Super/Nano evaluation on 2026-10-06, with
+an $8 additional cap and $6.40 stop threshold. Results are tracked in the phase report.
 
 The [phase report](docs/STEWARD_PHASE_REPORT.md),
 [engineering operating reference](docs/STEWARD_RUN_MANUAL.md),
@@ -22,13 +22,18 @@ checks; independent red-team review remains pending. The
 [offline demo](docs/STEWARD_DEMO.md) runs an owned fixture through review,
 verification, patch export and restart deduplication with zero provider calls.
 Final public-clone regression: 202 Linux passes; 158 Windows passes / 44 explicit skips.
-Model evaluation remains gated on its written cost approval.
+The [live evaluation](docs/STEWARD_LIVE_RESULTS.md) completed on 2026-10-06:
+both models detected 15/16 seeded test bugs by automatic location scoring.
+Super precision was 16/17 with seven schema errors; Nano precision was 15/29
+and it falsely flagged all 11 clean/hard-negative cases. The first live patch
+proposal was rejected before execution. No live patch was verified or applied.
+105 calls added $0.065495 accounted spend; cumulative $0.613690, not an invoice.
 No extraction has occurred; the new repository will be supplied by the user.
 The DM0 evidence below concerns its separate worker boundary.
 
 Repo Steward uses NVIDIA Nemotron through Nebius Token Factory for bounded
 controller-side review and proposed tests/patches. The current public demo uses
-canned responses; live Super/Nano comparison awaits the
+canned responses; the live Super/Nano comparison follows the
 [quantified approval plan](docs/STEWARD_LIVE_PLAN.md). The worker exports a patch
 and never applies it to the watched checkout. Prior work reused from Descend:
 the environment parser, spend ledger, request helpers and isolation foundations;
@@ -36,7 +41,7 @@ the environment parser, spend ledger, request helpers and isolation foundations;
 
 ### What the Steward demo does not show
 
-It does not establish model accuracy, arbitrary-repository patch safety,
+It does not establish general repository accuracy, arbitrary-repository patch safety,
 independent red-team clearance or continuous cloud operation. B0/B1 missed all
 16 seeded test bugs; the known fixture fixes demonstrate controller plumbing.
 No hosted deployment or repository extraction has occurred.
@@ -125,7 +130,7 @@ The first local real-weight target was Qwen2.5-0.5B-Instruct. A separate CPU fea
 - [Hackathon Repo Steward product direction](docs/HACKATHON_REPO_STEWARD.md)
 - [Vibe Explainer and Agent Security Index review](docs/VIBE_EXPLAINER_REVIEW.md)
 
-Repo Steward now has a read-only prototype: `python -m scripts.run_repo_steward --repo /path/to/git-checkout --once` records a no-cost mock scan; add `--live` to request a bounded Nemotron Super review through the controller spend ledger. Run `python -m scripts.view_repo_steward` to see validated diff citations at `http://127.0.0.1:8765/`. A local triage CLI stores confirmed/dismissed maintainer decisions. The dashboard checks citation provenance, not bug correctness. Commands are documented in the linked product direction; this remains a prototype, not a complete hackathon submission.
+The watcher supports bounded read-only review: `python -m scripts.run_repo_steward --repo /path/to/git-checkout --once` records a no-cost mock scan; add `--live` to request a bounded Nemotron Super review through the controller spend ledger. Run `python -m scripts.view_repo_steward` to see validated diff citations at `http://127.0.0.1:8765/`. A local triage CLI stores confirmed/dismissed maintainer decisions. The dashboard checks citation provenance, not bug correctness. The restricted act worker additionally verifies and exports patches. See the run manual for supported scope, approval and execution commands; this is not a completed submission.
 
 For several checkouts, use the explicit [fleet configuration example](configs/steward-repos.example.json) with `python -m scripts.run_repo_steward_fleet --config <your-private-config.json> --once`. Each entry has its own mock/live mode and polling interval. The optional Vibe/ASI report input is described in the [analyst review](docs/VIBE_EXPLAINER_REVIEW.md).
 - [Locked specification corrections](docs/SPEC_DELTA_V1_RC.md)
