@@ -27,6 +27,10 @@ extraction, real-checkout application or unauthorized communication occurred.
 Next live gate is written approval of the frozen quantified plan, not permission
 to continue ordinary offline work.
 
+Final public-artifact scan covered **82 files**, with zero private-key/common
+long-token-prefix matches. Bundle file hashes and copied LICENSE matched.
+No credential values were loaded for this scan; it remains heuristic.
+
 Published WP5 `3262367` fresh public clones passed: Linux **198 passed, zero
 skips** (57.71 seconds), Windows **155 passed, 43 skipped** (46.68 seconds).
 The native Linux clone ran doctor and the offline demo successfully. These
