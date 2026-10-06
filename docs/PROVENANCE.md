@@ -85,6 +85,12 @@ is an original local implementation; it renders model text as escaped data and
 imports no codebook. Live evidence and the older mock/oracle cards are labeled
 separately. No provider weight hash or billing receipt is available.
 
+Public export portability: root LICENSE uses explicit LF checkout semantics;
+JSON is decoded explicitly as UTF-8. Only derived display/export bytes were
+regenerated, preserving all raw request/response hashes and model scores.
+Final live bundle hashes match on Windows and Linux. The historical mock
+bundle remains byte-pinned to its original generation.
+
 `git_output.py`, `act_seccomp.py`, adversarial fixtures and `scripts/demo_steward.py`
 are original local implementations. The demo fixture, finding, reproducer and
 fix are explicitly owned and canned; they contain no sibling repository data.

@@ -20,13 +20,16 @@ def fixture(tmp_path):
 def test_model_html_is_escaped_and_public_manifest_verified(tmp_path):
     source=fixture(tmp_path)
     path=source/'Nano-scores.json'
-    data=json.loads(path.read_text())
-    data['false_positives'][0]['finding']['reason']='</pre><script>alert(1)</script>'
-    path.write_text(json.dumps(data))
+    data=json.loads(path.read_text(encoding='utf-8'))
+    reason='é — 🚀 </pre><script>alert(1)</script>'
+    data['false_positives'][0]['finding']['reason']=reason
+    path.write_text(json.dumps(data,ensure_ascii=False),encoding='utf-8')
     target=tmp_path/'out'
     export(source,target)
-    page=(target/'public/index.html').read_text()
+    page=(target/'public/index.html').read_text(encoding='utf-8')
     assert '<script>' not in page and '&lt;script&gt;' in page
+    public=json.loads((target/'public/data.json').read_text(encoding='utf-8'))
+    assert public['scores']['Nano']['false_positives'][0]['finding']['reason']==reason
     manifest=json.loads((target/'public/manifest.json').read_text())
     assert all(hashlib.sha256((target/'public'/name).read_bytes()).hexdigest()==digest for name,digest in manifest['files'].items())
     assert (target/'public/LICENSE').read_bytes()==Path('LICENSE').read_bytes()

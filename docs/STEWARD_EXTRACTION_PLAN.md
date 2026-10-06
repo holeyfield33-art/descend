@@ -6,7 +6,8 @@ and finish the package gates before representing an extraction as ready.
 
 1. Copy an explicit allowlist from `descend/steward/` and its scripts/tests,
    including corpus/scoring, Git capture, act/proxy/worker/syscall filter and
-   `scripts/demo_steward.py`. Preserve each source commit/hash.
+   `scripts/demo_steward.py`, the approved-workload runner/planner, and
+   `scripts/export_steward_evaluation.py`. Preserve each source commit/hash.
    Retain parked fleet/context modules only if explicitly included in the new
    product; they must not become development priorities in this phase.
 2. Extract the minimal controller environment parser, durable spend ledger,
@@ -35,3 +36,9 @@ requires an explicit provenance/privacy review before any copy.
 
 The standalone product must install and run without Descend or any codebook
 checkout on the import path. Until extraction, keep this workspace intact.
+
+The completed v4 corpus/run claims are sealed and are not authorization to rerun
+from the new repository. Preserve historical owned live evidence and manifests;
+keep SQLite/approval/environment files private. A new workload needs a new
+unseen dataset, current ledger-based estimate and explicit approval. Resolve
+the fixed historical estimate assumptions when implementing a standalone planner.

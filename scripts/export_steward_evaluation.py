@@ -19,12 +19,12 @@ def percent(metric):
 
 def export(source, output):
     manifest=verify_manifest(Path('eval/v1'))
-    summary=json.loads((source/'summary.json').read_text())
+    summary=json.loads((source/'summary.json').read_text(encoding='utf-8'))
     if summary['kind']!='live' or summary['plan_sha256']!='f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce':
         raise ValueError('Expected approved frozen owned-corpus run')
-    arms={arm:json.loads((source/(arm+'-scores.json')).read_text()) for arm in ('Super','Nano')}
-    primary={arm:json.loads((source/(arm+'.json')).read_text())['results'] for arm in arms}
-    variance=json.loads((source/'variance.json').read_text())
+    arms={arm:json.loads((source/(arm+'-scores.json')).read_text(encoding='utf-8')) for arm in ('Super','Nano')}
+    primary={arm:json.loads((source/(arm+'.json')).read_text(encoding='utf-8'))['results'] for arm in arms}
+    variance=json.loads((source/'variance.json').read_text(encoding='utf-8'))
     owned={case['id'] for case in manifest['cases'] if case['split']=='test'}
     for arm,rows in primary.items():
         ids=[row['case'] for row in rows]
@@ -36,7 +36,7 @@ def export(source, output):
             raise ValueError('Unowned result identity refused')
     if len(variance)!=40 or any(row['case'] not in owned for row in variance):
         raise ValueError('Owned repeat results required')
-    act=json.loads((source/'act-metrics.json').read_text())
+    act=json.loads((source/'act-metrics.json').read_text(encoding='utf-8'))
     consistency={}
     for arm in arms:
         model=primary[arm][0]['model']
@@ -55,7 +55,7 @@ def export(source, output):
            '', '| Arm | Recall, Wilson 95% | Precision, Wilson 95% | Clean alarms, Wilson 95% | Decoy alarms | Median review latency | Accounted primary cost |',
            '|---|---|---|---|---|---|---|']
     for arm in ('B0','B1','Super','Nano'):
-        score=arms[arm] if arm in arms else json.loads((Path('docs/evidence/steward-baselines-v1')/(arm+'-test')/'scores.json').read_text())
+        score=arms[arm] if arm in arms else json.loads((Path('docs/evidence/steward-baselines-v1')/(arm+'-test')/'scores.json').read_text(encoding='utf-8'))
         latency=score['latency_seconds']['median']
         lines.append(f"| {arm} | {percent(score['recall'])} | {percent(score['precision'])} | {percent(score['clean_false_alarm'])} | {percent(score['decoy_false_alarm'])} | {latency:.3f}s | ${score['cost_usd']['total'] or 0:.6f} |" if latency is not None else
                      f"| {arm} | {percent(score['recall'])} | {percent(score['precision'])} | {percent(score['clean_false_alarm'])} | {percent(score['decoy_false_alarm'])} | Not observed | $0 |")

@@ -1,5 +1,11 @@
 # Release verification
 
+**Final 2026-10-06 public-clone checks at `5bc1652`:** Linux 205 passed, zero
+skips; Windows 161 passed, 44 explicit skips. Linux doctor and read-only report
+regeneration passed. The subsequent UTF-8/license portability repair passed
+all 3 exporter tests on both platforms and produced identical bundle hashes.
+The final bundle is 63,525 bytes. Full logs and hashes are in the phase report.
+
 **2026-10-06 live measurement:** user-approved frozen plan completed all
 104 review calls and one proposal. The proposal failed syntax validation and
 halted acts; no live generated code executed and no patch applied. All responses,

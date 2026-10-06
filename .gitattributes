@@ -4,6 +4,7 @@
 *.json text eol=lf
 *.sh text eol=lf
 requirements*.txt text eol=lf
+/LICENSE text eol=lf
 # Frozen corpus hashes refer to exact committed bytes, including diff files.
 eval/v1/** -text
 # Audit card/patch hashes must survive checkout without byte conversion.

@@ -21,7 +21,7 @@ limits. The [attack matrix](docs/STEWARD_ATTACK_MATRIX.md) covers automated
 checks; independent red-team review remains pending. The
 [offline demo](docs/STEWARD_DEMO.md) runs an owned fixture through review,
 verification, patch export and restart deduplication with zero provider calls.
-Final public-clone regression: 202 Linux passes; 158 Windows passes / 44 explicit skips.
+Public-clone regression: 205 Linux passes; 161 Windows passes / 44 explicit skips.
 The [live evaluation](docs/STEWARD_LIVE_RESULTS.md) completed on 2026-10-06:
 both models detected 15/16 seeded test bugs by automatic location scoring.
 Super precision was 16/17 with seven schema errors; Nano precision was 15/29

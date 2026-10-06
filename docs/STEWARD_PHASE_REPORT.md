@@ -2,6 +2,28 @@
 
 ## WP6 live completion and documentation — 2026-10-06
 
+Final public-clone validation at `5bc1652`: Linux **205 passed, zero skips**,
+55.51 seconds; Windows **161 passed, 44 explicit skips**, 42.36 seconds.
+Both used the same locked environments and `-m pytest -q -ra`; doctor passed
+the actual Linux worker. Full outputs are `evidence/steward-live-fresh-*`.
+No provider calls were made by these tests or report regeneration.
+
+The cross-host export check exposed root LICENSE line-ending differences and
+one UTF-8 em dash decoded using Windows's implicit code page. Root LICENSE is
+now pinned LF; exporter JSON reads explicitly use UTF-8. A stronger Unicode/HTML
+test passes with 3 exporter tests on each platform. Final regenerated data,
+HTML, LICENSE and manifest are **byte-identical across Windows and Linux**;
+the bundle is **63,525 bytes**. Raw API records and measured scores were not
+changed. The historical mock bundle retains its original recorded byte hashes.
+The first cross-host comparison failed; its cause and repair are recorded here,
+with passing hashes in `evidence/steward-live-cross-platform-bundle.json`.
+The original larger bundle size below is the pre-portability-fix checkpoint.
+
+Final audit: 244 public files, zero sensitive-pattern matches; every raw-record
+and bundle hash valid, copied license matches, end ledger still $0.613690 across
+223 calls with no unresolved holds. The scan is heuristic, not invoice or
+universal secret-exclusion proof. No extra live attempt followed the act halt.
+
 The user explicitly approved the cost plan. Controller-only approval text named
 frozen v4 SHA `f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce`
 and the $8 additional cap. Command under Ubuntu, from the Descend root:

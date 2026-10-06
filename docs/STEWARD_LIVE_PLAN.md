@@ -44,8 +44,8 @@ identities use diff hashes, not real-history Git commit SHAs. A corpus-level
 claim blocks rerunning the same test split under a changed plan. Independent
 red-team clearance remains pending and is not inferred from author-run checks.
 `--check` validates the plan without reading the environment or constructing a
-client. No live invocation is authorized until written approval names
-the final quantified plan. The user's attached completion directive requires written
+client. Launch required written approval naming the final quantified plan;
+the user provided it before this run. The attached completion directive requires written
 approval after the estimate; the general $20 credit statement does not replace
 that specific gate. All live results, errors, usage IDs, hashes, false positives
 and misses must be preserved and scored with the predeclared protocol.

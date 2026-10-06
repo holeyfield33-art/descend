@@ -141,7 +141,7 @@ authority and a model statement that tests passed is not evidence.
 
 WP6 requires written approval after the estimate.
 
-Offline WP6 readiness check (no environment/client reads):
+Archived WP6 readiness check (no environment/client reads):
 
 ```bash
 python -m scripts.run_steward_live --plan eval/steward-live-plan-v4.json --check
@@ -149,7 +149,10 @@ python -m scripts.run_steward_live --plan eval/steward-live-plan-v4.json --check
 
 Only after the human approves the exact plan/cap, save that approval as a
 controller-only text file containing `APPROVE PLAN <plan_sha256> CAP_USD 8`.
-Do not manufacture approval. The paid command is:
+Do not manufacture approval. The completed workload's command is shown as an
+operating reference. Do not rerun v4: its corpus claim is sealed. A future
+workload needs a separate unseen dataset, frozen configuration, current ledger
+estimate and new written approval.
 
 ```bash
 python -m scripts.run_steward_live --plan eval/steward-live-plan-v4.json --approval controller_state/live-approval.txt --output controller_state/new-live-results
