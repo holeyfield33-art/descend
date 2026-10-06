@@ -21,7 +21,7 @@ limits. The [attack matrix](docs/STEWARD_ATTACK_MATRIX.md) covers automated
 checks; independent red-team review remains pending. The
 [offline demo](docs/STEWARD_DEMO.md) runs an owned fixture through review,
 verification, patch export and restart deduplication with zero provider calls.
-Current regression: 197 Linux passes; 155 Windows passes / 42 explicit skips.
+Final public-clone regression: 202 Linux passes; 158 Windows passes / 44 explicit skips.
 Model evaluation remains gated on its written cost approval.
 No extraction has occurred; the new repository will be supplied by the user.
 The DM0 evidence below concerns its separate worker boundary.

@@ -2,6 +2,31 @@
 
 ## WP6 preparation — offline only
 
+Final published-code gate at **`46428f9ce74d3d69b35ce43e82ad1cfe9f82ccde`**:
+fresh public Linux clone `/root/steward-wp6-fresh-46428f9` **202 passed, zero
+skips**, 88.80 seconds; fresh public Windows clone
+`controller_state/wp6-fresh-46428f9` **158 passed, 44 explicit skips**, 61.76
+seconds. Commands: the installed locked interpreter with `-m pytest -q -ra`.
+Both Git statuses were clean. Final plan `--check` passed on both platforms;
+Linux `doctor --require-act` passed. Public bundle hash verification passed
+after the Windows clone. Complete suite/skip output and doctor/plan manifests:
+`evidence/steward-wp6-fresh-*`. Environments were reused, not newly created.
+
+Intermediate workspace suite: Linux 201 passed / zero skips in 303.22 seconds
+(before the final approval-mismatch test was added); Windows 157 passed /
+44 skips in 61.16 seconds. The shared-drive Linux suite experienced a long
+filesystem wait; the native Linux clone was faster. An owned-process stop probe
+matched no running test by its exact log descriptor; the original suite completed.
+The final fresh-clone run above includes the approval and corpus-replay checks.
+
+Start/end shared ledger read in SQLite read-only mode: cap $20, accounted upper
+bound $0.548195, 118 calls, zero unresolved holds, halted false, no provider
+receipt. **Additional real calls 0; additional spend $0.** Fake clients use
+separate temporary ledgers. No sibling mutation, private-data import, deployment,
+extraction, real-checkout application or unauthorized communication occurred.
+Next live gate is written approval of the frozen quantified plan, not permission
+to continue ordinary offline work.
+
 Published WP5 `3262367` fresh public clones passed: Linux **198 passed, zero
 skips** (57.71 seconds), Windows **155 passed, 43 skipped** (46.68 seconds).
 The native Linux clone ran doctor and the offline demo successfully. These

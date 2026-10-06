@@ -1,5 +1,10 @@
 # Release verification
 
+**Final offline readiness at `46428f9`:** fresh public Linux clone 202 passed,
+zero skips; fresh public Windows clone 158 passed, 44 explicit skips. Both source
+statuses clean. Locked environments reused. Final frozen-plan hashes verified
+on both hosts; actual Linux worker doctor passed. No paid calls were made.
+
 **2026-10-05 Steward WP4/WP5:** 197 Linux passes, zero skips; 155 Windows
 passes, 42 explicit skips. The doctor ran the actual filtered worker probe.
 All 24 known fixture fixes reverified. The owned offline demo demonstrated
