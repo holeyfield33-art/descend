@@ -26,6 +26,21 @@ Model evaluation remains gated on its written cost approval.
 No extraction has occurred; the new repository will be supplied by the user.
 The DM0 evidence below concerns its separate worker boundary.
 
+Repo Steward uses NVIDIA Nemotron through Nebius Token Factory for bounded
+controller-side review and proposed tests/patches. The current public demo uses
+canned responses; live Super/Nano comparison awaits the
+[quantified approval plan](docs/STEWARD_LIVE_PLAN.md). The worker exports a patch
+and never applies it to the watched checkout. Prior work reused from Descend:
+the environment parser, spend ledger, request helpers and isolation foundations;
+[provenance](docs/PROVENANCE.md) records adaptations and codebook licenses.
+
+### What the Steward demo does not show
+
+It does not establish model accuracy, arbitrary-repository patch safety,
+independent red-team clearance or continuous cloud operation. B0/B1 missed all
+16 seeded test bugs; the known fixture fixes demonstrate controller plumbing.
+No hosted deployment or repository extraction has occurred.
+
 **Descend is an autonomous model-improvement laboratory with a judge the agent cannot touch.**
 
 ## DM0 — Evidence-backed autonomous model adaptation

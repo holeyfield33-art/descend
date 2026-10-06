@@ -1,5 +1,37 @@
 # Repo Steward phase report
 
+## WP6 preparation — offline only
+
+Published WP5 `3262367` fresh public clones passed: Linux **198 passed, zero
+skips** (57.71 seconds), Windows **155 passed, 43 skipped** (46.68 seconds).
+The native Linux clone ran doctor and the offline demo successfully. These
+checks reused the installed locked environments rather than new virtualenvs.
+Outputs are `evidence/steward-wp5-fresh-*.txt` and the doctor JSON.
+
+The paid workload is prepared but has made **zero live calls**. The reviewer
+now accepts an explicit priced model and bounds its serialized request to
+20 KiB; prompt text is unchanged. The act verifier records explicit mock/live
+proposal origin. The runner records raw requests/responses, retains errors,
+separates primary/variance scores, runs acts after all reviews, limits additional
+reservations and seals the plan/corpus against replay. Provider credentials and
+client construction follow the exact approval/hash/doctor/ledger gates.
+SQLite spend/review/act contexts now explicitly close connections after their
+transactions; the long fake workload exposed retained descriptors from Python's
+transaction-only connection context. Existing atomic-claim semantics remain.
+
+Offline contract checks: Windows 20 passed / 5 Linux skips; Linux 20 passed.
+The full fake workload exercised 104 review requests across both models; a
+separate Linux fake-provider proposal went through the real filtered worker and
+verified its patch after all reviews. None of these are paid model results.
+Final config is `eval/steward-live-plan-v4.json`; v1–v3 are retained preparation
+snapshots, never executed live. Current plan SHA-256:
+`f3e07c9831152bf60ecf8a4638a6f41bec02decbc85680fce5bec95fa07e47ce`.
+Hash check returned provider_calls 0. Proposed maximum 112 calls, conservative
+reservation bound $5.357024, requested new cap $8, stop threshold $6.40,
+remaining cumulative ceiling after maximum reservations $14.094781.
+Written approval is still required. Independent red-team review, measured model
+evaluation, hosted deployment and new-repository extraction remain pending.
+
 ## WP5 offline demo and static export
 
 `python -m scripts.demo_steward --output controller_state/steward-demo-wp5`

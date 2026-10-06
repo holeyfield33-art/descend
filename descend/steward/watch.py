@@ -7,6 +7,7 @@ import os
 import re
 import shutil
 import sqlite3
+from contextlib import closing
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
@@ -74,7 +75,7 @@ class ReviewStore:
     def __init__(self, path: str | Path):
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("CREATE TABLE IF NOT EXISTS reviews (repo TEXT NOT NULL, sha TEXT NOT NULL, "
                        "created_at TEXT NOT NULL, status TEXT NOT NULL, payload TEXT NOT NULL, "
                        "PRIMARY KEY(repo, sha))")
@@ -83,21 +84,21 @@ class ReviewStore:
                        "decided_at TEXT NOT NULL, PRIMARY KEY(repo, sha, finding_index))")
 
     def get(self, repo: str, sha: str) -> dict | None:
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             row = db.execute("SELECT payload FROM reviews WHERE repo=? AND sha=?", (repo, sha)).fetchone()
         return json.loads(row[0]) if row else None
 
     def claim(self, snapshot: dict) -> bool:
         pending = {key: value for key, value in snapshot.items() if key != "diff"}
         pending["status"] = "in_progress"
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             cursor = db.execute("INSERT OR IGNORE INTO reviews VALUES (?,?,?,?,?)",
                                 (pending["repo"], pending["sha"], datetime.now(timezone.utc).isoformat(),
                                  pending["status"], json.dumps(pending, ensure_ascii=False)))
         return cursor.rowcount == 1
 
     def update(self, result: dict) -> None:
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("UPDATE reviews SET status=?,payload=? WHERE repo=? AND sha=?",
                        (result["status"], json.dumps(result, ensure_ascii=False),
                         result["repo"], result["sha"]))
@@ -105,7 +106,7 @@ class ReviewStore:
     def recent(self, limit: int = 50) -> list[dict]:
         if type(limit) is not int or not 1 <= limit <= 200:
             raise ValueError("Invalid review limit")
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             rows = db.execute("SELECT payload FROM reviews ORDER BY created_at DESC LIMIT ?", (limit,)).fetchall()
             decisions = db.execute("SELECT repo,sha,finding_index,decision,note,decided_at FROM decisions").fetchall()
         indexed = {}
@@ -129,7 +130,7 @@ class ReviewStore:
         if finding_index >= len(findings):
             raise ValueError("Finding does not exist or lacks validated citation")
         at = datetime.now(timezone.utc).isoformat()
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("INSERT INTO decisions VALUES (?,?,?,?,?,?) ON CONFLICT(repo,sha,finding_index) "
                        "DO UPDATE SET decision=excluded.decision,note=excluded.note,decided_at=excluded.decided_at",
                        (repo, sha, finding_index, decision, note, at))

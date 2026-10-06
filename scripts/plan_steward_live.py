@@ -5,11 +5,13 @@ import json
 import random
 from pathlib import Path
 
-from descend.controller.inference import NANO_MODEL_ID, SUPER_MODEL_ID
+from descend.controller.inference import NANO_MODEL_ID, SUPER_MODEL_ID, PRICE_POLICY
 from descend.steward.corpus import canonical, verify_manifest
 
 
 def plan(corpus=Path('eval/v1')):
+    if PRICE_POLICY[SUPER_MODEL_ID][0]!=2 or PRICE_POLICY[NANO_MODEL_ID][0]!=1:
+        raise ValueError('Conservative accounting policy changed; re-estimate explicitly')
     manifest = verify_manifest(corpus)
     tests = sorted(c['id'] for c in manifest['cases'] if c['split']=='test')
     repeats = sorted(random.Random(20261005).sample(tests,10))
@@ -18,7 +20,12 @@ def plan(corpus=Path('eval/v1')):
     conservative = (52*review_bound*2 + 52*review_bound + 8*act_bound*2)/1000000
     files = ['descend/steward/reviewer.py','descend/steward/findings.py','descend/steward/act_proxy.py',
              'descend/steward/act.py','descend/steward/act_worker.py','descend/steward/act_seccomp.py',
-             'requirements-lock.txt','requirements-steward-eval-lock.txt']
+             'requirements-lock.txt','requirements-steward-eval-lock.txt',
+             'scripts/run_steward_live.py','scripts/plan_steward_live.py',
+             'descend/controller/inference.py','descend/controller/token_factory.py',
+             'descend/controller/environment.py','descend/controller/spend.py',
+             'descend/steward/corpus.py','descend/steward/scoring.py',
+             'descend/steward/doctor.py','descend/steward/watch.py','descend/steward/git_output.py']
     return dict(schema_version=1, status='PROPOSED_NOT_APPROVED_NOT_EXECUTED', provider_calls=0,
                 test_manifest_sha256=(corpus/'test-manifest.sha256').read_text().strip(),
                 models=[SUPER_MODEL_ID,NANO_MODEL_ID], primary_cases=tests, repeat_cases=repeats,
@@ -26,6 +33,10 @@ def plan(corpus=Path('eval/v1')):
                 reviewer_max_output_tokens=1000, act_max_output_tokens=2000, temperature=0,
                 thinking=False,static_context=None, review_request_byte_cap=20000, act_request_byte_cap=40000,
                 conservative_accounting_bound_usd=conservative, proposed_new_spend_cap_usd=8,
+                expected_tokens={'review_prompt':500,'review_completion':300,'act_prompt':1200,'act_completion':800,
+                                 'total':99200,'basis':'Planning assumptions informed by tiny historical pilots; not measured test-split usage'},
+                expected_accounting_usd=0.1568,
+                projected_remaining_ceiling_after_conservative_bound_usd=20-0.548195-conservative,
                 stop_threshold_usd=6.4, cumulative_cap_usd=20, accounted_start_usd=0.548195,
                 policy='Reserve each call before submission; stop before a reservation crosses $6.40 additional accounted spend. No automatic retries; retain ambiguous holds.',
                 prerequisites=['Offline gates committed','Current Linux doctor and fresh-clone gates pass',

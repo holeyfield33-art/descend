@@ -17,9 +17,24 @@ $20 ceiling also remains enforced. Historical accounted spend is $0.548195;
 there is no provider invoice reconciliation. Ambiguous failures retain their
 reservation and have no automatic retry. This is not a current price quote.
 
-The runner still needs its offline contract checks and current Linux/fresh-clone
-gate. No live invocation is offered until those pass and written approval names
-this quantified plan. The user's attached completion directive requires written
+Planning assumptions: 500 prompt + 300 completion tokens per review, and
+1200 + 800 per act, approximately 99,200 tokens / $0.1568 conservative accounting.
+These are assumptions informed by tiny earlier pilots, not measured test-split
+usage. Maximum reservations, rather than these assumptions, govern the cap.
+The projected remaining $20 ceiling after the maximum reservations is $14.094781.
+
+The runner now implements an additional reservation limit over the durable
+cumulative ledger, sealed plan claims, model-specific rates, raw request/response
+records, primary/variance separation, error/miss preservation and bounded act
+verification after all reviews. It keeps prompt text unchanged and changes only
+the model selector for Nano. Protocol v1/v2/v3 plans are retained as superseded
+preparation snapshots; final v4 pins the current runner and dependencies. Seeded
+identities use diff hashes, not real-history Git commit SHAs. A corpus-level
+claim blocks rerunning the same test split under a changed plan. Independent
+red-team clearance remains pending and is not inferred from author-run checks.
+`--check` validates the plan without reading the environment or constructing a
+client. No live invocation is authorized until written approval names
+the final quantified plan. The user's attached completion directive requires written
 approval after the estimate; the general $20 credit statement does not replace
 that specific gate. All live results, errors, usage IDs, hashes, false positives
 and misses must be preserved and scored with the predeclared protocol.

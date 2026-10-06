@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 from uuid import uuid4
 
@@ -18,7 +19,7 @@ class SpendLedger:
             raise ValueError("Spend cap must be between zero and the authorized $20")
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("CREATE TABLE IF NOT EXISTS policy (cap INTEGER NOT NULL, halted INTEGER NOT NULL DEFAULT 0)")
             row = db.execute("SELECT cap FROM policy").fetchone()
             if row is None:
@@ -31,7 +32,7 @@ class SpendLedger:
     def reserve(self, run_id: str, amount: int) -> str:
         if type(amount) is not int or amount <= 0:
             raise ValueError("Positive bounded reservation required")
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("BEGIN IMMEDIATE")
             if db.execute("SELECT halted FROM policy").fetchone()[0]:
                 raise SpendExhausted("Ledger halted after an accounting overrun")
@@ -46,7 +47,7 @@ class SpendLedger:
     def settle(self, call_id: str, charged: int, provider_id: str) -> None:
         if type(charged) is not int or charged < 0:
             raise ValueError("Invalid charge")
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("BEGIN IMMEDIATE")
             row = db.execute("SELECT reserved, charged FROM calls WHERE id=?", (call_id,)).fetchone()
             if row is None or row[1] is not None:
@@ -60,7 +61,7 @@ class SpendLedger:
             db.execute("UPDATE calls SET charged=?,provider_id=? WHERE id=?", (charged, provider_id, call_id))
 
     def summary(self) -> dict:
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             cap = db.execute("SELECT cap FROM policy").fetchone()[0]
             used, pending, calls = db.execute(
                 "SELECT COALESCE(SUM(COALESCE(charged,reserved)),0),"

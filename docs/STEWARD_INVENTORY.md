@@ -2,6 +2,22 @@
 
 ## Offline demo interfaces
 
+Additional persistence repair: controller spend/review/action SQLite connection
+contexts will explicitly close after transaction completion. Inspection of the
+long fake workload showed many open SQLite descriptors: `with connection` alone
+commits/rolls back but does not close. Use `closing(connection)` around the same
+transaction context; preserve claims, budget locks and rollback semantics.
+
+WP6 preparation inventory before implementation: the reviewer gains an explicit
+priced model selector and a 20 KiB pre-call request gate, preserving prompt text.
+The live CLI will read the frozen plan/approval text, verify source/corpus hashes,
+probe the Linux runtime, claim the plan once in SQLite, and use an additional
+per-run reservation bound over the existing durable cumulative ledger. It will
+persist all request bodies/provider JSON/errors and score primary arms separately
+from variance runs. Only reviewed source/finding goes to the act proxy; labels
+are evaluator-only selection data. Verification cards gain an explicit live/mock
+origin parameter. The CLI constructs a no-retry provider client only after gates.
+
 `scripts.demo_steward.run(output)` creates a new owned Git fixture and local
 SQLite stores in disposable/controller scratch. It commits only its own seeded
 source, invokes the watcher with a canned reviewer, reads exact Git blobs into

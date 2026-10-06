@@ -8,6 +8,7 @@ import json
 import re
 import shutil
 import sqlite3
+from contextlib import closing
 import tempfile
 from pathlib import Path
 
@@ -110,13 +111,13 @@ class ActStore:
     def __init__(self, path: Path):
         path.parent.mkdir(parents=True, exist_ok=True)
         self.path = path
-        with sqlite3.connect(path) as db:
+        with closing(sqlite3.connect(path)) as db, db:
             db.execute("CREATE TABLE IF NOT EXISTS acts (repo TEXT, sha TEXT, finding INTEGER, status TEXT, payload TEXT, PRIMARY KEY(repo,sha,finding))")
 
     def claim(self, repo: str, sha: str, finding: int, *, commit_cap: int = 1) -> bool:
         if type(commit_cap) is not int or commit_cap < 0 or type(finding) is not int or finding < 0:
             raise ValueError("Invalid action budget")
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("BEGIN IMMEDIATE")
             count = db.execute("SELECT COUNT(*) FROM acts WHERE repo=? AND sha=?", (repo, sha)).fetchone()[0]
             if count >= commit_cap:
@@ -125,7 +126,7 @@ class ActStore:
             return cursor.rowcount == 1
 
     def finish(self, repo: str, sha: str, finding: int, evidence: dict):
-        with sqlite3.connect(self.path) as db:
+        with closing(sqlite3.connect(self.path)) as db, db:
             db.execute("UPDATE acts SET status=?,payload=? WHERE repo=? AND sha=? AND finding=?",
                        (evidence["classification"], json.dumps(evidence), repo, sha, finding))
 
@@ -169,8 +170,10 @@ def _passed(result: dict) -> bool:
             and all(call["outcome"] == "passed" and not call["xfail"] for call in report["calls"]))
 
 
-def verify_proposal(snapshot: Path, finding: dict, raw: str, export: Path, *, review_diff: str, identity: dict | None = None) -> dict:
-    evidence = {"schema_version": 1, "kind": "mock", "classification": "ERROR", "finding": finding,
+def verify_proposal(snapshot: Path, finding: dict, raw: str, export: Path, *, review_diff: str, identity: dict | None = None, proposal_kind: str = "mock") -> dict:
+    if proposal_kind not in ("mock", "live"):
+        raise ValueError("Explicit mock/live proposal origin required")
+    evidence = {"schema_version": 1, "kind": proposal_kind, "classification": "ERROR", "finding": finding,
                 "provider_calls": 0, "usage": None, "cost_usd": 0, "patch_export": None,
                 "source_root_unchanged": None}
     watched_before = None

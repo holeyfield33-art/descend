@@ -11,9 +11,11 @@ REVIEW_PROTOCOL_VERSION = 2
 
 
 def review_with_nemotron(snapshot: dict, *, api_key: str, ledger, client=None,
-                         static_context: dict | None = None) -> dict:
+                         static_context: dict | None = None, model: str = SUPER_MODEL_ID) -> dict:
     if snapshot["status"] != "ready":
         raise ValueError("Review requires a ready snapshot")
+    if model not in PRICE_POLICY:
+        raise ValueError("Priced model required")
     if client is None:
         from openai import OpenAI
         import httpx
@@ -34,10 +36,13 @@ def review_with_nemotron(snapshot: dict, *, api_key: str, ledger, client=None,
         {"role": "user", "content": f"Repository commit {snapshot['sha']}; paths {json.dumps(snapshot['paths'])}.\n"
          f"Diff SHA-256 {snapshot['diff_sha256']}.{context}\n<untrusted_diff>\n{snapshot['diff']}\n</untrusted_diff>"},
     ]
-    body = chat_request(model=SUPER_MODEL_ID, messages=messages, max_tokens=1000)
+    body = chat_request(model=model, messages=messages, max_tokens=1000)
     body.update(temperature=0, extra_body={"chat_template_kwargs": {"enable_thinking": False}})
-    input_bound = len(json.dumps(body, ensure_ascii=False).encode("utf-8")) + 8192
-    rate_bound, input_price, output_price = PRICE_POLICY[SUPER_MODEL_ID]
+    request_bytes = json.dumps(body, ensure_ascii=False).encode("utf-8")
+    if len(request_bytes) > 20000:
+        raise ValueError("Review request byte cap exceeded")
+    input_bound = len(request_bytes) + 8192
+    rate_bound, input_price, output_price = PRICE_POLICY[model]
     reserved_tokens = input_bound + 1000
     call_id = ledger.reserve(f"steward:{snapshot['sha']}", reserved_tokens * rate_bound)
     try:
@@ -57,7 +62,7 @@ def review_with_nemotron(snapshot: dict, *, api_key: str, ledger, client=None,
     choices = response.get("choices") or []
     content = (choices[0].get("message") or {}).get("content") if choices else None
     validated = validate_findings(content or "", snapshot["diff"], snapshot["paths"])
-    return {"model": SUPER_MODEL_ID, "protocol_version": REVIEW_PROTOCOL_VERSION,
+    return {"model": model, "protocol_version": REVIEW_PROTOCOL_VERSION,
             "static_context_report_sha256": static_context.get("report_sha256") if static_context else None,
             "provider_id": response.get("id"), "content": content or "", **validated,
             "usage": usage, "accounted_upper_bound_usd": total * rate_bound / 1_000_000,

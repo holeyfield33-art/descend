@@ -135,7 +135,31 @@ Check watched Git status and exact SHA before human patch application, then run
 the repository's normal validation. A recorded approval note is not execution
 authority and a model statement that tests passed is not evidence.
 
-WP6 requires written approval after the estimate. WP7 adds measured results,
+WP6 requires written approval after the estimate.
+
+Offline WP6 readiness check (no environment/client reads):
+
+```bash
+python -m scripts.run_steward_live --plan eval/steward-live-plan-v4.json --check
+```
+
+Only after the human approves the exact plan/cap, save that approval as a
+controller-only text file containing `APPROVE PLAN <plan_sha256> CAP_USD 8`.
+Do not manufacture approval. The paid command is:
+
+```bash
+python -m scripts.run_steward_live --plan eval/steward-live-plan-v4.json --approval controller_state/live-approval.txt --output controller_state/new-live-results
+```
+
+It probes Linux isolation, checks hashes/ledger, claims both plan and frozen
+corpus once, and only then loads the controller key and constructs the client.
+Output must be new. Do not reset claims after an error or change prompts after
+the first test call. Use the raw records to investigate; no automatic resume.
+Primary model JSON, Wilson scores, blind sheets, variance rows, act cards,
+usage/provider IDs and errors remain local until a separate public-data review.
+The proposed cost assumptions and cap are in [the plan](STEWARD_LIVE_PLAN.md).
+
+WP7 adds measured results,
 fresh-clone evidence and the final complete manual. Human deploys the bundle
 and creates the new repository. Follow the [extraction plan](STEWARD_EXTRACTION_PLAN.md)
 only after receiving that destination and authorization.
